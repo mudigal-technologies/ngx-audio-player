@@ -1,0 +1,63 @@
+<div class="content">
+<div class="header mat-toolbar mat-primary">
+  <div class="d-flex justify-contents-center" style="text-align: center;">
+    <div class="flex-fill">
+      <h1 class="mat-h1" style="font-size: 56px; font-weight: 300;line-height: 56px;margin: 15px 5px;">
+        Angular Audio Player
+      </h1>
+      <h2 style="font-size: 18px;font-weight: 400;line-height: 28px;margin: 15px 0 25px;">A simple, clean, <a id="matLink"
+          href="https://material.angular.io">angular material</a> design inspired basic and advanced audio players for
+        Angular 7</h2>
+      <a style="color: #666;text-decoration: none;" class="docs-button mat-raised-button" mat-raised-button="" routerlink="/guide/getting-started"
+        tabindex="0" aria-disabled="false" [routerLink]="['/guide/getting-started']"><span class="mat-button-wrapper">Get
+          started</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6" style="margin-top: 20px;">
+      <mat-card style="background-color: #e4e4e4">
+        <mat-card-header>
+          <mat-card-title>Material Style Basic Audio Player</mat-card-title>
+          <mat-card-subtitle>Material Style Basic Audio Player</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <h5>Controls</h5>
+          <div class="d-flex flex-row px-3">
+            displayTitle: <mat-checkbox class="px-3" [checked]="msbapDisplayTitle" (change)="changeMsbapDisplayTitle($event)">{{msbapDisplayTitle}}</mat-checkbox>
+          </div>
+        </mat-card-content>
+        <div>
+          <mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [displayTitle]="msbapDisplayTitle"></mat-basic-audio-player>
+        </div>
+        <div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col-12 col-md-6" style="margin-top: 20px;">
+      <mat-card style="background-color: #e4e4e4">
+        <mat-card-header>
+          <mat-card-title>Material Style Advanced Audio Player</mat-card-title>
+          <mat-card-subtitle>Material Style Advanced Audio Player</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <h6>Controls</h6>
+          <div class="d-flex flex-row px-3">
+            displayTitle: <mat-checkbox class="px-3" [checked]="msaapDisplayTitle" (change)="changeMsaapDisplayTitle($event)">{{msaapDisplayTitle}}</mat-checkbox>
+          </div>
+          <div class="d-flex flex-row px-3">
+            displayPlayList: <mat-checkbox class="px-3" [checked]="msaapDisplayPlayList" (change)="changeMsaapDisplayPlayList($event)">{{msaapDisplayPlayList}}</mat-checkbox>
+          </div>
+        </mat-card-content>
+        <div>
+          <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [displayPlaylist]="msaapDisplayPlayList"></mat-advanced-audio-player>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,30 @@
+#matLink{
+    text-decoration: none;
+    color: white!important;
+}
+
+.mat-h1{
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    font-size: 24px;
+    line-height: 32px;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.header {
+    text-align: center;
+    padding: 60px;
+    color: white;
+}
+
+.content {
+    height: 100%;
+    height: -moz-available;          /* WebKit-based browsers will ignore this. */
+    height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    height: fill-available;
+}
