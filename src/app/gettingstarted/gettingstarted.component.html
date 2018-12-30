@@ -1,79 +1,157 @@
 <h1 class="mat-h1 header">Getting Started</h1>
 <div class="container">
-    <h1>Angular Audio Player</h1>
-    <p>A library for loading playing audio using HTML 5 audio specifically for Angular 7. (<a href="https://vmudigal.github.io/ngx-audio-player/">https://vmudigal.github.io/ngx-audio-player/</a>)</p>
+    <article>
+        <h1 id="angular-audio-player">Angular Audio Player</h1>
+        <p>A library for loading playing audio using HTML 5 audio specifically for Angular 7.</p>
 
-    <h2>Installation</h2>
-    <p><code>ngx-audio-player</code> is available via <a href="https://www.npmjs.com/package/ngx-audio-player">npm</a>
-        and <a href="https://yarnpkg.com/en/package/ngx-audio-player">yarn</a></p>
-    <p>Using npm:</p>
-    <pre><code class="language-bash">$ npm install ngx-audio-player --save</code></pre>
-    <p>Using yarn:</p>
-    <pre><code class="language-bash">$ yarn add ngx-audio-player</code></pre>
-    <h2>Getting Started</h2>
-    <p>NgxAudioPlayerModule needs Angular Material and FontAwesome 5+. <br />
-        Make sure you have installed below dependencies with same or higher version than mentioned. </p>
-    <p>"@angular/material": "^7.2.0" <br />
-        "@fortawesome/angular-fontawesome": "^0.3.0" <br />
-        "@fortawesome/fontawesome-svg-core": "^1.2.12" <br />
-        "@fortawesome/free-solid-svg-icons": "^5.6.3" </p>
-    <p>Import <code>NgxAudioPlayerModule</code> in in the root module(<code>AppModule</code>): </p>
-    <pre><code class="language-typescript">// Import library module
-import {{ '{' }} NgxAudioPlayerModule {{ '}' }} from 'ngx-audio-player';
+        <h2 id="installation">Installation</h2>
+        <p><code>ngx-audio-player</code> is available via <a href="https://www.npmjs.com/package/ngx-audio-player"
+                target="_blank" title="ngx-audio-player npm package link">npm</a> and <a href="https://yarnpkg.com/en/package/ngx-audio-player"
+                target="_blank" title="ngx-audio-player yarn package link">yarn</a></p>
+        <p>Using npm:</p>
+        <pre><code class="bash">$ npm install ngx-audio-player --save</code></pre>
+        <p>Using yarn:</p>
+        <pre><code class="bash">$ yarn add ngx-audio-player</code></pre>
+        <h2 id="getting-started">Getting Started</h2>
+        <p>NgxAudioPlayerModule needs Angular Material and FontAwesome 5+.<br>Make sure you have installed below
+            dependencies with same or higher version than mentioned. </p>
+        <p>"@angular/material": "^7.2.0"<br>"@fortawesome/angular-fontawesome": "^0.3.0"<br>"@fortawesome/fontawesome-svg-core":
+            "^1.2.12"<br>"@fortawesome/free-solid-svg-icons": "^5.6.3" </p>
+        <p>Import <code>NgxAudioPlayerModule</code> in in the root module(<code>AppModule</code>): </p>
+        <pre><code class="typescript"><span class="hljs-comment">// Import library module</span>
+<span class="hljs-keyword">import</span> {{'{'}} NgxAudioPlayerModule {{'}'}} <span class="hljs-keyword">from</span> <span class="hljs-string">'ngx-audio-player'</span>;
 
-@NgModule({{ '{' }}
+<span class="hljs-meta">@NgModule</span>({{'{'}}
   imports: [
-    // ...
+    <span class="hljs-comment">// ...</span>
     NgxAudioPlayerModule
   ]
-{{ '}' }})
-export class AppModule {{ '{' }} {{ '}' }}</code></pre>
-    <h3>Usage</h3>
-    <h4>Material Style Basic Audio Player</h4>
-    <h5>HTML</h5>
-    <pre><code class="language-html">&lt;mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle"&gt;&lt;/mat-basic-audio-player&gt;</code></pre>
-    <h5>TS</h5>
-    <pre><code class="language-ts">// Material Style Basic Audio Player Title and Audio URL
-msbapTitle = 'Mechanical Sundariye';
-msbapAudioUrl = 'https://funksyou.com/fileDownload/Songs/128/30306.mp3';</code></pre>
-    <h4>Material Style Advanced Audio Player</h4>
-    <h5>HTML</h5>
-    <pre><code class="language-html">&lt;mat-advanced-audio-player [playlist]="msaapPlaylist"&gt;&lt;/mat-advanced-audio-player&gt;</code></pre>
-    <h5>TS</h5>
-    <pre><code class="language-ts">import {{ '{' }} Track {{ '}' }} from 'ngx-audio-player';   
+{{'}'}})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule {{'{'}} {{'}'}}</code></pre>
+        <h3 id="usage">Usage</h3>
+        <h4 id="material-style-basic-audio-player">Material Style Basic Audio Player</h4>
+        <h5 id="html">HTML</h5>
+        <pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">mat-basic-audio-player</span> [<span class="hljs-attr">audioUrl</span>]=<span class="hljs-string">"msbapAudioUrl"</span> [<span class="hljs-attr">title</span>]=<span class="hljs-string">"msbapTitle"</span> [<span class="hljs-attr">displayTitle</span>]=<span class="hljs-string">"msbapDisplayTitle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mat-basic-audio-player</span>&gt;</span></code></pre>
+        <h5 id="ts">TS</h5>
+        <pre><code class="ts"><span class="hljs-comment">// Material Style Basic Audio Player Title and Audio URL</span>
+msbapTitle = <span class="hljs-string">'Mechanical Sundariye'</span>;
+msbapAudioUrl = <span class="hljs-string">'https://funksyou.com/fileDownload/Songs/128/30306.mp3'</span>;   
 
-.   
-.   
-.   
+msbapDisplayTitle = <span class="hljs-literal">false</span>;   </code></pre>
+        <h5 id="properties">Properties</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Input()
+                        title: string;
+                    </td>
+                    <td>title to be displayed</td>
+                    <td>optional</td>
+                    <td>none</td>
+                </tr>
+                <tr>
+                    <td>@Input()
+                        audioUrl: string;
+                    </td>
+                    <td>url of the audio</td>
+                    <td>mandatory</td>
+                    <td>none</td>
+                </tr>
+                <tr>
+                    <td>@Input()
+                        displayTitle = false;
+                    </td>
+                    <td>true - if the audio title needs to be displayed</td>
+                    <td>optional</td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 id="material-style-advanced-audio-player">Material Style Advanced Audio Player</h4>
+        <h5 id="html">HTML</h5>
+        <pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">mat-advanced-audio-player</span> [<span class="hljs-attr">playlist</span>]=<span class="hljs-string">"msaapPlaylist"</span> [<span class="hljs-attr">displayTitle</span>]=<span class="hljs-string">"msaapDisplayTitle"</span> [<span class="hljs-attr">displayPlaylist</span>]=<span class="hljs-string">"msaapDisplayPlayList"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mat-advanced-audio-player</span>&gt;</span>   </code></pre>
+        <h5 id="ts">TS</h5>
+        <pre><code class="ts"><span class="hljs-keyword">
+import</span> {{'{'}} Track {{'}'}} <span class="hljs-keyword">from</span> <span class="hljs-string">'ngx-audio-player'</span>;   
 
-// Material Style Advance Audio Player Playlist
+ .   
+ .   
+
+msaapDisplayTitle = <span class="hljs-literal">true</span>;
+msaapDisplayPlayList = <span class="hljs-literal">true</span>;
+
+<span class="hljs-comment">// Material Style Advance Audio Player Playlist</span>
 msaapPlaylist: Track[] = [
-{{ '{' }}
-    title: 'Naalo Chilipi Kala',
-    link: 'http://sensongsmp3.co.in/mp3/2018/Lover%20(2018)/Naalo%20Chilipi%20Kala%20(Theme%20Song)%20-%20SenSongsMp3.Co.mp3'
-    {{ '}' }},
-  {{ '{' }}
-    title: 'Rakshassi',
-    link: 'https://funksyou.com/fileDownload/Songs/128/30307.mp3'
-    {{ '}' }},
-  {{ '{' }}
-    title: 'Mechanical Sundariye',
-    link: 'https://funksyou.com/fileDownload/Songs/128/30306.mp3'
-    {{ '}' }},
-];</code></pre>
-
-    <h2>Versioning</h2>
-    <p>ngx-audio-player will be maintained under the Semantic Versioning guidelines.
-        Releases will be numbered with the following format:</p>
-    <p><code>&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</code></p>
-    <p>For more information on SemVer, please visit <a href="http://semver.org">http://semver.org</a>.</p>
-    <h2>Developer</h2>
-    <h6><a href="mailto:vijayendrap@gmail.com">Vijayendra Mudigal</a></h6>
-    <ul>
-        <li><a href="http://vijayendra.mudigal.com" target="_blank">Profile</a></li>
-        <li><a href="https://github.com/vmudigal" target="_blank">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/vijayendra" target="_blank">Linkedin</a></li>
-    </ul>
-    <h2>License</h2>
-    <h6>The MIT License (MIT)</h6>
+    {{'{'}}
+        title: <span class="hljs-string">'Naalo Chilipi Kala'</span>,
+        link: <span class="hljs-string">'http://sensongsmp3.co.in/mp3/2018/Lover%20(2018)/Naalo%20Chilipi%20Kala%20(Theme%20Song)%20-%20SenSongsMp3.Co.mp3'</span>
+    {{'}'}},
+    {{'{'}}
+        title: <span class="hljs-string">'Rakshassi'</span>,
+        link: <span class="hljs-string">'https://funksyou.com/fileDownload/Songs/128/30307.mp3'</span>
+    {{'}'}},
+    {{'{'}}
+        title: <span class="hljs-string">'Mechanical Sundariye'</span>,
+        link: <span class="hljs-string">'https://funksyou.com/fileDownload/Songs/128/30306.mp3'</span>
+    {{'}'}},
+];
+        </code></pre>
+        <h5 id="properties">Properties</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Input() playlist: Track[];</td>
+                    <td>playlist containing array of title and link</td>
+                    <td>mandatory</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>@Input() displayTitle: true;</td>
+                    <td>false - if the audio title needs to be hidden</td>
+                    <td>optional</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>@Input() displayPlaylist: true;</td>
+                    <td>false - if the playlist needs to be hidden</td>
+                    <td>optional</td>
+                    <td>true</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 id="versioning">Versioning</h2>
+        <p>ngx-audio-player will be maintained under the Semantic Versioning guidelines.
+            Releases will be numbered with the following format:</p>
+        <p><code>&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</code></p>
+        <p>For more information on SemVer, please visit <a href="http://semver.org" target="_blank" title="semver.org">http://semver.org</a>.</p>
+        <h2 id="developer">Developer</h2>
+        <h5 id="vijayendra-mudigal"><a href="mailto:vijayendrap@gmail.com" target="_blank" title="email: Vijayendra Mudigal">Vijayendra
+                Mudigal</a></h5>
+        <ul>
+            <li><a href="http://vijayendra.mudigal.com" target="_blank" title="Vijayendra's Profile">Profile:
+                    http://vijayendra.mudigal.com</a></li>
+            <li><a href="https://github.com/vmudigal" target="_blank" title="Vijayendra's Github Link">GitHub:
+                    https://github.com/vmudigal</a></li>
+            <li><a href="https://www.linkedin.com/in/vijayendra" target="_blank" title="Vijayendra's Linkedin Link">LinkedIn:
+                    https://www.linkedin.com/in/vijayendra</a></li>
+        </ul>
+        <h2 id="license">License</h2>
+        <h5 id="the-mit-license-mit-">The MIT License (MIT)</h5>
+    </article>
 </div>

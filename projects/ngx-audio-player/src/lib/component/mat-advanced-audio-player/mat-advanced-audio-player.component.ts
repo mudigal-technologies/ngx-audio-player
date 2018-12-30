@@ -16,15 +16,14 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
 
     dataSource = new MatTableDataSource<Track>();
 
-    @ViewChild(MatPaginator) paginator: MatPaginator;
+    paginator: MatPaginator;
 
-    @Input() 
-    playlist: Track[];
+    playlistData: Track[];
 
-    @Input() 
+    @Input()
     displayTitle: true;
 
-    @Input() 
+    @Input()
     displayPlaylist: true;
 
     playlistTrack: any;
@@ -33,17 +32,10 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         super();
     }
 
-  ngOnInit() {
-        let index = 1;
-        this.playlist.forEach(data=> {
-            data.index = index++;
-        });
-        this.dataSource = new MatTableDataSource<Track>(this.playlist);
-        
-        this.dataSource.paginator = this.paginator;
-        
+    ngOnInit() {
+        this.setDataSourceAttributes();
         this.bindPlayerEvent();
-        this.playlistService.setPlaylist(this.playlist);
+        this.playlistService.setPlaylist(this.playlistData);
         this.playlistService.getSubjectCurrentTrack().subscribe((playlistTrack) => {
             this.playlistTrack = playlistTrack;
         });
@@ -51,9 +43,23 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         this.playlistService.init();
     }
 
+    @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
+        this.paginator = mp;
+        this.setDataSourceAttributes();
+    }
+
+    setDataSourceAttributes() {
+        let index = 1;
+        this.playlistData.forEach(data => {
+            data.index = index++;
+        });
+        this.dataSource = new MatTableDataSource<Track>(this.playlistData);
+        this.dataSource.paginator = this.paginator;
+    }
+
     nextSong(): void {
         if (((this.playlistService.indexSong + 1) % this.paginator.pageSize) === 0 ||
-        (this.playlistService.indexSong + 1) === this.paginator.length) {
+            (this.playlistService.indexSong + 1) === this.paginator.length) {
             if (this.paginator.hasNextPage()) {
                 this.paginator.nextPage();
             } else if (!this.paginator.hasNextPage()) {
@@ -71,7 +77,7 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         this.duration = 0.01;
         if (!this.checkIfSongHasStartedSinceAtleastTwoSeconds()) {
             if (((this.playlistService.indexSong) % this.paginator.pageSize) === 0 ||
-            (this.playlistService.indexSong) === 0) {
+                (this.playlistService.indexSong) === 0) {
                 if (this.paginator.hasPreviousPage()) {
                     this.paginator.previousPage();
                 } else if (!this.paginator.hasPreviousPage()) {
@@ -100,4 +106,10 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
     checkIfSongHasStartedSinceAtleastTwoSeconds(): boolean {
         return this.player.nativeElement.currentTime > 2;
     };
+
+    @Input()
+    set playlist(playlist: Track[]) {
+        this.playlistData = playlist;
+        this.ngOnInit();
+    }
 }

@@ -60,40 +60,40 @@ export class AppModule { }
 #### Material Style Basic Audio Player   
    
 ##### HTML   
-#
+
 ```html
 <mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [displayTitle]="msbapDisplayTitle"></mat-basic-audio-player>
 ```
    
 ##### TS   
-#
+
 ```ts
 // Material Style Basic Audio Player Title and Audio URL
 msbapTitle = 'Mechanical Sundariye';
 msbapAudioUrl = 'https://funksyou.com/fileDownload/Songs/128/30306.mp3';   
    
 msbapDisplayTitle = false;   
-```
+```   
+
 ##### Properties   
-#
-#
+
 | Name                           | Description                                     | Type      | Default Value |
-|--------------------------------|-------------------------------------------------|-----------|------------|
-| @Input() title: string;        | title to be displayed                           | optional  | none       |
-| @Input() audioUrl: string;     | url of the audio                                | mandatory | none       |
-| @Input() displayTitle = false; | true - if the audio title needs to be displayed | optional  | false      |
+|--------------------------------|-------------------------------------------------|-----------|---------------|
+| @Input() title: string;        | title to be displayed                           | optional  | none          |
+| @Input() audioUrl: string;     | url of the audio                                | mandatory | none          |
+| @Input() displayTitle = false; | true - if the audio title needs to be displayed | optional  | false         |
    
-#
+
 #### Material Style Advanced Audio Player   
    
 ##### HTML   
-#
+
 ```html
 <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [displayPlaylist]="msaapDisplayPlayList"></mat-advanced-audio-player>   
 ```
    
 ##### TS   
-#
+
 ```ts
 import { Track } from 'ngx-audio-player';   
    
@@ -119,16 +119,16 @@ msaapPlaylist: Track[] = [
   },
 ];
 ```   
+
 ##### Properties   
-#
-#
+
 | Name                            | Description                                   | Type      | Default Value |
-|---------------------------------|-----------------------------------------------|-----------|-------------|
-| @Input() playlist: Track[];     | playlist containing array of title and link   | mandatory | None        |
-| @Input() displayTitle: true;    | false - if the audio title needs to be hidden | optional  | true        |
-| @Input() displayPlaylist: true; | false - if the playlist needs to be hidden    | optional  | true        |
+|---------------------------------|-----------------------------------------------|-----------|---------------|
+| @Input() playlist: Track[];     | playlist containing array of title and link   | mandatory | None          |
+| @Input() displayTitle: true;    | false - if the audio title needs to be hidden | optional  | true          |
+| @Input() displayPlaylist: true; | false - if the playlist needs to be hidden    | optional  | true          |
    
-#
+
 ## Versioning
 
 ngx-audio-player will be maintained under the Semantic Versioning guidelines.

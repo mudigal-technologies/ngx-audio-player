@@ -1,0 +1,9 @@
+Github Pages
+
+Build
+ng build --prod --base-href https://vmudigal.github.io/ngx-audio-player/
+
+Publish
+npx ngh --dir=dist/ngx-audio-player-demo/
+
+
