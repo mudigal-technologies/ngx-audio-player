@@ -1,7 +1,10 @@
 <h1 class="mat-h1 header">Getting Started</h1>
 <div class="container">
     <article>
-        <h1 id="angular-audio-player">Angular Audio Player</h1>
+        <h6 class="col-12 py-5">
+            <div class="col-12 col-md-2 col-lg-3"></div>
+            <img class="col-12 col-md-8 col-lg-6" src="assets/images/logos/logo_with_text_dark.png">
+        </h6>
         <p>A library for loading playing audio using HTML 5 audio specifically for Angular 7.</p>
 
         <h2 id="installation">Installation</h2>
@@ -34,8 +37,8 @@
         <pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">mat-basic-audio-player</span> [<span class="hljs-attr">audioUrl</span>]=<span class="hljs-string">"msbapAudioUrl"</span> [<span class="hljs-attr">title</span>]=<span class="hljs-string">"msbapTitle"</span> [<span class="hljs-attr">displayTitle</span>]=<span class="hljs-string">"msbapDisplayTitle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mat-basic-audio-player</span>&gt;</span></code></pre>
         <h5 id="ts">TS</h5>
         <pre><code class="ts"><span class="hljs-comment">// Material Style Basic Audio Player Title and Audio URL</span>
-msbapTitle = <span class="hljs-string">'Mechanical Sundariye'</span>;
-msbapAudioUrl = <span class="hljs-string">'https://funksyou.com/fileDownload/Songs/128/30306.mp3'</span>;   
+msbapTitle = <span class="hljs-string">'Audio Title'</span>;
+msbapAudioUrl = <span class="hljs-string">'Link to audio URL'</span>;   
 
 msbapDisplayTitle = <span class="hljs-literal">false</span>;   </code></pre>
         <h5 id="properties">Properties</h5>
@@ -91,16 +94,16 @@ msaapDisplayPlayList = <span class="hljs-literal">true</span>;
 <span class="hljs-comment">// Material Style Advance Audio Player Playlist</span>
 msaapPlaylist: Track[] = [
     {{'{'}}
-        title: <span class="hljs-string">'Naalo Chilipi Kala'</span>,
-        link: <span class="hljs-string">'http://sensongsmp3.co.in/mp3/2018/Lover%20(2018)/Naalo%20Chilipi%20Kala%20(Theme%20Song)%20-%20SenSongsMp3.Co.mp3'</span>
+        title: <span class="hljs-string">'Audio One Title'</span>,
+        link: <span class="hljs-string">'Link to Audio One URL'</span>
     {{'}'}},
     {{'{'}}
-        title: <span class="hljs-string">'Rakshassi'</span>,
-        link: <span class="hljs-string">'https://funksyou.com/fileDownload/Songs/128/30307.mp3'</span>
+        title: <span class="hljs-string">'Audio Two Title'</span>,
+        link: <span class="hljs-string">'Link to Audio Two URL'</span>
     {{'}'}},
     {{'{'}}
-        title: <span class="hljs-string">'Mechanical Sundariye'</span>,
-        link: <span class="hljs-string">'https://funksyou.com/fileDownload/Songs/128/30306.mp3'</span>
+        title: <span class="hljs-string">'Audio Three Title'</span>,
+        link: <span class="hljs-string">'Link to Audio Three URL'</span>
     {{'}'}},
 ];
         </code></pre>

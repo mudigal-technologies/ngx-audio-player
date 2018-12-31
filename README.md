@@ -1,6 +1,9 @@
+[![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://vmudigal.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player)
+
 # Angular Audio Player
 
-A library for loading playing audio using HTML 5 audio specifically for Angular 7. (https://vmudigal.github.io/ngx-audio-player/)
+A library for loading playing audio using HTML 5 audio specifically for Angular 7.   
+(https://vmudigal.github.io/ngx-audio-player/)
 
 ## Table of contents
 
@@ -13,6 +16,18 @@ A library for loading playing audio using HTML 5 audio specifically for Angular 
 - [License](#license)
 
 ## Demo
+
+### Basic Player 
+
+A simple, clean, responsive player for playing single audio with or without title.
+
+![alt tag](https://github.com/vmudigal/ngx-audio-player/blob/master/docs/images/basic-player.png?raw=true)
+
+### Advanced Player 
+
+A simple, clean, responsive player for playing multiple audios with playlist support.
+
+![alt tag](https://github.com/vmudigal/ngx-audio-player/blob/master/docs/images/advanced-player.png?raw=true)
 
 [Working Demo](https://vmudigal.github.io/ngx-audio-player/)
 
@@ -69,8 +84,8 @@ export class AppModule { }
 
 ```ts
 // Material Style Basic Audio Player Title and Audio URL
-msbapTitle = 'Mechanical Sundariye';
-msbapAudioUrl = 'https://funksyou.com/fileDownload/Songs/128/30306.mp3';   
+msbapTitle = 'Audio Title';
+msbapAudioUrl = 'Link to audio URL';   
    
 msbapDisplayTitle = false;   
 ```   
@@ -106,16 +121,16 @@ msaapDisplayPlayList = true;
 // Material Style Advance Audio Player Playlist
 msaapPlaylist: Track[] = [
   {
-    title: 'Naalo Chilipi Kala',
-    link: 'http://sensongsmp3.co.in/mp3/2018/Lover%20(2018)/Naalo%20Chilipi%20Kala%20(Theme%20Song)%20-%20SenSongsMp3.Co.mp3'
+    title: 'Audio One Title',
+    link: 'Link to Audio One URL'
   },
   {
-    title: 'Rakshassi',
-    link: 'https://funksyou.com/fileDownload/Songs/128/30307.mp3'
+    title: 'Audio Two Title',
+    link: 'Link to Audio Two URL'
   },
   {
-    title: 'Mechanical Sundariye',
-    link: 'https://funksyou.com/fileDownload/Songs/128/30306.mp3'
+    title: 'Audio Three Title',
+    link: 'Link to Audio Three URL'
   },
 ];
 ```   
@@ -148,3 +163,10 @@ For more information on SemVer, please visit http://semver.org.
 ## License
 
 ##### The MIT License (MIT)
+
+#
+# Donate
+
+If you like my work you can buy me a :beer: or :pizza:
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mudigal)

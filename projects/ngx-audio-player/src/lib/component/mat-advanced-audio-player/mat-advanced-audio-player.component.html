@@ -6,15 +6,15 @@
   </button>
   <button mat-button class="p-1" (click)='playBtnHandler();' style="border-left: 2px solid #ccc; border-right: 2px solid #ccc;"
     [disabled]="loaderDisplay">
-    <fa-icon *ngIf="loaderDisplay" title="loading..." class="fa fa-2x" [pulse]="true" [icon]="['fas','spinner']"
+    <fa-icon *ngIf="loaderDisplay" title="loading..." class="fa fa-2x loading-track" [pulse]="true" [icon]="['fas','spinner']"
       aria-hidden="true"></fa-icon>
-    <fa-icon *ngIf="!loaderDisplay && !isPlaying" class="fa fa-2x" style="color:#444" [icon]="['fas','play']"
+    <fa-icon *ngIf="!loaderDisplay && !isPlaying" class="fa fa-2x play-track" style="color:#444" [icon]="['fas','play']"
       aria-hidden="true"></fa-icon>
-    <fa-icon *ngIf="!loaderDisplay && isPlaying" class="fa fa-2x" style="color:#444" [icon]="['fas','pause']"
+    <fa-icon *ngIf="!loaderDisplay && isPlaying" class="fa fa-2x pause-track" style="color:#444" [icon]="['fas','pause']"
       aria-hidden="true"></fa-icon>
   </button>
   <button mat-button class="p-1" style="border-right: 1px solid #ddd;" (click)='nextSong();' [disabled]="loaderDisplay">
-    <fa-icon class="fa fa-lg" [icon]="['fas','step-forward']" aria-hidden="true"></fa-icon>
+    <fa-icon class="fa fa-lg next-track" [icon]="['fas','step-forward']" aria-hidden="true"></fa-icon>
   </button>
 
   <div class="col">

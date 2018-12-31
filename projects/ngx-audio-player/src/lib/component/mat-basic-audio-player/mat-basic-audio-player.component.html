@@ -1,10 +1,10 @@
 <mat-card class="d-flex ngx-basic-audio-player">
     <audio [src]="audioUrl" #audioPlayer></audio>
     <button mat-button (click)='playBtnHandler();' class="p-1 ngx-basic-audio-player-button-handler" [disabled]="loaderDisplay">
-        <fa-icon *ngIf="loaderDisplay" title="loading..." class="fa fa-lg" [pulse]="true" [icon]="['fas','spinner']"
+        <fa-icon *ngIf="loaderDisplay" title="loading..." class="fa fa-lg loading-track" [pulse]="true" [icon]="['fas','spinner']"
             aria-hidden="true"></fa-icon>
-        <fa-icon *ngIf="!loaderDisplay && !isPlaying" class="fa fa-lg" [icon]="['fas','play']" aria-hidden="true"></fa-icon>
-        <fa-icon *ngIf="!loaderDisplay && isPlaying" class="fa fa-lg" [icon]="['fas','pause']" aria-hidden="true"></fa-icon>
+        <fa-icon *ngIf="!loaderDisplay && !isPlaying" class="fa fa-lg play-track" [icon]="['fas','play']" aria-hidden="true"></fa-icon>
+        <fa-icon *ngIf="!loaderDisplay && isPlaying" class="fa fa-lg pause-track" [icon]="['fas','pause']" aria-hidden="true"></fa-icon>
     </button>
     <div class="flex-fill p-1 ngx-basic-audio-player-slider">
         <mat-slider style="width: 100%" min="0" max="{{duration}}" value="{{currentTime}}" (change)="currTimePosChanged($event)"></mat-slider>

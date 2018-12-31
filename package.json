@@ -1,6 +1,6 @@
 {
   "name": "ngx-audio-player-demo",
-  "version": "7.0.4",
+  "version": "7.0.10",
   "repository": {
     "type": "git",
     "url": "https://github.com/vmudigal/ngx-audio-player.git"
@@ -28,8 +28,12 @@
     "start": "ng serve",
     "lch-build": "ng build",
     "prod-build": "ng build --prod",
-    "build:lib": "ng build ngx-audio-player",
-    "test": "ng test",
+    "build-lib": "ng build ngx-audio-player",
+    "publish-lib": "npm publish dist/ngx-audio-player",
+    "build-demo": "ng build --prod --base-href https://vmudigal.github.io/ngx-audio-player/",
+    "publish-demo": "npx ngh --dir=dist/ngx-audio-player-demo/",
+    "test": "ng test --code-coverage --reporters=teamcity,coverage-istanbul",
+    "test-lib": "ng test ngx-audio-player --code-coverage --reporters=teamcity,coverage-istanbul",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -77,6 +81,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "karma-teamcity-reporter": "^1.1.0",
     "ng-packagr": "^4.2.0",
     "protractor": "~5.4.2",
     "ts-node": "~7.0.0",

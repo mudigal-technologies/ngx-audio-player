@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [MatBasicAudioPlayerComponent, SecondsToMinutesPipe, MatAdvancedAudioPlayerComponent],
-  imports: [CommonModule, MatButtonModule, MatCardModule, MatTableModule, MatIconModule, MatFormFieldModule, 
+  imports: [CommonModule, MatButtonModule, MatCardModule, MatTableModule, MatFormFieldModule, 
     MatSliderModule, MatExpansionModule, MatPaginatorModule, FormsModule, FontAwesomeModule],
   exports: [MatBasicAudioPlayerComponent, MatAdvancedAudioPlayerComponent],
   providers: [AudioPlayerService]

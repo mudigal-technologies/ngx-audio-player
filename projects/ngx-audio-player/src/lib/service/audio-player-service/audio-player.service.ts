@@ -52,7 +52,7 @@ export class AudioPlayerService {
     let current = this.playlist[this.indexSong];
     let previous = ((this.indexSong - 1) >= 0) ? this.playlist[this.indexSong - 1] : this.playlist[this.playlist.length - 1];
     let next = ((this.indexSong + 1) >= this.playlist.length) ? this.playlist[0] : this.playlist[this.indexSong + 1];
-
+  
     this.currentTrack.next([
       previous,
       current,

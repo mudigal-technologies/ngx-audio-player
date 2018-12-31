@@ -50,11 +50,13 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
 
     setDataSourceAttributes() {
         let index = 1;
-        this.playlistData.forEach(data => {
-            data.index = index++;
-        });
-        this.dataSource = new MatTableDataSource<Track>(this.playlistData);
-        this.dataSource.paginator = this.paginator;
+        if (this.playlistData) {
+            this.playlistData.forEach(data => {
+                data.index = index++;
+            });
+            this.dataSource = new MatTableDataSource<Track>(this.playlistData);
+            this.dataSource.paginator = this.paginator;
+        }
     }
 
     nextSong(): void {

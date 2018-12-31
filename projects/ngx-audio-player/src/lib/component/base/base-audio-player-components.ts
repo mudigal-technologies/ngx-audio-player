@@ -23,7 +23,6 @@ export class BaseAudioPlayerFunctions {
         this.player.nativeElement.addEventListener('pause', () => {
             this.isPlaying = false;
         });
-        
         this.player.nativeElement.addEventListener('timeupdate', () => {
             this.currentTime = Math.floor(this.player.nativeElement.currentTime);
         });

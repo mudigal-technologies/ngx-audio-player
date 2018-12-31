@@ -1,10 +1,8 @@
 <div class="header mat-toolbar mat-primary">
   <div class="d-flex justify-contents-center" style="text-align: center;">
     <div class="flex-fill">
-      <h1 class="mat-h1" style="font-size: 56px; font-weight: 300;line-height: 56px;margin: 15px 5px;">
-        Angular Audio Player
-      </h1>
-      <h2 style="font-size: 18px;font-weight: 400;line-height: 28px;margin: 15px 0 25px;">A simple, clean, <a id="matLink"
+      <img class="col-12 col-md-8 col-lg-6" src="assets/images/logos/logo_with_text_light.png">
+      <h2 style="font-size: 18px;font-weight: 400;line-height: 28px;margin: 15px 0 25px;">A simple, clean, responsive, <a id="matLink"
           href="https://material.angular.io">angular material</a> design inspired basic and advanced audio players for
         Angular 7</h2>
       <a style="color: #666;text-decoration: none;" class="docs-button mat-raised-button" mat-raised-button=""
@@ -25,11 +23,11 @@
           <mat-card-title>Material Style Basic Audio Player</mat-card-title>
           <mat-card-subtitle>Material Style Basic Audio Player</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-content class="row justify-contents-around">
+        <mat-card-content class="row justify-contents-around mat-basic-player">
           <div class="col py-3 pl-5">
             <h6>Controls</h6>
             <div class="d-flex flex-row px-3">
-              displayTitle: <mat-checkbox class="px-3" [checked]="msbapDisplayTitle" (change)="changeMsbapDisplayTitle($event)">{{msbapDisplayTitle}}</mat-checkbox>
+              displayTitle: <mat-checkbox class="px-3 mat-basic-player-display-title" [checked]="msbapDisplayTitle" (change)="changeMsbapDisplayTitle($event)">{{msbapDisplayTitle}}</mat-checkbox>
             </div>
           </div>
           <div class="col">
@@ -52,10 +50,10 @@
           <div class="col py-3 pl-5">
             <h6>Controls</h6>
             <div class="d-flex flex-row px-3">
-              displayTitle: <mat-checkbox class="px-3" [checked]="msaapDisplayTitle" (change)="changeMsaapDisplayTitle($event)">{{msaapDisplayTitle}}</mat-checkbox>
+              displayTitle: <mat-checkbox class="px-3 mat-advanced-player-display-title" [checked]="msaapDisplayTitle" (change)="changeMsaapDisplayTitle($event)">{{msaapDisplayTitle}}</mat-checkbox>
             </div>
             <div class="d-flex flex-row px-3">
-              displayPlayList: <mat-checkbox class="px-3" [checked]="msaapDisplayPlayList" (change)="changeMsaapDisplayPlayList($event)">{{msaapDisplayPlayList}}</mat-checkbox>
+              displayPlayList: <mat-checkbox class="px-3 mat-advanced-player-display-playlist" [checked]="msaapDisplayPlayList" (change)="changeMsaapDisplayPlayList($event)">{{msaapDisplayPlayList}}</mat-checkbox>
             </div>
           </div>
           <div class="col">
