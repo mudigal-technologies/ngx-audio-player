@@ -104,7 +104,7 @@ msbapDisplayTitle = false;
 ##### HTML   
 
 ```html
-<mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [displayPlaylist]="msaapDisplayPlayList"></mat-advanced-audio-player>   
+<mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="msaapPageSizeOptions" [expanded]="true"></mat-advanced-audio-player>   
 ```
    
 ##### TS   
@@ -117,6 +117,7 @@ import { Track } from 'ngx-audio-player';
 
 msaapDisplayTitle = true;
 msaapDisplayPlayList = true;
+msaapPageSizeOptions = [2,4,6];
    
 // Material Style Advance Audio Player Playlist
 msaapPlaylist: Track[] = [
@@ -137,11 +138,13 @@ msaapPlaylist: Track[] = [
 
 ##### Properties   
 
-| Name                            | Description                                   | Type      | Default Value |
-|---------------------------------|-----------------------------------------------|-----------|---------------|
-| @Input() playlist: Track[];     | playlist containing array of title and link   | mandatory | None          |
-| @Input() displayTitle: true;    | false - if the audio title needs to be hidden | optional  | true          |
-| @Input() displayPlaylist: true; | false - if the playlist needs to be hidden    | optional  | true          |
+| Name                                       | Description                                      | Type      | Default Value |
+|--------------------------------------------|--------------------------------------------------|-----------|---------------|
+| @Input() playlist: Track[];                | playlist containing array of title and link      | mandatory | None          |
+| @Input() displayTitle: true;               | false - if the audio title needs to be hidden    | optional  | true          |
+| @Input() displayPlaylist: true;            | false - if the playlist needs to be hidden       | optional  | true          |
+| @Input() pageSizeOptions = [10, 20, 30];   | number of items to be displayed in the playlist  | optional  | [10,20,30]    |
+| @Input() expanded = true;                  | false - if the playlist needs to be minimized    | optional  | true          |
    
 
 ## Versioning

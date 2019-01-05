@@ -1,4 +1,4 @@
-<mat-card class="row d-flex justify-content-center ngx-advanced-audio-player" style="margin: 0px;">
+<mat-card class="d-flex justify-content-center ngx-advanced-audio-player" style="margin: 0px;">
   <audio [src]="playlistTrack[1].link" #audioPlayer></audio>
   
   <button mat-button class="p-1" style="border-left: 1px solid #ddd;" (click)='previousSong();' [disabled]="loaderDisplay">
@@ -47,7 +47,7 @@
 </mat-card>
 
 <mat-accordion *ngIf="displayPlaylist">
-  <mat-expansion-panel>
+  <mat-expansion-panel [expanded]="expanded">
     <mat-expansion-panel-header>
       Play List
     </mat-expansion-panel-header>
@@ -68,6 +68,6 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr class="mat-select-content" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <mat-paginator [pageSizeOptions]="[2, 5, 10]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
   </mat-expansion-panel>
 </mat-accordion>

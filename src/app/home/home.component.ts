@@ -36,6 +36,7 @@ export class HomeComponent {
 
   msaapDisplayTitle = true;
   msaapDisplayPlayList = true;
+  pageSizeOptions = [2,4,6]
 
   constructor() { }
 

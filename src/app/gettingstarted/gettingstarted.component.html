@@ -80,7 +80,7 @@ msbapDisplayTitle = <span class="hljs-literal">false</span>;   </code></pre>
         </table>
         <h4 id="material-style-advanced-audio-player">Material Style Advanced Audio Player</h4>
         <h5 id="html">HTML</h5>
-        <pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">mat-advanced-audio-player</span> [<span class="hljs-attr">playlist</span>]=<span class="hljs-string">"msaapPlaylist"</span> [<span class="hljs-attr">displayTitle</span>]=<span class="hljs-string">"msaapDisplayTitle"</span> [<span class="hljs-attr">displayPlaylist</span>]=<span class="hljs-string">"msaapDisplayPlayList"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mat-advanced-audio-player</span>&gt;</span>   </code></pre>
+        <pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">mat-advanced-audio-player</span> [<span class="hljs-attr">playlist</span>]=<span class="hljs-string">"msaapPlaylist"</span> [<span class="hljs-attr">displayTitle</span>]=<span class="hljs-string">"msaapDisplayTitle"</span> [<span class="hljs-attr">displayPlaylist</span>]=<span class="hljs-string">"msaapDisplayPlayList"</span> [<span class="hljs-attr">pageSizeOptions</span>]=<span class="hljs-string">"msaapPageSizeOptions"</span> [<span class="hljs-attr">expanded</span>]=<span class="hljs-string">"true"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mat-advanced-audio-player</span>&gt;</span>   </code></pre>
         <h5 id="ts">TS</h5>
         <pre><code class="ts"><span class="hljs-keyword">
 import</span> {{'{'}} Track {{'}'}} <span class="hljs-keyword">from</span> <span class="hljs-string">'ngx-audio-player'</span>;   
@@ -90,6 +90,7 @@ import</span> {{'{'}} Track {{'}'}} <span class="hljs-keyword">from</span> <span
 
 msaapDisplayTitle = <span class="hljs-literal">true</span>;
 msaapDisplayPlayList = <span class="hljs-literal">true</span>;
+msaapPageSizeOptions = <span class="hljs-literal">[2,4,6]</span>;
 
 <span class="hljs-comment">// Material Style Advance Audio Player Playlist</span>
 msaapPlaylist: Track[] = [
@@ -133,6 +134,18 @@ msaapPlaylist: Track[] = [
                 <tr>
                     <td>@Input() displayPlaylist: true;</td>
                     <td>false - if the playlist needs to be hidden</td>
+                    <td>optional</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>@Input() pageSizeOptions = [10, 20, 30]; </td>
+                    <td>number of items to be displayed in the playlist</td>
+                    <td>optional</td>
+                    <td>[10,20,30]</td>
+                </tr>
+                <tr>
+                    <td>@Input() expanded = true;</td>
+                    <td>false - if the playlist needs to be minimized</td>
                     <td>optional</td>
                     <td>true</td>
                 </tr>

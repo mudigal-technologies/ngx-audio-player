@@ -21,10 +21,16 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
     playlistData: Track[];
 
     @Input()
-    displayTitle: true;
+    displayTitle = true;
 
     @Input()
-    displayPlaylist: true;
+    displayPlaylist = true;
+
+    @Input()
+    pageSizeOptions = [10, 20, 30];
+
+    @Input()
+    expanded = true;
 
     playlistTrack: any;
 
@@ -35,6 +41,11 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
     ngOnInit() {
         this.setDataSourceAttributes();
         this.bindPlayerEvent();
+        this.player.nativeElement.addEventListener('ended', () => {
+            if (this.checkIfSongHasStartedSinceAtleastTwoSeconds()) {
+                this.nextSong();
+            }
+        });
         this.playlistService.setPlaylist(this.playlistData);
         this.playlistService.getSubjectCurrentTrack().subscribe((playlistTrack) => {
             this.playlistTrack = playlistTrack;
