@@ -13,6 +13,7 @@ export class HomeComponent {
   msbapAudioUrl = 'https://www.dropbox.com/s/q1qaf8vn2dv48nw/Punjab.mp3?dl=1';
 
   msbapDisplayTitle = false;
+  msbapDisplayVolumeControls = true;
 
   // Material Style Advance Audio Player Playlist
   msaapPlaylist: Track[] = [
@@ -26,7 +27,7 @@ export class HomeComponent {
     },
     {
       title: 'Naalo Chilipi Kala',
-      link: 'http://sensongsmp3.co.in/mp3/2018/Lover%20(2018)/Naalo%20Chilipi%20Kala%20(Theme%20Song)%20-%20SenSongsMp3.Co.mp3'
+      link: 'http://mp3sensongs.com/mp32/mp3/2018/Lover%20(2018)/Naalo%20Chilipi%20Kala%20(Theme%20Song)%20-%20SenSongsMp3.Co.mp3'
     },
     {
       title: 'Punjab',
@@ -38,10 +39,16 @@ export class HomeComponent {
   msaapDisplayPlayList = true;
   pageSizeOptions = [2,4,6]
 
+  msaapDisplayVolumeControls = true;
+
   constructor() { }
 
   changeMsbapDisplayTitle(event) {
     this.msbapDisplayTitle = event.checked;
+  }
+
+  changeMsbapDisplayVolumeControls(event) {
+    this.msbapDisplayVolumeControls = event.checked;
   }
 
   changeMsaapDisplayTitle(event) {
@@ -50,6 +57,10 @@ export class HomeComponent {
 
   changeMsaapDisplayPlayList(event) {
     this.msaapDisplayPlayList = event.checked;
+  }
+
+  changeMsaapDisplayVolumeControls(event) {
+    this.msaapDisplayVolumeControls = event.checked;
   }
 
 }

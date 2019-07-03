@@ -7,12 +7,13 @@ import { SecondsToMinutesPipe } from '../../pipe/seconds-to-minutes';
 import { Component, Type } from '@angular/core';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { By } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('MatBasicAudioPlayerComponent', () => {
 
   function createComponent<T>(componentType: Type<T>, extraDeclarations: Type<any>[] = []) {
     TestBed.configureTestingModule({
-      imports: [FontAwesomeModule, MatSliderModule, MatCardModule, NgxAudioPlayerModule],
+      imports: [BrowserAnimationsModule, FontAwesomeModule, MatSliderModule, MatCardModule, NgxAudioPlayerModule],
       declarations: [componentType,  ...extraDeclarations],
     }).compileComponents();
 

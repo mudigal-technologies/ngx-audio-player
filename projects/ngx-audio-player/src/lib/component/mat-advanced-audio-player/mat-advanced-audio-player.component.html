@@ -1,30 +1,32 @@
 <mat-card class="d-flex justify-content-center ngx-advanced-audio-player" style="margin: 0px;">
   <audio [src]="playlistTrack[1].link" #audioPlayer></audio>
-  
-  <button mat-button class="p-1" style="border-left: 1px solid #ddd;" (click)='previousSong();' [disabled]="loaderDisplay">
-    <fa-icon class="fa fa-lg" [icon]="['fas','step-backward']" aria-hidden="true"></fa-icon>
-  </button>
-  <button mat-button class="p-1" (click)='playBtnHandler();' style="border-left: 2px solid #ccc; border-right: 2px solid #ccc;"
-    [disabled]="loaderDisplay">
-    <fa-icon *ngIf="loaderDisplay" title="loading..." class="fa fa-2x loading-track" [pulse]="true" [icon]="['fas','spinner']"
-      aria-hidden="true"></fa-icon>
-    <fa-icon *ngIf="!loaderDisplay && !isPlaying" class="fa fa-2x play-track" style="color:#444" [icon]="['fas','play']"
-      aria-hidden="true"></fa-icon>
-    <fa-icon *ngIf="!loaderDisplay && isPlaying" class="fa fa-2x pause-track" style="color:#444" [icon]="['fas','pause']"
-      aria-hidden="true"></fa-icon>
-  </button>
-  <button mat-button class="p-1" style="border-right: 1px solid #ddd;" (click)='nextSong();' [disabled]="loaderDisplay">
-    <fa-icon class="fa fa-lg next-track" [icon]="['fas','step-forward']" aria-hidden="true"></fa-icon>
-  </button>
+
+    <button mat-button class="p-1" style="border-left: 1px solid #ddd;" (click)='previousSong();'
+      [disabled]="loaderDisplay">
+      <fa-icon class="fa fa-lg" [icon]="['fas','step-backward']" aria-hidden="true"></fa-icon>
+    </button>
+    <button mat-button class="p-1" (click)='playBtnHandler();'
+      style="border-left: 2px solid #ccc; border-right: 2px solid #ccc;" [disabled]="loaderDisplay">
+      <fa-icon *ngIf="loaderDisplay" title="loading..." class="fa fa-2x loading-track" [pulse]="true"
+        [icon]="['fas','spinner']" aria-hidden="true"></fa-icon>
+      <fa-icon *ngIf="!loaderDisplay && !isPlaying" class="fa fa-2x play-track" style="color:#444" [icon]="['fas','play']"
+        aria-hidden="true"></fa-icon>
+      <fa-icon *ngIf="!loaderDisplay && isPlaying" class="fa fa-2x pause-track" style="color:#444"
+        [icon]="['fas','pause']" aria-hidden="true"></fa-icon>
+    </button>
+    <button mat-button class="p-1" style="border-right: 1px solid #ddd;" (click)='nextSong();' [disabled]="loaderDisplay">
+      <fa-icon class="fa fa-lg next-track" [icon]="['fas','step-forward']" aria-hidden="true"></fa-icon>
+    </button>
 
   <div class="col">
-    <div class="d-flex flex-fill">
-      <div class="py-3 px-1" style="font-size: 12px">
+    <div class="d-flex flex-fill justify-content-center">
+      <div class="d-none d-sm-block py-3 px-1" style="font-size: 12px">
         <span *ngIf="duration !== 0.01">
           {{currentTime | secondsToMinutes}}
         </span>
       </div>
-      <mat-slider class="flex-fill p-1" style="width: 100%" min="0" max="{{duration}}" value="{{currentTime}}" (change)="currTimePosChanged($event)"></mat-slider>
+      <mat-slider class="d-none d-sm-block flex-fill p-1" style="width: 100%" min="0" max="{{duration}}" value="{{currentTime}}"
+        (change)="currTimePosChanged($event)"></mat-slider>
 
       <div class="py-3 px-1" style="font-size: 12px; text-align: right">
         <span *ngIf="duration !== 0.01">
@@ -33,7 +35,11 @@
       </div>
     </div>
   </div>
-
+  <button *ngIf="displayVolumeControls" mat-button class="p-1" (click)='toggleVolume();' style="border-left: 1px solid #ddd;">
+    <fa-icon *ngIf="volume === 0" class="fa fa-lg volume-mute" [icon]="['fas','volume-mute']" aria-hidden="true">
+    </fa-icon>
+    <fa-icon *ngIf="volume > 0" class="fa fa-lg volume-up" [icon]="['fas','volume-up']" aria-hidden="true"></fa-icon>
+  </button>
 </mat-card>
 
 <mat-card *ngIf="displayTitle" style="border: 1px solid #ddd; box-shadow: none;">

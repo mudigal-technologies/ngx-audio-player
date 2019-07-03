@@ -31,10 +31,14 @@
               displayTitle: <mat-checkbox class="px-3 mat-basic-player-display-title" [checked]="msbapDisplayTitle"
                 (change)="changeMsbapDisplayTitle($event)">{{msbapDisplayTitle}}</mat-checkbox>
             </div>
+            <div class="d-flex flex-row px-3">
+              displayVolumeControls: <mat-checkbox class="px-3 mat-basic-player-display-title" [checked]="msbapDisplayVolumeControls"
+                (change)="changeMsbapDisplayVolumeControls($event)">{{msbapDisplayVolumeControls}}</mat-checkbox>
+            </div>
           </div>
           <div class="col">
             <mat-basic-audio-player class="col-12 col-md-6" [audioUrl]="msbapAudioUrl" [title]="msbapTitle"
-              [displayTitle]="msbapDisplayTitle"></mat-basic-audio-player>
+              [displayTitle]="msbapDisplayTitle" [displayVolumeControls]="msbapDisplayVolumeControls"></mat-basic-audio-player>
           </div>
         </mat-card-content>
         <div>
@@ -58,10 +62,14 @@
               displayPlayList: <mat-checkbox class="px-3 mat-advanced-player-display-playlist" [checked]="msaapDisplayPlayList"
                 (change)="changeMsaapDisplayPlayList($event)">{{msaapDisplayPlayList}}</mat-checkbox>
             </div>
+            <div class="d-flex flex-row px-3">
+              displayVolumeControls: <mat-checkbox class="px-3 mat-basic-player-display-title" [checked]="msaapDisplayVolumeControls"
+                (change)="changeMsaapDisplayVolumeControls($event)">{{msaapDisplayVolumeControls}}</mat-checkbox>
+            </div>
           </div>
           <div class="col">
             <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [displayPlaylist]="msaapDisplayPlayList"
-              [pageSizeOptions]="pageSizeOptions" [expanded]="true"></mat-advanced-audio-player>
+              [pageSizeOptions]="pageSizeOptions" [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true"></mat-advanced-audio-player>
           </div>
         </mat-card-content>
       </mat-card>

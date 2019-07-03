@@ -9,6 +9,7 @@ export class BaseAudioPlayerFunctions {
     loaderDisplay: boolean = false;
     isPlaying: boolean = false;
     currentTime: number = 0;
+    volume: number = 0.1;
     duration: number = 0.01;
     
     currTimePosChanged(event) {
@@ -25,6 +26,9 @@ export class BaseAudioPlayerFunctions {
         });
         this.player.nativeElement.addEventListener('timeupdate', () => {
             this.currentTime = Math.floor(this.player.nativeElement.currentTime);
+        });
+        this.player.nativeElement.addEventListener('volume', () => {
+            this.volume = Math.floor(this.player.nativeElement.volume);
         });
         this.player.nativeElement.addEventListener('loadstart', () => {
             this.loaderDisplay = true;
@@ -52,5 +56,18 @@ export class BaseAudioPlayerFunctions {
             this.player.nativeElement.play();
         }, 0);
     };
+
+    toggleVolume() {
+        if (this.volume === 0) {
+            this.setVolume(1.0);
+        } else {
+            this.setVolume(0);
+        }
+    }
+
+    private setVolume(vol) {
+        this.volume = vol;
+        this.player.nativeElement.volume = this.volume;
+    }
 
 }

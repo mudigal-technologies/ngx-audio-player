@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { BaseAudioPlayerFunctions } from '../base/base-audio-player-components';
+import { MatMenuTrigger, MatMenu, MenuPositionX } from '@angular/material';
 
 @Component({
     selector: 'mat-basic-audio-player',
@@ -10,13 +11,16 @@ export class MatBasicAudioPlayerComponent extends BaseAudioPlayerFunctions imple
 
     @Input()
     title: string;
-    
+
     @Input()
     audioUrl: string;
 
     @Input()
     displayTitle = false;
 
+    @Input()
+    displayVolumeControls = true;
+    
     constructor() {
         super();
     }

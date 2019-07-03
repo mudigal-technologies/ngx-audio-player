@@ -1,13 +1,17 @@
 <mat-card class="d-flex ngx-basic-audio-player">
     <audio [src]="audioUrl" #audioPlayer></audio>
-    <button mat-button (click)='playBtnHandler();' class="ngx-basic-audio-player-button-handler" style="font-size: 14px!important;" [disabled]="loaderDisplay">
-        <fa-icon *ngIf="loaderDisplay" title="loading..." class="fa fa-lg loading-track" [pulse]="true" [icon]="['fas','spinner']"
+    <button mat-button (click)='playBtnHandler();' class="ngx-basic-audio-player-button-handler"
+        style="font-size: 14px!important;" [disabled]="loaderDisplay">
+        <fa-icon *ngIf="loaderDisplay" title="loading..." class="fa fa-lg loading-track" [pulse]="true"
+            [icon]="['fas','spinner']" aria-hidden="true"></fa-icon>
+        <fa-icon *ngIf="!loaderDisplay && !isPlaying" class="fa fa-lg play-track" [icon]="['fas','play']"
             aria-hidden="true"></fa-icon>
-        <fa-icon *ngIf="!loaderDisplay && !isPlaying" class="fa fa-lg play-track" [icon]="['fas','play']" aria-hidden="true"></fa-icon>
-        <fa-icon *ngIf="!loaderDisplay && isPlaying" class="fa fa-lg pause-track" [icon]="['fas','pause']" aria-hidden="true"></fa-icon>
+        <fa-icon *ngIf="!loaderDisplay && isPlaying" class="fa fa-lg pause-track" [icon]="['fas','pause']"
+            aria-hidden="true"></fa-icon>
     </button>
     <div class="flex-fill pl-1 ngx-basic-audio-player-slider">
-        <mat-slider style="width: 100%" min="0" max="{{duration}}" value="{{currentTime}}" (change)="currTimePosChanged($event)"></mat-slider>
+        <mat-slider style="width: 100%" min="0" max="{{duration}}" value="{{currentTime}}"
+            (change)="currTimePosChanged($event)"></mat-slider>
     </div>
     <div class="d-flex ngx-basic-audio-player-duration">
         <span *ngIf="duration !== 0.01" class="pl-2 pr-3 my-auto" style="font-size: 14px!important;">
@@ -15,7 +19,15 @@
             secondsToMinutes }}
         </span>
     </div>
+    <button *ngIf="displayVolumeControls" mat-button (click)='toggleVolume();'
+        style="padding: 0px!important; min-width:48px!important;">
+        <fa-icon *ngIf="volume === 0" class="fa fa-lg volume-mute" [icon]="['fas','volume-mute']" aria-hidden="true">
+        </fa-icon>
+        <fa-icon *ngIf="volume > 0" class="fa fa-lg volume-up" [icon]="['fas','volume-up']" aria-hidden="true">
+        </fa-icon>
+    </button>
 </mat-card>
+
 <mat-card *ngIf="displayTitle && title !== ''" style="border-top: 1px solid #ddd;">
     <div style="text-align: center;">
         <div style="padding:1px 3px;">

@@ -32,6 +32,9 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
     @Input()
     expanded = true;
 
+    @Input()
+    displayVolumeControls = true;
+
     playlistTrack: any;
 
     constructor(private playlistService: AudioPlayerService) {

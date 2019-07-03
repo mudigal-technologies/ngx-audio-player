@@ -1,6 +1,6 @@
 @import 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap-grid.min.css';
 
-mat-card, mat-slider  {
+mat-card, mat-slider {
     padding: 0!important;
 }
 
@@ -9,5 +9,5 @@ button:hover, button:focus {
 }
 
 .ngx-basic-audio-player {
-    min-width: 275px;
+    min-width: 300px;
 }
