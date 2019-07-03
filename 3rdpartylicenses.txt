@@ -485,6 +485,8 @@ MIT
 @fortawesome/angular-fontawesome
 MIT
 
+@angular/material/button
+
 @angular/material/table
 
 @angular/material/expansion
@@ -494,8 +496,6 @@ MIT
 @angular/material/form-field
 
 @angular/material/select
-
-@angular/material/button
 
 @angular/material/paginator
 
