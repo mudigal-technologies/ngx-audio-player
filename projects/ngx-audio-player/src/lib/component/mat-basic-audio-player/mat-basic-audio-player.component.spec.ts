@@ -28,7 +28,7 @@ describe('MatBasicAudioPlayerComponent', () => {
     beforeEach(async(() => {
       TestBed.configureTestingModule({
         declarations: [MatBasicAudioPlayerComponent, SecondsToMinutesPipe],
-        imports: [FontAwesomeModule, MatSliderModule, MatCardModule]
+        imports: [BrowserAnimationsModule, FontAwesomeModule, MatSliderModule, MatCardModule]
       })
         .compileComponents();
     }));
@@ -83,8 +83,10 @@ describe('MatBasicAudioPlayerComponent', () => {
 
   /** Test Basic Player */
   @Component({
-    template: `<mat-basic-audio-player style="border: 4px solid grey;" [audioUrl]="'https://www.dropbox.com/s/2t968nilfzbxflv/Mechanical%20Sundariye.mp3?dl=1'" [title]="'Mechanical Sundariye'"></mat-basic-audio-player>`
+    template: `<mat-basic-audio-player class="col-12 col-md-6" [audioUrl]="'https://www.dropbox.com/s/2t968nilfzbxflv/Mechanical%20Sundariye.mp3?dl=1'" [title]="'Mechanical Sundariye'"
+    [displayTitle]="" [displayVolumeControls]="true"></mat-basic-audio-player>`
   })
+  
   class NgxBasicAudioPlayerApp {}
 
 });

@@ -11,7 +11,7 @@ import { ElementRef, Injectable, Component, Type } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { Track } from '../../model/track.model';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @Injectable()
 export class MockElementRef {
@@ -26,7 +26,7 @@ export class MockService extends AudioPlayerService{
 describe('MatAdvancedAudioPlayerComponent', () => {
   function createComponent<T>(componentType: Type<T>, extraDeclarations: Type<any>[] = []) {
     TestBed.configureTestingModule({
-      imports: [BrowserAnimationsModule, FontAwesomeModule, MatSliderModule, MatCardModule, 
+      imports: [NoopAnimationsModule, FontAwesomeModule, MatSliderModule, MatCardModule, 
         MatFormFieldModule, MatExpansionModule, MatPaginatorModule, MatTableModule, FormsModule, NgxAudioPlayerModule],
       declarations: [componentType, ...extraDeclarations],
       providers: [{provide: ElementRef, useClass: MockElementRef}, {provide: AudioPlayerService, useClass: MockService}]
@@ -42,7 +42,7 @@ describe('MatAdvancedAudioPlayerComponent', () => {
     beforeEach((() => {
       TestBed.configureTestingModule({
         declarations: [MatAdvancedAudioPlayerComponent, SecondsToMinutesPipe],
-        imports: [FontAwesomeModule, MatSliderModule, MatCardModule, MatFormFieldModule, MatExpansionModule, MatPaginatorModule, MatTableModule, FormsModule],
+        imports: [NoopAnimationsModule, FontAwesomeModule, MatSliderModule, MatCardModule, MatFormFieldModule, MatExpansionModule, MatPaginatorModule, MatTableModule, FormsModule],
         providers: [{provide: ElementRef, useClass: MockElementRef}, {provide: AudioPlayerService, useClass: MockService}]
       })
         .compileComponents();
@@ -110,7 +110,8 @@ describe('MatAdvancedAudioPlayerComponent', () => {
 
   /** Test Advanced Player */
   @Component({
-    template: `<mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [displayPlaylist]="msaapDisplayPlayList"></mat-advanced-audio-player>`
+    template: `<mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [displayPlaylist]="msaapDisplayPlayList" 
+        [pageSizeOptions]="pageSizeOptions" [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true"></mat-advanced-audio-player>`
   })
   class NgxAdvancedAudioPlayerApp {
     // Material Style Advance Audio Player Playlist
@@ -118,6 +119,7 @@ describe('MatAdvancedAudioPlayerComponent', () => {
 
     msaapDisplayTitle = true;
     msaapDisplayPlayList = true;
+    msaapDisplayVolumeControls = true;
   }
 
 });
