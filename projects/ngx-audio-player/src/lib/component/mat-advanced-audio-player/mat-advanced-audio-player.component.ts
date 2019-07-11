@@ -57,7 +57,7 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         this.playlistService.init();
     }
 
-    @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
+    @ViewChild(MatPaginator, {static: false}) set matPaginator(mp: MatPaginator) {
         this.paginator = mp;
         this.setDataSourceAttributes();
     }
