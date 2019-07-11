@@ -3,7 +3,7 @@ import { MatSlider } from "@angular/material";
 
 export class BaseAudioPlayerFunctions {
 
-    @ViewChild('audioPlayer') player: ElementRef;
+    @ViewChild('audioPlayer', {static: true}) player: ElementRef;
     timeLineDuration: MatSlider;
 
     loaderDisplay: boolean = false;

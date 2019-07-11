@@ -6,14 +6,13 @@ import { MatCardModule, MatSliderModule } from '@angular/material';
 import { SecondsToMinutesPipe } from '../../pipe/seconds-to-minutes';
 import { Component, Type } from '@angular/core';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
-import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { By, element } from 'protractor';
 
 describe('MatBasicAudioPlayerComponent', () => {
 
   function createComponent<T>(componentType: Type<T>, extraDeclarations: Type<any>[] = []) {
     TestBed.configureTestingModule({
-      imports: [BrowserAnimationsModule, FontAwesomeModule, MatSliderModule, MatCardModule, NgxAudioPlayerModule],
+      imports: [FontAwesomeModule, MatSliderModule, MatCardModule, NgxAudioPlayerModule],
       declarations: [componentType,  ...extraDeclarations],
     }).compileComponents();
 
@@ -28,7 +27,7 @@ describe('MatBasicAudioPlayerComponent', () => {
     beforeEach(async(() => {
       TestBed.configureTestingModule({
         declarations: [MatBasicAudioPlayerComponent, SecondsToMinutesPipe],
-        imports: [BrowserAnimationsModule, FontAwesomeModule, MatSliderModule, MatCardModule]
+        imports: [FontAwesomeModule, MatSliderModule, MatCardModule]
       })
         .compileComponents();
     }));
@@ -50,9 +49,8 @@ describe('MatBasicAudioPlayerComponent', () => {
     it('should have play button', () => {
       component.audioUrl = "https://www.dropbox.com/s/2t968nilfzbxflv/Mechanical%20Sundariye.mp3?dl=1";
       fixture.detectChanges();
-      const playButton = fixture.debugElement.query(By.css("button .play-track")).nativeElement;
-      playButton.click();
-      expect(fixture.debugElement.query(By.css(".pause-track"))).not.toBeNull;
+      element(By.css("button .play-track")).click();
+      expect(By.css(".pause-track")).not.toBeNull;
     });
 
   });
@@ -71,7 +69,7 @@ describe('MatBasicAudioPlayerComponent', () => {
     });
 
     it('should have play button', () => {
-      const playButton = fixture.debugElement.query(By.css(".play-track"));
+      const playButton = By.css(".play-track");
       expect(playButton).toBeDefined();
     });
 
@@ -86,7 +84,7 @@ describe('MatBasicAudioPlayerComponent', () => {
     template: `<mat-basic-audio-player class="col-12 col-md-6" [audioUrl]="'https://www.dropbox.com/s/2t968nilfzbxflv/Mechanical%20Sundariye.mp3?dl=1'" [title]="'Mechanical Sundariye'"
     [displayTitle]="" [displayVolumeControls]="true"></mat-basic-audio-player>`
   })
-  
+
   class NgxBasicAudioPlayerApp {}
 
 });

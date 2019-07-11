@@ -8,10 +8,9 @@ import { SecondsToMinutesPipe } from '../../pipe/seconds-to-minutes';
 import { FormsModule } from '@angular/forms';
 import { mockPlaylist } from '../../model/track.model.mock';
 import { ElementRef, Injectable, Component, Type } from '@angular/core';
-import { By } from '@angular/platform-browser';
 import { Track } from '../../model/track.model';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { By } from 'protractor';
 
 @Injectable()
 export class MockElementRef {
@@ -26,7 +25,7 @@ export class MockService extends AudioPlayerService{
 describe('MatAdvancedAudioPlayerComponent', () => {
   function createComponent<T>(componentType: Type<T>, extraDeclarations: Type<any>[] = []) {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, FontAwesomeModule, MatSliderModule, MatCardModule, 
+      imports: [FontAwesomeModule, MatSliderModule, MatCardModule, 
         MatFormFieldModule, MatExpansionModule, MatPaginatorModule, MatTableModule, FormsModule, NgxAudioPlayerModule],
       declarations: [componentType, ...extraDeclarations],
       providers: [{provide: ElementRef, useClass: MockElementRef}, {provide: AudioPlayerService, useClass: MockService}]
@@ -42,7 +41,7 @@ describe('MatAdvancedAudioPlayerComponent', () => {
     beforeEach((() => {
       TestBed.configureTestingModule({
         declarations: [MatAdvancedAudioPlayerComponent, SecondsToMinutesPipe],
-        imports: [NoopAnimationsModule, FontAwesomeModule, MatSliderModule, MatCardModule, MatFormFieldModule, MatExpansionModule, MatPaginatorModule, MatTableModule, FormsModule],
+        imports: [FontAwesomeModule, MatSliderModule, MatCardModule, MatFormFieldModule, MatExpansionModule, MatPaginatorModule, MatTableModule, FormsModule],
         providers: [{provide: ElementRef, useClass: MockElementRef}, {provide: AudioPlayerService, useClass: MockService}]
       })
         .compileComponents();
@@ -65,7 +64,7 @@ describe('MatAdvancedAudioPlayerComponent', () => {
     });
 
     it('should have play button', () => {
-      const playButton = fixture.debugElement.query(By.css(".play-track"));
+      const playButton = By.css(".play-track");
       expect(playButton).toBeDefined();
     });
 

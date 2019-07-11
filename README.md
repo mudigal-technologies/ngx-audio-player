@@ -1,9 +1,9 @@
 # Angular Audio Player
 
-A library for loading playing audio using HTML 5 audio specifically for Angular 7.   
+A library for loading and playing audio using HTML 5 for Angular 7 or Angular 8.  
 (https://vmudigal.github.io/ngx-audio-player/)
 
-[![Travis-CI](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master)](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master) [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://vmudigal.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player)
+[![Travis-CI](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master)](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master) [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://vmudigal.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.1.5) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.0.1)
 
 ## Table of contents
 
@@ -50,10 +50,10 @@ $ yarn add ngx-audio-player
 NgxAudioPlayerModule needs Angular Material and FontAwesome 5+.   
 Make sure you have installed below dependencies with same or higher version than mentioned.   
 
-"@angular/material": "^7.2.0"   
-"@fortawesome/angular-fontawesome": "^0.3.0"   
-"@fortawesome/fontawesome-svg-core": "^1.2.12"   
-"@fortawesome/free-solid-svg-icons": "^5.6.3"   
+"@angular/material": "^8.0.0",
+"@fortawesome/angular-fontawesome": "^0.4.0",
+"@fortawesome/fontawesome-svg-core": "^1.2.19",
+"@fortawesome/free-solid-svg-icons": "^5.9.0"  
    
 Import `NgxAudioPlayerModule` in  in the root module(`AppModule`):   
    

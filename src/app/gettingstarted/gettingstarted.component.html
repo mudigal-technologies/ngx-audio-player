@@ -5,12 +5,13 @@
             <div class="col-12 col-md-2 col-lg-3"></div>
             <img class="col-12 col-md-8 col-lg-6" src="assets/images/logos/logo_with_text_dark.png">
         </h6>
-        <p>A library for loading playing audio using HTML 5 audio specifically for Angular 7.</p>
+        <p>A library for loading and playing audio using HTML 5 for Angular 7 or Angular 8.</p>
 
         <h2 id="installation">Installation</h2>
         <p><code>ngx-audio-player</code> is available via <a href="https://www.npmjs.com/package/ngx-audio-player"
-                target="_blank" title="ngx-audio-player npm package link">npm</a> and <a href="https://yarnpkg.com/en/package/ngx-audio-player"
-                target="_blank" title="ngx-audio-player yarn package link">yarn</a></p>
+                target="_blank" title="ngx-audio-player npm package link">npm</a> and <a
+                href="https://yarnpkg.com/en/package/ngx-audio-player" target="_blank"
+                title="ngx-audio-player yarn package link">yarn</a></p>
         <p>Using npm:</p>
         <pre><code class="bash">$ npm install ngx-audio-player --save</code></pre>
         <p>Using yarn:</p>
@@ -18,8 +19,11 @@
         <h2 id="getting-started">Getting Started</h2>
         <p>NgxAudioPlayerModule needs Angular Material and FontAwesome 5+.<br>Make sure you have installed below
             dependencies with same or higher version than mentioned. </p>
-        <p>"@angular/material": "^7.2.0"<br>"@fortawesome/angular-fontawesome": "^0.3.0"<br>"@fortawesome/fontawesome-svg-core":
-            "^1.2.12"<br>"@fortawesome/free-solid-svg-icons": "^5.6.3" </p>
+
+        <p>"@angular/material": "^8.0.0",<br />
+            "@fortawesome/angular-fontawesome": "^0.4.0"<br />
+            "@fortawesome/fontawesome-svg-core": "^1.2.19"<br />
+            "@fortawesome/free-solid-svg-icons": "^5.9.0"</p>
         <p>Import <code>NgxAudioPlayerModule</code> in in the root module(<code>AppModule</code>): </p>
         <pre><code class="typescript"><span class="hljs-comment">// Import library module</span>
 <span class="hljs-keyword">import</span> {{'{'}} NgxAudioPlayerModule {{'}'}} <span class="hljs-keyword">from</span> <span class="hljs-string">'ngx-audio-player'</span>;
@@ -79,7 +83,7 @@ msbapDisplayTitle = <span class="hljs-literal">false</span>;   </code></pre>
                     <td>false</td>
                 </tr>
                 <tr>
-                    <td>@Input() 
+                    <td>@Input()
                         displayVolumeControls = true;
                     </td>
                     <td>false - if the volume controls needs to be hidden</td>
@@ -174,16 +178,19 @@ msaapPlaylist: Track[] = [
         <p>ngx-audio-player will be maintained under the Semantic Versioning guidelines.
             Releases will be numbered with the following format:</p>
         <p><code>&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</code></p>
-        <p>For more information on SemVer, please visit <a href="http://semver.org" target="_blank" title="semver.org">http://semver.org</a>.</p>
+        <p>For more information on SemVer, please visit <a href="http://semver.org" target="_blank"
+                title="semver.org">http://semver.org</a>.</p>
         <h2 id="developer">Developer</h2>
-        <h5 id="vijayendra-mudigal"><a href="mailto:vijayendrap@gmail.com" target="_blank" title="email: Vijayendra Mudigal">Vijayendra
+        <h5 id="vijayendra-mudigal"><a href="mailto:vijayendrap@gmail.com" target="_blank"
+                title="email: Vijayendra Mudigal">Vijayendra
                 Mudigal</a></h5>
         <ul>
             <li><a href="http://vijayendra.mudigal.com" target="_blank" title="Vijayendra's Profile">Profile:
                     http://vijayendra.mudigal.com</a></li>
             <li><a href="https://github.com/vmudigal" target="_blank" title="Vijayendra's Github Link">GitHub:
                     https://github.com/vmudigal</a></li>
-            <li><a href="https://www.linkedin.com/in/vijayendra" target="_blank" title="Vijayendra's Linkedin Link">LinkedIn:
+            <li><a href="https://www.linkedin.com/in/vijayendra" target="_blank"
+                    title="Vijayendra's Linkedin Link">LinkedIn:
                     https://www.linkedin.com/in/vijayendra</a></li>
         </ul>
         <h2 id="license">License</h2>
