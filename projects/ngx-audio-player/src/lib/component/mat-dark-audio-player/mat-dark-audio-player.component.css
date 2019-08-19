@@ -1,0 +1,24 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap-grid.min.css';
+
+mat-card, mat-slider {
+    padding: 0!important;
+    background-color: #081B33
+}
+
+button:hover, button:focus { 
+    outline: 0px!important;
+}
+
+.ngx-basic-audio-player {
+    min-width: 300px;
+}
+
+:host  ::ng-deep .mat-accent .mat-slider-thumb {
+    background-color: aqua;
+} 
+:host  ::ng-deep .mat-accent .mat-slider-thumb-label {
+    background-color: aqua;
+} 
+:host  ::ng-deep .mat-accent .mat-slider-track-fill {
+    background-color: aqua;
+} 

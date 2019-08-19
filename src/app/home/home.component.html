@@ -45,6 +45,37 @@
         </div>
       </mat-card>
     </div>
+    
+    <div class="col-12" style="margin-top: 20px;">
+      <mat-card style="background-color: #f8f8f8; margin: 50px 0;">
+        <mat-card-header>
+          <mat-card-title>Material Style Dark Audio Player</mat-card-title>
+          <mat-card-subtitle>Material Style Dark Audio Player</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="row justify-contents-around mat-basic-player">
+          <div class="col py-3 pl-5">
+            <h6>Controls</h6>
+            <div class="d-flex flex-row px-3">
+              displayTitle: <mat-checkbox class="px-3 mat-basic-player-display-title" [checked]="msbapDisplayTitle"
+                (change)="changeMsbapDisplayTitle($event)">{{msbapDisplayTitle}}</mat-checkbox>
+            </div>
+            <div class="d-flex flex-row px-3">
+              displayVolumeControls: <mat-checkbox class="px-3 mat-basic-player-display-title" [checked]="msbapDisplayVolumeControls"
+                (change)="changeMsbapDisplayVolumeControls($event)">{{msbapDisplayVolumeControls}}</mat-checkbox>
+            </div>
+          </div>
+          <div class="col">
+            <mat-dark-audio-player class="col-12 col-md-6" [audioUrl]="msbapAudioUrl" [title]="msbapTitle"
+              [displayTitle]="msbapDisplayTitle" [displayVolumeControls]="msbapDisplayVolumeControls"></mat-dark-audio-player>
+          </div>
+        </mat-card-content>
+        <div>
+        </div>
+      </mat-card>
+    </div>
+
+
+
     <div class="col-12" style="margin-top: 20px;">
       <mat-card style="background-color: #f4f4f4; margin-bottom: 70px;">
         <mat-card-header>

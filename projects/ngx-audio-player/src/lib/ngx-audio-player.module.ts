@@ -11,19 +11,21 @@ import {
   faPlay, faPause, faSpinner, faStepForward, faStepBackward, faVolumeMute, faVolumeUp
 } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule } from '@angular/forms';
+import { MatDarkAudioPlayerComponent } from './component/mat-dark-audio-player/mat-dark-audio-player.component';
 
 @NgModule({
   exports: [
     MatButtonModule, MatCardModule, MatTableModule, MatFormFieldModule, 
     MatSliderModule, MatExpansionModule, MatPaginatorModule
-  ]
+  ],
+  declarations: []
 })
 export class MaterialModule {}
 
 @NgModule({
-  declarations: [MatBasicAudioPlayerComponent, SecondsToMinutesPipe, MatAdvancedAudioPlayerComponent],
+  declarations: [MatBasicAudioPlayerComponent, MatDarkAudioPlayerComponent, SecondsToMinutesPipe, MatAdvancedAudioPlayerComponent],
   imports: [CommonModule, FormsModule, FontAwesomeModule, MaterialModule],
-  exports: [MatBasicAudioPlayerComponent, MatAdvancedAudioPlayerComponent],
+  exports: [MatBasicAudioPlayerComponent, MatDarkAudioPlayerComponent, MatAdvancedAudioPlayerComponent],
   providers: [AudioPlayerService]
 })
 export class NgxAudioPlayerModule {
