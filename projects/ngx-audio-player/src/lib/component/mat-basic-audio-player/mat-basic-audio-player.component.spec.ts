@@ -1,8 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MatBasicAudioPlayerComponent } from './mat-basic-audio-player.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatCardModule, MatSliderModule } from '@angular/material';
+import { MatCardModule, MatProgressSpinnerModule, MatSliderModule } from '@angular/material';
 import { SecondsToMinutesPipe } from '../../pipe/seconds-to-minutes';
 import { Component, Type } from '@angular/core';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
@@ -12,7 +11,7 @@ describe('MatBasicAudioPlayerComponent', () => {
 
   function createComponent<T>(componentType: Type<T>, extraDeclarations: Type<any>[] = []) {
     TestBed.configureTestingModule({
-      imports: [FontAwesomeModule, MatSliderModule, MatCardModule, NgxAudioPlayerModule],
+      imports: [MatSliderModule, MatCardModule, MatProgressSpinnerModule, NgxAudioPlayerModule],
       declarations: [componentType,  ...extraDeclarations],
     }).compileComponents();
 
@@ -27,7 +26,7 @@ describe('MatBasicAudioPlayerComponent', () => {
     beforeEach(async(() => {
       TestBed.configureTestingModule({
         declarations: [MatBasicAudioPlayerComponent, SecondsToMinutesPipe],
-        imports: [FontAwesomeModule, MatSliderModule, MatCardModule]
+        imports: [MatSliderModule, MatCardModule, MatProgressSpinnerModule]
       })
         .compileComponents();
     }));

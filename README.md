@@ -50,10 +50,7 @@ $ yarn add ngx-audio-player
 NgxAudioPlayerModule needs Angular Material and FontAwesome 5+.   
 Make sure you have installed below dependencies with same or higher version than mentioned.   
 
-"@angular/material": "^8.0.0",
-"@fortawesome/angular-fontawesome": "^0.4.0",
-"@fortawesome/fontawesome-svg-core": "^1.2.19",
-"@fortawesome/free-solid-svg-icons": "^5.9.0"  
+"@angular/material": "^8.0.0"
    
 Import `NgxAudioPlayerModule` in  in the root module(`AppModule`):   
    

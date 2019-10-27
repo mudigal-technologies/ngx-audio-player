@@ -1,54 +1,58 @@
-<mat-card class="d-flex justify-content-center ngx-advanced-audio-player" style="margin: 0px;">
+<mat-card class="ngx-advanced-audio-player" fxFlex fxLayoutAlign="center">
   <audio [src]="playlistTrack[1].link" #audioPlayer></audio>
-
-    <button mat-button class="p-1" style="border-left: 1px solid #ddd;" (click)='previousSong();'
+    <button mat-button (click)="previousSong()"
       [disabled]="loaderDisplay">
-      <fa-icon class="fa fa-lg" [icon]="['fas','step-backward']" aria-hidden="true"></fa-icon>
+      <mat-icon class="prev-track" aria-hidden="true">
+        <!-- Skip previous icon (skip_previous) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+      </mat-icon>
     </button>
-    <button mat-button class="p-1" (click)='playBtnHandler();'
-      style="border-left: 2px solid #ccc; border-right: 2px solid #ccc;" [disabled]="loaderDisplay">
-      <fa-icon *ngIf="loaderDisplay" title="loading..." class="fa fa-2x loading-track" [pulse]="true"
-        [icon]="['fas','spinner']" aria-hidden="true"></fa-icon>
-      <fa-icon *ngIf="!loaderDisplay && !isPlaying" class="fa fa-2x play-track" style="color:#444" [icon]="['fas','play']"
-        aria-hidden="true"></fa-icon>
-      <fa-icon *ngIf="!loaderDisplay && isPlaying" class="fa fa-2x pause-track" style="color:#444"
-        [icon]="['fas','pause']" aria-hidden="true"></fa-icon>
+    <button mat-button (click)="playBtnHandler()" [disabled]="loaderDisplay">
+      <mat-progress-spinner *ngIf="loaderDisplay" class="loading-track" indeterminate></mat-progress-spinner>
+      <mat-icon *ngIf="!loaderDisplay && !isPlaying" class="play-track" aria-hidden="true">
+        <!-- Play icon (play_arrow) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+      </mat-icon>
+      <mat-icon *ngIf="!loaderDisplay && isPlaying" class="pause-track" aria-hidden="true">
+        <!-- Pause icon (pause) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+      </mat-icon>
     </button>
-    <button mat-button class="p-1" style="border-right: 1px solid #ddd;" (click)='nextSong();' [disabled]="loaderDisplay">
-      <fa-icon class="fa fa-lg next-track" [icon]="['fas','step-forward']" aria-hidden="true"></fa-icon>
+    <button mat-button (click)="nextSong()" [disabled]="loaderDisplay">
+      <mat-icon class="next-track" aria-hidden="true">
+        <!-- Skip next icon (skip_next) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+      </mat-icon>
     </button>
 
   <div class="col">
-    <div class="d-flex flex-fill justify-content-center">
-      <div class="d-none d-sm-block py-3 px-1" style="font-size: 12px">
+    <div fxFlexFill fxLayoutAlign="center">
         <span *ngIf="duration !== 0.01">
           {{currentTime | secondsToMinutes}}
         </span>
-      </div>
       <mat-slider class="d-none d-sm-block flex-fill p-1" style="width: 100%" min="0" max="{{duration}}" value="{{currentTime}}"
         (change)="currTimePosChanged($event)"></mat-slider>
-
-      <div class="py-3 px-1" style="font-size: 12px; text-align: right">
-        <span *ngIf="duration !== 0.01">
+      <span *ngIf="duration !== 0.01">
           -{{duration-currentTime | secondsToMinutes }}
-        </span>
-      </div>
+      </span>
     </div>
   </div>
-  <button *ngIf="displayVolumeControls" mat-button class="p-1" (click)='toggleVolume();' style="border-left: 1px solid #ddd;">
-    <fa-icon *ngIf="volume === 0" class="fa fa-lg volume-mute" [icon]="['fas','volume-mute']" aria-hidden="true">
-    </fa-icon>
-    <fa-icon *ngIf="volume > 0" class="fa fa-lg volume-up" [icon]="['fas','volume-up']" aria-hidden="true"></fa-icon>
+  <button *ngIf="displayVolumeControls" mat-button (click)="toggleVolume()">
+    <mat-icon *ngIf="volume === 0" class="volume-mute" aria-hidden="true">
+      <!-- Volume mute icon (volume_off) -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+    </mat-icon>
+    <mat-icon *ngIf="volume > 0" class="volume-up" aria-hidden="true">
+      <!-- Volume up icon (volume_up) -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+    </mat-icon>
   </button>
 </mat-card>
 
-<mat-card *ngIf="displayTitle" style="border: 1px solid #ddd; box-shadow: none;">
-  <div class="p-1" style="text-align: center;">
-    <div style="padding:1px 3px;">
-      <span *ngIf="!isPlaying">{{ playlistTrack[1].title }}</span>
-      <marquee *ngIf="isPlaying" behavior="scroll" direction="left">{{ playlistTrack[1].title }}</marquee>
-    </div>
-    <div class="clear"></div>
+<mat-card *ngIf="displayTitle">
+  <div>
+    <span *ngIf="!isPlaying">{{ playlistTrack[1].title }}</span>
+    <marquee *ngIf="isPlaying" behavior="scroll" direction="left">{{ playlistTrack[1].title }}</marquee>
   </div>
 </mat-card>
 
@@ -66,8 +70,14 @@
         <th mat-header-cell *matHeaderCellDef> </th>
         <td mat-cell *matCellDef="let element">
           <div *ngIf="playlistTrack[1].title === element.title">
-            <fa-icon *ngIf="isPlaying" class="fa" [icon]="['fas','play']" [spin]="true" aria-hidden="true"></fa-icon>
-            <fa-icon *ngIf="!isPlaying" class="fa" [icon]="['fas','play']" aria-hidden="true"></fa-icon>
+            <mat-icon *ngIf="isPlaying" aria-hidden="true">
+              <!-- Play icon (play_arrow) -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+            </mat-icon>
+            <mat-icon *ngIf="!isPlaying" aria-hidden="true">
+              <!-- Pause icon (pause) -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+            </mat-icon>
           </div>
         </td>
       </ng-container>

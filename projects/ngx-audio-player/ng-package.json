@@ -2,11 +2,6 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/ngx-audio-player",
   "lib": {
-    "entryFile": "src/public_api.ts",
-    "umdModuleIds": {
-      "@fortawesome/angular-fontawesome": "@fortawesome/angular-fontawesome",
-      "@fortawesome/fontawesome-svg-core": "@fortawesome/fontawesome-svg-core",
-      "@fortawesome/free-solid-svg-icons": "@fortawesome/free-solid-svg-icons"
-    }
+    "entryFile": "src/public_api.ts"
   }
 }

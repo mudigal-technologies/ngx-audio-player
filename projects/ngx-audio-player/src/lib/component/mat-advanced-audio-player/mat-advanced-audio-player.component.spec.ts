@@ -1,8 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import 'hammerjs';
 import { MatAdvancedAudioPlayerComponent } from './mat-advanced-audio-player.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatCardModule, MatTableModule, MatExpansionModule, MatPaginatorModule, MatFormFieldModule, MatSliderModule } from '@angular/material';
+import {
+  MatCardModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatSliderModule,
+  MatTableModule
+} from '@angular/material';
 import { AudioPlayerService } from '../../service/audio-player-service/audio-player.service';
 import { SecondsToMinutesPipe } from '../../pipe/seconds-to-minutes';
 import { FormsModule } from '@angular/forms';
@@ -25,8 +32,9 @@ export class MockService extends AudioPlayerService{
 describe('MatAdvancedAudioPlayerComponent', () => {
   function createComponent<T>(componentType: Type<T>, extraDeclarations: Type<any>[] = []) {
     TestBed.configureTestingModule({
-      imports: [FontAwesomeModule, MatSliderModule, MatCardModule, 
-        MatFormFieldModule, MatExpansionModule, MatPaginatorModule, MatTableModule, FormsModule, NgxAudioPlayerModule],
+      imports: [MatSliderModule, MatCardModule,
+        MatFormFieldModule, MatExpansionModule, MatPaginatorModule, MatTableModule,
+        MatProgressSpinnerModule, FormsModule, NgxAudioPlayerModule],
       declarations: [componentType, ...extraDeclarations],
       providers: [{provide: ElementRef, useClass: MockElementRef}, {provide: AudioPlayerService, useClass: MockService}]
     }).compileComponents();
@@ -41,7 +49,8 @@ describe('MatAdvancedAudioPlayerComponent', () => {
     beforeEach((() => {
       TestBed.configureTestingModule({
         declarations: [MatAdvancedAudioPlayerComponent, SecondsToMinutesPipe],
-        imports: [FontAwesomeModule, MatSliderModule, MatCardModule, MatFormFieldModule, MatExpansionModule, MatPaginatorModule, MatTableModule, FormsModule],
+        imports: [MatSliderModule, MatCardModule, MatFormFieldModule, MatExpansionModule, MatPaginatorModule, MatTableModule,
+          MatProgressSpinnerModule, FormsModule],
         providers: [{provide: ElementRef, useClass: MockElementRef}, {provide: AudioPlayerService, useClass: MockService}]
       })
         .compileComponents();
