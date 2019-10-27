@@ -9,8 +9,8 @@ import { Track } from 'ngx-audio-player';
 export class HomeComponent {
   
   // Material Style Basic Audio Player Title and Audio URL
-  msbapTitle = 'Punjab';
-  msbapAudioUrl = 'https://www.dropbox.com/s/q1qaf8vn2dv48nw/Punjab.mp3?dl=1';
+  msbapTitle = 'Night Owl (by Broke For Free)';
+  msbapAudioUrl = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3';
 
   msbapDisplayTitle = false;
   msbapDisplayVolumeControls = true;
@@ -18,20 +18,20 @@ export class HomeComponent {
   // Material Style Advance Audio Player Playlist
   msaapPlaylist: Track[] = [
     {
-      title: 'Mechanical Sundariye',
-      link: 'https://www.dropbox.com/s/2t968nilfzbxflv/Mechanical%20Sundariye.mp3?dl=1'
+      title: '1400 (by Yung Kartz)',
+      link: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Yung_Kartz/August_2018/Yung_Kartz_-_10_-_1400.mp3'
     },
     {
-      title: 'Vishnu',
-      link: 'https://www.dropbox.com/s/uxtnltcjk31k7nz/Vishnu.mp3?dl=1'
+      title: 'Epic Song (by BoxCat Games)',
+      link: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/BoxCat_Games/Nameless_The_Hackers_RPG_Soundtrack/BoxCat_Games_-_10_-_Epic_Song.mp3'
     },
     {
-      title: 'Naalo Chilipi Kala',
-      link: 'http://mp3sensongs.com/mp32/mp3/2018/Lover%20(2018)/Naalo%20Chilipi%20Kala%20(Theme%20Song)%20-%20SenSongsMp3.Co.mp3'
+      title: 'Hachiko (The Faithful Dog) (by The Kyoto)',
+      link: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/The_Kyoto_Connection/Wake_Up/The_Kyoto_Connection_-_09_-_Hachiko_The_Faithtful_Dog.mp3'
     },
     {
-      title: 'Punjab',
-      link: 'https://www.dropbox.com/s/q1qaf8vn2dv48nw/Punjab.mp3?dl=1'
+      title: 'Starling (by Podington Bear)',
+      link: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/Music_for_Video/Podington_Bear/Solo_Instruments/Podington_Bear_-_Starling.mp3'
     },
   ];
 
