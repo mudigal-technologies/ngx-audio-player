@@ -47,7 +47,7 @@ describe('MatBasicAudioPlayerComponent', () => {
     });
 
     it('should have play button', () => {
-      component.audioUrl = "https://www.dropbox.com/s/2t968nilfzbxflv/Mechanical%20Sundariye.mp3?dl=1";
+      component.audioUrl = "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3";
       fixture.detectChanges();
       element(By.css("button .play-track")).click();
       expect(By.css(".pause-track")).not.toBeNull;
@@ -81,7 +81,7 @@ describe('MatBasicAudioPlayerComponent', () => {
 
   /** Test Basic Player */
   @Component({
-    template: `<mat-basic-audio-player class="col-12 col-md-6" [audioUrl]="'https://www.dropbox.com/s/2t968nilfzbxflv/Mechanical%20Sundariye.mp3?dl=1'" [title]="'Mechanical Sundariye'"
+    template: `<mat-basic-audio-player class="col-12 col-md-6" [audioUrl]="'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3'" [title]="'Night Owl (by Broke For Free)'"
     [displayTitle]="" [displayVolumeControls]="true"></mat-basic-audio-player>`
   })
 
