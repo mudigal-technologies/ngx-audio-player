@@ -71,12 +71,12 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="playlistTrack[1].title === element.title">
             <mat-icon *ngIf="isPlaying" aria-hidden="true">
-              <!-- Play icon (play_arrow) -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-            </mat-icon>
-            <mat-icon *ngIf="!isPlaying" aria-hidden="true">
               <!-- Pause icon (pause) -->
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+            </mat-icon>
+            <mat-icon *ngIf="!isPlaying" aria-hidden="true">
+              <!-- Play icon (play_arrow) -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
             </mat-icon>
           </div>
         </td>
