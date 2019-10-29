@@ -20,7 +20,7 @@ export class MatBasicAudioPlayerComponent extends BaseAudioPlayerFunctions imple
 
     @Input()
     displayVolumeControls = true;
-    
+
     constructor() {
         super();
     }
@@ -31,6 +31,6 @@ export class MatBasicAudioPlayerComponent extends BaseAudioPlayerFunctions imple
 
     resetSong(): void {
         this.player.nativeElement.src = this.audioUrl;
-    };
+    }
 
 }

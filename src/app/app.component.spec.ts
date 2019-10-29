@@ -3,7 +3,7 @@ import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatToolbarModule } from '@angular/material';
 import { ShareButtonsModule } from '@ngx-share/buttons';
-  
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({

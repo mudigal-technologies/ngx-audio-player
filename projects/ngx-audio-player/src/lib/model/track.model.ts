@@ -1,5 +1,5 @@
 export class Track {
-    index?: number;
-    link: string;
-    title: string;
+  index?: number;
+  link: string;
+  title: string;
 }
