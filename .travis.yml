@@ -1,11 +1,27 @@
-sudo: required
-dist: trusty
-
+os: linux
 language: node_js
 node_js:
   - "10"
-
-script: npm run build-lib
-
 cache:
-  yarn: true
+  directories:
+  - node_modules
+
+stages:
+  - lint
+  - test
+jobs:
+  include:
+  - stage: lint
+    script: npm run lint
+    name: 'Linting'
+  - stage: test
+    script: npm run test-lib
+    name: 'Testing'
+install:
+- npm install
+# Uncomment this to enable notifications.
+# notifications:
+#  webhooks:
+#    on_success: change
+#    on_failure: always
+#    on_start: false
