@@ -1,6 +1,6 @@
 
-import { TestBed } from "@angular/core/testing";
-import { SecondsToMinutesPipe } from "./seconds-to-minutes";
+import { TestBed } from '@angular/core/testing';
+import { SecondsToMinutesPipe } from './seconds-to-minutes';
 
 describe('Pipe: Default', () => {
     let pipe: SecondsToMinutesPipe;

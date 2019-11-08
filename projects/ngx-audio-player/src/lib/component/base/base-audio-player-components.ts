@@ -1,17 +1,17 @@
-import { ViewChild, ElementRef } from "@angular/core";
-import { MatSlider } from "@angular/material";
+import { ViewChild, ElementRef } from '@angular/core';
+import { MatSlider } from '@angular/material';
 
 export class BaseAudioPlayerFunctions {
 
     @ViewChild('audioPlayer', {static: true}) player: ElementRef;
     timeLineDuration: MatSlider;
 
-    loaderDisplay: boolean = false;
-    isPlaying: boolean = false;
-    currentTime: number = 0;
-    volume: number = 0.1;
-    duration: number = 0.01;
-    
+    loaderDisplay = false;
+    isPlaying = false;
+    currentTime = 0;
+    volume = 0.1;
+    duration = 0.01;
+
     currTimePosChanged(event) {
         this.player.nativeElement.currentTime = event.value;
     }
@@ -37,10 +37,10 @@ export class BaseAudioPlayerFunctions {
             this.loaderDisplay = false;
             this.duration = Math.floor(this.player.nativeElement.duration);
         });
-    };
+    }
 
     playBtnHandler(): void {
-        if(this.loaderDisplay) {
+        if (this.loaderDisplay) {
             return;
         }
         if (this.player.nativeElement.paused) {
@@ -49,13 +49,13 @@ export class BaseAudioPlayerFunctions {
             this.currentTime = this.player.nativeElement.currentTime;
             this.player.nativeElement.pause();
         }
-    };
+    }
 
     play(): void {
         setTimeout(() => {
             this.player.nativeElement.play();
         }, 0);
-    };
+    }
 
     toggleVolume() {
         if (this.volume === 0) {

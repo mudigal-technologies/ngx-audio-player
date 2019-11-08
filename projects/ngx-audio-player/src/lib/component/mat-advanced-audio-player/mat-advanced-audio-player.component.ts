@@ -92,7 +92,7 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         this.duration = 0.01;
         this.playlistService.nextSong();
         this.play();
-    };
+    }
 
     previousSong(): void {
         this.currentTime = 0;
@@ -111,11 +111,11 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
             this.resetSong();
         }
         this.play();
-    };
+    }
 
     resetSong(): void {
         this.player.nativeElement.src = this.playlistTrack[1].link;
-    };
+    }
 
     selectTrack(index: number): void {
         console.log('selectTrack(index: number): void: ' + index);
@@ -123,11 +123,11 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         setTimeout(() => {
             this.player.nativeElement.play();
         }, 0);
-    };
+    }
 
     checkIfSongHasStartedSinceAtleastTwoSeconds(): boolean {
         return this.player.nativeElement.currentTime > 2;
-    };
+    }
 
     @Input()
     set playlist(playlist: Track[]) {

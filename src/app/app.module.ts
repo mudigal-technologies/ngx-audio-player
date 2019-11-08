@@ -28,7 +28,7 @@ export const appRoutes: Routes = [
     HttpClientModule,
     BrowserModule, FontAwesomeModule,
     MatCardModule, MatToolbarModule, MatIconModule, MatRadioModule, MatCheckboxModule, MatSlideToggleModule,
-    BrowserAnimationsModule,ShareButtonsModule,
+    BrowserAnimationsModule, ShareButtonsModule,
     NgxAudioPlayerModule,
     RouterModule.forRoot(appRoutes, {useHash: false}),
   ],

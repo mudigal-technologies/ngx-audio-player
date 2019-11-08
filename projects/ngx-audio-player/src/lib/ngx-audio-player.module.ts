@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatCardModule, MatSliderModule, MatExpansionModule, MatFormFieldModule, MatTableModule, MatPaginatorModule, MatMenuModule } from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatSliderModule, MatExpansionModule, MatFormFieldModule, MatTableModule, MatPaginatorModule
+} from '@angular/material';
 import { MatBasicAudioPlayerComponent } from './component/mat-basic-audio-player/mat-basic-audio-player.component';
 import { AudioPlayerService } from './service/audio-player-service/audio-player.service';
 import { CommonModule } from '@angular/common';
@@ -14,11 +16,11 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   exports: [
-    MatButtonModule, MatCardModule, MatTableModule, MatFormFieldModule, 
+    MatButtonModule, MatCardModule, MatTableModule, MatFormFieldModule,
     MatSliderModule, MatExpansionModule, MatPaginatorModule
   ]
 })
-export class MaterialModule {}
+export class MaterialModule { }
 
 @NgModule({
   declarations: [MatBasicAudioPlayerComponent, SecondsToMinutesPipe, MatAdvancedAudioPlayerComponent],

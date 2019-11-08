@@ -12,26 +12,26 @@ describe('AudioPlayerService', () => {
 
   beforeEach(() => {
     service = TestBed.get(AudioPlayerService);
-    service.setPlaylist(mockPlaylist)
-  })
+    service.setPlaylist(mockPlaylist);
+  });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it("should set playlist correctly", () => {
+  it('should set playlist correctly', () => {
     expect(service.playlist.length).toEqual(3);
   });
 
-  it("should set song's index correctly", () => {
+  it('should set song\'s index correctly', () => {
     expect(service.getIndexSong()).toEqual(0);
   });
 
-  it("should get playlist correctly", () => {
+  it('should get playlist correctly', () => {
     expect(service.getPlaylist()[0].title).toEqual(mockPlaylist[0].title);
   });
 
-  it("should select next song correctly", () => {
+  it('should select next song correctly', () => {
     service.nextSong();
     expect(service.indexSong).toEqual(1);
     service.nextSong();
@@ -42,7 +42,7 @@ describe('AudioPlayerService', () => {
     expect(service.indexSong).toEqual(1);
   });
 
-  it("should select previous song correctly", () => {
+  it('should select previous song correctly', () => {
     service.previousSong();
     expect(service.indexSong).toEqual(2);
     service.previousSong();
@@ -53,12 +53,12 @@ describe('AudioPlayerService', () => {
     expect(service.indexSong).toEqual(2);
   });
 
-  it("should select track correctly", () => {
+  it('should select track correctly', () => {
     service.selectATrack(2);
     expect(service.indexSong).toEqual(1);
   });
 
-  it("should reset playlist correctly", () => {
+  it('should reset playlist correctly', () => {
     service.resetPlaylist();
     expect(service.indexSong).toEqual(0);
   });
