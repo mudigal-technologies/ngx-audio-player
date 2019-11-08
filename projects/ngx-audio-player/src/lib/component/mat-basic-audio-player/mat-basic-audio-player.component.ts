@@ -19,6 +19,9 @@ export class MatBasicAudioPlayerComponent extends BaseAudioPlayerFunctions imple
     displayTitle = false;
 
     @Input()
+    autoPlay = false;
+
+    @Input()
     displayVolumeControls = true;
     
     constructor() {
@@ -27,6 +30,9 @@ export class MatBasicAudioPlayerComponent extends BaseAudioPlayerFunctions imple
 
     ngOnInit() {
         this.bindPlayerEvent();
+        if (this.autoPlay) {
+            super.play();
+        }
     }
 
     resetSong(): void {

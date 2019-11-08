@@ -33,6 +33,9 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
     expanded = true;
 
     @Input()
+    autoPlay = false;
+
+    @Input()
     displayVolumeControls = true;
 
     playlistTrack: any;
@@ -55,6 +58,9 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         });
         this.player.nativeElement.currentTime = 0;
         this.playlistService.init();
+        if (this.autoPlay) {
+            super.play();
+        }
     }
 
     @ViewChild(MatPaginator, {static: false}) set matPaginator(mp: MatPaginator) {

@@ -37,7 +37,7 @@
             </div>
           </div>
           <div class="col">
-            <mat-basic-audio-player class="col-12 col-md-6" [audioUrl]="msbapAudioUrl" [title]="msbapTitle"
+            <mat-basic-audio-player class="col-12 col-md-6" [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [autoPlay]="false" muted="muted"
               [displayTitle]="msbapDisplayTitle" [displayVolumeControls]="msbapDisplayVolumeControls"></mat-basic-audio-player>
           </div>
         </mat-card-content>
@@ -68,7 +68,7 @@
             </div>
           </div>
           <div class="col">
-            <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [displayPlaylist]="msaapDisplayPlayList"
+            <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [displayPlaylist]="msaapDisplayPlayList" [autoPlay]="false" muted="muted"
               [pageSizeOptions]="pageSizeOptions" [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true"></mat-advanced-audio-player>
           </div>
         </mat-card-content>

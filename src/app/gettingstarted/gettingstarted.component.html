@@ -38,7 +38,7 @@
         <h3 id="usage">Usage</h3>
         <h4 id="material-style-basic-audio-player">Material Style Basic Audio Player</h4>
         <h5 id="html">HTML</h5>
-        <pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">mat-basic-audio-player</span> [<span class="hljs-attr">audioUrl</span>]=<span class="hljs-string">"msbapAudioUrl"</span> [<span class="hljs-attr">title</span>]=<span class="hljs-string">"msbapTitle"</span> 
+        <pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">mat-basic-audio-player</span> [<span class="hljs-attr">audioUrl</span>]=<span class="hljs-string">"msbapAudioUrl"</span> [<span class="hljs-attr">title</span>]=<span class="hljs-string">"msbapTitle"</span> [<span class="hljs-attr">autoPlay</span>]=<span class="hljs-string">"false"</span> <span class="hljs-attr">muted</span>=<span class="hljs-string">"muted"</span>
             [<span class="hljs-attr">displayTitle</span>]=<span class="hljs-string">"msbapDisplayTitle"</span> [<span class="hljs-attr">displayVolumeControls</span>]=<span class="hljs-string">"true"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mat-basic-audio-player</span>&gt;</span></code></pre>
         <h5 id="ts">TS</h5>
         <pre><code class="ts"><span class="hljs-comment">// Material Style Basic Audio Player Title and Audio URL</span>
@@ -76,6 +76,14 @@ msbapDisplayTitle = <span class="hljs-literal">false</span>;   </code></pre>
                 </tr>
                 <tr>
                     <td>@Input()
+                        autoPlay = false;
+                    </td>
+                    <td>true - if the audio needs to be played automatically</td>
+                    <td>optional</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>@Input()
                         displayTitle = false;
                     </td>
                     <td>true - if the audio title needs to be displayed</td>
@@ -94,8 +102,8 @@ msbapDisplayTitle = <span class="hljs-literal">false</span>;   </code></pre>
         </table>
         <h4 id="material-style-advanced-audio-player">Material Style Advanced Audio Player</h4>
         <h5 id="html">HTML</h5>
-        <pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">mat-advanced-audio-player</span> [<span class="hljs-attr">playlist</span>]=<span class="hljs-string">"msaapPlaylist"</span> [<span class="hljs-attr">displayTitle</span>]=<span class="hljs-string">"msaapDisplayTitle"</span> 
-            [<span class="hljs-attr">displayPlaylist</span>]=<span class="hljs-string">"msaapDisplayPlayList"</span> [<span class="hljs-attr">pageSizeOptions</span>]=<span class="hljs-string">"msaapPageSizeOptions"</span> 
+        <pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">mat-advanced-audio-player</span> [<span class="hljs-attr">playlist</span>]=<span class="hljs-string">"msaapPlaylist"</span> [<span class="hljs-attr">displayTitle</span>]=<span class="hljs-string">"msaapDisplayTitle"</span> [<span class="hljs-attr">autoPlay</span>]=<span class="hljs-string">"false"</span> 
+            <span class="hljs-attr">muted</span>=<span class="hljs-string">"muted"</span> [<span class="hljs-attr">displayPlaylist</span>]=<span class="hljs-string">"msaapDisplayPlayList"</span> [<span class="hljs-attr">pageSizeOptions</span>]=<span class="hljs-string">"msaapPageSizeOptions"</span> 
                 [<span class="hljs-attr">expanded</span>]=<span class="hljs-string">"true"</span> [<span class="hljs-attr">displayVolumeControls</span>]=<span class="hljs-string">"true"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mat-advanced-audio-player</span>&gt;</span>   </code></pre>
         <h5 id="ts">TS</h5>
         <pre><code class="ts"><span class="hljs-keyword">
@@ -141,6 +149,14 @@ msaapPlaylist: Track[] = [
                     <td>playlist containing array of title and link</td>
                     <td>mandatory</td>
                     <td>None</td>
+                </tr>
+                <tr>
+                    <td>@Input()
+                        autoPlay = false;
+                    </td>
+                    <td>true - if the audio needs to be played automatically</td>
+                    <td>optional</td>
+                    <td>false</td>
                 </tr>
                 <tr>
                     <td>@Input() displayTitle: true;</td>
