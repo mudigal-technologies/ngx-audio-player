@@ -77,7 +77,7 @@ export class AppModule { }
 ##### HTML   
 
 ```html
-<mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" 
+<mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [autoPlay]="false" muted="muted"
     [displayTitle]="msbapDisplayTitle" [displayVolumeControls]="msaapDisplayVolumeControls" ></mat-basic-audio-player>
 ```
    
@@ -94,12 +94,13 @@ msbapDisplayVolumeControls = true;
 
 ##### Properties   
 
-| Name                                       | Description                                       | Type      | Default Value |
-|--------------------------------------------|---------------------------------------------------|-----------|---------------|
-| @Input() title: string;                    | title to be displayed                             | optional  | none          |
-| @Input() audioUrl: string;                 | url of the audio                                  | mandatory | none          |
-| @Input() displayTitle = false;             | true - if the audio title needs to be displayed   | optional  | false         |
-| @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden | optional  | true          |
+| Name                                       | Description                                         | Type      | Default Value |
+|--------------------------------------------|-----------------------------------------------------|-----------|---------------|
+| @Input() title: string;                    | title to be displayed                               | optional  | none          |
+| @Input() audioUrl: string;                 | url of the audio                                    | mandatory | none          |
+| @Input() autoPlay: false;                  | true - if the audio needs to be played automaticlly | optional  | false         |
+| @Input() displayTitle = false;             | true - if the audio title needs to be displayed     | optional  | false         |
+| @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true          |
    
 
 #### Material Style Advanced Audio Player   
@@ -107,8 +108,8 @@ msbapDisplayVolumeControls = true;
 ##### HTML   
 
 ```html
-<mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" 
-    [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="pageSizeOptions" 
+<mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
+    muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="pageSizeOptions" 
         [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true"></mat-advanced-audio-player> 
 ```
    
@@ -144,14 +145,15 @@ msaapPlaylist: Track[] = [
 
 ##### Properties   
 
-| Name                                       | Description                                       | Type      | Default Value |
-|--------------------------------------------|---------------------------------------------------|-----------|---------------|
-| @Input() playlist: Track[];                | playlist containing array of title and link       | mandatory | None          |
-| @Input() displayTitle: true;               | false - if the audio title needs to be hidden     | optional  | true          |
-| @Input() displayPlaylist: true;            | false - if the playlist needs to be hidden        | optional  | true          |
-| @Input() pageSizeOptions = [10, 20, 30];   | number of items to be displayed in the playlist   | optional  | [10,20,30]    |
-| @Input() expanded = true;                  | false - if the playlist needs to be minimized     | optional  | true          |
-| @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden | optional  | true          |
+| Name                                       | Description                                         | Type      | Default Value |
+|--------------------------------------------|-----------------------------------------------------|-----------|---------------|
+| @Input() playlist: Track[];                | playlist containing array of title and link         | mandatory | None           |
+| @Input() autoPlay: false;                  | true - if the audio needs to be played automaticlly | optional  | false          |
+| @Input() displayTitle: true;               | false - if the audio title needs to be hidden       | optional  | true           |
+| @Input() displayPlaylist: true;            | false - if the playlist needs to be hidden          | optional  | true           |
+| @Input() pageSizeOptions = [10, 20, 30];   | number of items to be displayed in the playlist     | optional  | [10,20,30]     |
+| @Input() expanded = true;                  | false - if the playlist needs to be minimized       | optional  | true           |
+| @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true           |
    
 
 ## Versioning
