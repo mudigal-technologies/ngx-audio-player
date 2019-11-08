@@ -23,7 +23,7 @@ describe('MatBasicAudioPlayerComponent', () => {
 
   describe('Component', () => {
     let component: MatBasicAudioPlayerComponent;
-    
+
     beforeEach(async(() => {
       TestBed.configureTestingModule({
         declarations: [MatBasicAudioPlayerComponent, SecondsToMinutesPipe],
@@ -37,20 +37,21 @@ describe('MatBasicAudioPlayerComponent', () => {
       component = fixture.componentInstance;
       fixture.detectChanges();
     });
-  
+
     it('should create', () => {
       expect(component).toBeTruthy();
     });
-  
+
     it('should reset', () => {
       expect(component.resetSong).toBeTruthy();
     });
 
     it('should have play button', () => {
-      component.audioUrl = "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3";
+      const fmaBaseUrl = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music';
+      component.audioUrl = `${fmaBaseUrl}/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3`;
       fixture.detectChanges();
-      element(By.css("button .play-track")).click();
-      expect(By.css(".pause-track")).not.toBeNull;
+      element(By.css('button .play-track')).click();
+      expect(By.css('.pause-track')).not.toBeNull();
     });
 
   });
@@ -69,7 +70,7 @@ describe('MatBasicAudioPlayerComponent', () => {
     });
 
     it('should have play button', () => {
-      const playButton = By.css(".play-track");
+      const playButton = By.css('.play-track');
       expect(playButton).toBeDefined();
     });
 
@@ -81,10 +82,14 @@ describe('MatBasicAudioPlayerComponent', () => {
 
   /** Test Basic Player */
   @Component({
-    template: `<mat-basic-audio-player class="col-12 col-md-6" [audioUrl]="'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3'" [title]="'Night Owl (by Broke For Free)'"
+    template: `<mat-basic-audio-player class="col-12 col-md-6"
+    [audioUrl]="audioUrl" [title]="'Night Owl (by Broke For Free)'"
     [displayTitle]="" [displayVolumeControls]="true"></mat-basic-audio-player>`
   })
 
-  class NgxBasicAudioPlayerApp {}
+  class NgxBasicAudioPlayerApp {
+    private fmaBaseUrl = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music';
+    audioUrl = `${this.fmaBaseUrl}/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3`;
+  }
 
 });

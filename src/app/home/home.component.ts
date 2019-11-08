@@ -7,10 +7,11 @@ import { Track } from 'ngx-audio-player';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  
+  private fmaBaseUrl = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music';
+
   // Material Style Basic Audio Player Title and Audio URL
   msbapTitle = 'Night Owl (by Broke For Free)';
-  msbapAudioUrl = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3';
+  msbapAudioUrl = `${this.fmaBaseUrl}/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3`;
 
   msbapDisplayTitle = false;
   msbapDisplayVolumeControls = true;
@@ -19,25 +20,25 @@ export class HomeComponent {
   msaapPlaylist: Track[] = [
     {
       title: '1400 (by Yung Kartz)',
-      link: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Yung_Kartz/August_2018/Yung_Kartz_-_10_-_1400.mp3'
+      link: `${this.fmaBaseUrl}/no_curator/Yung_Kartz/August_2018/Yung_Kartz_-_10_-_1400.mp3`
     },
     {
       title: 'Epic Song (by BoxCat Games)',
-      link: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/BoxCat_Games/Nameless_The_Hackers_RPG_Soundtrack/BoxCat_Games_-_10_-_Epic_Song.mp3'
+      link: `${this.fmaBaseUrl}/ccCommunity/BoxCat_Games/Nameless_The_Hackers_RPG_Soundtrack/BoxCat_Games_-_10_-_Epic_Song.mp3`
     },
     {
       title: 'Hachiko (The Faithful Dog) (by The Kyoto)',
-      link: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/The_Kyoto_Connection/Wake_Up/The_Kyoto_Connection_-_09_-_Hachiko_The_Faithtful_Dog.mp3'
+      link: `${this.fmaBaseUrl}/ccCommunity/The_Kyoto_Connection/Wake_Up/The_Kyoto_Connection_-_09_-_Hachiko_The_Faithtful_Dog.mp3`
     },
     {
       title: 'Starling (by Podington Bear)',
-      link: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/Music_for_Video/Podington_Bear/Solo_Instruments/Podington_Bear_-_Starling.mp3'
+      link: `${this.fmaBaseUrl}/Music_for_Video/Podington_Bear/Solo_Instruments/Podington_Bear_-_Starling.mp3`
     },
   ];
 
   msaapDisplayTitle = true;
   msaapDisplayPlayList = true;
-  pageSizeOptions = [2,4,6]
+  pageSizeOptions = [2, 4, 6];
 
   msaapDisplayVolumeControls = true;
 
