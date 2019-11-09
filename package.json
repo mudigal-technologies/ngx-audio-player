@@ -32,8 +32,8 @@
     "publish-lib": "npm publish dist/ngx-audio-player",
     "build-demo": "ng build --prod --base-href https://vmudigal.github.io/ngx-audio-player/",
     "publish-demo": "npx ngh --dir=dist/ngx-audio-player-demo/",
-    "test": "ng test --code-coverage --reporters=teamcity,coverage-istanbul",
-    "test-lib": "ng test ngx-audio-player --code-coverage --reporters=teamcity,coverage-istanbul",
+    "test": "ng test",
+    "test-lib": "ng test ngx-audio-player",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

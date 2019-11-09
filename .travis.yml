@@ -1,24 +1,36 @@
-os: linux
+dist: trusty
+sudo: false
+
 language: node_js
 node_js:
   - "10"
+
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
 cache:
   directories:
-  - node_modules
+    - ./node_modules
+
+install:
+  - npm install
 
 stages:
   - lint
   - test
 jobs:
   include:
-  - stage: lint
-    script: npm run lint
-    name: 'Linting'
-  - stage: test
-    script: npm run test-lib
-    name: 'Testing'
-install:
-- npm install
+    - stage: lint
+      script: npm run lint
+      name: "Linting"
+    - stage: test
+      # TODO(EdricChan03): Test the whole project instead of only the library.
+      script: npm run test-lib -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      name: "Testing"
 # Uncomment this to enable notifications.
 # notifications:
 #  webhooks:
