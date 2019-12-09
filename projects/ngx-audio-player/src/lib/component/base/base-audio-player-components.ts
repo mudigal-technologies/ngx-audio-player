@@ -33,9 +33,13 @@ export class BaseAudioPlayerFunctions {
         this.player.nativeElement.addEventListener('loadstart', () => {
             this.loaderDisplay = true;
         });
-        this.player.nativeElement.addEventListener('loadeddata', () => {
+        this.player.nativeElement.addEventListener('loadeddata', async () => {
             this.loaderDisplay = false;
-            this.duration = Math.floor(this.player.nativeElement.duration);
+            while(this.player.nativeElement.duration === Infinity) {
+                await new Promise(r => setTimeout(r, 1000));
+                this.player.nativeElement.currentTime = 10000000*Math.random();
+              }
+              this.duration = Math.floor(this.player.nativeElement.duration);
         });
     }
 
