@@ -1,5 +1,5 @@
 import { ViewChild, ElementRef } from '@angular/core';
-import { MatSlider } from '@angular/material';
+import { MatSlider } from '@angular/material/slider';
 
 export class BaseAudioPlayerFunctions {
 

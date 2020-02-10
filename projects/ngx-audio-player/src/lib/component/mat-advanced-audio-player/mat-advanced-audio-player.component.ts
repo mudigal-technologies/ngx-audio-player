@@ -1,8 +1,10 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { AudioPlayerService } from '../../service/audio-player-service/audio-player.service';
-import { MatSlider, MatPaginator, MatTableDataSource } from '@angular/material';
 import { Track } from '../../model/track.model';
 import { BaseAudioPlayerFunctions } from '../base/base-audio-player-components';
+import { MatSlider } from '@angular/material/slider';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
     selector: 'mat-advanced-audio-player',
