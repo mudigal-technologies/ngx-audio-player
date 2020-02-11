@@ -1,6 +1,6 @@
 {
   "name": "ngx-audio-player",
-  "version": "9.0.3",
+  "version": "9.0.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/vmudigal/ngx-audio-player.git"
@@ -31,9 +31,6 @@
   "peerDependencies": {
     "@angular/common": "^9.0.0",
     "@angular/core": "^9.0.0",
-    "@angular/material": "^9.0.0",
-    "@fortawesome/angular-fontawesome": "^0.6.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.27",
-    "@fortawesome/free-solid-svg-icons": "^5.12.1"
+    "@angular/material": "^9.0.0"
   }
 }
