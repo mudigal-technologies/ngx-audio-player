@@ -11,3 +11,20 @@ button:hover, button:focus {
 .ngx-basic-audio-player {
     min-width: 300px;
 }
+
+svg {
+    vertical-align: top;
+}
+
+.mat-icon {
+    height: 32px! important;
+    width: 32px! important;
+}
+
+.material-icons {
+    font-size: 32px! important;
+}
+
+mat-card {
+    background:rgba(0,0,0,.02);
+}

@@ -1,6 +1,5 @@
 #matLink{
     text-decoration: none;
-    color: white!important;
 }
 
 .mat-h1{
@@ -17,7 +16,7 @@
 }
 
 .header {
-    background:#3f51b5; padding: 30px; color: white;
+    padding: 30px;
 }
 
 pre code {

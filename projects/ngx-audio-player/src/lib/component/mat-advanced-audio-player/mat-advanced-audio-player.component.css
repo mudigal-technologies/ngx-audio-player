@@ -2,6 +2,7 @@
 
 mat-card {
     padding: 0!important;
+    background:rgba(0,0,0,.02);
 }
 
 mat-slider {
@@ -19,4 +20,31 @@ button:focus {
 
 .ngx-advanced-audio-player {
     min-width: 325px;
+}
+
+.mat-icon {
+    height: 32px! important;
+    width: 32px! important;
+}
+
+.material-icons {
+    font-size: 16px! important;
+}
+
+mat-icon > .currently-playing {
+    height: 16px! important;
+    width: 16px! important;
+}
+
+.play-pause {
+    border-left: 2px solid rgba(0,0,0,.1);
+    border-right: 2px solid rgba(0,0,0,.1);
+}
+
+.volume {
+    border-left: 2px solid rgba(0,0,0,.1);
+}
+
+.skip-next {
+    border-right: 2px solid rgba(0,0,0,.1);
 }

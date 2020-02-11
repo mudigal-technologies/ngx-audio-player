@@ -24,7 +24,6 @@ import { GettingStartedComponent } from './gettingstarted/gettingstarted.compone
 
 import { HttpClientModule } from '@angular/common/http';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
-import { library } from '@fortawesome/fontawesome-svg-core';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home' } },
