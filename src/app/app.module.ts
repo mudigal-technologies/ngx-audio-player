@@ -4,16 +4,27 @@ import { Routes, RouterModule } from '@angular/router';
 import { ShareButtonsModule } from '@ngx-share/buttons';
 
 import { AppComponent } from './app.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faFacebookF, faTwitter, faGooglePlusG, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+
+import { faFacebookF } from '@fortawesome/free-brands-svg-icons/faFacebookF';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons/faTwitter';
+import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons/faLinkedinIn';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatToolbarModule, MatIconModule, MatRadioModule, MatCheckboxModule, MatSlideToggleModule } from '@angular/material';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCardModule } from '@angular/material/card';
+
 import { HomeComponent } from './home/home.component';
 import { GettingStartedComponent } from './gettingstarted/gettingstarted.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home' } },
@@ -36,7 +47,7 @@ export const appRoutes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor() {
-    library.add(faFacebookF, faTwitter, faGooglePlusG, faLinkedinIn);
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faFacebookF, faTwitter, faLinkedinIn);
   }
 }
