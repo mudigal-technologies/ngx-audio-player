@@ -64,7 +64,7 @@
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.11.4",
+    "@angular-devkit/build-angular": "^0.900.3",
     "@angular-devkit/build-ng-packagr": "~0.11.4",
     "@angular/cli": "~7.1.4",
     "@angular/compiler-cli": "~7.1.4",
@@ -72,7 +72,7 @@
     "@types/jasmine": "~3.3.5",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~10.12.18",
-    "angular-cli-ghpages": "^0.5.3",
+    "angular-cli-ghpages": "^0.6.2",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~3.3.0",
     "jasmine-spec-reporter": "~4.2.1",
