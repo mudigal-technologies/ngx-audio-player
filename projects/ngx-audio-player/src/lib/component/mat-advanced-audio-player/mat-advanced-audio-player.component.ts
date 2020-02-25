@@ -63,7 +63,7 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         }
     }
 
-    @ViewChild(MatPaginator, {static: false}) set matPaginator(mp: MatPaginator) {
+    @ViewChild(MatPaginator, { static: false }) set matPaginator(mp: MatPaginator) {
         this.paginator = mp;
         this.setDataSourceAttributes();
     }
@@ -80,8 +80,9 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
     }
 
     nextSong(): void {
-        if (((this.playlistService.indexSong + 1) % this.paginator.pageSize) === 0 ||
-            (this.playlistService.indexSong + 1) === this.paginator.length) {
+        if (this.displayPlaylist == true
+            && (((this.playlistService.indexSong + 1) % this.paginator.pageSize) === 0
+                || (this.playlistService.indexSong + 1) === this.paginator.length)) {
             if (this.paginator.hasNextPage()) {
                 this.paginator.nextPage();
             } else if (!this.paginator.hasNextPage()) {
@@ -98,8 +99,9 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         this.currentTime = 0;
         this.duration = 0.01;
         if (!this.checkIfSongHasStartedSinceAtleastTwoSeconds()) {
-            if (((this.playlistService.indexSong) % this.paginator.pageSize) === 0 ||
-                (this.playlistService.indexSong) === 0) {
+            if (this.displayPlaylist == true
+                && (((this.playlistService.indexSong) % this.paginator.pageSize) === 0
+                    || (this.playlistService.indexSong) === 0)) {
                 if (this.paginator.hasPreviousPage()) {
                     this.paginator.previousPage();
                 } else if (!this.paginator.hasPreviousPage()) {
