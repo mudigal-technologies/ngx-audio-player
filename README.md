@@ -167,6 +167,10 @@ For more information on SemVer, please visit http://semver.org.
 - [GitHub](https://github.com/vmudigal)
 - [Linkedin](https://www.linkedin.com/in/vijayendra)
 
+## Misc
+
+It is a known limitation of this library that there can only be one instance of it per page. Multiple instances of either the basic or advanced players on one page is not supported at this time.
+
 ## License
 
 ##### The MIT License (MIT)
