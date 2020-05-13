@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { BaseAudioPlayerFunctions } from '../base/base-audio-player-components';
+import { Subject } from 'rxjs/internal/Subject';
+import { Track } from '../../model/track.model';
 
 @Component({
     selector: 'mat-basic-audio-player',
@@ -22,7 +24,7 @@ export class MatBasicAudioPlayerComponent extends BaseAudioPlayerFunctions imple
 
     @Input()
     displayVolumeControls = true;
-
+    
     constructor() {
         super();
     }

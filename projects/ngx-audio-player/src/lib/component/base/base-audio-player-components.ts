@@ -1,10 +1,15 @@
-import { ViewChild, ElementRef } from '@angular/core';
+import { ViewChild, ElementRef, Output } from '@angular/core';
 import { MatSlider } from '@angular/material/slider';
+import { Subject } from 'rxjs/internal/Subject';
 
 export class BaseAudioPlayerFunctions {
 
+    @Output() ended: Subject<String> = new Subject<String>();
+
     @ViewChild('audioPlayer', {static: true}) player: ElementRef;
     timeLineDuration: MatSlider;
+
+    iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
     loaderDisplay = false;
     isPlaying = false;
@@ -17,6 +22,7 @@ export class BaseAudioPlayerFunctions {
     }
 
     bindPlayerEvent(): void {
+        
         this.player.nativeElement.addEventListener('playing', () => {
             this.isPlaying = true;
             this.duration = Math.floor(this.player.nativeElement.duration);
@@ -30,13 +36,19 @@ export class BaseAudioPlayerFunctions {
         this.player.nativeElement.addEventListener('volume', () => {
             this.volume = Math.floor(this.player.nativeElement.volume);
         });
-        this.player.nativeElement.addEventListener('loadstart', () => {
-            this.loaderDisplay = true;
-        });
+        if(!this.iOS) {
+            this.player.nativeElement.addEventListener('loadstart', () => {
+                this.loaderDisplay = true;
+            });
+        }
         this.player.nativeElement.addEventListener('loadeddata', () => {
             this.loaderDisplay = false;
             this.duration = Math.floor(this.player.nativeElement.duration);
         });
+        this.player.nativeElement.addEventListener('ended', () => {
+            this.ended.next('ended');
+        });
+    
     }
 
     playBtnHandler(): void {

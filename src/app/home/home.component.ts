@@ -10,14 +10,22 @@ export class HomeComponent {
   private fmaBaseUrl = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music';
 
   // Material Style Basic Audio Player Title and Audio URL
-  msbapTitle = 'Night Owl (by Broke For Free)';
-  msbapAudioUrl = `${this.fmaBaseUrl}/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3`;
+  msbapTitle = 'In Love | A Himitsu feat. Nori';
+  msbapAudioUrl = `https://audiograb.com/songs/nori-in-love-chill-royalty-free-music-xiMvrlfD.mp3`;
 
   msbapDisplayTitle = false;
   msbapDisplayVolumeControls = true;
 
   // Material Style Advance Audio Player Playlist
   msaapPlaylist: Track[] = [
+    {
+      title: 'In Love | A Himitsu feat. Nori',
+      link: 'https://audiograb.com/songs/nori-in-love-chill-royalty-free-music-xiMvrlfD.mp3'
+    },
+    {
+      title: 'Cartoon – On & On (feat. Daniel Levi) [NCS Release]',
+      link: 'https://audiograb.com/songs/daniel-levi-chill-royalty-free-music-m5BTrEAILs.mp3'
+    },
     {
       title: '1400 (by Yung Kartz)',
       link: `${this.fmaBaseUrl}/no_curator/Yung_Kartz/August_2018/Yung_Kartz_-_10_-_1400.mp3`
@@ -62,6 +70,17 @@ export class HomeComponent {
 
   changeMsaapDisplayVolumeControls(event) {
     this.msaapDisplayVolumeControls = event.checked;
+  }
+
+  onEnded(event){
+    console.log(event);
+    // your logic which needs to
+    // be triggered once the 
+    // track ends goes here.
+  }
+
+  logCurrentTrack(event) {
+    console.log(JSON.stringify(event));
   }
 
 }

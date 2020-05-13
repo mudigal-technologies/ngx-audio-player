@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output } from '@angular/core';
 import { AudioPlayerService } from '../../service/audio-player-service/audio-player.service';
 import { Track } from '../../model/track.model';
 import { BaseAudioPlayerFunctions } from '../base/base-audio-player-components';
@@ -136,6 +136,6 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
     @Input()
     set playlist(playlist: Track[]) {
         this.playlistData = playlist;
-        this.ngOnInit();
     }
+
 }

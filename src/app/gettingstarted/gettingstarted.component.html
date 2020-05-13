@@ -37,7 +37,7 @@
         <h3 id="usage">Usage</h3>
         <h4 id="material-style-basic-audio-player">Material Style Basic Audio Player</h4>
         <h5 id="html">HTML</h5>
-        <pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">mat-basic-audio-player</span> [<span class="hljs-attr">audioUrl</span>]=<span class="hljs-string">"msbapAudioUrl"</span> [<span class="hljs-attr">title</span>]=<span class="hljs-string">"msbapTitle"</span> [<span class="hljs-attr">autoPlay</span>]=<span class="hljs-string">"false"</span> <span class="hljs-attr">muted</span>=<span class="hljs-string">"muted"</span>
+        <pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">mat-basic-audio-player</span> [<span class="hljs-attr">audioUrl</span>]=<span class="hljs-string">"msbapAudioUrl"</span> [<span class="hljs-attr">title</span>]=<span class="hljs-string">"msbapTitle"</span> [<span class="hljs-attr">autoPlay</span>]=<span class="hljs-string">"false"</span> <span class="hljs-attr">muted</span>=<span class="hljs-string">"muted"</span> <span class="hljs-attr">(ended)</span>=<span class="hljs-string">"onEnded($event)"</span>
             [<span class="hljs-attr">displayTitle</span>]=<span class="hljs-string">"msbapDisplayTitle"</span> [<span class="hljs-attr">displayVolumeControls</span>]=<span class="hljs-string">"true"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mat-basic-audio-player</span>&gt;</span></code></pre>
         <h5 id="ts">TS</h5>
         <pre><code class="ts"><span class="hljs-comment">// Material Style Basic Audio Player Title and Audio URL</span>
@@ -90,6 +90,12 @@ msbapDisplayTitle = <span class="hljs-literal">false</span>;   </code></pre>
                     <td>false</td>
                 </tr>
                 <tr>
+                    <td>@Output() ended: Subject&lt;String&gt;;</td>
+                    <td>Callback method thats triggers once the track ends</td>
+                    <td>optional</td>
+                    <td>-N.A-</td>
+                </tr>
+                <tr>
                     <td>@Input()
                         displayVolumeControls = true;
                     </td>
@@ -102,7 +108,7 @@ msbapDisplayTitle = <span class="hljs-literal">false</span>;   </code></pre>
         <h4 id="material-style-advanced-audio-player">Material Style Advanced Audio Player</h4>
         <h5 id="html">HTML</h5>
         <pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">mat-advanced-audio-player</span> [<span class="hljs-attr">playlist</span>]=<span class="hljs-string">"msaapPlaylist"</span> [<span class="hljs-attr">displayTitle</span>]=<span class="hljs-string">"msaapDisplayTitle"</span> [<span class="hljs-attr">autoPlay</span>]=<span class="hljs-string">"false"</span> 
-            <span class="hljs-attr">muted</span>=<span class="hljs-string">"muted"</span> [<span class="hljs-attr">displayPlaylist</span>]=<span class="hljs-string">"msaapDisplayPlayList"</span> [<span class="hljs-attr">pageSizeOptions</span>]=<span class="hljs-string">"msaapPageSizeOptions"</span> 
+            <span class="hljs-attr">muted</span>=<span class="hljs-string">"muted"</span> [<span class="hljs-attr">displayPlaylist</span>]=<span class="hljs-string">"msaapDisplayPlayList"</span> [<span class="hljs-attr">pageSizeOptions</span>]=<span class="hljs-string">"msaapPageSizeOptions"</span> <span class="hljs-attr">(ended)</span>=<span class="hljs-string">"onEnded($event)"</span>
                 [<span class="hljs-attr">expanded</span>]=<span class="hljs-string">"true"</span> [<span class="hljs-attr">displayVolumeControls</span>]=<span class="hljs-string">"true"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mat-advanced-audio-player</span>&gt;</span>   </code></pre>
         <h5 id="ts">TS</h5>
         <pre><code class="ts"><span class="hljs-keyword">
@@ -187,6 +193,12 @@ msaapPlaylist: Track[] = [
                     <td>optional</td>
                     <td>true</td>
                 </tr>
+                <tr>
+                    <td>@Output() ended: Subject&lt;String&gt;;</td>
+                    <td>Callback method thats triggers once the track ends</td>
+                    <td>optional</td>
+                    <td>-N.A-</td>
+                </tr>
             </tbody>
         </table>
         <h2 id="versioning">Versioning</h2>
@@ -200,8 +212,8 @@ msaapPlaylist: Track[] = [
                 title="email: Vijayendra Mudigal">Vijayendra
                 Mudigal</a></h5>
         <ul>
-            <li><a href="http://vijayendra.mudigal.com" target="_blank" title="Vijayendra's Profile">Profile:
-                    http://vijayendra.mudigal.com</a></li>
+            <li><a href="https://vijayendra.mudigal.com" target="_blank" title="Vijayendra's Profile">Profile:
+                    https://vijayendra.mudigal.com</a></li>
             <li><a href="https://github.com/vmudigal" target="_blank" title="Vijayendra's Github Link">GitHub:
                     https://github.com/vmudigal</a></li>
             <li><a href="https://www.linkedin.com/in/vijayendra" target="_blank"
