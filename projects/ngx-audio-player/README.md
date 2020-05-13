@@ -3,7 +3,7 @@
 A library for loading and playing audio using HTML 5 for Angular 7/8/9.  
 (https://vmudigal.github.io/ngx-audio-player/)
 
-[![Travis-CI](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master)](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master) [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://vmudigal.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.1.5) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.0.2) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.0.4)
+[![Travis-CI](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master)](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master) [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://vmudigal.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.1.6) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.0.3) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.0.7)
 
 ## Table of contents
 
@@ -76,7 +76,7 @@ export class AppModule { }
 ##### HTML   
 
 ```html
-<mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [autoPlay]="false" muted="muted"
+<mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [autoPlay]="false" muted="muted" (ended)="onEnded($event)"
     [displayTitle]="msbapDisplayTitle" [displayVolumeControls]="msaapDisplayVolumeControls" ></mat-basic-audio-player>
 ```
    
@@ -99,6 +99,7 @@ msbapDisplayVolumeControls = true;
 | @Input() audioUrl: string;                 | url of the audio                                    | mandatory | none          |
 | @Input() autoPlay: false;                  | true - if the audio needs to be played automaticlly | optional  | false         |
 | @Input() displayTitle = false;             | true - if the audio title needs to be displayed     | optional  | false         |
+| @Output() ended: Subject<String>;          | Callback method thats triggers once the track ends  | optional  | - N.A -       |
 | @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true          |
    
 
@@ -108,7 +109,7 @@ msbapDisplayVolumeControls = true;
 
 ```html
 <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
-    muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="pageSizeOptions" 
+    muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="pageSizeOptions" (ended)="onEnded($event)"
         [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true"></mat-advanced-audio-player> 
 ```
    
@@ -153,6 +154,7 @@ msaapPlaylist: Track[] = [
 | @Input() pageSizeOptions = [10, 20, 30];   | number of items to be displayed in the playlist     | optional  | [10,20,30]     |
 | @Input() expanded = true;                  | false - if the playlist needs to be minimized       | optional  | true           |
 | @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true           |
+| @Output() ended: Subject<String>;          | Callback method thats triggers once the track ends  | optional  | - N.A -        |
    
 
 ## Versioning
@@ -167,7 +169,7 @@ For more information on SemVer, please visit http://semver.org.
 ## Developer
 
 ##### [Vijayendra Mudigal](mailto:vijayendrap@gmail.com)
-- [Profile](http://vijayendra.mudigal.com)
+- [Profile](https://vijayendra.mudigal.com)
 - [GitHub](https://github.com/vmudigal)
 - [Linkedin](https://www.linkedin.com/in/vijayendra)
 

@@ -69,7 +69,7 @@
           </div>
           <div class="col">
             <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [displayPlaylist]="msaapDisplayPlayList" [autoPlay]="false" muted="muted"
-              [pageSizeOptions]="pageSizeOptions" [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true"></mat-advanced-audio-player>
+              [pageSizeOptions]="pageSizeOptions" [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true" (ended)="onEnded($event)" ></mat-advanced-audio-player>
           </div>
         </mat-card-content>
       </mat-card>
