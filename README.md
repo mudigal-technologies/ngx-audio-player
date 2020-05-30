@@ -97,6 +97,8 @@ msbapDisplayVolumeControls = true;
 | @Input() audioUrl: string;                 | url of the audio                                  | mandatory | none          |
 | @Input() displayTitle = false;             | true - if the audio title needs to be displayed   | optional  | false         |
 | @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden | optional  | true          |
+| @Input() startOffset = 0;                  | offset from start of audio file in seconds        | optional  | 0             |
+| @Input() endOffset = 0;                    | offset from end of audio file in seconds          | optional  | 0             |
    
 
 #### Material Style Advanced Audio Player   
