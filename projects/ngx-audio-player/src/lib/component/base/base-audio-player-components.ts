@@ -1,6 +1,7 @@
-import { ViewChild, ElementRef, Output } from '@angular/core';
+import { ViewChild, ElementRef, Output, Input } from '@angular/core';
 import { MatSlider } from '@angular/material/slider';
-import { Subject } from 'rxjs/internal/Subject';
+import { Track } from '../../model/track.model';
+import { Subject } from 'rxjs';
 
 export class BaseAudioPlayerFunctions {
 
@@ -16,7 +17,20 @@ export class BaseAudioPlayerFunctions {
     currentTime = 0;
     volume = 0.1;
     duration = 0.01;
+    
+    private _startOffset = 0;
+    @Input()
+    set startOffset(seconds: number) {
+        this._startOffset = seconds;
+        this.player.nativeElement.currentTime = seconds;
+    }
+    get startOffset(): number {
+        return this._startOffset;
+    }
 
+    @Input()
+    public endOffset = 0;
+    
     currTimePosChanged(event) {
         this.player.nativeElement.currentTime = event.value;
     }
@@ -32,6 +46,9 @@ export class BaseAudioPlayerFunctions {
         });
         this.player.nativeElement.addEventListener('timeupdate', () => {
             this.currentTime = Math.floor(this.player.nativeElement.currentTime);
+            if (this.currentTime >= this.duration - this.endOffset) {
+                this.player.nativeElement.pause();
+            }
         });
         this.player.nativeElement.addEventListener('volume', () => {
             this.volume = Math.floor(this.player.nativeElement.volume);
@@ -56,16 +73,29 @@ export class BaseAudioPlayerFunctions {
             return;
         }
         if (this.player.nativeElement.paused) {
-            this.player.nativeElement.play(this.currentTime);
+            if (this.currentTime >= this.duration - this.endOffset) {
+                this.player.nativeElement.currentTime = this.startOffset;
+            } else {
+                this.player.nativeElement.currentTime = this.currentTime;
+            }               
+                
+            this.player.nativeElement.play();            
         } else {
             this.currentTime = this.player.nativeElement.currentTime;
             this.player.nativeElement.pause();
         }
     }
 
-    play(): void {
+    play(track?: Track): void {
         setTimeout(() => {
-            this.player.nativeElement.play();
+            if (track) {
+                this.startOffset = track.startOffset || 0;
+                this.endOffset = track.endOffset || 0;
+            }
+            
+            setTimeout(() => {
+                this.player.nativeElement.play();
+            }, 50);
         }, 0);
     }
 

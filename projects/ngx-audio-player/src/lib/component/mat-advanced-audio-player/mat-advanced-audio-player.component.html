@@ -30,15 +30,15 @@
     <div class="d-flex flex-fill justify-content-center">
       <div class="d-none d-sm-block py-3 px-1" style="font-size: 12px">
         <span *ngIf="duration !== 0.01">
-          {{currentTime | secondsToMinutes}}
+          {{currentTime-startOffset | secondsToMinutes}}
         </span>
       </div>
-      <mat-slider class="d-none d-sm-block flex-fill p-1" style="width: 100%" min="0" max="{{duration}}" value="{{currentTime}}"
+      <mat-slider class="d-none d-sm-block flex-fill p-1" style="width: 100%" [min]="startOffset" max="{{duration-endOffset}}" value="{{currentTime}}"
         (change)="currTimePosChanged($event)"></mat-slider>
 
       <div class="py-3 px-1" style="font-size: 12px; text-align: right">
         <span *ngIf="duration !== 0.01">
-          -{{duration-currentTime | secondsToMinutes }}
+          -{{duration-endOffset-currentTime | secondsToMinutes }}
         </span>
       </div>
     </div>

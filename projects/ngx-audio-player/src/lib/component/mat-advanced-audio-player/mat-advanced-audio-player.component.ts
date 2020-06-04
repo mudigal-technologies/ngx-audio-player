@@ -56,9 +56,11 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         });
         this.playlistService.setPlaylist(this.playlistData);
         this.playlistService.getSubjectCurrentTrack().subscribe((playlistTrack) => {
-            this.playlistTrack = playlistTrack;
+            if (playlistTrack.length > 1) {
+                this.playlistTrack = playlistTrack;
+            }
         });
-        this.player.nativeElement.currentTime = 0;
+        this.player.nativeElement.currentTime = this.startOffset;
         this.playlistService.init();
         if (this.autoPlay) {
             super.play();
@@ -93,13 +95,14 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         }
         this.currentTime = 0;
         this.duration = 0.01;
-        this.playlistService.nextSong();
-        this.play();
+        const track = this.playlistService.nextSong();
+        this.play(track);
     }
 
     previousSong(): void {
         this.currentTime = 0;
         this.duration = 0.01;
+        let track;
         if (!this.checkIfSongHasStartedSinceAtleastTwoSeconds()) {
             if (this.displayPlaylist == true
                 && (((this.playlistService.indexSong) % this.paginator.pageSize) === 0
@@ -110,11 +113,11 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
                     this.paginator.lastPage();
                 }
             }
-            this.playlistService.previousSong();
+            track = this.playlistService.previousSong();
         } else {
             this.resetSong();
         }
-        this.play();
+        this.play(track);
     }
 
     resetSong(): void {
@@ -123,10 +126,8 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
 
     selectTrack(index: number): void {
         console.log('selectTrack(index: number): void: ' + index);
-        this.playlistService.selectATrack(index);
-        setTimeout(() => {
-            this.player.nativeElement.play();
-        }, 0);
+        const currentTrack = this.playlistService.selectATrack(index);
+        this.play(currentTrack);
     }
 
     checkIfSongHasStartedSinceAtleastTwoSeconds(): boolean {

@@ -103,6 +103,22 @@ msbapDisplayTitle = <span class="hljs-literal">false</span>;   </code></pre>
                     <td>optional</td>
                     <td>true</td>
                 </tr>
+                <tr>
+                    <td>@Input()
+                        startOffset = 0;
+                    </td>
+                    <td>offset from start of audio file in seconds</td>
+                    <td>optional</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>@Input()
+                        endOffset = 0;
+                    </td>
+                    <td>offset from end of audio file in seconds</td>
+                    <td>optional</td>
+                    <td>0</td>
+                </tr>
             </tbody>
         </table>
         <h4 id="material-style-advanced-audio-player">Material Style Advanced Audio Player</h4>
@@ -199,14 +215,34 @@ msaapPlaylist: Track[] = [
                     <td>optional</td>
                     <td>-N.A-</td>
                 </tr>
+                <tr>
+                    <td>@Input()
+                        startOffset = 0;
+                    </td>
+                    <td>offset from start of audio file in seconds</td>
+                    <td>optional</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>@Input()
+                        endOffset = 0;
+                    </td>
+                    <td>offset from end of audio file in seconds</td>
+                    <td>optional</td>
+                    <td>0</td>
+                </tr>
             </tbody>
         </table>
+        
         <h2 id="versioning">Versioning</h2>
         <p>ngx-audio-player will be maintained under the Semantic Versioning guidelines.
             Releases will be numbered with the following format:</p>
+        
         <p><code>&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</code></p>
+        
         <p>For more information on SemVer, please visit <a href="http://semver.org" target="_blank"
                 title="semver.org">http://semver.org</a>.</p>
+        
         <h2 id="developer">Developer</h2>
         <h5 id="vijayendra-mudigal"><a href="mailto:vijayendrap@gmail.com" target="_blank"
                 title="email: Vijayendra Mudigal">Vijayendra
@@ -220,6 +256,34 @@ msaapPlaylist: Track[] = [
                     title="Vijayendra's Linkedin Link">LinkedIn:
                     https://www.linkedin.com/in/vijayendra</a></li>
         </ul>
+        
+        <h2 id="contributors">Contributors ✨</h2>
+        <p>Thanks goes to these wonderful people:</p>
+        <table align="center">
+            <tr>
+            <td align="center">
+                <a href="https://github.com/EdricChan03" target="_blank">
+                    <img src="https://avatars.githubusercontent.com/u/20047125?v=4" width="100px;" alt=""/>
+                    <br /><sub><b>Edric Chan</b></sub>
+                </a><br />
+                <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=EdricChan03" title="Code">💻</a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/RokiFoki" target="_blank">
+                    <img src="https://avatars3.githubusercontent.com/u/9476596?v=4" width="100px;" alt=""/>
+                    <br /><sub><b>RokiFoki</b></sub>
+                </a><br />
+                <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=RokiFoki" title="Code">💻</a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/ewwwgiddings" target="_blank">
+                    <img src="https://avatars.githubusercontent.com/u/26286559?v=4" width="100px;" alt=""/>
+                    <br /><sub><b>ewwwgiddings</b></sub>
+                </a><br  />
+                <a  href="https://github.com/vmudigal/ngx-audio-player/commits?author=ewwwgiddings"  title="Documentation">📖</a>
+            </td>
+            </tr>
+            </table>  
         <h2 id="license">License</h2>
         <h5 id="the-mit-license-mit-">The MIT License (MIT)</h5>
     </article>

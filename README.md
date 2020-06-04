@@ -1,9 +1,8 @@
-# Angular Audio Player
 
 A library for loading and playing audio using HTML 5 for Angular 7/8/9.  
 (https://vmudigal.github.io/ngx-audio-player/)
 
-[![Travis-CI](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master)](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master) [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://vmudigal.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.1.6) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.0.3) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.0.7)
+[![Travis-CI](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master)](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master) [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://vmudigal.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.1.6) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.0.3) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.0.8)
 
 ## Table of contents
 
@@ -101,6 +100,9 @@ msbapDisplayVolumeControls = true;
 | @Input() displayTitle = false;             | true - if the audio title needs to be displayed     | optional  | false         |
 | @Output() ended: Subject<String>;          | Callback method thats triggers once the track ends  | optional  | - N.A -       |
 | @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true          |
+| @Input() startOffset = 0;                  | offset from start of audio file in seconds          | optional  | 0             |
+| @Input() endOffset = 0;                    | offset from end of audio file in seconds            | optional  | 0             |
+
    
 
 #### Material Style Advanced Audio Player   
@@ -155,6 +157,8 @@ msaapPlaylist: Track[] = [
 | @Input() expanded = true;                  | false - if the playlist needs to be minimized       | optional  | true           |
 | @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true           |
 | @Output() ended: Subject<String>;          | Callback method thats triggers once the track ends  | optional  | - N.A -        |
+| @Input() startOffset = 0;                  | offset from start of audio file in seconds          | optional  | 0              |
+| @Input() endOffset = 0;                    | offset from end of audio file in seconds            | optional  | 0              |
    
 
 ## Versioning
@@ -172,6 +176,29 @@ For more information on SemVer, please visit http://semver.org.
 - [Profile](https://vijayendra.mudigal.com)
 - [GitHub](https://github.com/vmudigal)
 - [Linkedin](https://www.linkedin.com/in/vijayendra)
+
+## Contributors ✨
+Thanks goes to these wonderful people:   
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->   
+
+<table align="center">
+<tr>
+<td  align="center"><a  href="https://github.com/EdricChan03"><img  src="https://avatars.githubusercontent.com/u/20047125?v=4"  width="100px;"  alt=""/><br  /><sub><b>Edric Chan</b></sub></a><br  /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=EdricChan03" title="Code">💻</a></td>
+<td  align="center"><a  href="https://github.com/RokiFoki"><img  src="https://avatars3.githubusercontent.com/u/9476596?v=4"  width="100px;"  alt=""/><br  /><sub><b>RokiFoki</b></sub></a><br  /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=RokiFoki" title="Code">💻</a></td>
+<td  align="center"><a  href="https://github.com/ewwwgiddings"><img  src="https://avatars.githubusercontent.com/u/26286559?v=4"  width="100px;"  alt=""/><br  /><sub><b>ewwwgiddings</b></sub></a><br  /><a  href="https://github.com/vmudigal/ngx-audio-player/commits?author=ewwwgiddings"  title="Documentation">📖</a></td>
+</tr>
+</table>  
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+## Misc
+
+It is a known limitation of this library that there can only be one instance of it per page. Multiple instances of either the basic or advanced players on one page is not supported at this time.
 
 ## License
 

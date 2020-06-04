@@ -8,7 +8,7 @@ export class AudioPlayerService {
   playlist: Track[] = [];
 
   indexSong = 0;
-  currentTrack: BehaviorSubject<{}> = new BehaviorSubject(this.playlist[this.indexSong]);
+  currentTrack: BehaviorSubject<Track[]> = new BehaviorSubject([]);
   currentTime = 0;
   duration = 0;
 
@@ -20,22 +20,22 @@ export class AudioPlayerService {
     this.updateCurrentSong();
   }
 
-  nextSong(): void {
+  nextSong(): Track {
     if ((this.indexSong + 1) >= this.playlist.length) {
       this.indexSong = 0;
     } else {
       this.indexSong++;
     }
-    this.updateCurrentSong();
+    return this.updateCurrentSong();
   }
 
-  previousSong(): void {
+  previousSong(): Track {
     if ((this.indexSong - 1) < 0) {
       this.indexSong = (this.playlist.length - 1);
     } else {
       this.indexSong--;
     }
-    this.updateCurrentSong();
+    return this.updateCurrentSong();
   }
 
   resetPlaylist(): void {
@@ -43,12 +43,12 @@ export class AudioPlayerService {
     this.updateCurrentSong();
   }
 
-  selectATrack(index: number): void {
+  selectATrack(index: number): Track {
     this.indexSong = index - 1;
-    this.updateCurrentSong();
+    return this.updateCurrentSong();
   }
 
-  updateCurrentSong(): void {
+  updateCurrentSong(): Track {
     const current = this.playlist[this.indexSong];
     const previous = ((this.indexSong - 1) >= 0) ? this.playlist[this.indexSong - 1] : this.playlist[this.playlist.length - 1];
     const next = ((this.indexSong + 1) >= this.playlist.length) ? this.playlist[0] : this.playlist[this.indexSong + 1];
@@ -58,9 +58,11 @@ export class AudioPlayerService {
       current,
       next
     ]);
+
+    return current;
   }
 
-  getSubjectCurrentTrack(): BehaviorSubject<{}> {
+  getSubjectCurrentTrack(): BehaviorSubject<Track[]> {
     return this.currentTrack;
   }
 
