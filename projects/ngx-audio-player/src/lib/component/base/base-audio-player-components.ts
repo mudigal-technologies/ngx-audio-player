@@ -10,7 +10,9 @@ export class BaseAudioPlayerFunctions {
     @ViewChild('audioPlayer', {static: true}) player: ElementRef;
     timeLineDuration: MatSlider;
 
-    iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    iOS = (/iPad|iPhone|iPod/.test(navigator.platform) 
+        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) 
+        && !window.MSStream;
 
     loaderDisplay = false;
     isPlaying = false;
