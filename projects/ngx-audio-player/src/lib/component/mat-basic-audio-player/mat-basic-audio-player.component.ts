@@ -1,12 +1,10 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { BaseAudioPlayerFunctions } from '../base/base-audio-player-components';
-import { Subject } from 'rxjs/internal/Subject';
-import { Track } from '../../model/track.model';
+import { Component, OnInit, Input } from '@angular/core';
+import { BaseAudioPlayerFunctions } from '../base/base-audio-player.component';
 
 @Component({
     selector: 'mat-basic-audio-player',
     templateUrl: './mat-basic-audio-player.component.html',
-    styleUrls: ['./mat-basic-audio-player.component.css']
+    styleUrls: ['./mat-basic-audio-player.component.css', './../base/base-audio-player.component.css']
 })
 export class MatBasicAudioPlayerComponent extends BaseAudioPlayerFunctions implements OnInit {
 
@@ -24,9 +22,10 @@ export class MatBasicAudioPlayerComponent extends BaseAudioPlayerFunctions imple
 
     @Input()
     displayVolumeControls = true;
-    
+
     constructor() {
         super();
+
     }
 
     ngOnInit() {

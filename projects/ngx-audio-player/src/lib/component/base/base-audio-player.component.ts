@@ -5,13 +5,14 @@ import { Subject } from 'rxjs';
 
 export class BaseAudioPlayerFunctions {
 
-    @Output() ended: Subject<String> = new Subject<String>();
+    @Output()
+    trackEnded: Subject<string> = new Subject<string>();
 
-    @ViewChild('audioPlayer', {static: true}) player: ElementRef;
+    @ViewChild('audioPlayer', { static: true }) player: ElementRef;
     timeLineDuration: MatSlider;
 
-    iOS = (/iPad|iPhone|iPod/.test(navigator.platform) 
-        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) 
+    iOS = (/iPad|iPhone|iPod/.test(navigator.platform)
+        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1))
         && !window.MSStream;
 
     loaderDisplay = false;
@@ -19,26 +20,26 @@ export class BaseAudioPlayerFunctions {
     currentTime = 0;
     volume = 0.1;
     duration = 0.01;
-    
-    private _startOffset = 0;
+
+    private startOffsetValue = 0;
     @Input()
     set startOffset(seconds: number) {
-        this._startOffset = seconds;
+        this.startOffsetValue = seconds;
         this.player.nativeElement.currentTime = seconds;
     }
     get startOffset(): number {
-        return this._startOffset;
+        return this.startOffsetValue;
     }
 
     @Input()
     public endOffset = 0;
-    
+
     currTimePosChanged(event) {
         this.player.nativeElement.currentTime = event.value;
     }
 
     bindPlayerEvent(): void {
-        
+
         this.player.nativeElement.addEventListener('playing', () => {
             this.isPlaying = true;
             this.duration = Math.floor(this.player.nativeElement.duration);
@@ -55,7 +56,7 @@ export class BaseAudioPlayerFunctions {
         this.player.nativeElement.addEventListener('volume', () => {
             this.volume = Math.floor(this.player.nativeElement.volume);
         });
-        if(!this.iOS) {
+        if (!this.iOS) {
             this.player.nativeElement.addEventListener('loadstart', () => {
                 this.loaderDisplay = true;
             });
@@ -65,9 +66,9 @@ export class BaseAudioPlayerFunctions {
             this.duration = Math.floor(this.player.nativeElement.duration);
         });
         this.player.nativeElement.addEventListener('ended', () => {
-            this.ended.next('ended');
+            this.trackEnded.next('ended');
         });
-    
+
     }
 
     playBtnHandler(): void {
@@ -79,9 +80,9 @@ export class BaseAudioPlayerFunctions {
                 this.player.nativeElement.currentTime = this.startOffset;
             } else {
                 this.player.nativeElement.currentTime = this.currentTime;
-            }               
-                
-            this.player.nativeElement.play();            
+            }
+
+            this.player.nativeElement.play();
         } else {
             this.currentTime = this.player.nativeElement.currentTime;
             this.player.nativeElement.pause();
@@ -89,16 +90,16 @@ export class BaseAudioPlayerFunctions {
     }
 
     play(track?: Track): void {
+
+        if (track) {
+            this.startOffset = track.startOffset || 0;
+            this.endOffset = track.endOffset || 0;
+        }
+
         setTimeout(() => {
-            if (track) {
-                this.startOffset = track.startOffset || 0;
-                this.endOffset = track.endOffset || 0;
-            }
-            
-            setTimeout(() => {
-                this.player.nativeElement.play();
-            }, 50);
-        }, 0);
+            this.player.nativeElement.play();
+        }, 50);
+
     }
 
     toggleVolume() {

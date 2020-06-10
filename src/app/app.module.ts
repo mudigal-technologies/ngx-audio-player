@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ShareButtonsModule } from '@ngx-share/buttons';
 
 import { AppComponent } from './app.component';
-import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import {
+  FontAwesomeModule,
+  FaIconLibrary
+} from '@fortawesome/angular-fontawesome';
 
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons/faFacebookF';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons/faTwitter';
@@ -23,24 +25,34 @@ import { HomeComponent } from './home/home.component';
 import { GettingStartedComponent } from './gettingstarted/gettingstarted.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import { NgxAudioPlayerModule } from 'projects/ngx-audio-player/src/public_api';
+import { MatButtonModule } from '@angular/material/button';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home' } },
-  { path: 'guide/getting-started', component: GettingStartedComponent, data: { title: 'Getting Started' } },
+  {
+    path: 'guide/getting-started',
+    component: GettingStartedComponent,
+    data: { title: 'Getting Started' }
+  }
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent, HomeComponent, GettingStartedComponent
-  ],
+  declarations: [AppComponent, HomeComponent, GettingStartedComponent],
   imports: [
     HttpClientModule,
-    BrowserModule, FontAwesomeModule,
-    MatCardModule, MatToolbarModule, MatIconModule, MatRadioModule, MatCheckboxModule, MatSlideToggleModule,
-    BrowserAnimationsModule, ShareButtonsModule,
-    NgxAudioPlayerModule,
-    RouterModule.forRoot(appRoutes, {useHash: false}),
+    BrowserModule,
+    FontAwesomeModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
+    NgxAudioPlayerModule.forRoot(),
+    RouterModule.forRoot(appRoutes, { useHash: false })
   ],
   providers: [],
   bootstrap: [AppComponent]

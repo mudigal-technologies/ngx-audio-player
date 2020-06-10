@@ -1,40 +1,134 @@
 <mat-card class="d-flex ngx-basic-audio-player z-depth-1 mat-elevation-z1">
-    <audio [src]="audioUrl" #audioPlayer></audio>
-    <button mat-button (click)='playBtnHandler();' class="ngx-basic-audio-player-button-handler"
-        style="font-size: 14px!important;" [disabled]="loaderDisplay">
-            <mat-icon *ngIf="!loaderDisplay && !isPlaying" class="play-track" aria-hidden="true">
-                <!-- Play icon (play_arrow) -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-            </mat-icon>
-            <mat-icon *ngIf="!loaderDisplay && isPlaying" class="pause-track" aria-hidden="true">
-                <!-- Pause icon (pause) -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-            </mat-icon>
+    <audio #audioPlayer [src]="audioUrl"></audio>
+    <button (click)='playBtnHandler();' [disabled]="loaderDisplay"
+            class="ngx-basic-audio-player-button-handler"
+            mat-button style="font-size: 14px!important;">
+
+        <svg *ngIf="loaderDisplay"
+             height="34px" preserveAspectRatio="xMidYMid"
+             style="margin: auto; display: block; shape-rendering: auto;" viewBox="0 0 100 100" width="34px" xmlns="http://www.w3.org/2000/svg">
+            <g transform="rotate(0 50 50)">
+                <rect fill="#7a7a7a" height="12" rx="3" ry="6" width="6" x="47" y="20">
+                    <animate attributeName="opacity" begin="-0.9166666666666666s" dur="1s" keyTimes="0;1"
+                             repeatCount="indefinite" values="1;0"/>
+                </rect>
+            </g>
+            <g transform="rotate(30 50 50)">
+                <rect fill="#7a7a7a" height="12" rx="3" ry="6" width="6" x="47" y="20">
+                    <animate attributeName="opacity" begin="-0.8333333333333334s" dur="1s" keyTimes="0;1"
+                             repeatCount="indefinite" values="1;0"/>
+                </rect>
+            </g>
+            <g transform="rotate(60 50 50)">
+                <rect fill="#7a7a7a" height="12" rx="3" ry="6" width="6" x="47" y="20">
+                    <animate attributeName="opacity" begin="-0.75s" dur="1s" keyTimes="0;1"
+                             repeatCount="indefinite" values="1;0"/>
+                </rect>
+            </g>
+            <g transform="rotate(90 50 50)">
+                <rect fill="#7a7a7a" height="12" rx="3" ry="6" width="6" x="47" y="20">
+                    <animate attributeName="opacity" begin="-0.6666666666666666s" dur="1s" keyTimes="0;1"
+                             repeatCount="indefinite" values="1;0"/>
+                </rect>
+            </g>
+            <g transform="rotate(120 50 50)">
+                <rect fill="#7a7a7a" height="12" rx="3" ry="6" width="6" x="47" y="20">
+                    <animate attributeName="opacity" begin="-0.5833333333333334s" dur="1s" keyTimes="0;1"
+                             repeatCount="indefinite" values="1;0"/>
+                </rect>
+            </g>
+            <g transform="rotate(150 50 50)">
+                <rect fill="#7a7a7a" height="12" rx="3" ry="6" width="6" x="47" y="20">
+                    <animate attributeName="opacity" begin="-0.5s" dur="1s" keyTimes="0;1"
+                             repeatCount="indefinite" values="1;0"/>
+                </rect>
+            </g>
+            <g transform="rotate(180 50 50)">
+                <rect fill="#7a7a7a" height="12" rx="3" ry="6" width="6" x="47" y="20">
+                    <animate attributeName="opacity" begin="-0.4166666666666667s" dur="1s" keyTimes="0;1"
+                             repeatCount="indefinite" values="1;0"/>
+                </rect>
+            </g>
+            <g transform="rotate(210 50 50)">
+                <rect fill="#7a7a7a" height="12" rx="3" ry="6" width="6" x="47" y="20">
+                    <animate attributeName="opacity" begin="-0.3333333333333333s" dur="1s" keyTimes="0;1"
+                             repeatCount="indefinite" values="1;0"/>
+                </rect>
+            </g>
+            <g transform="rotate(240 50 50)">
+                <rect fill="#7a7a7a" height="12" rx="3" ry="6" width="6" x="47" y="20">
+                    <animate attributeName="opacity" begin="-0.25s" dur="1s" keyTimes="0;1"
+                             repeatCount="indefinite" values="1;0"/>
+                </rect>
+            </g>
+            <g transform="rotate(270 50 50)">
+                <rect fill="#7a7a7a" height="12" rx="3" ry="6" width="6" x="47" y="20">
+                    <animate attributeName="opacity" begin="-0.16666666666666666s" dur="1s" keyTimes="0;1"
+                             repeatCount="indefinite" values="1;0"/>
+                </rect>
+            </g>
+            <g transform="rotate(300 50 50)">
+                <rect fill="#7a7a7a" height="12" rx="3" ry="6" width="6" x="47" y="20">
+                    <animate attributeName="opacity" begin="-0.08333333333333333s" dur="1s" keyTimes="0;1"
+                             repeatCount="indefinite" values="1;0"/>
+                </rect>
+            </g>
+            <g transform="rotate(330 50 50)">
+                <rect fill="#7a7a7a" height="12" rx="3" ry="6" width="6" x="47" y="20">
+                    <animate attributeName="opacity" begin="0s" dur="1s" keyTimes="0;1" repeatCount="indefinite"
+                             values="1;0"/>
+                </rect>
+            </g>
+        </svg>
+
+        <mat-icon *ngIf="!loaderDisplay && !isPlaying" aria-hidden="true" class="play-track">
+            <!-- Play icon (play_arrow) -->
+            <svg height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 5v14l11-7z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+        </mat-icon>
+        <mat-icon *ngIf="!loaderDisplay && isPlaying" aria-hidden="true" class="pause-track">
+            <!-- Pause icon (pause) -->
+            <svg height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+        </mat-icon>
     </button>
     <div class="flex-fill pl-1 ngx-basic-audio-player-slider">
-        <mat-slider style="width: 100%" [min]="startOffset" max="{{duration-endOffset}}" value="{{currentTime}}"
-            (change)="currTimePosChanged($event)"></mat-slider>
+        <mat-slider (change)="currTimePosChanged($event)" [min]="startOffset"
+                    max="{{duration-endOffset}}"
+                    style="width: 100%"
+                    value="{{currentTime}}"></mat-slider>
     </div>
     <div class="d-flex ngx-basic-audio-player-duration">
-        <span *ngIf="duration !== 0.01" class="pl-2 pr-3 my-auto" style="font-size: 14px!important;">
+        <span *ngIf="duration !== 0.01" class="pl-2 pr-3 my-auto"
+              style="font-size: 14px!important;">
             -{{duration-endOffset-currentTime |
             secondsToMinutes }}
         </span>
     </div>
-    <button *ngIf="displayVolumeControls" mat-button (click)='toggleVolume();'
-        style="padding: 0px!important; min-width:48px!important;">
-        <mat-icon *ngIf="volume === 0" class="volume-mute" aria-hidden="true">
+    <button (click)='toggleVolume();' *ngIf="displayVolumeControls" mat-button
+            style="padding: 0px!important; min-width:48px!important;">
+        <mat-icon *ngIf="volume === 0" aria-hidden="true" class="volume-mute">
             <!-- Volume mute icon (volume_off) -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-          </mat-icon>
-          <mat-icon *ngIf="volume > 0" class="volume-up" aria-hidden="true">
+            <svg height="28" viewBox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+        </mat-icon>
+        <mat-icon *ngIf="volume > 0" aria-hidden="true" class="volume-up">
             <!-- Volume up icon (volume_up) -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-          </mat-icon>
+            <svg height="28" viewBox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+        </mat-icon>
     </button>
 </mat-card>
 
-<mat-card class="z-depth-1 mat-elevation-z1" *ngIf="displayTitle && title !== ''">
+<mat-card *ngIf="displayTitle && title !== ''" class="z-depth-1 mat-elevation-z1">
     <div style="text-align: center;">
         <div style="margin: 1px 2px; padding: 1em">
             {{ title }}

@@ -1,0 +1,27 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap-grid.min.css';
+
+mat-card, mat-slider {
+    padding: 0!important;
+}
+
+button:hover, button:focus { 
+    outline: 0px!important;
+}
+
+svg {
+    vertical-align: top;
+}
+
+.mat-icon {
+    height: 32px! important;
+    width: 32px! important;
+}
+
+mat-card {
+    background:rgba(0,0,0,.02);
+}
+
+mat-icon > .currently-playing {
+    height: 16px! important;
+    width: 16px! important;
+}

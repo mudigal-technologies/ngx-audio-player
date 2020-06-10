@@ -25,7 +25,6 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "./node_modules/@ngx-share/button/themes/material/material-light-theme.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -149,13 +148,13 @@
           "options": {
             "tsConfig": "projects/ngx-audio-player/tsconfig.lib.json",
             "project": "projects/ngx-audio-player/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/ngx-audio-player/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {

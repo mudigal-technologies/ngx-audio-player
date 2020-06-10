@@ -6,3 +6,11 @@
     text-align: center;
     padding: 60px;
 }
+
+.ngx-demo-content {
+    margin: 20px 0px;
+}
+
+.ngx-demo-block button {
+  margin-right: 8px;
+}

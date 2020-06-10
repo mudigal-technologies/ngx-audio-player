@@ -2,7 +2,7 @@
 A library for loading and playing audio using HTML 5 for Angular 7/8/9.  
 (https://vmudigal.github.io/ngx-audio-player/)
 
-[![Travis-CI](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master)](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master) [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://vmudigal.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.1.6) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.0.3) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.0.8)
+[![Travis-CI](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master)](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master) [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://vmudigal.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.1.6) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.0.4) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.1.0)
 
 ## Table of contents
 
@@ -49,9 +49,10 @@ $ yarn add ngx-audio-player
 NgxAudioPlayerModule needs Angular Material.   
 Make sure you have installed below dependencies with same or higher version than mentioned.   
    
-"@angular/core": "^9.0.0"   
-"@angular/common": "^9.0.0"   
-"@angular/material": "^9.0.0"   
+"@angular/core": "^9.1.0"   
+"@angular/common": "^9.1.0"   
+"@angular/material": "^9.1.0"   
+"rxjs": "^6.5.5"   
    
 Import `NgxAudioPlayerModule` in  in the root module(`AppModule`):   
    
@@ -62,7 +63,7 @@ import { NgxAudioPlayerModule } from 'ngx-audio-player';
 @NgModule({
   imports: [
     // ...
-    NgxAudioPlayerModule
+    NgxAudioPlayerModule.forRoot()
   ]
 })
 export class AppModule { }
@@ -186,9 +187,11 @@ Thanks goes to these wonderful people:
 
 <table align="center">
 <tr>
-<td  align="center"><a  href="https://github.com/EdricChan03"><img  src="https://avatars.githubusercontent.com/u/20047125?v=4"  width="100px;"  alt=""/><br  /><sub><b>Edric Chan</b></sub></a><br  /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=EdricChan03" title="Code">💻</a></td>
-<td  align="center"><a  href="https://github.com/RokiFoki"><img  src="https://avatars3.githubusercontent.com/u/9476596?v=4"  width="100px;"  alt=""/><br  /><sub><b>RokiFoki</b></sub></a><br  /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=RokiFoki" title="Code">💻</a></td>
-<td  align="center"><a  href="https://github.com/ewwwgiddings"><img  src="https://avatars.githubusercontent.com/u/26286559?v=4"  width="100px;"  alt=""/><br  /><sub><b>ewwwgiddings</b></sub></a><br  /><a  href="https://github.com/vmudigal/ngx-audio-player/commits?author=ewwwgiddings"  title="Documentation">📖</a></td>
+<td align="center"><a href="https://github.com/EdricChan03"><img src="https://avatars.githubusercontent.com/u/20047125?v=4" width="100px;"  alt=""/><br /><sub><b>Edric Chan</b></sub></a><br /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=EdricChan03" title="Code">💻</a></td>
+<td align="center"><a href="https://github.com/RokiFoki"><img src="https://avatars3.githubusercontent.com/u/9476596?v=4" width="100px;"  alt=""/><br /><sub><b>RokiFoki</b></sub></a><br /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=RokiFoki" title="Code">💻</a></td>
+<td align="center"><a href="https://github.com/ewwwgiddings"><img src="https://avatars.githubusercontent.com/u/26286559?v=4" width="100px;"  alt=""/><br /><sub><b>ewwwgiddings</b></sub></a><br /><a  href="https://github.com/vmudigal/ngx-audio-player/commits?author=ewwwgiddings"  title="Documentation">📖</a></td>
+</tr>
+<td align="center"><a href="https://github.com/cicsolutions"><img src="https://avatars1.githubusercontent.com/u/5200361?v=4" width="100px;"  alt=""/><br /><sub><b>Caleb Crosby</b></sub></a><br /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=cicsolutions" title="Code">💻</a></td>
 </tr>
 </table>  
 
@@ -204,8 +207,7 @@ It is a known limitation of this library that there can only be one instance of 
 
 ##### The MIT License (MIT)
 
-#
-# Donate
+## Donate
 
 If you like my work you can buy me a :beer: or :pizza:
 

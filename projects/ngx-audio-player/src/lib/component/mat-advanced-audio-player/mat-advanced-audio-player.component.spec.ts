@@ -80,12 +80,39 @@ describe('MatAdvancedAudioPlayerComponent', () => {
     });
 
     it('should be able to set playlist', async () => {
-      expect(component.playlistData[0].title).toEqual(mockPlaylist[0].title);
+      expect(component.playlist[0].title).toEqual(mockPlaylist[0].title);
     });
 
     it('should have play button', () => {
       const playButton = By.css('.play-track');
       expect(playButton).toBeDefined();
+    });
+
+    it('should select next song correctly', () => {
+      component.nextSong();
+      expect(component.currentTrack.index).toEqual(1);
+      component.nextSong();
+      expect(component.currentTrack.index).toEqual(2);
+      component.nextSong();
+      expect(component.currentTrack.index).toEqual(0);
+      component.nextSong();
+      expect(component.currentTrack.index).toEqual(1);
+    });
+
+    it('should select previous song correctly', () => {
+      component.previousSong();
+      expect(component.currentTrack.index).toEqual(2);
+      component.previousSong();
+      expect(component.currentTrack.index).toEqual(1);
+      component.previousSong();
+      expect(component.currentTrack.index).toEqual(0);
+      component.previousSong();
+      expect(component.currentTrack.index).toEqual(2);
+    });
+
+    it('should select track correctly', () => {
+      component.selectTrack(2);
+      expect(component.currentTrack.index).toEqual(1);
     });
 
     it('should select next song correctly', () => {
