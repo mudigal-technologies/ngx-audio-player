@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 
 import { MatSliderModule } from '@angular/material/slider';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -24,12 +24,6 @@ import { AudioPlayerService } from './service/audio-player-service/audio-player.
   exports: [MatBasicAudioPlayerComponent, MatAdvancedAudioPlayerComponent]
 })
 export class NgxAudioPlayerModule {
-  constructor(@Optional() @SkipSelf() parentModule?: NgxAudioPlayerModule) {
-    if (parentModule) {
-      throw new Error(
-        'NgxAudioPlayerModule is already loaded. Import it in the AppModule only');
-    }
-  }
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: NgxAudioPlayerModule,
