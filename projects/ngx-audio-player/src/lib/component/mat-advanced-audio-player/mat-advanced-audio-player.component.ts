@@ -13,8 +13,11 @@ import { AudioPlayerService } from '../../service/audio-player-service/audio-pla
 })
 export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions implements OnInit {
 
-    constructor(private audioPlayerService: AudioPlayerService) {
+
+    audioPlayerService: AudioPlayerService;
+    constructor() {
         super();
+        this.audioPlayerService = new AudioPlayerService();
     }
 
     @Input()
@@ -69,11 +72,9 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         // material table data source and paginator
         this.setDataSourceAttributes();
 
-        // auto play next track 2 seconds after ending current
+        // auto play next track
         this.player.nativeElement.addEventListener('ended', () => {
-            if (this.checkIfSongHasStartedSinceAtleastTwoSeconds()) {
-                this.nextSong();
-            }
+            this.nextSong();
         });
 
         this.player.nativeElement.addEventListener('timeupdate', () => {
@@ -113,7 +114,7 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         if ((this.currentIndex + 1) >= this.tracks.length) {
             this.currentIndex = 0;
         } else {
-        this.currentIndex++;
+            this.currentIndex++;
         }
         this.updateCurrentSong();
         this.play(this.nextTrack);

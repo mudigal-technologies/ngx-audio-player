@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BaseAudioPlayerFunctions } from '../base/base-audio-player.component';
+import { AudioPlayerService } from '../../service/audio-player-service/audio-player.service';
 
 @Component({
     selector: 'mat-basic-audio-player',
@@ -23,13 +24,20 @@ export class MatBasicAudioPlayerComponent extends BaseAudioPlayerFunctions imple
     @Input()
     displayVolumeControls = true;
 
+    audioPlayerService: AudioPlayerService;
+
     constructor() {
         super();
-
+        this.audioPlayerService = new AudioPlayerService();
     }
 
     ngOnInit() {
         this.bindPlayerEvent();
+
+        this.player.nativeElement.addEventListener('timeupdate', () => {
+            this.audioPlayerService.setCurrentTime(this.player.nativeElement.currentTime);
+        });
+
         if (this.autoPlay) {
             super.play();
         }

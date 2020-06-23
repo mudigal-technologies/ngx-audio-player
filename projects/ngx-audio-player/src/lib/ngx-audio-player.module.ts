@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { MatSliderModule } from '@angular/material/slider';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -15,7 +15,6 @@ import { MatAdvancedAudioPlayerComponent } from './component/mat-advanced-audio-
 
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { AudioPlayerService } from './service/audio-player-service/audio-player.service';
 
 @NgModule({
   declarations: [MatBasicAudioPlayerComponent, SecondsToMinutesPipe, MatAdvancedAudioPlayerComponent],
@@ -24,12 +23,4 @@ import { AudioPlayerService } from './service/audio-player-service/audio-player.
   exports: [MatBasicAudioPlayerComponent, MatAdvancedAudioPlayerComponent]
 })
 export class NgxAudioPlayerModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: NgxAudioPlayerModule,
-      providers: [
-        {provide: AudioPlayerService}
-      ]
-    };
-  }
 }

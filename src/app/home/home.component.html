@@ -1,15 +1,15 @@
 <div class="header mat-toolbar mat-primary">
     <div class="d-flex justify-contents-center" style="text-align: center;">
         <div class="flex-fill">
-            <img class="col-12 col-md-8 col-lg-6" src="assets/images/logos/logo_with_text_light.png">
-            <h2 style="font-size: 18px;font-weight: 400;line-height: 28px;margin: 15px 0 25px;">A
+            <img class="col-12 col-md-8 col-lg-4" src="assets/images/logos/logo_with_text_light.png">
+            <h2 style="font-size: 16px;font-weight: 300;line-height: 28px; margin: 15px 0 25px;">A
                 simple, clean, responsive,
                 <a href="https://material.angular.io" id="matLink">angular material</a> design
                 inspired basic and advanced
                 audio players for
                 Angular 7/8/9</h2>
-            <a [routerLink]="['/guide/getting-started']" aria-disabled="false" class="docs-button mat-raised-button"
-                mat-raised-button="" routerlink="/guide/getting-started" style="text-decoration: none;"
+            <a [routerLink]="['/guide/getting-started']" aria-disabled="false"
+                mat-raised-button routerlink="/guide/getting-started" style="text-decoration: none;"
                 tabindex="0"><span class="mat-button-wrapper">Get
                     started</span>
                 <div class="mat-button-ripple mat-ripple" matripple=""></div>
@@ -20,34 +20,102 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-12" style="margin-top: 20px;">
+        <div class="col-12 col-md-6" style="margin-top: 20px;">
             <mat-card style="margin: 50px 0;">
                 <mat-card-header>
-                    <mat-card-title>Material Style Basic Audio Player</mat-card-title>
-                    <mat-card-subtitle>Material Style Basic Audio Player</mat-card-subtitle>
+                    <mat-card-title>Material Style Basic Audio Player 1</mat-card-title>
+                    <mat-card-subtitle>Material Style Basic Audio Player 1</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content class="row justify-contents-around mat-basic-player">
                     <div class="col py-3 pl-5">
-                        <h6>Controls</h6>
-                        <div class="d-flex flex-row px-3">
-                            displayTitle:
-                            <mat-checkbox (change)="changeMsbapDisplayTitle($event)" [checked]="msbapDisplayTitle"
-                                class="px-3 mat-basic-player-display-title">
-                                {{msbapDisplayTitle}}
-                            </mat-checkbox>
+                        <div class="ngx-demo-content">
+                            <h6>Controls</h6>
+                            <div class="d-flex flex-row px-3">
+                                displayTitle:
+                                <mat-checkbox (change)="changeMsbapDisplayTitle1($event)" [checked]="msbapDisplayTitle1"
+                                    class="px-3 mat-basic-player-display-title">
+                                    {{msbapDisplayTitle1}}
+                                </mat-checkbox>
+                            </div>
+                            <div class="d-flex flex-row px-3">
+                                displayVolumeControls:
+                                <mat-checkbox (change)="changeMsbapDisplayVolumeControls1($event)"
+                                    [checked]="msbapDisplayVolumeControls1" class="px-3 mat-basic-player-display-title">
+                                    {{msbapDisplayVolumeControls1}}
+                                </mat-checkbox>
+                            </div>
                         </div>
-                        <div class="d-flex flex-row px-3">
-                            displayVolumeControls:
-                            <mat-checkbox (change)="changeMsbapDisplayVolumeControls($event)"
-                                [checked]="msbapDisplayVolumeControls" class="px-3 mat-basic-player-display-title">
-                                {{msbapDisplayVolumeControls}}
-                            </mat-checkbox>
+                        <div class="ngx-demo-content">
+                            <h6>Logging</h6>
+                            <p class="ngx-demo-content">
+                                <button (click)="logCurrentTrackBasicPlayer1()" mat-stroked-button>Log Current
+                                    Track
+                                </button>
+                                {{basicPlayerCurrentTrack1}}
+                            </p>
+                            <p class="ngx-demo-content">
+                                <button (click)="logCurrentTimeBasicPlayer1()" mat-stroked-button>Log Current
+                                    Time
+                                </button>
+                                {{basicPlayerCurrentTime1}}
+                            </p>
                         </div>
                     </div>
                     <div class="col">
-                        <mat-basic-audio-player [audioUrl]="msbapAudioUrl" [autoPlay]="false"
-                            [displayTitle]="msbapDisplayTitle" [displayVolumeControls]="msbapDisplayVolumeControls"
-                            [title]="msbapTitle" class="col-12 col-md-6" muted="muted"></mat-basic-audio-player>
+                        <mat-basic-audio-player #basic1 [audioUrl]="msbapAudioUrl1" [autoPlay]="false" (trackEnded)="onEnded($event)"
+                            [displayTitle]="msbapDisplayTitle1" [displayVolumeControls]="msbapDisplayVolumeControls1"
+                            [title]="msbapTitle1" class="col-12 col-md-6" muted="muted"></mat-basic-audio-player>
+                    </div>
+                </mat-card-content>
+                <div>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col-12 col-md-6" style="margin-top: 20px;">
+            <mat-card style="margin: 50px 0;">
+                <mat-card-header>
+                    <mat-card-title>Material Style Basic Audio Player 2</mat-card-title>
+                    <mat-card-subtitle>Material Style Basic Audio Player 2</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="row justify-contents-around mat-basic-player">
+                    <div class="col py-3 pl-5">
+                        <div class="ngx-demo-content">
+                            <h6>Controls</h6>
+                            <div class="d-flex flex-row px-3">
+                                displayTitle:
+                                <mat-checkbox (change)="changeMsbapDisplayTitle2($event)" [checked]="msbapDisplayTitle2"
+                                    class="px-3 mat-basic-player-display-title">
+                                    {{msbapDisplayTitle2}}
+                                </mat-checkbox>
+                            </div>
+                            <div class="d-flex flex-row px-3">
+                                displayVolumeControls:
+                                <mat-checkbox (change)="changeMsbapDisplayVolumeControls2($event)"
+                                    [checked]="msbapDisplayVolumeControls2" class="px-3 mat-basic-player-display-title">
+                                    {{msbapDisplayVolumeControls2}}
+                                </mat-checkbox>
+                            </div>
+                        </div>
+                        <div class="ngx-demo-content">
+                            <h6>Logging</h6>
+                            <p class="ngx-demo-content">
+                                <button (click)="logCurrentTrackBasicPlayer2()" mat-stroked-button>Log Current
+                                    Track
+                                </button>
+                                {{basicPlayerCurrentTrack2}}
+                            </p>
+                            <p class="ngx-demo-content">
+                                <button (click)="logCurrentTimeBasicPlayer2()" mat-stroked-button>Log Current
+                                    Time
+                                </button>
+                                {{basicPlayerCurrentTime2}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <mat-basic-audio-player #basic2 [audioUrl]="msbapAudioUrl2" [autoPlay]="false" (trackEnded)="onEnded($event)"
+                            [displayTitle]="msbapDisplayTitle2" [displayVolumeControls]="msbapDisplayVolumeControls2"
+                            [title]="msbapTitle2" class="col-12 col-md-6" muted="muted"></mat-basic-audio-player>
                     </div>
                 </mat-card-content>
                 <div>
@@ -115,7 +183,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <mat-advanced-audio-player (ended)="onEnded($event)" [autoPlay]="false"
+                        <mat-advanced-audio-player #advanced (trackEnded)="onEnded($event)" [autoPlay]="false"
                             [displayPlaylist]="msaapDisplayPlayList" [displayTitle]="msaapDisplayTitle"
                             [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true"
                             [pageSizeOptions]="pageSizeOptions" [playlist]="msaapPlaylist"></mat-advanced-audio-player>

@@ -63,7 +63,7 @@ import { NgxAudioPlayerModule } from 'ngx-audio-player';
 @NgModule({
   imports: [
     // ...
-    NgxAudioPlayerModule.forRoot()
+    NgxAudioPlayerModule
   ]
 })
 export class AppModule { }
@@ -76,7 +76,7 @@ export class AppModule { }
 ##### HTML   
 
 ```html
-<mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [autoPlay]="false" muted="muted" (ended)="onEnded($event)"
+<mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [autoPlay]="false" muted="muted" (trackEnded)="onEnded($event)"
     [displayTitle]="msbapDisplayTitle" [displayVolumeControls]="msaapDisplayVolumeControls" ></mat-basic-audio-player>
 ```
    
@@ -99,7 +99,7 @@ msbapDisplayVolumeControls = true;
 | @Input() audioUrl: string;                 | url of the audio                                    | mandatory | none          |
 | @Input() autoPlay: false;                  | true - if the audio needs to be played automaticlly | optional  | false         |
 | @Input() displayTitle = false;             | true - if the audio title needs to be displayed     | optional  | false         |
-| @Output() ended: Subject<String>;          | Callback method thats triggers once the track ends  | optional  | - N.A -       |
+| @Output() trackEnded: Subject<string>;     | Callback method thats triggers once the track ends  | optional  | - N.A -       |
 | @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true          |
 | @Input() startOffset = 0;                  | offset from start of audio file in seconds          | optional  | 0             |
 | @Input() endOffset = 0;                    | offset from end of audio file in seconds            | optional  | 0             |
@@ -112,7 +112,7 @@ msbapDisplayVolumeControls = true;
 
 ```html
 <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
-    muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="pageSizeOptions" (ended)="onEnded($event)"
+    muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="pageSizeOptions" (trackEnded)="onEnded($event)"
         [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true"></mat-advanced-audio-player> 
 ```
    
@@ -157,7 +157,7 @@ msaapPlaylist: Track[] = [
 | @Input() pageSizeOptions = [10, 20, 30];   | number of items to be displayed in the playlist     | optional  | [10,20,30]     |
 | @Input() expanded = true;                  | false - if the playlist needs to be minimized       | optional  | true           |
 | @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true           |
-| @Output() ended: Subject<String>;          | Callback method thats triggers once the track ends  | optional  | - N.A -        |
+| @Output() trackEnded: Subject<string>      | Callback method thats triggers once the track ends  | optional  | - N.A -        |
 | @Input() startOffset = 0;                  | offset from start of audio file in seconds          | optional  | 0              |
 | @Input() endOffset = 0;                    | offset from end of audio file in seconds            | optional  | 0              |
    
@@ -190,7 +190,6 @@ Thanks goes to these wonderful people:
 <td align="center"><a href="https://github.com/EdricChan03"><img src="https://avatars.githubusercontent.com/u/20047125?v=4" width="100px;"  alt=""/><br /><sub><b>Edric Chan</b></sub></a><br /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=EdricChan03" title="Code">💻</a></td>
 <td align="center"><a href="https://github.com/RokiFoki"><img src="https://avatars3.githubusercontent.com/u/9476596?v=4" width="100px;"  alt=""/><br /><sub><b>RokiFoki</b></sub></a><br /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=RokiFoki" title="Code">💻</a></td>
 <td align="center"><a href="https://github.com/ewwwgiddings"><img src="https://avatars.githubusercontent.com/u/26286559?v=4" width="100px;"  alt=""/><br /><sub><b>ewwwgiddings</b></sub></a><br /><a  href="https://github.com/vmudigal/ngx-audio-player/commits?author=ewwwgiddings"  title="Documentation">📖</a></td>
-</tr>
 <td align="center"><a href="https://github.com/cicsolutions"><img src="https://avatars1.githubusercontent.com/u/5200361?v=4" width="100px;"  alt=""/><br /><sub><b>Caleb Crosby</b></sub></a><br /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=cicsolutions" title="Code">💻</a></td>
 </tr>
 </table>  
@@ -201,7 +200,6 @@ Thanks goes to these wonderful people:
 
 ## Misc
 
-It is a known limitation of this library that there can only be one instance of it per page. Multiple instances of either the basic or advanced players on one page is not supported at this time.
 
 ## License
 
