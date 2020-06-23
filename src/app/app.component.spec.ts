@@ -7,12 +7,8 @@ import { ShareButtonsModule } from '@ngx-share/buttons';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-      imports: [
-        RouterTestingModule, MatToolbarModule, ShareButtonsModule
-      ],
+      declarations: [AppComponent],
+      imports: [RouterTestingModule, MatToolbarModule, ShareButtonsModule],
       providers: []
     }).compileComponents();
   }));

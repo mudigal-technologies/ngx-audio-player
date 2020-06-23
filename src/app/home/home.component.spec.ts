@@ -14,9 +14,14 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [HomeComponent],
-      imports: [BrowserAnimationsModule, RouterTestingModule, MatCardModule, MatCheckboxModule, NgxAudioPlayerModule]
-    })
-      .compileComponents();
+      imports: [
+        BrowserAnimationsModule,
+        RouterTestingModule,
+        MatCardModule,
+        MatCheckboxModule,
+        NgxAudioPlayerModule
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -29,7 +34,9 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should be able to click on basic player controls - display title', async(() => {
-    const input = fixture.debugElement.query(By.css('.mat-basic-player-display-title .mat-checkbox-input')).nativeElement;
+    const input = fixture.debugElement.query(
+      By.css('.mat-basic-player-display-title .mat-checkbox-input')
+    ).nativeElement;
     expect(input.checked).toBeFalsy();
     input.click();
     fixture.detectChanges();
@@ -37,7 +44,9 @@ describe('HomeComponent', () => {
   }));
 
   it('should be able to click on advanced player controls - display title', async(() => {
-    const input = fixture.debugElement.query(By.css('.mat-advanced-player-display-title .mat-checkbox-input')).nativeElement;
+    const input = fixture.debugElement.query(
+      By.css('.mat-advanced-player-display-title .mat-checkbox-input')
+    ).nativeElement;
     expect(input.checked).toBeTruthy();
     input.click();
     fixture.detectChanges();
@@ -45,11 +54,12 @@ describe('HomeComponent', () => {
   }));
 
   it('should be able to click on advanced player controls - display playlist', async(() => {
-    const input = fixture.debugElement.query(By.css('.mat-advanced-player-display-playlist .mat-checkbox-input')).nativeElement;
+    const input = fixture.debugElement.query(
+      By.css('.mat-advanced-player-display-playlist .mat-checkbox-input')
+    ).nativeElement;
     expect(input.checked).toBeTruthy();
     input.click();
     fixture.detectChanges();
     expect(input.checked).toBeFalsy();
   }));
-
 });

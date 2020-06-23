@@ -1,10 +1,21 @@
 #matLink{
     text-decoration: none;
-    color: white!important;
 }
 
 .header {
     text-align: center;
     padding: 60px;
-    color: white;
+}
+
+.ngx-demo-content {
+    margin: 20px 0px;
+}
+
+.ngx-demo-block button {
+  margin-right: 8px;
+}
+
+h2 > a {
+    color: whitesmoke;
+    font-style: italic;
 }

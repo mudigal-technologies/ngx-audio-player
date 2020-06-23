@@ -7,7 +7,8 @@
   },
   "author": {
     "name": "Vijayendra Mudigal",
-    "email": "vijayendrap@gmail.com"
+    "email": "vijayendrap@gmail.com",
+    "url": "https://vijayendra.mudigal.com"
   },
   "keywords": [
     "ngx",
@@ -15,6 +16,7 @@
     "player",
     "angular",
     "angular7",
+    "angular8",
     "audio player",
     "angular audio player",
     "audio player with playlist",
@@ -28,8 +30,8 @@
     "start": "ng serve --host 0.0.0.0",
     "lch-build": "ng build",
     "prod-build": "ng build --prod",
-    "build-lib": "ng build ngx-audio-player",
-    "publish-lib": "npm publish dist/ngx-audio-player",
+    "build-lib": "ng build ngx-audio-player --prod",
+    "publish-lib": "npm publish --f dist/ngx-audio-player --prod",
     "build-demo": "ng build --prod --base-href https://vmudigal.github.io/ngx-audio-player/",
     "publish-demo": "npx ngh --dir=dist/ngx-audio-player-demo/",
     "test": "ng test --code-coverage --reporters=teamcity,coverage-istanbul",
@@ -49,16 +51,9 @@
     "@angular/platform-browser": "~8.1.1",
     "@angular/platform-browser-dynamic": "~8.1.1",
     "@angular/router": "~8.1.1",
-    "@fortawesome/angular-fontawesome": "^0.4.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.19",
-    "@fortawesome/free-brands-svg-icons": "^5.9.0",
-    "@fortawesome/free-solid-svg-icons": "^5.9.0",
-    "@ngx-share/button": "^7.1.2",
-    "@ngx-share/buttons": "^7.1.2",
-    "@ngx-share/core": "^7.1.2",
     "core-js": "^3.1.4",
     "hammerjs": "^2.0.8",
-    "ngx-audio-player": "^8.0.2",
+    "ngx-audio-player": "^8.0.3",
     "rxjs": "~6.5.2",
     "zone.js": "^0.9.1"
   },

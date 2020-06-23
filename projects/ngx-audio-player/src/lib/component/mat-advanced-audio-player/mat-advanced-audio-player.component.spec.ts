@@ -1,11 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import 'hammerjs';
 import { MatAdvancedAudioPlayerComponent } from './mat-advanced-audio-player.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  MatCardModule, MatExpansionModule, MatFormFieldModule, MatPaginatorModule,
-  MatSliderModule, MatTableModule
-} from '@angular/material';
+
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+
 import { AudioPlayerService } from '../../service/audio-player-service/audio-player.service';
 import { SecondsToMinutesPipe } from '../../pipe/seconds-to-minutes';
 import { FormsModule } from '@angular/forms';
@@ -14,6 +17,7 @@ import { ElementRef, Injectable, Component, Type } from '@angular/core';
 import { Track } from '../../model/track.model';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { By } from 'protractor';
+import { MatIconModule } from '@angular/material/icon';
 
 @Injectable()
 export class MockElementRef {
@@ -28,7 +32,7 @@ export class MockService extends AudioPlayerService {
 describe('MatAdvancedAudioPlayerComponent', () => {
   function createComponent<T>(componentType: Type<T>, extraDeclarations: Type<any>[] = []) {
     TestBed.configureTestingModule({
-      imports: [FontAwesomeModule, MatSliderModule, MatCardModule,
+      imports: [MatIconModule, MatSliderModule, MatCardModule,
         MatFormFieldModule, MatExpansionModule, MatPaginatorModule, MatTableModule, FormsModule, NgxAudioPlayerModule],
       declarations: [componentType, ...extraDeclarations],
       providers: [{ provide: ElementRef, useClass: MockElementRef }, { provide: AudioPlayerService, useClass: MockService }]
@@ -54,7 +58,7 @@ describe('MatAdvancedAudioPlayerComponent', () => {
       TestBed.configureTestingModule({
         declarations: [MatAdvancedAudioPlayerComponent, SecondsToMinutesPipe],
         imports: [
-          FontAwesomeModule,
+          MatIconModule,
           FormsModule,
           MATERIAL_MODULES
         ],
@@ -76,12 +80,39 @@ describe('MatAdvancedAudioPlayerComponent', () => {
     });
 
     it('should be able to set playlist', async () => {
-      expect(component.playlistData[0].title).toEqual(mockPlaylist[0].title);
+      expect(component.playlist[0].title).toEqual(mockPlaylist[0].title);
     });
 
     it('should have play button', () => {
       const playButton = By.css('.play-track');
       expect(playButton).toBeDefined();
+    });
+
+    it('should select next song correctly', () => {
+      component.nextSong();
+      expect(component.currentTrack.index).toEqual(1);
+      component.nextSong();
+      expect(component.currentTrack.index).toEqual(2);
+      component.nextSong();
+      expect(component.currentTrack.index).toEqual(0);
+      component.nextSong();
+      expect(component.currentTrack.index).toEqual(1);
+    });
+
+    it('should select previous song correctly', () => {
+      component.previousSong();
+      expect(component.currentTrack.index).toEqual(2);
+      component.previousSong();
+      expect(component.currentTrack.index).toEqual(1);
+      component.previousSong();
+      expect(component.currentTrack.index).toEqual(0);
+      component.previousSong();
+      expect(component.currentTrack.index).toEqual(2);
+    });
+
+    it('should select track correctly', () => {
+      component.selectTrack(2);
+      expect(component.currentTrack.index).toEqual(1);
     });
 
     it('should select next song correctly', () => {

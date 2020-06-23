@@ -1,10 +1,18 @@
-import { ViewChild, ElementRef } from '@angular/core';
-import { MatSlider } from '@angular/material';
+import { ViewChild, ElementRef, Output, Input } from '@angular/core';
+import { MatSlider } from '@angular/material/slider';
+import { Track } from '../../model/track.model';
+import { Subject } from 'rxjs';
 
 export class BaseAudioPlayerFunctions {
 
-    @ViewChild('audioPlayer', {static: true}) player: ElementRef;
+    @Output()
+    trackEnded: Subject<string> = new Subject<string>();
+
+    @ViewChild('audioPlayer', { static: true }) player: ElementRef;
     timeLineDuration: MatSlider;
+
+    iOS = (/iPad|iPhone|iPod/.test(navigator.platform)
+        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
 
     loaderDisplay = false;
     isPlaying = false;
@@ -12,11 +20,15 @@ export class BaseAudioPlayerFunctions {
     volume = 0.1;
     duration = 0.01;
 
+    @Input()
+    public endOffset = 0;
+
     currTimePosChanged(event) {
         this.player.nativeElement.currentTime = event.value;
     }
 
     bindPlayerEvent(): void {
+
         this.player.nativeElement.addEventListener('playing', () => {
             this.isPlaying = true;
             this.duration = Math.floor(this.player.nativeElement.duration);
@@ -26,17 +38,26 @@ export class BaseAudioPlayerFunctions {
         });
         this.player.nativeElement.addEventListener('timeupdate', () => {
             this.currentTime = Math.floor(this.player.nativeElement.currentTime);
+            if (this.currentTime >= this.duration - this.endOffset) {
+                this.player.nativeElement.pause();
+            }
         });
         this.player.nativeElement.addEventListener('volume', () => {
             this.volume = Math.floor(this.player.nativeElement.volume);
         });
-        this.player.nativeElement.addEventListener('loadstart', () => {
-            this.loaderDisplay = true;
-        });
+        if (!this.iOS) {
+            this.player.nativeElement.addEventListener('loadstart', () => {
+                this.loaderDisplay = true;
+            });
+        }
         this.player.nativeElement.addEventListener('loadeddata', () => {
             this.loaderDisplay = false;
             this.duration = Math.floor(this.player.nativeElement.duration);
         });
+        this.player.nativeElement.addEventListener('ended', () => {
+            this.trackEnded.next('ended');
+        });
+
     }
 
     playBtnHandler(): void {
@@ -51,7 +72,7 @@ export class BaseAudioPlayerFunctions {
         }
     }
 
-    play(): void {
+    play(track?: Track): void {
         setTimeout(() => {
             this.player.nativeElement.play();
         }, 0);

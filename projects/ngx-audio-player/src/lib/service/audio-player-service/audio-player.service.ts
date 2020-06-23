@@ -1,78 +1,52 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Track } from '../../model/track.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AudioPlayerService {
 
-  playlist: Track[] = [];
+  // Dynamic update of playlist
+  tracks: Track[] = [];
+  playlistSubject$: BehaviorSubject<Track[]> =
+    new BehaviorSubject<Track[]>(this.tracks);
 
-  indexSong = 0;
-  currentTrack: BehaviorSubject<{}> = new BehaviorSubject(this.playlist[this.indexSong]);
-  currentTime = 0;
-  duration = 0;
+  // Get the current track
+  currentTrack: Track;
+  currentTrackSubject$: BehaviorSubject<Track> =
+    new BehaviorSubject<Track>(this.currentTrack);
 
-  constructor() {
+  // Get the current time
+  currentTime: any;
+  currentTimeSubject$: BehaviorSubject<any> =
+    new BehaviorSubject<any>(this.currentTime);
 
+  setPlaylist(tracks: Track[]) {
+    this.tracks = tracks;
+    this.playlistSubject$.next(this.tracks);
   }
 
-  init(): void {
-    this.updateCurrentSong();
+  getPlaylist(): Observable<Track[]> {
+    return this.playlistSubject$.asObservable();
   }
 
-  nextSong(): void {
-    if ((this.indexSong + 1) >= this.playlist.length) {
-      this.indexSong = 0;
-    } else {
-      this.indexSong++;
-    }
-    this.updateCurrentSong();
+  setCurrentTrack(currentTrack: Track) {
+    this.currentTrack = currentTrack;
+    this.currentTrackSubject$.next(this.currentTrack);
   }
 
-  previousSong(): void {
-    if ((this.indexSong - 1) < 0) {
-      this.indexSong = (this.playlist.length - 1);
-    } else {
-      this.indexSong--;
-    }
-    this.updateCurrentSong();
+  getCurrentTrack(): Observable<Track> {
+    return this.currentTrackSubject$.asObservable();
   }
 
-  resetPlaylist(): void {
-    this.indexSong = 0;
-    this.updateCurrentSong();
+  setCurrentTime(currentTime: any) {
+    this.currentTime = currentTime;
+    this.currentTimeSubject$.next(this.currentTime);
   }
 
-  selectATrack(index: number): void {
-    this.indexSong = index - 1;
-    this.updateCurrentSong();
+  getCurrentTime(): Observable<any> {
+    return this.currentTimeSubject$.asObservable();
   }
 
-  updateCurrentSong(): void {
-    const current = this.playlist[this.indexSong];
-    const previous = ((this.indexSong - 1) >= 0) ? this.playlist[this.indexSong - 1] : this.playlist[this.playlist.length - 1];
-    const next = ((this.indexSong + 1) >= this.playlist.length) ? this.playlist[0] : this.playlist[this.indexSong + 1];
-
-    this.currentTrack.next([
-      previous,
-      current,
-      next
-    ]);
-  }
-
-  getSubjectCurrentTrack(): BehaviorSubject<{}> {
-    return this.currentTrack;
-  }
-
-  getPlaylist(): Track[] {
-    return this.playlist;
-  }
-
-  setPlaylist(playlist: Track[]) {
-    this.playlist = playlist;
-  }
-
-  getIndexSong() {
-    return this.indexSong;
-  }
 }
