@@ -14,3 +14,8 @@
 .ngx-demo-block button {
   margin-right: 8px;
 }
+
+h2 > a {
+    color: whitesmoke;
+    font-style: italic;
+}

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Track } from 'ngx-audio-player/public_api';
-import { AudioPlayerService } from 'projects/ngx-audio-player/src/public_api';
+import { MatBasicAudioPlayerComponent, MatAdvancedAudioPlayerComponent } from 'projects/ngx-audio-player/src/public_api';
 
 @Component({
   selector: 'app-home',
@@ -8,18 +8,85 @@ import { AudioPlayerService } from 'projects/ngx-audio-player/src/public_api';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  constructor(private audioPlayerService: AudioPlayerService) {}
-  private fmaBaseUrl =
-    'https://files.freemusicarchive.org/storage-freemusicarchive-org/music';
+
+  constructor() { }
+  private fmaBaseUrl = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music';
+
+
+
+
+
+  // Start of Basic Player Instance 1
 
   // Material Style Basic Audio Player Title and Audio URL
-  msbapTitle = 'In Love | A Himitsu feat. Nori';
-  msbapAudioUrl = `https://audiograb.com/songs/nori-in-love-chill-royalty-free-music-xiMvrlfD.mp3`;
+  msbapTitle1 = 'In Love | A Himitsu feat. Nori';
+  msbapAudioUrl1 = 'https://audiograb.com/songs/nori-in-love-chill-royalty-free-music-xiMvrlfD.mp3';
 
-  msbapDisplayTitle = false;
-  msbapDisplayVolumeControls = true;
+  msbapDisplayTitle1 = true;
+  msbapDisplayVolumeControls1 = true;
+
+  // Optional Additional Examples 
+  // - Logging Current Time
+
+  @ViewChild("basic1")
+  basicPlayer1: MatBasicAudioPlayerComponent;
+
+  basicPlayerCurrentTrack1: string;
+  basicPlayerCurrentTime1: any;
+
+  logCurrentTrackBasicPlayer1() {
+    this.basicPlayerCurrentTrack1 = this.basicPlayer1.title;
+  }
+
+  logCurrentTimeBasicPlayer1() {
+    this.basicPlayer1.audioPlayerService.getCurrentTime().subscribe(time => {
+      this.basicPlayerCurrentTime1 = time;
+    })
+  }
+  // End of Basic Player Instance 1
+
+
+
+
+
+  // Start of Basic Player Instance 2
+
+  // Material Style Basic Audio Player Title and Audio URL
+  msbapTitle2 = 'Cartoon – On & On (feat. Daniel Levi) [NCS Release]';
+  msbapAudioUrl2 = 'https://audiograb.com/songs/daniel-levi-chill-royalty-free-music-m5BTrEAILs.mp3';
+
+  msbapDisplayTitle2 = true;
+  msbapDisplayVolumeControls2 = true;
+
+  // Optional Additional Examples 
+  // - Logging Current Time
+
+  @ViewChild("basic2")
+  basicPlayer2: MatBasicAudioPlayerComponent;
+
+  basicPlayerCurrentTrack2: string;
+  basicPlayerCurrentTime2: any;
+
+  logCurrentTrackBasicPlayer2() {
+    this.basicPlayerCurrentTrack2 = this.basicPlayer2.title;
+  }
+
+  logCurrentTimeBasicPlayer2() {
+    this.basicPlayer2.audioPlayerService.getCurrentTime().subscribe(time => {
+      this.basicPlayerCurrentTime2 = time;
+    });
+  }
+  // End of Basic Player Instance 2
+
+
+
+
 
   // Material Style Advance Audio Player Playlist
+
+  @ViewChild("advanced")
+  advancedPlayer: MatAdvancedAudioPlayerComponent;
+
   msaapPlaylist: Track[] = [
     {
       title: 'In Love | A Himitsu feat. Nori',
@@ -67,28 +134,7 @@ export class HomeComponent {
   currentTime: any;
 
   appendTracksToPlaylistDisable = false;
-
   counter = 1;
-
-  changeMsbapDisplayTitle(event) {
-    this.msbapDisplayTitle = event.checked;
-  }
-
-  changeMsbapDisplayVolumeControls(event) {
-    this.msbapDisplayVolumeControls = event.checked;
-  }
-
-  changeMsaapDisplayTitle(event) {
-    this.msaapDisplayTitle = event.checked;
-  }
-
-  changeMsaapDisplayPlayList(event) {
-    this.msaapDisplayPlayList = event.checked;
-  }
-
-  changeMsaapDisplayVolumeControls(event) {
-    this.msaapDisplayVolumeControls = event.checked;
-  }
 
   onEnded(event) {
     console.log(event);
@@ -101,13 +147,13 @@ export class HomeComponent {
   }
 
   logCurrentTrack() {
-    this.audioPlayerService.getCurrentTrack().subscribe(track => {
+    this.advancedPlayer.audioPlayerService.getCurrentTrack().subscribe(track => {
       this.currentTrack = track;
     });
   }
 
   logCurrentTime() {
-    this.audioPlayerService.getCurrentTime().subscribe(time => {
+    this.advancedPlayer.audioPlayerService.getCurrentTime().subscribe(time => {
       this.currentTime = time;
     });
   }
@@ -125,14 +171,51 @@ export class HomeComponent {
       this.msaapPlaylist2.map(track => {
         this.msaapPlaylist.push(track);
       });
-      this.audioPlayerService.setPlaylist(this.msaapPlaylist);
+      this.advancedPlayer.audioPlayerService.setPlaylist(this.msaapPlaylist);
       this.counter = this.counter + 1;
     } else if (this.counter === 2) {
       this.msaapPlaylist3.map(track => {
         this.msaapPlaylist.push(track);
       });
-      this.audioPlayerService.setPlaylist(this.msaapPlaylist);
+      this.advancedPlayer.audioPlayerService.setPlaylist(this.msaapPlaylist);
       this.appendTracksToPlaylistDisable = true;
     }
   }
+
+
+
+
+
+  // Start needed for demo purpose
+  // Basic Player 1
+  changeMsbapDisplayTitle1(event) {
+    this.msbapDisplayTitle1 = event.checked;
+  }
+
+  changeMsbapDisplayVolumeControls1(event) {
+    this.msbapDisplayVolumeControls1 = event.checked;
+  }
+
+  // Basic Player 2
+  changeMsbapDisplayTitle2(event) {
+    this.msbapDisplayTitle2 = event.checked;
+  }
+
+  changeMsbapDisplayVolumeControls2(event) {
+    this.msbapDisplayVolumeControls2 = event.checked;
+  }
+
+  // Advanced Player
+  changeMsaapDisplayTitle(event) {
+    this.msaapDisplayTitle = event.checked;
+  }
+
+  changeMsaapDisplayPlayList(event) {
+    this.msaapDisplayPlayList = event.checked;
+  }
+
+  changeMsaapDisplayVolumeControls(event) {
+    this.msaapDisplayVolumeControls = event.checked;
+  }
+  // End needed for demo purpose
 }

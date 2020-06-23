@@ -35,7 +35,7 @@
 <span class="hljs-meta">@NgModule</span>({{'{'}}
   imports: [
     <span class="hljs-comment">// ...</span>
-    NgxAudioPlayerModule.forRoot()
+    NgxAudioPlayerModule
   ]
 {{'}'}})
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule {{'{'}} {{'}'}}</code></pre>
@@ -47,7 +47,7 @@
                 class="hljs-attr">title</span>]=<span class="hljs-string">"msbapTitle"</span> [<span
                 class="hljs-attr">autoPlay</span>]=<span class="hljs-string">"false"</span> <span
                 class="hljs-attr">muted</span>=<span class="hljs-string">"muted"</span> <span
-                class="hljs-attr">(ended)</span>=<span class="hljs-string">"onEnded($event)"</span>
+                class="hljs-attr">(trackEnded)</span>=<span class="hljs-string">"onEnded($event)"</span>
             [<span class="hljs-attr">displayTitle</span>]=<span class="hljs-string">"msbapDisplayTitle"</span> [<span
                     class="hljs-attr">displayVolumeControls</span>]=<span
                     class="hljs-string">"true"</span>&gt;</span><span class="hljs-tag">&lt;/<span
@@ -103,7 +103,7 @@ msbapDisplayTitle = <span class="hljs-literal">false</span>;   </code></pre>
                 <td>false</td>
             </tr>
             <tr>
-                <td>@Output() ended: Subject&lt;String&gt;;</td>
+                <td>@Output() trackEnded: Subject&lt;String&gt;;</td>
                 <td>Callback method thats triggers once the track ends</td>
                 <td>optional</td>
                 <td>-N.A-</td>
@@ -144,7 +144,7 @@ msbapDisplayTitle = <span class="hljs-literal">false</span>;   </code></pre>
             <span class="hljs-attr">muted</span>=<span class="hljs-string">"muted"</span> [<span
                     class="hljs-attr">displayPlaylist</span>]=<span class="hljs-string">"msaapDisplayPlayList"</span> [<span
                     class="hljs-attr">pageSizeOptions</span>]=<span class="hljs-string">"msaapPageSizeOptions"</span> <span
-                    class="hljs-attr">(ended)</span>=<span
+                    class="hljs-attr">(trackEnded)</span>=<span
                     class="hljs-string">"onEnded($event)"</span>
                 [<span class="hljs-attr">expanded</span>]=<span
                     class="hljs-string">"true"</span> [<span
@@ -236,7 +236,7 @@ msaapPlaylist: Track[] = [
                 <td>true</td>
             </tr>
             <tr>
-                <td>@Output() ended: Subject&lt;String&gt;;</td>
+                <td>@Output() trackEnded: Subject&lt;String&gt;;</td>
                 <td>Callback method thats triggers once the track ends</td>
                 <td>optional</td>
                 <td>-N.A-</td>

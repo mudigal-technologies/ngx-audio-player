@@ -51,7 +51,7 @@ export const appRoutes: Routes = [
     MatSlideToggleModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    NgxAudioPlayerModule.forRoot(),
+    NgxAudioPlayerModule,
     RouterModule.forRoot(appRoutes, { useHash: false })
   ],
   providers: [],
