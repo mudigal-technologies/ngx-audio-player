@@ -1,8 +1,9 @@
-import { ViewChild, ElementRef, Output, Input } from '@angular/core';
+import { ViewChild, ElementRef, Output, Input, Directive } from '@angular/core';
 import { MatSlider } from '@angular/material/slider';
 import { Track } from '../../model/track.model';
 import { Subject } from 'rxjs';
 
+@Directive()
 export class BaseAudioPlayerFunctions {
 
     @Output()
