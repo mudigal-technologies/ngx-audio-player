@@ -95,7 +95,8 @@
         </mat-icon>
     </button>
     <div class="flex-fill pl-1 ngx-basic-audio-player-slider">
-        <mat-slider (change)="currTimePosChanged($event)" [min]="startOffset" max="{{duration-endOffset}}"
+
+        <mat-slider [disabled]="disablePositionSlider" (change)="currTimePosChanged($event)" [min]="startOffset" max="{{duration-endOffset}}"
             style="width: 100%" value="{{currentTime}}"></mat-slider>
     </div>
     <div class="d-flex ngx-basic-audio-player-duration">

@@ -49,9 +49,10 @@ export class BaseAudioPlayerFunctions {
         });
         this.player.nativeElement.addEventListener('timeupdate', () => {
             this.currentTime = Math.floor(this.player.nativeElement.currentTime);
-            if (this.currentTime >= this.duration - this.endOffset) {
-                this.player.nativeElement.pause();
-            }
+            // BUG: Commenting for `ended` event not firing #66
+            // if (this.currentTime >= this.duration - this.endOffset) {
+            //     this.player.nativeElement.pause();
+            // }
         });
         this.player.nativeElement.addEventListener('volume', () => {
             this.volume = Math.floor(this.player.nativeElement.volume);

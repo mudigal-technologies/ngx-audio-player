@@ -1,6 +1,6 @@
 {
-  "name": "ngx-audio-player",
-  "version": "9.1.1",
+  "name": "@vmudigal/ngx-audio-player",
+  "version": "9.1.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/vmudigal/ngx-audio-player.git"

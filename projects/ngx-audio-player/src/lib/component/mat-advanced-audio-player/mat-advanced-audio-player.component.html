@@ -1,7 +1,7 @@
 <mat-card class="d-flex justify-content-center ngx-advanced-audio-player z-depth-1 mat-elevation-z2"
     style="margin: 0px;">
 
-    <audio #audioPlayer [src]="currentTrack?.link"></audio>
+    <audio #audioPlayer [src]="tracks[currentIndex]?.link"></audio>
 
     <button (click)='previousSong();' [disabled]="loaderDisplay" class="p-1" mat-button>
         <mat-icon aria-hidden="true">
@@ -123,7 +123,8 @@
                     {{currentTime-startOffset | secondsToMinutes}}
                 </span>
             </div>
-            <mat-slider (change)="currTimePosChanged($event)" [min]="startOffset"
+
+            <mat-slider [disabled]="disablePositionSlider" (change)="currTimePosChanged($event)" [min]="startOffset"
                 class="d-none d-sm-block flex-fill p-1" max="{{duration-endOffset}}" style="width: 100%"
                 value="{{currentTime}}"></mat-slider>
 
@@ -157,8 +158,8 @@
 <mat-card *ngIf="displayTitle" class="mat-elevation-z1">
     <div style="text-align: center;">
         <div style="margin: 1px 2px; padding: 1em">
-            <span *ngIf="!isPlaying">{{ currentTrack?.title }}</span>
-            <marquee *ngIf="isPlaying" behavior="scroll" direction="left">{{ currentTrack?.title
+            <span *ngIf="!isPlaying">{{ tracks[currentIndex]?.title }}</span>
+            <marquee *ngIf="isPlaying" behavior="scroll" direction="left">{{ tracks[currentIndex]?.title
                 }}
             </marquee>
         </div>
@@ -181,7 +182,7 @@
             <ng-container matColumnDef="status">
                 <th *matHeaderCellDef mat-header-cell></th>
                 <td *matCellDef="let element" mat-cell>
-                    <div *ngIf="currentTrack?.title === element.title">
+                    <div *ngIf="tracks[currentIndex]?.title === element.title">
                         <!-- <mat-icon *ngIf="isPlaying" aria-hidden="true">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
                         </mat-icon> -->

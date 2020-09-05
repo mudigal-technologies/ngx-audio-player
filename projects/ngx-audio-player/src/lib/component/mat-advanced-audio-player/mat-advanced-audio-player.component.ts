@@ -44,16 +44,24 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
     @Input() pageSizeOptions = [10, 20, 30];
     @Input() expanded = true;
     @Input() autoPlay = false;
+    @Input() disablePositionSlider = false;
 
-    private currentIndex = 0;
-
-    currentTrack: Track;
-    private previousTrack: Track;
-    private nextTrack: Track;
+    currentIndex = 0;
 
     ngOnInit() {
 
-        this.bindPlayerEvent();
+        super.bindPlayerEvent();
+
+        // auto play next track
+        this.player.nativeElement.addEventListener('ended', () => {
+            if (this.checkIfSongHasStartedSinceAtleastTwoSeconds()) {
+                this.nextSong();
+            }
+        });
+
+        this.player.nativeElement.addEventListener('timeupdate', () => {
+            this.audioPlayerService.setCurrentTime(this.player.nativeElement.currentTime);
+        });
 
         // Subscribe to playlist observer from AudioPlayerService and
         // update the playlist within MatAdvancedAudioPlayerComponent
@@ -72,19 +80,12 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         // material table data source and paginator
         this.setDataSourceAttributes();
 
-        // auto play next track
-        this.player.nativeElement.addEventListener('ended', () => {
-            this.nextSong();
-        });
-
-        this.player.nativeElement.addEventListener('timeupdate', () => {
-            this.audioPlayerService.setCurrentTime(this.player.nativeElement.currentTime);
-        });
 
         this.player.nativeElement.currentTime = this.startOffset;
-        this.updateCurrentSong();
+        this.updateCurrentTrack();
+
         if (this.autoPlay) {
-            super.play();
+            this.play();
         }
     }
 
@@ -116,8 +117,8 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         } else {
             this.currentIndex++;
         }
-        this.updateCurrentSong();
-        this.play(this.nextTrack);
+        this.updateCurrentTrack();
+        this.play();
     }
 
     previousSong(): void {
@@ -141,30 +142,26 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         } else {
             this.resetSong();
         }
-        this.updateCurrentSong();
-        this.play(this.previousTrack);
+        this.updateCurrentTrack();
+        this.play();
     }
 
     resetSong(): void {
-        this.player.nativeElement.src = this.currentTrack.link;
+        this.player.nativeElement.src = this.tracks[this.currentIndex].link;
     }
 
     selectTrack(index: number): void {
         this.currentIndex = index - 1;
-        this.updateCurrentSong();
-        this.play(this.currentTrack);
+        this.updateCurrentTrack();
+        this.play();
     }
 
     checkIfSongHasStartedSinceAtleastTwoSeconds(): boolean {
         return this.player.nativeElement.currentTime > 2;
     }
 
-    updateCurrentSong(): void {
-        this.currentTrack = this.tracks[this.currentIndex];
-        this.previousTrack = ((this.currentIndex - 1) >= 0) ? this.tracks[this.currentIndex - 1] : this.tracks[this.tracks.length - 1];
-        this.nextTrack = ((this.currentIndex + 1) >= this.tracks.length) ? this.tracks[0] : this.tracks[this.currentIndex + 1];
-
-        this.audioPlayerService.setCurrentTrack(this.currentTrack);
+    updateCurrentTrack() {
+        this.audioPlayerService.setCurrentTrack(this.tracks[this.currentIndex]);
     }
 
 }
