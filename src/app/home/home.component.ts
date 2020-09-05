@@ -20,10 +20,11 @@ export class HomeComponent {
 
   // Material Style Basic Audio Player Title and Audio URL
   msbapTitle1 = 'In Love | A Himitsu feat. Nori';
-  msbapAudioUrl1 = 'https://audiograb.com/songs/nori-in-love-chill-royalty-free-music-xiMvrlfD.mp3';
+  msbapAudioUrl1 = 'https://dl.dropboxusercontent.com/s/9v0psowra7ekhxo/A%20Himitsu%20-%20In%20Love%20%28feat.%20Nori%29.flac?dl=0';
 
   msbapDisplayTitle1 = true;
   msbapDisplayVolumeControls1 = true;
+  msbapDisablePositionSlider1 = false;
 
   // Optional Additional Examples 
   // - Logging Current Time
@@ -53,10 +54,11 @@ export class HomeComponent {
 
   // Material Style Basic Audio Player Title and Audio URL
   msbapTitle2 = 'Cartoon – On & On (feat. Daniel Levi) [NCS Release]';
-  msbapAudioUrl2 = 'https://audiograb.com/songs/daniel-levi-chill-royalty-free-music-m5BTrEAILs.mp3';
+  msbapAudioUrl2 = 'https://dl.dropboxusercontent.com/s/w99exjxnwoqwz0e/Cartoon-on-on-feat-daniel-levi-ncs-release.mp3?dl=0';
 
   msbapDisplayTitle2 = true;
   msbapDisplayVolumeControls2 = true;
+  msbapDisablePositionSlider2 = false;
 
   // Optional Additional Examples 
   // - Logging Current Time
@@ -91,12 +93,12 @@ export class HomeComponent {
     {
       title: 'In Love | A Himitsu feat. Nori',
       link:
-        'https://audiograb.com/songs/nori-in-love-chill-royalty-free-music-xiMvrlfD.mp3'
+        'https://dl.dropboxusercontent.com/s/9v0psowra7ekhxo/A%20Himitsu%20-%20In%20Love%20%28feat.%20Nori%29.flac?dl=0'
     },
     {
       title: 'Cartoon – On & On (feat. Daniel Levi) [NCS Release]',
       link:
-        'https://audiograb.com/songs/daniel-levi-chill-royalty-free-music-m5BTrEAILs.mp3'
+        'https://dl.dropboxusercontent.com/s/w99exjxnwoqwz0e/Cartoon-on-on-feat-daniel-levi-ncs-release.mp3?dl=0'
     }
   ];
 
@@ -105,6 +107,7 @@ export class HomeComponent {
   pageSizeOptions = [2, 4, 6];
 
   msaapDisplayVolumeControls = true;
+  msaapDisablePositionSlider = false;
 
   // Advanced Features
 
@@ -196,6 +199,10 @@ export class HomeComponent {
     this.msbapDisplayVolumeControls1 = event.checked;
   }
 
+  changeMsbapDisablePositionSlider1(event) {
+    this.msbapDisablePositionSlider1 = event.checked;
+  }
+
   // Basic Player 2
   changeMsbapDisplayTitle2(event) {
     this.msbapDisplayTitle2 = event.checked;
@@ -203,6 +210,10 @@ export class HomeComponent {
 
   changeMsbapDisplayVolumeControls2(event) {
     this.msbapDisplayVolumeControls2 = event.checked;
+  }
+
+  changeMsbapDisablePositionSlider2(event) {
+    this.msbapDisablePositionSlider2 = event.checked;
   }
 
   // Advanced Player
@@ -216,6 +227,10 @@ export class HomeComponent {
 
   changeMsaapDisplayVolumeControls(event) {
     this.msaapDisplayVolumeControls = event.checked;
+  }
+
+  changeMsaapDisablePositionSlider(event) {
+    this.msaapDisablePositionSlider = event.checked;
   }
   // End needed for demo purpose
 }
