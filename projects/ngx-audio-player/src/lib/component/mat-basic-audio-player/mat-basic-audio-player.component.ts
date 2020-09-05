@@ -9,20 +9,12 @@ import { AudioPlayerService } from '../../service/audio-player-service/audio-pla
 })
 export class MatBasicAudioPlayerComponent extends BaseAudioPlayerFunctions implements OnInit {
 
-    @Input()
-    title: string;
-
-    @Input()
-    audioUrl: string;
-
-    @Input()
-    displayTitle = false;
-
-    @Input()
-    autoPlay = false;
-
-    @Input()
-    displayVolumeControls = true;
+    @Input() title: string;
+    @Input() audioUrl: string;
+    @Input() displayTitle = false;
+    @Input() autoPlay = false;
+    @Input() displayVolumeControls = true;
+    @Input() disablePositionSlider = false;
 
     audioPlayerService: AudioPlayerService;
 
