@@ -13,12 +13,12 @@ export class AudioPlayerService {
     new BehaviorSubject<Track[]>(this.tracks);
 
   // Get the current track
-  currentTrack: Track;
+  currentTrack: Track = null;
   currentTrackSubject$: BehaviorSubject<Track> =
     new BehaviorSubject<Track>(this.currentTrack);
 
   // Get the current time
-  currentTime: any;
+  currentTime: any = null;
   currentTimeSubject$: BehaviorSubject<any> =
     new BehaviorSubject<any>(this.currentTime);
 

@@ -23,6 +23,9 @@
       ],
       "ngx-audio-player/*": [
         "dist/ngx-audio-player/*"
+      ],
+      "core-js/es7/reflect": [
+          "node_modules/core-js/proposals/reflect-metadata"
       ]
     }
   }
