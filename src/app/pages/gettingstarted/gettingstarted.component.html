@@ -1,0 +1,227 @@
+<h1 class="mat-h1 header mat-toolbar mat-primary">Getting Started</h1>
+<div class="container">
+    <article>
+        <h6 class="col-12 py-5">
+            <div class="col-12 col-md-2 col-lg-3"></div>
+            <img class="col-12 col-md-8 col-lg-6" src="assets/images/logos/logo_with_text_dark.png">
+        </h6>
+        <p>A library for loading and playing audio using HTML 5 for Angular 7/8/9/10.</p>
+
+        <h2 id="installation">Installation</h2>
+        <p><code>ngx-audio-player</code> is available via <a href="https://www.npmjs.com/package/ngx-audio-player"
+                target="_blank" title="ngx-audio-player npm package link">npm</a> and <a
+                href="https://yarnpkg.com/en/package/ngx-audio-player" target="_blank"
+                title="ngx-audio-player yarn package link">yarn</a></p>
+        <p>Using npm:</p>
+        <pre><code class="bash">$ npm install ngx-audio-player --save</code></pre>
+        <p>Using yarn:</p>
+        <pre><code class="bash">$ yarn add ngx-audio-player</code></pre>
+        <h2 id="getting-started">Getting Started</h2>
+        <p>NgxAudioPlayerModule needs Angular Material.<br>Make sure you have installed below
+            dependencies with same or higher version than mentioned. </p>
+
+        <p>"@angular/core": "^10.0.0" <br>
+            "@angular/common": "^10.0.0" <br>
+            "@angular/material": "^10.0.0" <br>
+            "rxjs": "^6.5.5" </p>
+        <p>Import <code>NgxAudioPlayerModule</code> in in the root module(<code>AppModule</code>):
+        </p>
+        <pre><code class="typescript"><span class="hljs-comment">// Import library module</span>
+<span class="hljs-keyword">import</span> {{'{'}} NgxAudioPlayerModule {{'}'}} <span
+                    class="hljs-keyword">from</span> <span
+                    class="hljs-string">'ngx-audio-player'</span>;
+
+<span class="hljs-meta">@NgModule</span>({{'{'}}
+  imports: [
+    <span class="hljs-comment">// ...</span>
+    NgxAudioPlayerModule
+  ]
+{{'}'}})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule {{'{'}} {{'}'}}</code></pre>
+        <h3 id="usage">Usage</h3>
+        
+        <h5 id="html">HTML</h5>
+        <pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">ngx-audio-player</span> [<span
+                class="hljs-attr">playlist</span>]=<span class="hljs-string">"msaapPlaylist"</span> [<span
+                class="hljs-attr">displayTitle</span>]=<span
+                class="hljs-string">"msaapDisplayTitle"</span> [<span
+                class="hljs-attr">autoPlay</span>]=<span class="hljs-string">"false"</span>
+            <span class="hljs-attr">muted</span>=<span class="hljs-string">"muted"</span> [<span
+                    class="hljs-attr">displayPlaylist</span>]=<span class="hljs-string">"msaapDisplayPlayList"</span> [<span
+                    class="hljs-attr">pageSizeOptions</span>]=<span class="hljs-string">"msaapPageSizeOptions"</span> <span
+                    class="hljs-attr">(trackEnded)</span>=<span
+                    class="hljs-string">"onEnded($event)"</span>
+                [<span class="hljs-attr">expanded</span>]=<span
+                    class="hljs-string">"true"</span> [<span
+                    class="hljs-attr">displayVolumeControls</span>]=<span
+                    class="hljs-string">"msaapDisplayVolumeControls"</span> [<span
+                    class="hljs-attr">disablePositionSlider</span>]=<span
+                    class="hljs-string">"msaapDisablePositionSlider"</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                class="hljs-name">ngx-audio-player</span>&gt;</span>   </code></pre>
+        <h5 id="ts">TS</h5>
+        <pre><code class="ts"><span class="hljs-keyword">
+import</span> {{'{'}} Track {{'}'}} <span class="hljs-keyword">from</span> <span
+                class="hljs-string">'ngx-audio-player'</span>;
+
+ .   
+ .   
+
+msaapDisplayTitle = <span class="hljs-literal">true</span>;
+msaapDisplayPlayList = <span class="hljs-literal">true</span>;
+msaapPageSizeOptions = <span class="hljs-literal">[2,4,6]</span>;
+msaapDisplayVolumeControls = <span class="hljs-literal">true</span>;
+msaapDisablePositionSlider = <span class="hljs-literal">true</span>;
+
+<span class="hljs-comment">// Material Style Advance Audio Player Playlist</span>
+msaapPlaylist: Track[] = [
+    {{'{'}}
+        title: <span class="hljs-string">'Audio One Title'</span>,
+        link: <span class="hljs-string">'Link to Audio One URL'</span>
+    {{'}'}},
+    {{'{'}}
+        title: <span class="hljs-string">'Audio Two Title'</span>,
+        link: <span class="hljs-string">'Link to Audio Two URL'</span>
+    {{'}'}},
+    {{'{'}}
+        title: <span class="hljs-string">'Audio Three Title'</span>,
+        link: <span class="hljs-string">'Link to Audio Three URL'</span>
+    {{'}'}},
+];
+        </code></pre>
+        <h5 id="properties">Properties</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Input() playlist: Track[];</td>
+                    <td>playlist containing array of title and link</td>
+                    <td>mandatory</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>@Input()
+                        autoPlay = false;
+                    </td>
+                    <td>true - if the audio needs to be played automatically</td>
+                    <td>optional</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>@Input() displayTitle: true;</td>
+                    <td>false - if the audio title needs to be hidden</td>
+                    <td>optional</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>@Input() displayPlaylist: true;</td>
+                    <td>false - if the playlist needs to be hidden</td>
+                    <td>optional</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>@Input() pageSizeOptions = [10, 20, 30];</td>
+                    <td>number of items to be displayed in the playlist</td>
+                    <td>optional</td>
+                    <td>[10,20,30]</td>
+                </tr>
+                <tr>
+                    <td>@Input() expanded = true;</td>
+                    <td>false - if the playlist needs to be minimized</td>
+                    <td>optional</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>@Input() displayVolumeControls = true;</td>
+                    <td>false - if the volume controls needs to be hidden</td>
+                    <td>optional</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>@Output() trackEnded: Subject&lt;String&gt;;</td>
+                    <td>Callback method thats triggers once the track ends</td>
+                    <td>optional</td>
+                    <td>-N.A-</td>
+                </tr>
+                <tr>
+                    <td>@Input()
+                        startOffset = 0;
+                    </td>
+                    <td>offset from start of audio file in seconds</td>
+                    <td>optional</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>@Input()
+                        endOffset = 0;
+                    </td>
+                    <td>offset from end of audio file in seconds</td>
+                    <td>optional</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>@Input() disablePositionSlider = false;</td>
+                    <td>true - if the position slider needs to be disabled</td>
+                    <td>optional</td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="versioning">Versioning</h2>
+        <p>ngx-audio-player will be maintained under the Semantic Versioning guidelines.
+            Releases will be numbered with the following format:</p>
+
+        <p><code>&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</code></p>
+
+        <p>For more information on SemVer, please visit <a href="http://semver.org" target="_blank"
+                title="semver.org">http://semver.org</a>.
+        </p>
+
+        <h2 id="contributors">Contributors ✨</h2>
+        <p>Thanks goes to these wonderful people:</p>
+        <table align="center">
+            <tr>
+                <td align="center">
+                    <a href="https://github.com/EdricChan03" target="_blank">
+                        <img alt="" src="https://avatars.githubusercontent.com/u/20047125?v=4" width="100px;" />
+                        <br /><sub><b>Edric Chan</b></sub>
+                    </a><br />
+                    <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=EdricChan03"
+                        title="Code">💻</a>
+                </td>
+                <td align="center">
+                    <a href="https://github.com/RokiFoki" target="_blank">
+                        <img alt="" src="https://avatars3.githubusercontent.com/u/9476596?v=4" width="100px;" />
+                        <br /><sub><b>RokiFoki</b></sub>
+                    </a><br />
+                    <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=RokiFoki" title="Code">💻</a>
+                </td>
+                <td align="center">
+                    <a href="https://github.com/ewwwgiddings" target="_blank">
+                        <img alt="" src="https://avatars.githubusercontent.com/u/26286559?v=4" width="100px;" />
+                        <br /><sub><b>ewwwgiddings</b></sub>
+                    </a><br />
+                    <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=ewwwgiddings"
+                        title="Documentation">📖</a>
+                </td>
+                <td align="center">
+                    <a href="https://github.com/cicsolutions">
+                        <img alt="" src="https://avatars1.githubusercontent.com/u/5200361?v=4" width="100px;" />
+                        <br /><sub><b>Caleb Crosby</b></sub>
+                    </a><br />
+                    <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=cicsolutions" title="Code">💻
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <h2 id="license">License</h2>
+        <h5 id="the-mit-license-mit-">The MIT License (MIT)</h5>
+    </article>
+</div>

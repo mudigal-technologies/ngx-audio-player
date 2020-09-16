@@ -1,6 +1,6 @@
 {
   "name": "ngx-audio-player-demo",
-  "version": "10.0.0",
+  "version": "10.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/vmudigal/ngx-audio-player.git"
@@ -36,8 +36,8 @@
     "publish-lib": "npm publish --f dist/ngx-audio-player --prod",
     "build-demo": "ng build --prod --base-href https://vmudigal.github.io/ngx-audio-player/",
     "publish-demo": "npx ngh --dir=dist/ngx-audio-player-demo/",
-    "test": "ng test --code-coverage --reporters=teamcity,coverage-istanbul",
-    "test-lib": "ng test ngx-audio-player --code-coverage --reporters=teamcity,coverage-istanbul",
+    "test": "ng test --code-coverage --reporters=coverage-istanbul",
+    "test-lib": "ng test ngx-audio-player --code-coverage --reporters=coverage-istanbul",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
