@@ -1,0 +1,100 @@
+#matLink{
+    text-decoration: none;
+}
+
+.mat-h1{
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: 300;
+    font-stretch: normal;
+    font-size: 18px;
+    line-height: 16px;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.header {
+    padding-top: 90px!important;
+    padding: 30px;
+}
+
+pre code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+    border-radius: 0;
+}
+code {
+    padding: .2rem .4rem;
+    font-size: 90%;
+    color: #bd4147;
+    background-color: #f7f7f9;
+    border-radius: .25rem;
+}
+code, kbd, pre, samp {
+    font-family: Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+code, kbd, samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+
+pre {
+    max-width: 100%;
+    margin-bottom: 1.2rem;
+    border-radius: 3px;
+    padding: 0.6rem 1.2rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.rougeHighlight pre, .rougeHighlight, pre {
+    background: #292b2c;
+    -webkit-font-smoothing: antialiased;
+    border-left: 4px solid #2c8ebb;
+    color: #ddd;
+}
+pre {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 90%;
+    color: #eee;
+}
+code, kbd, pre, samp {
+    font-family: Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+pre {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    overflow: auto;
+}
+pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+
+pre, xmp, plaintext, listing {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    margin: 1em 0px;
+}
+
+.hljs-tag, .hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-strong, .hljs-name {
+    color: #f92672;
+}
+
+.hljs-string, .hljs-bullet, .hljs-subst, .hljs-title, .hljs-section, .hljs-emphasis, .hljs-type, .hljs-built_in, .hljs-builtin-name, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-addition, .hljs-variable, .hljs-template-tag, .hljs-template-variable {
+    color: #a6e22e;
+}
+
+.hljs-comment, .hljs-quote, .hljs-deletion, .hljs-meta {
+    color: #75715e;
+}
+
+::ng-deep a:hover {
+    text-decoration: none!important;
+}

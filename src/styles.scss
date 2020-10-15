@@ -1,0 +1,15 @@
+
+// @import './app-theme';
+// @import './styles/api';
+// @import './styles/markdown';
+// @import './styles/tables';
+// @import './styles/general';
+
+// // Include material core styles.
+// @include mat-core();
+
+// @include angular-material-theme($theme);
+// @include material-docs-app-theme($theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
