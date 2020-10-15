@@ -1,0 +1,113 @@
+mat-card, mat-slider {
+    padding: 0!important;
+}
+
+button:hover, button:focus { 
+    outline: 0px!important;
+}
+
+svg {
+    vertical-align: top;
+}
+
+.mat-icon {
+    height: 32px! important;
+    width: 32px! important;
+}
+
+mat-icon > .currently-playing {
+    height: 16px! important;
+    width: 16px! important;
+}
+
+table {
+    width: 100%;
+}
+
+.ngx-advanced-audio-player {
+    min-width: 325px;
+}
+
+/* mat-slider {
+    max-height: 30px;
+} */
+
+.material-icons {
+    font-size: 16px! important;
+}
+
+.play-pause {
+    border-left: 1px solid rgba(0,0,0,.1);
+    border-right: 1px solid rgba(0,0,0,.1);
+}
+
+.volume {
+    border-left: 1px solid rgba(0,0,0,.1);
+}
+
+.skip-next {
+    border-right: 1px solid rgba(0,0,0,.1);
+}
+
+ /* Removal of bootstrap */
+
+ *, ::after, ::before {
+    box-sizing: inherit;
+}
+
+.ngx-p-1 {
+    padding: .25rem !important;
+}
+
+.ngx-col, .ngx-col-1, .ngx-col-10, .ngx-col-11, .ngx-col-12, .ngx-col-2, .ngx-col-3, .ngx-col-4, .ngx-col-5, .ngx-col-6, .ngx-col-7, .ngx-col-8, .ngx-col-9, .ngx-col-auto, .ngx-col-lg, .ngx-col-lg-1, .ngx-col-lg-10, .ngx-col-lg-11, .ngx-col-lg-12, .ngx-col-lg-2, .ngx-col-lg-3, .ngx-col-lg-4, .ngx-col-lg-5, .ngx-col-lg-6, .ngx-col-lg-7, .ngx-col-lg-8, .ngx-col-lg-9, .ngx-col-lg-auto, .ngx-col-md, .ngx-col-md-1, .ngx-col-md-10, .ngx-col-md-11, .ngx-col-md-12, .ngx-col-md-2, .ngx-col-md-3, .ngx-col-md-4, .ngx-col-md-5, .ngx-col-md-6, .ngx-col-md-7, .ngx-col-md-8, .ngx-col-md-9, .ngx-col-md-auto, .ngx-col-sm, .ngx-col-sm-1, .ngx-col-sm-10, .ngx-col-sm-11, .ngx-col-sm-12, .ngx-col-sm-2, .ngx-col-sm-3, .ngx-col-sm-4, .ngx-col-sm-5, .ngx-col-sm-6, .ngx-col-sm-7, .ngx-col-sm-8, .ngx-col-sm-9, .ngx-col-sm-auto, .ngx-col-xl, .ngx-col-xl-1, .ngx-col-xl-10, .ngx-col-xl-11, .ngx-col-xl-12, .ngx-col-xl-2, .ngx-col-xl-3, .ngx-col-xl-4, .ngx-col-xl-5, .ngx-col-xl-6, .ngx-col-xl-7, .ngx-col-xl-8, .ngx-col-xl-9, .ngx-col-xl-auto {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.ngx-col {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+.ngx-justify-content-center {
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+}
+
+.ngx-flex-fill {
+    -ms-flex: 1 1 auto !important;
+    flex: 1 1 auto !important;
+}
+
+.ngx-d-flex {
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+.ngx-pb-3, .ngx-py-3 {
+    padding-bottom: 1rem !important;
+}
+.ngx-pt-3, .ngx-py-3 {
+    padding-top: 1rem !important;
+}
+.ngx-pl-1, .ngx-px-1 {
+    padding-left: .25rem !important;
+}
+.ngx-pr-1, .ngx-px-1 {
+    padding-right: .25rem !important;
+}
+
+@media (max-width: 720px) {
+    .ngx-sm-block {
+        display: block !important;
+    }
+
+    .ngx-d-none {
+        display: none !important;
+    }
+  }

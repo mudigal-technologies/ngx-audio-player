@@ -1,22 +1,23 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, Output, ElementRef } from '@angular/core';
 import { Track } from '../../model/track.model';
-import { BaseAudioPlayerFunctions } from '../base/base-audio-player.component';
 import { MatSlider } from '@angular/material/slider';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { AudioPlayerService } from '../../service/audio-player-service/audio-player.service';
+import { Subject } from 'rxjs';
 
 @Component({
-    selector: 'mat-advanced-audio-player',
-    templateUrl: './mat-advanced-audio-player.component.html',
-    styleUrls: ['./mat-advanced-audio-player.component.css', './../base/base-audio-player.component.css']
+    selector: 'mat-advanced-audio-player,ngx-audio-player',
+    templateUrl: './ngx-audio-player.component.html',
+    styleUrls: ['./ngx-audio-player.component.css']
 })
-export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions implements OnInit {
-
+export class AudioPlayerComponent {
 
     audioPlayerService: AudioPlayerService;
-    constructor() {
-        super();
+    constructor(elem: ElementRef) {
+        if (elem.nativeElement.tagName.toLowerCase() === 'mat-advanced-audio-player') {
+          console.warn(`'mat-advanced-audio-player' selector is deprecated; use 'ngx-audio-player' instead.`);
+        }
         this.audioPlayerService = new AudioPlayerService();
     }
 
@@ -46,11 +47,124 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
     @Input() autoPlay = false;
     @Input() disablePositionSlider = false;
 
+    // Support for internationalization
+    @Input() tableHeader:string = "Playlist";
+    @Input() columnHeader:string = "Title";
+
     currentIndex = 0;
+
+    @Output()
+    trackEnded: Subject<string> = new Subject<string>();
+
+    @ViewChild('audioPlayer', { static: true }) player: ElementRef;
+
+    iOS = (/iPad|iPhone|iPod/.test(navigator.platform)
+        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
+
+    loaderDisplay = false;
+    isPlaying = false;
+    currentTime = 0;
+    volume = 0.1;
+    duration = 0.01;
+
+    private startOffsetValue = 0;
+    @Input()
+    set startOffset(seconds: number) {
+        this.startOffsetValue = seconds;
+        this.player.nativeElement.currentTime = seconds;
+    }
+    get startOffset(): number {
+        return this.startOffsetValue;
+    }
+
+    @Input()
+    public endOffset = 0;
+
+    currTimePosChanged(event) {
+        this.player.nativeElement.currentTime = event.value;
+    }
+
+    bindPlayerEvent(): void {
+
+        this.player.nativeElement.addEventListener('playing', () => {
+            this.isPlaying = true;
+            this.duration = Math.floor(this.player.nativeElement.duration);
+        });
+        this.player.nativeElement.addEventListener('pause', () => {
+            this.isPlaying = false;
+        });
+        this.player.nativeElement.addEventListener('timeupdate', () => {
+            this.currentTime = Math.floor(this.player.nativeElement.currentTime);
+            // BUG: Commenting for `ended` event not firing #66
+            // if (this.currentTime >= this.duration - this.endOffset) {
+            //     this.player.nativeElement.pause();
+            // }
+        });
+        this.player.nativeElement.addEventListener('volume', () => {
+            this.volume = Math.floor(this.player.nativeElement.volume);
+        });
+        if (!this.iOS) {
+            this.player.nativeElement.addEventListener('loadstart', () => {
+                this.loaderDisplay = true;
+            });
+        }
+        this.player.nativeElement.addEventListener('loadeddata', () => {
+            this.loaderDisplay = false;
+            this.duration = Math.floor(this.player.nativeElement.duration);
+        });
+        this.player.nativeElement.addEventListener('ended', () => {
+            this.trackEnded.next('ended');
+        });
+
+    }
+
+    playBtnHandler(): void {
+        if (this.loaderDisplay) {
+            return;
+        }
+        if (this.player.nativeElement.paused) {
+            if (this.currentTime >= this.duration - this.endOffset) {
+                this.player.nativeElement.currentTime = this.startOffset;
+            } else {
+                this.player.nativeElement.currentTime = this.currentTime;
+            }
+
+            this.player.nativeElement.play();
+        } else {
+            this.currentTime = this.player.nativeElement.currentTime;
+            this.player.nativeElement.pause();
+        }
+    }
+
+    play(track?: Track): void {
+
+        if (track) {
+            this.startOffset = track.startOffset || 0;
+            this.endOffset = track.endOffset || 0;
+        }
+
+        setTimeout(() => {
+            this.player.nativeElement.play();
+        }, 50);
+
+    }
+
+    toggleVolume() {
+        if (this.volume === 0) {
+            this.setVolume(1.0);
+        } else {
+            this.setVolume(0);
+        }
+    }
+
+    private setVolume(vol) {
+        this.volume = vol;
+        this.player.nativeElement.volume = this.volume;
+    }
 
     ngOnInit() {
 
-        super.bindPlayerEvent();
+        this.bindPlayerEvent();
 
         // auto play next track
         this.player.nativeElement.addEventListener('ended', () => {
@@ -80,7 +194,8 @@ export class MatAdvancedAudioPlayerComponent extends BaseAudioPlayerFunctions im
         // material table data source and paginator
         this.setDataSourceAttributes();
 
-        this.player.nativeElement.currentTime = 0;
+
+        this.player.nativeElement.currentTime = this.startOffset;
         this.updateCurrentTrack();
 
         if (this.autoPlay) {

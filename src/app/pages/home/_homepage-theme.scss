@@ -7,15 +7,10 @@
     padding: 60px;
 }
 
-.ngx-demo-content {
-    margin: 20px 0px;
+div > .ngx-demo-content {
+    margin: 20px 0px!important;
 }
 
 .ngx-demo-block button {
   margin-right: 8px;
-}
-
-h2 > a {
-    color: whitesmoke;
-    font-style: italic;
 }

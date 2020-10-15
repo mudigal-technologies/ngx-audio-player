@@ -1,8 +1,8 @@
 
-A library for loading and playing audio using HTML 5 for Angular 7/8/9.  
+A library for loading and playing audio using HTML 5 for Angular 7/8/9/10.  
 (https://vmudigal.github.io/ngx-audio-player/)
 
-[![Travis-CI](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master)](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master) [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://vmudigal.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.1.6) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.0.4) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.1.1) [![Support](https://img.shields.io/badge/support-Angular%2010+-teal.svg)](https://www.npmjs.com/package/ngx-audio-player/v/10.0.0)
+[![Travis-CI](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master)](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master) [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://vmudigal.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.2.0) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.1.1) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.1.2) [![Support](https://img.shields.io/badge/support-Angular%2010+-teal.svg)](https://www.npmjs.com/package/ngx-audio-player/v/10.1.0)
 
 ## Table of contents
 
@@ -15,14 +15,6 @@ A library for loading and playing audio using HTML 5 for Angular 7/8/9.
 - [License](#license)
 
 ## Demo
-
-### Basic Player 
-
-A simple, clean, responsive player for playing single audio with or without title.
-
-![alt tag](https://github.com/vmudigal/ngx-audio-player/blob/master/docs/images/basic-player.png?raw=true)
-
-### Advanced Player 
 
 A simple, clean, responsive player for playing multiple audios with playlist support.
 
@@ -70,51 +62,14 @@ export class AppModule { }
 ```
    
 ### Usage   
-
-#### Material Style Basic Audio Player   
    
 ##### HTML   
 
 ```html
-<mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [autoPlay]="false" muted="muted" (trackEnded)="onEnded($event)"
-    [displayTitle]="msbapDisplayTitle" [displayVolumeControls]="msaapDisplayVolumeControls" 
-        [disablePositionSlider]="msbapDisablePositionSlider"></mat-basic-audio-player>
-```
-   
-##### TS   
-
-```ts
-// Material Style Basic Audio Player Audio URL (Mandatory)
-msbapAudioUrl = 'Link to audio URL';   
-
-// Material Style Basic Audio Player (Optional Parameters)
-msbapTitle = 'Audio Title';
-msbapDisplayTitle = false; 
-msbapDisplayVolumeControls = true; 
-msbapDisablePositionSlider = true; 
-```   
-
-##### Properties   
-
-| Name                                       | Description                                         | Type      | Default Value |
-|--------------------------------------------|-----------------------------------------------------|-----------|---------------|
-| @Input() title: string;                    | title to be displayed                               | optional  | none          |
-| @Input() audioUrl: string;                 | url of the audio                                    | mandatory | none          |
-| @Input() autoPlay: false;                  | true - if the audio needs to be played automaticlly | optional  | false         |
-| @Input() displayTitle = false;             | true - if the audio title needs to be displayed     | optional  | false         |
-| @Output() trackEnded: Subject<string>;     | Callback method thats triggers once the track ends  | optional  | - N.A -       |
-| @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true          |
-| @Input() disablePositionSlider = false;    | true - if the position slider needs to be disabled  | optional  | false         |
-
-#### Material Style Advanced Audio Player   
-   
-##### HTML   
-
-```html
-<mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
+<ngx-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
     muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="pageSizeOptions" (trackEnded)="onEnded($event)"
         [displayVolumeControls]="msaapDisplayVolumeControls" [disablePositionSlider]="msaapDisablePositionSlider" 
-        [expanded]="true"></mat-advanced-audio-player> 
+        [expanded]="true"></ngx-audio-player>
 ```
    
 ##### TS   
@@ -160,8 +115,10 @@ msaapPlaylist: Track[] = [
 | @Input() expanded = true;                  | false - if the playlist needs to be minimized       | optional  | true          |
 | @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true          |
 | @Output() trackEnded: Subject<string>      | Callback method thats triggers once the track ends  | optional  | - N.A -       |
+| @Input() startOffset = 0;                  | offset from start of audio file in seconds          | optional  | 0             |
+| @Input() endOffset = 0;                    | offset from end of audio file in seconds            | optional  | 0             |
 | @Input() disablePositionSlider = false;    | true - if the position slider needs to be disabled  | optional  | false         |
-   
+ 
 
 ## Versioning
 
@@ -171,13 +128,6 @@ Releases will be numbered with the following format:
 `<major>.<minor>.<patch>`
 
 For more information on SemVer, please visit http://semver.org.
-
-## Developer
-
-##### [Vijayendra Mudigal](mailto:vijayendrap@gmail.com)
-- [Profile](https://vijayendra.mudigal.com)
-- [GitHub](https://github.com/vmudigal)
-- [Linkedin](https://www.linkedin.com/in/vijayendra)
 
 ## Contributors ✨
 Thanks goes to these wonderful people:   

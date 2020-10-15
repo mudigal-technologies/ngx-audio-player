@@ -1,9 +1,9 @@
-<mat-card class="d-flex justify-content-center ngx-advanced-audio-player z-depth-1 mat-elevation-z2"
+<mat-card class="ngx-d-flex ngx-justify-content-center ngx-audio-player z-depth-1 mat-elevation-z2"
     style="margin: 0px;">
 
     <audio #audioPlayer [src]="tracks[currentIndex]?.link"></audio>
 
-    <button (click)='previousSong();' [disabled]="loaderDisplay" class="p-1" mat-button>
+    <button *ngIf="tracks.length > 1" (click)='previousSong();' [disabled]="loaderDisplay" class="ngx-p-1" mat-button>
         <mat-icon aria-hidden="true">
             <!-- Skip previous icon (skip_previous) -->
             <svg height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
@@ -12,7 +12,7 @@
             </svg>
         </mat-icon>
     </button>
-    <button (click)='playBtnHandler();' [disabled]="loaderDisplay" class="p-1 play-pause" mat-button>
+    <button (click)='playBtnHandler();' [disabled]="loaderDisplay" class="ngx-p-1 play-pause" mat-button>
 
         <svg *ngIf="loaderDisplay" height="34px" preserveAspectRatio="xMidYMid"
             style="margin: auto; display: block; shape-rendering: auto;" viewBox="0 0 100 100" width="34px"
@@ -106,7 +106,7 @@
             </svg>
         </mat-icon>
     </button>
-    <button (click)='nextSong();' [disabled]="loaderDisplay" class="p-1 skip-next" mat-button>
+    <button *ngIf="tracks.length > 1" (click)='nextSong();' [disabled]="loaderDisplay" class="ngx-p-1 skip-next" mat-button>
         <mat-icon aria-hidden="true" class="next-track">
             <!-- Skip next icon (skip_next) -->
             <svg height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
@@ -116,24 +116,24 @@
         </mat-icon>
     </button>
 
-    <div class="col">
-        <div class="d-flex flex-fill justify-content-center">
-            <div class="d-none d-sm-block py-3 px-1" style="font-size: 12px">
+    <div class="ngx-col">
+        <div class="ngx-d-flex ngx-flex-fill ngx-justify-content-center">
+            <div class="ngx-d-none ngx-d-sm-block ngx-py-3 ngx-px-1" style="font-size: 12px">
                 <span *ngIf="duration !== 0.01">
                     {{currentTime | secondsToMinutes}}
                 </span>
             </div>
-            <mat-slider [disabled]="disablePositionSlider" class="d-none d-sm-block flex-fill p-1" style="width: 100%" min="0" max="{{duration}}"
-                value="{{currentTime}}" (change)="currTimePosChanged($event)"></mat-slider>
-
-            <div class="py-3 px-1" style="font-size: 12px; text-align: right">
+            <mat-slider [disabled]="disablePositionSlider" (change)="currTimePosChanged($event)" [min]="startOffset"
+                class="ngx-d-none ngx-d-sm-block ngx-flex-fill ngx-p-1" max="{{duration-endOffset}}" style="width: 100%"
+                value="{{currentTime}}"></mat-slider>
+            <div class="ngx-py-3 ngx-px-1" style="font-size: 12px; text-align: right">
                 <span *ngIf="duration !== 0.01">
                     -{{duration-currentTime | secondsToMinutes }}
                 </span>
             </div>
         </div>
     </div>
-    <button (click)='toggleVolume();' *ngIf="displayVolumeControls" class="p-1 volume" mat-button>
+    <button (click)='toggleVolume();' *ngIf="displayVolumeControls" class="ngx-p-1 volume" mat-button>
         <mat-icon *ngIf="volume === 0" aria-hidden="true" class="volume-mute">
             <!-- Volume mute icon (volume_off) -->
             <svg height="28" viewBox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
@@ -165,14 +165,14 @@
     </div>
 </mat-card>
 
-<mat-accordion *ngIf="displayPlaylist">
+<mat-accordion *ngIf="displayPlaylist && tracks.length > 1">
     <mat-expansion-panel [expanded]="expanded">
         <mat-expansion-panel-header>
-            Play List
+            {{tableHeader}}
         </mat-expansion-panel-header>
         <table [dataSource]="dataSource" class="mat-elevation-z6" mat-table>
             <ng-container matColumnDef="title">
-                <th *matHeaderCellDef mat-header-cell> Title</th>
+                <th *matHeaderCellDef mat-header-cell>{{columnHeader}}</th>
                 <td (click)="selectTrack(element.index)" *matCellDef="let element" mat-cell>
                     {{element.title}}
                 </td>
