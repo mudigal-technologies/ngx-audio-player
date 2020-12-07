@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -12,7 +12,7 @@ describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [HomeComponent],
       imports: [
@@ -35,7 +35,7 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should be able to click on player controls - display title', async(() => {
+  it('should be able to click on player controls - display title', waitForAsync(() => {
     const input = fixture.debugElement.query(
       By.css('.ngx-player-display-title .mat-checkbox-input')
     ).nativeElement;
@@ -45,7 +45,7 @@ describe('HomeComponent', () => {
     expect(input.checked).toBeFalsy();
   }));
 
-  it('should be able to click on advanced player controls - display playlist', async(() => {
+  it('should be able to click on advanced player controls - display playlist', waitForAsync(() => {
     const input = fixture.debugElement.query(
       By.css('.mat-advanced-player-display-playlist .mat-checkbox-input')
     ).nativeElement;

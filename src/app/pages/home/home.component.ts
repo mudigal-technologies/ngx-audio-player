@@ -12,8 +12,8 @@ export class HomeComponent {
 
   constructor() { }
   private fmaBaseUrl = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music';
-  
-  @ViewChild("player")
+
+  @ViewChild('player')
   advancedPlayer: AudioPlayerComponent;
 
   // Single
@@ -48,10 +48,10 @@ export class HomeComponent {
   msaapDisplayVolumeControls = true;
   msaapDisablePositionSlider = false;
 
-  msaapTableHeader: string = 'My Playlist';
-  msaapColumnHeader: string = 'My Music';
+  msaapTableHeader = 'My Playlist';
+  msaapColumnHeader = 'My Music';
 
-  
+
   // Start: Required for demo purpose
 
   msaapPlaylist2: Track[] = [
@@ -127,7 +127,7 @@ export class HomeComponent {
       });
       this.advancedPlayer.audioPlayerService.setPlaylist(this.msaapPlaylist);
       this.appendTracksToPlaylistDisable = true;
-    } 
+    }
   }
 
   setSingleTrack() {
