@@ -3,15 +3,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import {
-  FontAwesomeModule,
-  FaIconLibrary
-} from '@fortawesome/angular-fontawesome';
-
-import { faFacebookF } from '@fortawesome/free-brands-svg-icons/faFacebookF';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons/faTwitter';
-import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons/faLinkedinIn';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -45,7 +36,6 @@ export const appRoutes: Routes = [
   imports: [
     HttpClientModule,
     BrowserModule,
-    FontAwesomeModule,
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
@@ -62,7 +52,5 @@ export const appRoutes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(library: FaIconLibrary) {
-    library.addIcons(faFacebookF, faTwitter, faLinkedinIn);
-  }
+
 }

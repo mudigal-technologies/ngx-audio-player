@@ -120,17 +120,15 @@
         <div class="ngx-d-flex ngx-flex-fill ngx-justify-content-center">
             <div class="ngx-d-none ngx-d-sm-block ngx-py-3 ngx-px-1" style="font-size: 12px">
                 <span *ngIf="duration !== 0.01">
-                    {{currentTime-startOffset | secondsToMinutes}}
+                    {{currentTime | secondsToMinutes}}
                 </span>
             </div>
-
             <mat-slider [disabled]="disablePositionSlider" (change)="currTimePosChanged($event)" [min]="startOffset"
                 class="ngx-d-none ngx-d-sm-block ngx-flex-fill ngx-p-1" max="{{duration-endOffset}}" style="width: 100%"
                 value="{{currentTime}}"></mat-slider>
-
             <div class="ngx-py-3 ngx-px-1" style="font-size: 12px; text-align: right">
                 <span *ngIf="duration !== 0.01">
-                    -{{duration-endOffset-currentTime | secondsToMinutes }}
+                    -{{duration-currentTime | secondsToMinutes }}
                 </span>
             </div>
         </div>
