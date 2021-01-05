@@ -1,6 +1,6 @@
 {
   "name": "ngx-audio-player",
-  "version": "10.1.1",
+  "version": "11.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/vmudigal/ngx-audio-player.git"
@@ -19,6 +19,7 @@
     "angular8",
     "angular9",
     "angular10",
+    "angular11",
     "audio player",
     "angular audio player",
     "audio player with playlist",
@@ -36,10 +37,10 @@
     "url": "https://github.com/vmudigal/ngx-audio-player/issues"
   },
   "peerDependencies": {
-    "@angular/common": "^10.0.0",
-    "@angular/core": "^10.0.0",
-    "@angular/material": "^10.0.0",
-    "rxjs": "^6.5.5"
+    "@angular/common": "^11.0.0",
+    "@angular/core": "^11.0.0",
+    "@angular/material": "^11.0.0",
+    "rxjs": "^6.6.3"
   },
   "dependencies": {
     "tslib": "^2.0.0"
