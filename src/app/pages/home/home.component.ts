@@ -1,95 +1,31 @@
 import { Component, ViewChild } from '@angular/core';
 import { Track } from 'ngx-audio-player/public_api';
-import { MatBasicAudioPlayerComponent, MatAdvancedAudioPlayerComponent } from 'projects/ngx-audio-player/src/public_api';
+import { AudioPlayerComponent } from 'projects/ngx-audio-player/src/public_api';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
 
   constructor() { }
   private fmaBaseUrl = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music';
+  
+  @ViewChild("player", {static : false})
+  advancedPlayer: AudioPlayerComponent;
 
+  // Single
+  singleTrack: Track[] = [
+    {
+      title: 'In Love | A Himitsu feat. Nori',
+      link:
+        'https://dl.dropboxusercontent.com/s/9v0psowra7ekhxo/A%20Himitsu%20-%20In%20Love%20%28feat.%20Nori%29.flac?dl=0'
+    }
+  ];
 
-
-
-
-  // Start of Basic Player Instance 1
-
-  // Material Style Basic Audio Player Title and Audio URL
-  msbapTitle1 = 'In Love | A Himitsu feat. Nori';
-  msbapAudioUrl1 = 'https://dl.dropboxusercontent.com/s/9v0psowra7ekhxo/A%20Himitsu%20-%20In%20Love%20%28feat.%20Nori%29.flac?dl=0';
-
-  msbapDisplayTitle1 = true;
-  msbapDisplayVolumeControls1 = true;
-  msbapDisablePositionSlider1 = false;
-
-  // Optional Additional Examples 
-  // - Logging Current Time
-
-  @ViewChild("basic1")
-  basicPlayer1: MatBasicAudioPlayerComponent;
-
-  basicPlayerCurrentTrack1: string;
-  basicPlayerCurrentTime1: any;
-
-  logCurrentTrackBasicPlayer1() {
-    this.basicPlayerCurrentTrack1 = this.basicPlayer1.title;
-  }
-
-  logCurrentTimeBasicPlayer1() {
-    this.basicPlayer1.audioPlayerService.getCurrentTime().subscribe(time => {
-      this.basicPlayerCurrentTime1 = time;
-    })
-  }
-  // End of Basic Player Instance 1
-
-
-
-
-
-  // Start of Basic Player Instance 2
-
-  // Material Style Basic Audio Player Title and Audio URL
-  msbapTitle2 = 'Cartoon – On & On (feat. Daniel Levi) [NCS Release]';
-  msbapAudioUrl2 = 'https://dl.dropboxusercontent.com/s/w99exjxnwoqwz0e/Cartoon-on-on-feat-daniel-levi-ncs-release.mp3?dl=0';
-
-  msbapDisplayTitle2 = true;
-  msbapDisplayVolumeControls2 = true;
-  msbapDisablePositionSlider2 = false;
-
-  // Optional Additional Examples 
-  // - Logging Current Time
-
-  @ViewChild("basic2")
-  basicPlayer2: MatBasicAudioPlayerComponent;
-
-  basicPlayerCurrentTrack2: string;
-  basicPlayerCurrentTime2: any;
-
-  logCurrentTrackBasicPlayer2() {
-    this.basicPlayerCurrentTrack2 = this.basicPlayer2.title;
-  }
-
-  logCurrentTimeBasicPlayer2() {
-    this.basicPlayer2.audioPlayerService.getCurrentTime().subscribe(time => {
-      this.basicPlayerCurrentTime2 = time;
-    });
-  }
-  // End of Basic Player Instance 2
-
-
-
-
-
-  // Material Style Advance Audio Player Playlist
-
-  @ViewChild("advanced")
-  advancedPlayer: MatAdvancedAudioPlayerComponent;
-
-  msaapPlaylist: Track[] = [
+  // Multiple
+  multiple: Track[] = [
     {
       title: 'In Love | A Himitsu feat. Nori',
       link:
@@ -102,6 +38,8 @@ export class HomeComponent {
     }
   ];
 
+  msaapPlaylist: Track[] = this.multiple;
+
   msaapDisplayTitle = true;
   msaapDisplayPlayList = true;
   pageSizeOptions = [2, 4, 6];
@@ -109,7 +47,11 @@ export class HomeComponent {
   msaapDisplayVolumeControls = true;
   msaapDisablePositionSlider = false;
 
-  // Advanced Features
+  msaapTableHeader: string = 'My Playlist';
+  msaapColumnHeader: string = 'My Music';
+
+  
+  // Start: Required for demo purpose
 
   msaapPlaylist2: Track[] = [
     {
@@ -170,53 +112,28 @@ export class HomeComponent {
   }
 
   appendTracksToPlaylist() {
-    if (this.counter === 1) {
+
+    if (this.msaapPlaylist.length === 1) {
+      this.msaapPlaylist = this.multiple;
+    } else if (this.msaapPlaylist.length === 2) {
       this.msaapPlaylist2.map(track => {
         this.msaapPlaylist.push(track);
       });
       this.advancedPlayer.audioPlayerService.setPlaylist(this.msaapPlaylist);
-      this.counter = this.counter + 1;
-    } else if (this.counter === 2) {
+    } else if (this.msaapPlaylist.length === 4) {
       this.msaapPlaylist3.map(track => {
         this.msaapPlaylist.push(track);
       });
       this.advancedPlayer.audioPlayerService.setPlaylist(this.msaapPlaylist);
       this.appendTracksToPlaylistDisable = true;
-    }
+    } 
   }
 
-
-
-
-
-  // Start needed for demo purpose
-  // Basic Player 1
-  changeMsbapDisplayTitle1(event) {
-    this.msbapDisplayTitle1 = event.checked;
+  setSingleTrack() {
+    this.msaapPlaylist = this.singleTrack;
+    this.appendTracksToPlaylistDisable = false;
   }
 
-  changeMsbapDisplayVolumeControls1(event) {
-    this.msbapDisplayVolumeControls1 = event.checked;
-  }
-
-  changeMsbapDisablePositionSlider1(event) {
-    this.msbapDisablePositionSlider1 = event.checked;
-  }
-
-  // Basic Player 2
-  changeMsbapDisplayTitle2(event) {
-    this.msbapDisplayTitle2 = event.checked;
-  }
-
-  changeMsbapDisplayVolumeControls2(event) {
-    this.msbapDisplayVolumeControls2 = event.checked;
-  }
-
-  changeMsbapDisablePositionSlider2(event) {
-    this.msbapDisablePositionSlider2 = event.checked;
-  }
-
-  // Advanced Player
   changeMsaapDisplayTitle(event) {
     this.msaapDisplayTitle = event.checked;
   }
@@ -232,5 +149,5 @@ export class HomeComponent {
   changeMsaapDisablePositionSlider(event) {
     this.msaapDisablePositionSlider = event.checked;
   }
-  // End needed for demo purpose
+  // End: Required for demo purpose
 }

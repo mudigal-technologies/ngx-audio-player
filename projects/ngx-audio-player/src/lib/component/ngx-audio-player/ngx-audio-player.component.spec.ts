@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import 'hammerjs';
-import { MatAdvancedAudioPlayerComponent } from './mat-advanced-audio-player.component';
+import { AudioPlayerComponent } from './ngx-audio-player.component';
 
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,9 +15,9 @@ import { FormsModule } from '@angular/forms';
 import { mockPlaylist } from '../../model/track.model.mock';
 import { ElementRef, Injectable, Component, Type } from '@angular/core';
 import { Track } from '../../model/track.model';
-import { NgxAudioPlayerModule } from 'ngx-audio-player';
-import { By } from 'protractor';
 import { MatIconModule } from '@angular/material/icon';
+import { NgxAudioPlayerModule } from '../../ngx-audio-player.module';
+import { By } from '@angular/platform-browser';
 
 @Injectable()
 export class MockElementRef {
@@ -29,11 +29,11 @@ export class MockService extends AudioPlayerService {
   playlist = mockPlaylist;
 }
 
-describe('MatAdvancedAudioPlayerComponent', () => {
+describe('AudioPlayerComponent', () => {
   function createComponent<T>(componentType: Type<T>, extraDeclarations: Type<any>[] = []) {
     TestBed.configureTestingModule({
-      imports: [MatIconModule, MatSliderModule, MatCardModule,
-        MatFormFieldModule, MatExpansionModule, MatPaginatorModule, MatTableModule, FormsModule, NgxAudioPlayerModule],
+      imports: [MatIconModule, MatSliderModule, MatCardModule, MatFormFieldModule, MatExpansionModule,
+        MatPaginatorModule, MatTableModule, FormsModule, NgxAudioPlayerModule],
       declarations: [componentType, ...extraDeclarations],
       providers: [{ provide: ElementRef, useClass: MockElementRef }, { provide: AudioPlayerService, useClass: MockService }]
     }).compileComponents();
@@ -41,10 +41,10 @@ describe('MatAdvancedAudioPlayerComponent', () => {
     return TestBed.createComponent<T>(componentType);
   }
 
+  let component: AudioPlayerComponent;
   let fixture: ComponentFixture<any>;
 
   describe('Component', () => {
-    let component: MatAdvancedAudioPlayerComponent;
     beforeEach((() => {
       const MATERIAL_MODULES = [
         MatCardModule,
@@ -56,7 +56,7 @@ describe('MatAdvancedAudioPlayerComponent', () => {
       ];
 
       TestBed.configureTestingModule({
-        declarations: [MatAdvancedAudioPlayerComponent, SecondsToMinutesPipe],
+        declarations: [AudioPlayerComponent, SecondsToMinutesPipe],
         imports: [
           MatIconModule,
           FormsModule,
@@ -68,7 +68,7 @@ describe('MatAdvancedAudioPlayerComponent', () => {
     }));
 
     beforeEach(() => {
-      fixture = TestBed.createComponent(MatAdvancedAudioPlayerComponent);
+      fixture = TestBed.createComponent(AudioPlayerComponent);
       component = fixture.componentInstance;
       component.playlist = mockPlaylist;
 
@@ -79,10 +79,6 @@ describe('MatAdvancedAudioPlayerComponent', () => {
       expect(component).toBeTruthy();
     });
 
-    it('should be able to set playlist', async () => {
-      expect(component.playlist[0].title).toEqual(mockPlaylist[0].title);
-    });
-
     it('should have play button', () => {
       const playButton = By.css('.play-track');
       expect(playButton).toBeDefined();
@@ -90,60 +86,37 @@ describe('MatAdvancedAudioPlayerComponent', () => {
 
     it('should select next song correctly', () => {
       component.nextSong();
-      expect(component.currentTrack.index).toEqual(1);
+      expect(component.currentIndex).toEqual(1);
       component.nextSong();
-      expect(component.currentTrack.index).toEqual(2);
+      expect(component.currentIndex).toEqual(2);
       component.nextSong();
-      expect(component.currentTrack.index).toEqual(0);
+      expect(component.currentIndex).toEqual(3);
       component.nextSong();
-      expect(component.currentTrack.index).toEqual(1);
+      expect(component.currentIndex).toEqual(0);
     });
 
     it('should select previous song correctly', () => {
       component.previousSong();
-      expect(component.currentTrack.index).toEqual(2);
+      expect(component.currentIndex).toEqual(3);
       component.previousSong();
-      expect(component.currentTrack.index).toEqual(1);
+      expect(component.currentIndex).toEqual(2);
       component.previousSong();
-      expect(component.currentTrack.index).toEqual(0);
+      expect(component.currentIndex).toEqual(1);
       component.previousSong();
-      expect(component.currentTrack.index).toEqual(2);
+      expect(component.currentIndex).toEqual(0);
     });
 
     it('should select track correctly', () => {
       component.selectTrack(2);
-      expect(component.currentTrack.index).toEqual(1);
+      expect(component.currentIndex).toEqual(1);
     });
-
-    it('should select next song correctly', () => {
-      // spyOn(component, 'play');
-      // let matPaginator = new MatPaginator(null, null);
-      // matPaginator.pageSize = 2;
-      // component.dataSource.paginator = matPaginator;
-      // component.nextSong();
-      // fixture.detectChanges();
-      // fixture.whenStable().then(() => {
-      //   expect(component.play).toHaveBeenCalled();
-      // });
-    });
-
-    it('should select previous song correctly', () => {
-      // spyOn(component, 'play');
-      // // component.paginator.pageSize = 2;
-      // component.previousSong();
-      // fixture.detectChanges();
-      // fixture.whenStable().then(() => {
-      //   expect(component.play).toHaveBeenCalled();
-      // });
-    });
-
   });
 
   describe('Advanced Audio Player', () => {
-    let component: NgxAdvancedAudioPlayerApp;
+    let component: AngularAudioPlayerApp;
 
     beforeEach(() => {
-      fixture = createComponent(NgxAdvancedAudioPlayerApp);
+      fixture = createComponent(AngularAudioPlayerApp);
       component = fixture.componentInstance;
       fixture.detectChanges();
     });
@@ -154,19 +127,19 @@ describe('MatAdvancedAudioPlayerComponent', () => {
 
   });
 
-  /** Test Advanced Player */
+  /** Test Ngx Player */
   @Component({
-    template: `<mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle"
-      [displayPlaylist]="msaapDisplayPlayList"
-      [pageSizeOptions]="pageSizeOptions" [displayVolumeControls]="msaapDisplayVolumeControls"
-      [expanded]="true"></mat-advanced-audio-player>`
+    template: ``
   })
-  class NgxAdvancedAudioPlayerApp {
+  class AngularAudioPlayerApp {
     // Material Style Advance Audio Player Playlist
     msaapPlaylist: Track[] = mockPlaylist;
 
     msaapDisplayTitle = true;
     msaapDisplayPlayList = true;
+    pageSizeOptions = [2, 4, 6];
+
+    msaapDisablePositionSlider = false;
     msaapDisplayVolumeControls = true;
   }
 
