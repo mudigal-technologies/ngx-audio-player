@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, Output, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { Track } from '../../model/track.model';
 import { MatSlider } from '@angular/material/slider';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
     templateUrl: './ngx-audio-player.component.html',
     styleUrls: ['./ngx-audio-player.component.css']
 })
-export class AudioPlayerComponent implements OnInit {
+export class AudioPlayerComponent implements OnInit, OnChanges {
 
     audioPlayerService: AudioPlayerService;
     constructor() {
@@ -28,7 +28,7 @@ export class AudioPlayerComponent implements OnInit {
         this.setDataSourceAttributes();
     }
 
-    displayedColumns: string[] = ['title', 'status'];
+    displayedColumns: string[];
     dataSource = new MatTableDataSource<Track>();
     paginator: MatPaginator;
 
@@ -43,10 +43,14 @@ export class AudioPlayerComponent implements OnInit {
     @Input() expanded = true;
     @Input() autoPlay = false;
     @Input() disablePositionSlider = false;
+    @Input() displayArtist = false;
+    @Input() displayDuration = false;
 
     // Support for internationalization
-    @Input() tableHeader:string = "Playlist";
-    @Input() columnHeader:string = "Title";
+    @Input() tableHeader:string = 'Playlist';
+    @Input() titleHeader:string = 'Title';
+    @Input() artistHeader:string = 'Artist';
+    @Input() durationHeader:string = 'Duration';
 
     currentIndex = 0;
 
@@ -186,7 +190,25 @@ export class AudioPlayerComponent implements OnInit {
 
     }
 
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes.hasOwnProperty('displayArtist') || changes.hasOwnProperty('displayDuration')){
+            this.buildDisplayedColumns();
+        }
+    }
+
+    private buildDisplayedColumns() {
+        this.displayedColumns = ['title'];
+        if (this.displayArtist) {
+            this.displayedColumns.push('artist');
+        }
+        if (this.displayDuration) {
+            this.displayedColumns.push('duration');
+        }
+        this.displayedColumns.push('status');
+    }
+
     initialize() {
+        this.buildDisplayedColumns();
 
         // populate indexs for the track and configure
         // material table data source and paginator

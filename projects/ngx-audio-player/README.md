@@ -70,6 +70,7 @@ export class AppModule { }
 <ngx-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
     muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="pageSizeOptions" (trackEnded)="onEnded($event)"
         [displayVolumeControls]="msaapDisplayVolumeControls" [disablePositionSlider]="msaapDisablePositionSlider" 
+        [displayArtist]="msaapDisplayArtist" [displayDuration]="msaapDisplayDuration"
         [expanded]="true"></ngx-audio-player> 
 ```
    
@@ -85,21 +86,29 @@ msaapDisplayTitle = true;
 msaapDisplayPlayList = true;
 msaapPageSizeOptions = [2,4,6];
 msaapDisplayVolumeControls = true;
+msaapDisplayArtist = false;
+msaapDisplayDuration = false;
 msaapDisablePositionSlider = true;
    
 // Material Style Advance Audio Player Playlist
 msaapPlaylist: Track[] = [
   {
     title: 'Audio One Title',
-    link: 'Link to Audio One URL'
+    link: 'Link to Audio One URL',
+    artist: 'Audio One Artist',
+    duration: 'Audio One Duration in seconds'
   },
   {
     title: 'Audio Two Title',
-    link: 'Link to Audio Two URL'
+    link: 'Link to Audio Two URL',
+    artist: 'Audio Two Artist',
+    duration: 'Audio Two Duration in seconds'
   },
   {
     title: 'Audio Three Title',
-    link: 'Link to Audio Three URL'
+    link: 'Link to Audio Three URL',
+    artist: 'Audio Three Artist',
+    duration: 'Audio Three Duration in seconds'
   },
 ];
 ```   
@@ -115,7 +124,9 @@ msaapPlaylist: Track[] = [
 | @Input() pageSizeOptions = [10, 20, 30];   | number of items to be displayed in the playlist     | optional  | [10,20,30]    |
 | @Input() expanded = true;                  | false - if the playlist needs to be minimized       | optional  | true          |
 | @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true          |
-| @Output() trackEnded: Subject<string>      | Callback method thats triggers once the track ends  | optional  | - N.A -       |
+| @Input() displayArtist = false;            | true - if the artist data is to be shown            | optional  | false         |
+| @Input() displayDuration = false;          | true - if the track duration is to be shown         | optional  | false         |
+| @Output() trackEnded: Subject<string>      | Callback method that triggers once the track ends   | optional  | - N.A -       |
 | @Input() startOffset = 0;                  | offset from start of audio file in seconds          | optional  | 0             |
 | @Input() endOffset = 0;                    | offset from end of audio file in seconds            | optional  | 0             |
 | @Input() disablePositionSlider = false;    | true - if the position slider needs to be disabled  | optional  | false         |
