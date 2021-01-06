@@ -69,7 +69,7 @@ export class AppModule { }
 ```html
 <ngx-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
     muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="pageSizeOptions" (trackEnded)="onEnded($event)"
-        [displayVolumeControls]="msaapDisplayVolumeControls" [disablePositionSlider]="msaapDisablePositionSlider" 
+        [displayVolumeControls]="msaapDisplayVolumeControls" [displayVolumeSlider]="msaapDisplayVolumeSlider" [disablePositionSlider]="msaapDisablePositionSlider" 
         [expanded]="true"></ngx-audio-player> 
 ```
    
@@ -85,6 +85,7 @@ msaapDisplayTitle = true;
 msaapDisplayPlayList = true;
 msaapPageSizeOptions = [2,4,6];
 msaapDisplayVolumeControls = true;
+msaapDisplayVolumeSlider = false;
 msaapDisablePositionSlider = true;
    
 // Material Style Advance Audio Player Playlist
@@ -115,6 +116,7 @@ msaapPlaylist: Track[] = [
 | @Input() pageSizeOptions = [10, 20, 30];   | number of items to be displayed in the playlist     | optional  | [10,20,30]    |
 | @Input() expanded = true;                  | false - if the playlist needs to be minimized       | optional  | true          |
 | @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true          |
+| @Input() displayVolumeSlider = false;      | true - if the volume slider should be shown         | optional  | true          |
 | @Output() trackEnded: Subject<string>      | Callback method thats triggers once the track ends  | optional  | - N.A -       |
 | @Input() startOffset = 0;                  | offset from start of audio file in seconds          | optional  | 0             |
 | @Input() endOffset = 0;                    | offset from end of audio file in seconds            | optional  | 0             |

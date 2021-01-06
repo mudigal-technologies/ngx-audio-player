@@ -41,6 +41,12 @@
                 </mat-checkbox>
                 displayVolumeControls: {{msaapDisplayVolumeControls}}
               </div>
+            <div class="d-flex flex-row px-3">
+                <mat-checkbox (change)="changeMsaapDisplayVolumeSlider($event)" [checked]="msaapDisplayVolumeSlider"
+                  class="px-3 mat-basic-player-display-title">
+                </mat-checkbox>
+                displayVolumeSlider: {{msaapDisplayVolumeSlider}}
+              </div>
             </div>
             <div class="col py-3">
               <h6>Data</h6>
@@ -74,9 +80,10 @@
             </div>
           </div>
           <div class="col">
-            <ngx-audio-player #player (trackEnded)="onEnded($event)" [autoPlay]="false" [displayPlaylist]="msaapDisplayPlayList" 
+            <ngx-audio-player #player (trackEnded)="onEnded($event)" [autoPlay]="false" [displayPlaylist]="msaapDisplayPlayList"
             [tableHeader]="msaapTableHeader" [columnHeader]="msaapColumnHeader" [displayTitle]="msaapDisplayTitle"
-              [displayVolumeControls]="msaapDisplayVolumeControls" [disablePositionSlider]="msaapDisablePositionSlider"
+              [displayVolumeControls]="msaapDisplayVolumeControls" [displayVolumeSlider]="msaapDisplayVolumeSlider"
+              [disablePositionSlider]="msaapDisablePositionSlider"
               [expanded]="true" [pageSizeOptions]="pageSizeOptions" [playlist]="msaapPlaylist">
             </ngx-audio-player>
           </div>

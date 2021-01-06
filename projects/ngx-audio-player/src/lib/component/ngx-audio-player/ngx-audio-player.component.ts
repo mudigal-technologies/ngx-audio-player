@@ -39,6 +39,7 @@ export class AudioPlayerComponent implements OnInit {
     @Input() displayTitle = true;
     @Input() displayPlaylist = true;
     @Input() displayVolumeControls = true;
+    @Input() displayVolumeSlider = false;
     @Input() pageSizeOptions = [10, 20, 30];
     @Input() expanded = true;
     @Input() autoPlay = false;
@@ -62,7 +63,8 @@ export class AudioPlayerComponent implements OnInit {
     loaderDisplay = false;
     isPlaying = false;
     currentTime = 0;
-    volume = 0.1;
+    volume = 1.0;
+    toggledVolume = 1.0;
     duration = 0.01;
 
     private startOffsetValue = 0;
@@ -80,6 +82,12 @@ export class AudioPlayerComponent implements OnInit {
 
     currTimePosChanged(event) {
         this.player.nativeElement.currentTime = event.value;
+    }
+
+    currVolumeChanged(event) {
+        this.volume = event.value;
+        this.toggledVolume = event.value;
+        this.player.nativeElement.volume = event.value;
     }
 
     bindPlayerEvent(): void {
@@ -149,8 +157,9 @@ export class AudioPlayerComponent implements OnInit {
 
     toggleVolume() {
         if (this.volume === 0) {
-            this.setVolume(1.0);
+            this.setVolume(this.toggledVolume);
         } else {
+            this.toggledVolume = this.volume;
             this.setVolume(0);
         }
     }
