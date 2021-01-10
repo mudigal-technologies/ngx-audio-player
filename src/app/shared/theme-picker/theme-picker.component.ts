@@ -20,13 +20,13 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 
 @Component({
-  selector: 'theme-picker',
-  templateUrl: 'theme-picker.html',
-  styleUrls: ['theme-picker.scss'],
+  selector: 'app-theme-picker',
+  templateUrl: 'theme-picker.component.html',
+  styleUrls: ['theme-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
-export class ThemePicker implements OnInit, OnDestroy {
+export class ThemePickerComponent implements OnInit, OnDestroy {
   private _queryParamSubscription = Subscription.EMPTY;
   currentTheme: DocsSiteTheme;
 
@@ -122,8 +122,8 @@ export class ThemePicker implements OnInit, OnDestroy {
     MatMenuModule,
     MatTooltipModule,
   ],
-  exports: [ThemePicker],
-  declarations: [ThemePicker],
+  exports: [ThemePickerComponent],
+  declarations: [ThemePickerComponent],
   providers: [StyleManager, ThemeStorage],
 })
 export class ThemePickerModule { }

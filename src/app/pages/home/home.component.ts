@@ -13,13 +13,13 @@ export class HomeComponent {
   constructor() { }
   private fmaBaseUrl = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music';
 
-  @ViewChild("player")
+  @ViewChild('player')
   advancedPlayer: AudioPlayerComponent;
 
   // Single
   singleTrack: Track[] = [
     {
-      title: 'In Love | A Himitsu feat. Nori',
+      title: 'In Love',
       link:
         'https://dl.dropboxusercontent.com/s/9v0psowra7ekhxo/A%20Himitsu%20-%20In%20Love%20%28feat.%20Nori%29.flac?dl=0',
       duration: 227,
@@ -56,10 +56,10 @@ export class HomeComponent {
   msaapDisplayDuration = false;
   msaapDisablePositionSlider = false;
 
-  msaapTableHeader: string = 'My Playlist';
-  msaapTitleHeader: string = 'My Title';
-  msaapArtistHeader: string = 'My Artist';
-  msaapDurationHeader: string = 'My Duration';
+  msaapTableHeader = 'My Playlist';
+  msaapTitleHeader = 'My Title';
+  msaapArtistHeader = 'My Artist';
+  msaapDurationHeader = 'My Duration';
 
 
   // Start: Required for demo purpose

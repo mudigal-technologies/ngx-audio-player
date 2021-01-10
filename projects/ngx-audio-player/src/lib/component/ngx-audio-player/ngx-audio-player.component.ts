@@ -47,10 +47,10 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
     @Input() displayDuration = false;
 
     // Support for internationalization
-    @Input() tableHeader:string = 'Playlist';
-    @Input() titleHeader:string = 'Title';
-    @Input() artistHeader:string = 'Artist';
-    @Input() durationHeader:string = 'Duration';
+    @Input() tableHeader = 'Playlist';
+    @Input() titleHeader = 'Title';
+    @Input() artistHeader = 'Artist';
+    @Input() durationHeader = 'Duration';
 
     currentIndex = 0;
 

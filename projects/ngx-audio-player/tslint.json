@@ -11,7 +11,6 @@
     "component-selector": [
       true,
       "element",
-      "lib",
       "kebab-case"
     ]
   }

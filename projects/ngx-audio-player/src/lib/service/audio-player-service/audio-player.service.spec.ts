@@ -21,13 +21,13 @@ describe('AudioPlayerService', () => {
 
   it('should set playlist correctly', () => {
     expect(service.getPlaylist().subscribe(playlist => {
-        playlist.length === 3;
+        return playlist.length === 3;
     }));
   });
 
   it('should get playlist correctly', () => {
     expect(service.getPlaylist().subscribe((playlist) => {
-      (playlist[0].title === (mockPlaylist[0].title));
+      return playlist[0].title === (mockPlaylist[0].title);
   }));
 
 }); });
