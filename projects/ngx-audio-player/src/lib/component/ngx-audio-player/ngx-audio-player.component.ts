@@ -45,8 +45,8 @@ export class AudioPlayerComponent implements OnInit {
     @Input() disablePositionSlider = false;
 
     // Support for internationalization
-    @Input() tableHeader:string = "Playlist";
-    @Input() columnHeader:string = "Title";
+    @Input() tableHeader = 'Playlist';
+    @Input() columnHeader = 'Title';
 
     currentIndex = 0;
 
