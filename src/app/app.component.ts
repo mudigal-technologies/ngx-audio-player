@@ -9,12 +9,12 @@ import { DOCUMENT } from '@angular/common';
 export class AppComponent {
   title = 'ngx-audio-player-demo';
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private document: Document) { }
 
   loadStyle(styleName: string) {
     const head = this.document.getElementsByTagName('head')[0];
 
-    let themeLink = this.document.getElementById(
+    const themeLink = this.document.getElementById(
       'client-theme'
     ) as HTMLLinkElement;
     if (themeLink) {

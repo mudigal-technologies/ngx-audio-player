@@ -5,7 +5,7 @@
             <div class="col-12 col-md-2 col-lg-3"></div>
             <img class="col-12 col-md-8 col-lg-6" src="assets/images/logos/logo_with_text_dark.png">
         </h6>
-        <p>A library for loading and playing audio using HTML 5 for Angular 7/8/9/10.</p>
+        <p>A library for loading and playing audio using HTML 5 for Angular 7/8/9/10/11.</p>
 
         <h2 id="installation">Installation</h2>
         <p><code>ngx-audio-player</code> is available via <a href="https://www.npmjs.com/package/ngx-audio-player"
@@ -19,7 +19,6 @@
         <h2 id="getting-started">Getting Started</h2>
         <p>NgxAudioPlayerModule needs Angular Material.<br>Make sure you have installed below
             dependencies with same or higher version than mentioned. </p>
-
         <p>"@angular/core": "^8.0.0" <br>
             "@angular/common": "^8.0.0" <br>
             "@angular/material": "^8.0.0" <br>
@@ -39,7 +38,7 @@
 {{'}'}})
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule {{'{'}} {{'}'}}</code></pre>
         <h3 id="usage">Usage</h3>
-        
+
         <h5 id="html">HTML</h5>
         <pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">ngx-audio-player</span> [<span
                 class="hljs-attr">playlist</span>]=<span class="hljs-string">"msaapPlaylist"</span> [<span
@@ -48,14 +47,16 @@
                 class="hljs-attr">autoPlay</span>]=<span class="hljs-string">"false"</span>
             <span class="hljs-attr">muted</span>=<span class="hljs-string">"muted"</span> [<span
                     class="hljs-attr">displayPlaylist</span>]=<span class="hljs-string">"msaapDisplayPlayList"</span> [<span
-                    class="hljs-attr">pageSizeOptions</span>]=<span class="hljs-string">"msaapPageSizeOptions"</span> <span
-                    class="hljs-attr">(trackEnded)</span>=<span
-                    class="hljs-string">"onEnded($event)"</span>
-                [<span class="hljs-attr">expanded</span>]=<span
-                    class="hljs-string">"true"</span> [<span
+                    class="hljs-attr">pageSizeOptions</span>]=<span class="hljs-string">"msaapPageSizeOptions"</span> 
+            [<span class="hljs-attr">displayArtist</span>]=<span
+                    class="hljs-string">"msaapDisplayArtist"</span> [<span class="hljs-attr">displayDuration</span>]=<span
+                    class="hljs-string">"msaapDisplayDuration"</span>
+            [<span class="hljs-attr">expanded</span>]=<span
+                    class="hljs-string">"true"</span> <span class="hljs-attr">(trackEnded)</span>=<span
+                    class="hljs-string">"onEnded($event)"</span> [<span
                     class="hljs-attr">displayVolumeControls</span>]=<span
-                    class="hljs-string">"msaapDisplayVolumeControls"</span> [<span
-                    class="hljs-attr">disablePositionSlider</span>]=<span
+                    class="hljs-string">"msaapDisplayVolumeControls"</span> 
+            [<span class="hljs-attr">disablePositionSlider</span>]=<span
                     class="hljs-string">"msaapDisablePositionSlider"</span>&gt;</span><span class="hljs-tag">&lt;/<span
                 class="hljs-name">ngx-audio-player</span>&gt;</span>   </code></pre>
         <h5 id="ts">TS</h5>
@@ -70,21 +71,30 @@ msaapDisplayTitle = <span class="hljs-literal">true</span>;
 msaapDisplayPlayList = <span class="hljs-literal">true</span>;
 msaapPageSizeOptions = <span class="hljs-literal">[2,4,6]</span>;
 msaapDisplayVolumeControls = <span class="hljs-literal">true</span>;
+msaapDisplayArtist = <span class="hljs-literal">false</span>;
+msaapDisplayDuration = <span class="hljs-literal">false</span>;
 msaapDisablePositionSlider = <span class="hljs-literal">true</span>;
+
 
 <span class="hljs-comment">// Material Style Advance Audio Player Playlist</span>
 msaapPlaylist: Track[] = [
     {{'{'}}
         title: <span class="hljs-string">'Audio One Title'</span>,
-        link: <span class="hljs-string">'Link to Audio One URL'</span>
+        link: <span class="hljs-string">'Link to Audio One URL'</span>,
+        artist: <span class="hljs-string">'Artist'</span>,
+        duration: <span class="hljs-string">'Duration'</span>
     {{'}'}},
     {{'{'}}
         title: <span class="hljs-string">'Audio Two Title'</span>,
-        link: <span class="hljs-string">'Link to Audio Two URL'</span>
+        link: <span class="hljs-string">'Link to Audio Two URL'</span>,
+        artist: <span class="hljs-string">'Artist'</span>,
+        duration: <span class="hljs-string">'Duration'</span>
     {{'}'}},
     {{'{'}}
         title: <span class="hljs-string">'Audio Three Title'</span>,
-        link: <span class="hljs-string">'Link to Audio Three URL'</span>
+        link: <span class="hljs-string">'Link to Audio Three URL'</span>,
+        artist: <span class="hljs-string">'Artist'</span>,
+        duration: <span class="hljs-string">'Duration'</span>
     {{'}'}},
 ];
         </code></pre>
@@ -142,6 +152,18 @@ msaapPlaylist: Track[] = [
                     <td>false - if the volume controls needs to be hidden</td>
                     <td>optional</td>
                     <td>true</td>
+                </tr>
+                <tr>
+                    <td>@Input() displayArtist = false; </td>
+                    <td>true - if the artist data is to be shown</td>
+                    <td>optional</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>@Input() displayDuration = false;</td>
+                    <td>true - if the track duration is to be shown</td>
+                    <td>optional</td>
+                    <td>false</td>
                 </tr>
                 <tr>
                     <td>@Output() trackEnded: Subject&lt;String&gt;;</td>
@@ -217,6 +239,22 @@ msaapPlaylist: Track[] = [
                         <br /><sub><b>Caleb Crosby</b></sub>
                     </a><br />
                     <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=cicsolutions" title="Code">💻
+                    </a>
+                </td>
+                <td align="center">
+                    <a href="https://github.com/6utt3rfly">
+                        <img alt="" src="https://avatars1.githubusercontent.com/u/17912877?v=4" width="100px;" />
+                        <br /><sub><b>Shelly</b></sub>
+                    </a><br />
+                    <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=6utt3rfly" title="Code">💻
+                    </a>
+                </td>
+                <td align="center">
+                    <a href="https://github.com/Urinprobe">
+                        <img alt="" src="https://avatars1.githubusercontent.com/u/22059384?v=4" width="100px;" />
+                        <br /><sub><b>Simon Reinsch</b></sub>
+                    </a><br />
+                    <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=Urinprobe" title="Code">💻
                     </a>
                 </td>
             </tr>

@@ -1,6 +1,6 @@
 {
   "name": "ngx-audio-player-demo",
-  "version": "8.1.1",
+  "version": "8.1.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/vmudigal/ngx-audio-player.git"
@@ -17,6 +17,9 @@
     "angular",
     "angular7",
     "angular8",
+    "angular9",
+    "angular10",
+    "angular11",
     "audio player",
     "angular audio player",
     "audio player with playlist",
@@ -34,8 +37,8 @@
     "publish-lib": "npm publish --f dist/ngx-audio-player --prod",
     "build-demo": "ng build --prod --base-href https://vmudigal.github.io/ngx-audio-player/",
     "publish-demo": "npx ngh --dir=dist/ngx-audio-player-demo/",
-    "test": "ng test --code-coverage --reporters=teamcity,coverage-istanbul",
-    "test-lib": "ng test ngx-audio-player --code-coverage --reporters=teamcity,coverage-istanbul",
+    "test": "ng test --code-coverage --reporters=coverage-istanbul",
+    "test-lib": "ng test ngx-audio-player --code-coverage --reporters=coverage-istanbul",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

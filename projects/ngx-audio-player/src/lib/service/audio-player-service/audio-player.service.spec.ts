@@ -4,14 +4,13 @@ import { AudioPlayerService } from './audio-player.service';
 import { mockPlaylist } from '../../model/track.model.mock';
 
 describe('AudioPlayerService', () => {
-  let service: AudioPlayerService;
+  const service: AudioPlayerService = new AudioPlayerService();
 
   beforeEach(() => TestBed.configureTestingModule({
     providers: [AudioPlayerService]
   }).compileComponents());
 
   beforeEach(() => {
-    service = TestBed.inject(AudioPlayerService);
     service.setPlaylist(mockPlaylist);
   });
 
@@ -21,13 +20,14 @@ describe('AudioPlayerService', () => {
 
   it('should set playlist correctly', () => {
     expect(service.getPlaylist().subscribe(playlist => {
-        playlist.length === 3;
+      return playlist.length === 3;
     }));
   });
 
   it('should get playlist correctly', () => {
     expect(service.getPlaylist().subscribe((playlist) => {
-      (playlist[0].title === (mockPlaylist[0].title));
-  }));
+      return playlist[0].title === (mockPlaylist[0].title);
+    }));
 
-}); });
+  });
+});

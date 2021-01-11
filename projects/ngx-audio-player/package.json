@@ -1,6 +1,6 @@
 {
   "name": "ngx-audio-player",
-  "version": "8.1.1",
+  "version": "8.1.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/vmudigal/ngx-audio-player.git"
@@ -19,6 +19,7 @@
     "angular8",
     "angular9",
     "angular10",
+    "angular11",
     "audio player",
     "angular audio player",
     "audio player with playlist",
@@ -26,6 +27,7 @@
     "material style basic audio player",
     "material style advanced audio player"
   ],
+  "license": "MIT",
   "licenses": [
     {
       "type": "MIT",
