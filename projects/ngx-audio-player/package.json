@@ -1,6 +1,6 @@
 {
   "name": "ngx-audio-player",
-  "version": "11.0.0",
+  "version": "11.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/vmudigal/ngx-audio-player.git"
@@ -27,6 +27,7 @@
     "material style basic audio player",
     "material style advanced audio player"
   ],
+  "license": "MIT",
   "licenses": [
     {
       "type": "MIT",
