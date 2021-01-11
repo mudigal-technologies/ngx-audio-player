@@ -7,14 +7,18 @@ import { AudioPlayerService } from '../../service/audio-player-service/audio-pla
 import { Subject } from 'rxjs';
 
 @Component({
-    selector: 'ngx-audio-player',
+    selector: 'mat-advanced-audio-player,ngx-audio-player',
     templateUrl: './ngx-audio-player.component.html',
     styleUrls: ['./ngx-audio-player.component.css']
 })
+
 export class AudioPlayerComponent implements OnInit, OnChanges {
 
     audioPlayerService: AudioPlayerService;
-    constructor() {
+    constructor(elem: ElementRef) {
+        if (elem.nativeElement.tagName.toLowerCase() === 'mat-advanced-audio-player') {
+            console.warn(`'mat-advanced-audio-player' selector is deprecated; use 'ngx-audio-player' instead.`);
+        }
         this.audioPlayerService = new AudioPlayerService();
     }
 
@@ -61,8 +65,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
     @ViewChild('audioPlayer', { static: true }) player: ElementRef;
 
     iOS = (/iPad|iPhone|iPod/.test(navigator.platform)
-        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1))
-        && !window.MSStream;
+        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
 
     loaderDisplay = false;
     isPlaying = false;
@@ -200,7 +203,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.hasOwnProperty('displayArtist') || changes.hasOwnProperty('displayDuration')){
+        if (changes.hasOwnProperty('displayArtist') || changes.hasOwnProperty('displayDuration')) {
             this.buildDisplayedColumns();
         }
     }
