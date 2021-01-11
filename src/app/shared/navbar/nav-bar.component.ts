@@ -10,11 +10,11 @@ import {HttpClientModule} from '@angular/common/http';
 
 @Component({
   selector: 'app-navbar',
-  templateUrl: './navbar.html',
-  styleUrls: ['./navbar.scss']
+  templateUrl: './nav-bar.component.html',
+  styleUrls: ['./nav-bar.component.scss']
 })
-export class NavBar {
-  
+export class NavBarComponent {
+
 }
 
 @NgModule({
@@ -26,8 +26,8 @@ export class NavBar {
     RouterModule,
     ThemePickerModule,
   ],
-  exports: [NavBar],
-  declarations: [NavBar],
+  exports: [NavBarComponent],
+  declarations: [NavBarComponent],
   providers: [StyleManager, ThemeStorage]
 })
 export class NavBarModule {}

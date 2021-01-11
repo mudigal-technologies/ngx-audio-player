@@ -1,20 +1,20 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import {Footer, FooterModule} from './footer';
-import {DocsAppTestingModule} from '../../testing/testing-module';
+import {FooterComponent, FooterModule} from './footer.component';
+// import {DocsAppTestingModule} from '../../testing/testing-module';
 
 
 describe('Footer', () => {
-  let fixture: ComponentFixture<Footer>;
+  let fixture: ComponentFixture<FooterComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [FooterModule, DocsAppTestingModule],
+      // imports: [FooterModule, DocsAppTestingModule],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Footer);
+    fixture = TestBed.createComponent(FooterComponent);
     fixture.detectChanges();
   });
 

@@ -161,9 +161,9 @@
 <mat-card *ngIf="displayTitle" class="mat-elevation-z1">
     <div style="text-align: center;">
         <div style="margin: 1px 2px; padding: 1em">
-            <span *ngIf="!isPlaying">{{ tracks[currentIndex]?.title }}</span>
+            <span *ngIf="!isPlaying">{{ tracks[currentIndex]?.title }}{{  displayArtist && tracks[currentIndex]?.artist ? ' | ' + tracks[currentIndex]?.artist : ''}}</span>
             <marquee *ngIf="isPlaying" behavior="scroll" direction="left">{{ tracks[currentIndex]?.title
-                }}
+                }}{{ displayArtist && tracks[currentIndex]?.artist ? ' | ' + tracks[currentIndex]?.artist : ''}}
             </marquee>
         </div>
         <div class="clear"></div>
@@ -177,9 +177,21 @@
         </mat-expansion-panel-header>
         <table [dataSource]="dataSource" class="mat-elevation-z6" mat-table>
             <ng-container matColumnDef="title">
-                <th *matHeaderCellDef mat-header-cell>{{columnHeader}}</th>
+                <th *matHeaderCellDef mat-header-cell>{{titleHeader}}</th>
                 <td (click)="selectTrack(element.index)" *matCellDef="let element" mat-cell>
                     {{element.title}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="artist">
+                <th *matHeaderCellDef mat-header-cell>{{artistHeader}}</th>
+                <td (click)="selectTrack(element.index)" *matCellDef="let element" mat-cell>
+                    {{element?.artist ? element?.artist : ''}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="duration">
+                <th *matHeaderCellDef mat-header-cell>{{durationHeader}}</th>
+                <td (click)="selectTrack(element.index)" *matCellDef="let element" mat-cell>
+                    {{element?.duration ? (element?.duration | secondsToMinutes) : ''}}
                 </td>
             </ng-container>
             <ng-container matColumnDef="status">
