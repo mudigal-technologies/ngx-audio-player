@@ -3,13 +3,15 @@ import { Track } from 'projects/ngx-audio-player/src/public_api';
 import { AudioPlayerComponent } from 'projects/ngx-audio-player/src/public_api';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
-})
+             selector: 'app-home',
+             templateUrl: './home.component.html',
+             styleUrls: ['./home.component.scss']
+           })
 export class HomeComponent {
 
-  constructor() { }
+  constructor() {
+  }
+
   private fmaBaseUrl = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music';
 
 
@@ -168,7 +170,8 @@ export class HomeComponent {
 
   changeMsaapDisplayVolumeSlider(event) {
     this.msaapDisplayVolumeSlider = event.checked;
-    
+  }
+
   changeMsaapDisplayArtist(event) {
     this.msaapDisplayArtist = event.checked;
   }
@@ -180,5 +183,6 @@ export class HomeComponent {
   changeMsaapDisablePositionSlider(event) {
     this.msaapDisablePositionSlider = event.checked;
   }
+
   // End: Required for demo purpose
 }
