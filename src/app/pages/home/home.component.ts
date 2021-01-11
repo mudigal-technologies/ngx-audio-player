@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { SELECT_MULTIPLE_PANEL_PADDING_X } from '@angular/material/select';
-import { Track } from 'ngx-audio-player/public_api';
+import { Track } from 'projects/ngx-audio-player/src/public_api';
 import { AudioPlayerComponent } from 'projects/ngx-audio-player/src/public_api';
 
 @Component({
@@ -12,30 +11,36 @@ export class HomeComponent {
 
   constructor() { }
   private fmaBaseUrl = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music';
-  
-  @ViewChild("player")
+
+  @ViewChild('player')
   advancedPlayer: AudioPlayerComponent;
 
   // Single
   singleTrack: Track[] = [
     {
-      title: 'In Love | A Himitsu feat. Nori',
+      title: 'In Love',
       link:
-        'https://dl.dropboxusercontent.com/s/9v0psowra7ekhxo/A%20Himitsu%20-%20In%20Love%20%28feat.%20Nori%29.flac?dl=0'
+        'https://dl.dropboxusercontent.com/s/9v0psowra7ekhxo/A%20Himitsu%20-%20In%20Love%20%28feat.%20Nori%29.flac?dl=0',
+      duration: 227,
+      artist: 'A Himitsu feat. Nori'
     }
   ];
 
   // Multiple
   multiple: Track[] = [
     {
-      title: 'In Love | A Himitsu feat. Nori',
+      title: 'In Love',
       link:
-        'https://dl.dropboxusercontent.com/s/9v0psowra7ekhxo/A%20Himitsu%20-%20In%20Love%20%28feat.%20Nori%29.flac?dl=0'
+        'https://dl.dropboxusercontent.com/s/9v0psowra7ekhxo/A%20Himitsu%20-%20In%20Love%20%28feat.%20Nori%29.flac?dl=0',
+      duration: 227,
+      artist: 'A Himitsu feat. Nori'
     },
     {
-      title: 'Cartoon – On & On (feat. Daniel Levi) [NCS Release]',
+      title: 'On & On (feat. Daniel Levi) [NCS Release]',
       link:
-        'https://dl.dropboxusercontent.com/s/w99exjxnwoqwz0e/Cartoon-on-on-feat-daniel-levi-ncs-release.mp3?dl=0'
+        'https://dl.dropboxusercontent.com/s/w99exjxnwoqwz0e/Cartoon-on-on-feat-daniel-levi-ncs-release.mp3?dl=0',
+      duration: 208,
+      artist: 'Cartoon'
     }
   ];
 
@@ -46,33 +51,45 @@ export class HomeComponent {
   pageSizeOptions = [2, 4, 6];
 
   msaapDisplayVolumeControls = true;
+  msaapDisplayArtist = false;
+  msaapDisplayDuration = false;
   msaapDisablePositionSlider = false;
 
-  msaapTableHeader: string = 'My Playlist';
-  msaapColumnHeader: string = 'My Music';
+  msaapTableHeader = 'My Playlist';
+  msaapTitleHeader = 'My Title';
+  msaapArtistHeader = 'My Artist';
+  msaapDurationHeader = 'My Duration';
 
-  
+
   // Start: Required for demo purpose
 
   msaapPlaylist2: Track[] = [
     {
-      title: '1400 (by Yung Kartz)',
-      link: `${this.fmaBaseUrl}/no_curator/Yung_Kartz/August_2018/Yung_Kartz_-_10_-_1400.mp3`
+      title: '1400',
+      link: `${this.fmaBaseUrl}/no_curator/Yung_Kartz/August_2018/Yung_Kartz_-_10_-_1400.mp3`,
+      duration: 212,
+      artist: 'Yung Kartz'
     },
     {
-      title: 'Epic Song (by BoxCat Games)',
-      link: `${this.fmaBaseUrl}/ccCommunity/BoxCat_Games/Nameless_The_Hackers_RPG_Soundtrack/BoxCat_Games_-_10_-_Epic_Song.mp3`
+      title: 'Epic Song',
+      link: `${this.fmaBaseUrl}/ccCommunity/BoxCat_Games/Nameless_The_Hackers_RPG_Soundtrack/BoxCat_Games_-_10_-_Epic_Song.mp3`,
+      duration: 54,
+      artist: 'BoxCat Games'
     }
   ];
 
   msaapPlaylist3: Track[] = [
     {
-      title: 'Hachiko (The Faithful Dog) (by The Kyoto)',
-      link: `${this.fmaBaseUrl}/ccCommunity/The_Kyoto_Connection/Wake_Up/The_Kyoto_Connection_-_09_-_Hachiko_The_Faithtful_Dog.mp3`
+      title: 'Hachiko (The Faithful Dog)',
+      link: `${this.fmaBaseUrl}/ccCommunity/The_Kyoto_Connection/Wake_Up/The_Kyoto_Connection_-_09_-_Hachiko_The_Faithtful_Dog.mp3`,
+      duration: 185,
+      artist: 'The Kyoto'
     },
     {
-      title: 'Starling (by Podington Bear)',
-      link: `${this.fmaBaseUrl}/Music_for_Video/Podington_Bear/Solo_Instruments/Podington_Bear_-_Starling.mp3`
+      title: 'Starling',
+      link: `${this.fmaBaseUrl}/Music_for_Video/Podington_Bear/Solo_Instruments/Podington_Bear_-_Starling.mp3`,
+      duration: 105,
+      artist: 'Podington Bear'
     }
   ];
 
@@ -127,7 +144,7 @@ export class HomeComponent {
       });
       this.advancedPlayer.audioPlayerService.setPlaylist(this.msaapPlaylist);
       this.appendTracksToPlaylistDisable = true;
-    } 
+    }
   }
 
   setSingleTrack() {
@@ -145,6 +162,14 @@ export class HomeComponent {
 
   changeMsaapDisplayVolumeControls(event) {
     this.msaapDisplayVolumeControls = event.checked;
+  }
+
+  changeMsaapDisplayArtist(event) {
+    this.msaapDisplayArtist = event.checked;
+  }
+
+  changeMsaapDisplayDuration(event) {
+    this.msaapDisplayDuration = event.checked;
   }
 
   changeMsaapDisablePositionSlider(event) {
