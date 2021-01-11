@@ -21,8 +21,8 @@ import {LiveAnnouncer} from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-theme-picker',
-  templateUrl: 'app-theme-picker.html',
-  styleUrls: ['app-theme-picker.scss'],
+  templateUrl: 'theme-picker.component.html',
+  styleUrls: ['theme-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })

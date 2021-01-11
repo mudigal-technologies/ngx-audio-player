@@ -1,4 +1,5 @@
-import { Component, Input, ViewChild, Output, ElementRef } from '@angular/core';
+
+import { Component, OnInit, Input, ViewChild, Output, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { Track } from '../../model/track.model';
 import { MatSlider } from '@angular/material/slider';
 import { MatTableDataSource } from '@angular/material/table';
@@ -7,16 +8,16 @@ import { AudioPlayerService } from '../../service/audio-player-service/audio-pla
 import { Subject } from 'rxjs';
 
 @Component({
-    selector: 'mat-advanced-audio-player,ngx-audio-player',
+    selector: 'ngx-audio-player',
     templateUrl: './ngx-audio-player.component.html',
     styleUrls: ['./ngx-audio-player.component.css']
 })
-export class AudioPlayerComponent {
+export class AudioPlayerComponent implements OnInit, OnChanges {
 
     audioPlayerService: AudioPlayerService;
     constructor(elem: ElementRef) {
         if (elem.nativeElement.tagName.toLowerCase() === 'mat-advanced-audio-player') {
-          console.warn(`'mat-advanced-audio-player' selector is deprecated; use 'ngx-audio-player' instead.`);
+            console.warn(`'mat-advanced-audio-player' selector is deprecated; use 'ngx-audio-player' instead.`);
         }
         this.audioPlayerService = new AudioPlayerService();
     }
@@ -31,7 +32,8 @@ export class AudioPlayerComponent {
         this.setDataSourceAttributes();
     }
 
-    displayedColumns: string[] = ['title', 'status'];
+
+    displayedColumns: string[];
     dataSource = new MatTableDataSource<Track>();
     paginator: MatPaginator;
 
@@ -46,10 +48,15 @@ export class AudioPlayerComponent {
     @Input() expanded = true;
     @Input() autoPlay = false;
     @Input() disablePositionSlider = false;
+    @Input() displayArtist = false;
+    @Input() displayDuration = false;
 
     // Support for internationalization
-    @Input() tableHeader:string = "Playlist";
-    @Input() columnHeader:string = "Title";
+    @Input() tableHeader = 'Playlist';
+    @Input() titleHeader = 'Title';
+    @Input() artistHeader = 'Artist';
+    @Input() durationHeader = 'Duration';
+
 
     currentIndex = 0;
 
@@ -59,7 +66,8 @@ export class AudioPlayerComponent {
     @ViewChild('audioPlayer', { static: true }) player: ElementRef;
 
     iOS = (/iPad|iPhone|iPod/.test(navigator.platform)
-        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
+        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1))
+        && !window.MSStream;
 
     loaderDisplay = false;
     isPlaying = false;
@@ -188,7 +196,25 @@ export class AudioPlayerComponent {
 
     }
 
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes.hasOwnProperty('displayArtist') || changes.hasOwnProperty('displayDuration')) {
+            this.buildDisplayedColumns();
+        }
+    }
+
+    private buildDisplayedColumns() {
+        this.displayedColumns = ['title'];
+        if (this.displayArtist) {
+            this.displayedColumns.push('artist');
+        }
+        if (this.displayDuration) {
+            this.displayedColumns.push('duration');
+        }
+        this.displayedColumns.push('status');
+    }
+
     initialize() {
+        this.buildDisplayedColumns();
 
         // populate indexs for the track and configure
         // material table data source and paginator

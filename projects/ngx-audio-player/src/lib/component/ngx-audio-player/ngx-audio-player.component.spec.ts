@@ -113,8 +113,6 @@ describe('AudioPlayerComponent', () => {
   });
 
   describe('Advanced Audio Player', () => {
-    let component: AngularAudioPlayerApp;
-
     beforeEach(() => {
       fixture = createComponent(AngularAudioPlayerApp);
       component = fixture.componentInstance;
