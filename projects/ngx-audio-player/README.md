@@ -70,7 +70,7 @@ export class AppModule { }
 <ngx-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
     muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="pageSizeOptions" (trackEnded)="onEnded($event)"
         [displayVolumeControls]="msaapDisplayVolumeControls" [displayVolumeSlider]="msaapDisplayVolumeSlider" 
-        [disablePositionSlider]="msaapDisablePositionSlider" [disablePositionSlider]="msaapDisablePositionSlider" 
+        [disablePositionSlider]="msaapDisablePositionSlider"
         [displayArtist]="msaapDisplayArtist" [displayDuration]="msaapDisplayDuration"
         [expanded]="true"></ngx-audio-player> 
 ```
