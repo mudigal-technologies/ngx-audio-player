@@ -18,7 +18,6 @@ import { Track } from '../../model/track.model';
 import { MatIconModule } from '@angular/material/icon';
 import { NgxAudioPlayerModule } from '../../ngx-audio-player.module';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Injectable()
 export class MockElementRef {
@@ -53,8 +52,7 @@ describe('AudioPlayerComponent', () => {
         MatFormFieldModule,
         MatPaginatorModule,
         MatSliderModule,
-        MatTableModule,
-        BrowserAnimationsModule
+        MatTableModule
       ];
 
       TestBed.configureTestingModule({
@@ -80,10 +78,6 @@ describe('AudioPlayerComponent', () => {
     it('should create', () => {
       expect(component).toBeTruthy();
     });
-
-    // it('should be able to set playlist', async () => {
-    //   expect(component.playlist[0].title).toEqual(mockPlaylist[0].title);
-    // });
 
     it('should have play button', () => {
       const playButton = By.css('.play-track');
@@ -116,28 +110,6 @@ describe('AudioPlayerComponent', () => {
       component.selectTrack(2);
       expect(component.currentIndex).toEqual(1);
     });
-
-    // it('should select next song correctly', () => {
-    //   spyOn(component, 'play');
-    //   let matPaginator = new MatPaginator(null, null);
-    //   matPaginator.pageSize = 2;
-    //   component.dataSource.paginator = matPaginator;
-    //   component.nextSong();
-    //   fixture.detectChanges();
-    //   fixture.whenStable().then(() => {
-    //     expect(component.play).toHaveBeenCalled();
-    //   });
-    // });
-
-    // it('should select previous song correctly', () => {
-    //   spyOn(component, 'play');
-    //   // component.paginator.pageSize = 2;
-    //   component.previousSong();
-    //   fixture.detectChanges();
-    //   fixture.whenStable().then(() => {
-    //     expect(component.play).toHaveBeenCalled();
-    //   });
-    // });
 
   });
 

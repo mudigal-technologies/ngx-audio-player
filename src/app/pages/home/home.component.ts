@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { SELECT_MULTIPLE_PANEL_PADDING_X } from '@angular/material/select';
 import { Track } from 'projects/ngx-audio-player/src/public_api';
 import { AudioPlayerComponent } from 'projects/ngx-audio-player/src/public_api';
 
