@@ -32,6 +32,10 @@ table {
     max-height: 30px;
 } */
 
+::ng-deep .mat-paginator-container {
+    justify-content: space-between!important;
+}
+
 .material-icons {
     font-size: 16px! important;
 }
@@ -102,7 +106,7 @@ table {
     padding-right: .25rem !important;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
     .ngx-sm-block {
         display: block !important;
     }
