@@ -55,7 +55,9 @@
                     class="hljs-string">"true"</span> <span class="hljs-attr">(trackEnded)</span>=<span
                     class="hljs-string">"onEnded($event)"</span> [<span
                     class="hljs-attr">displayVolumeControls</span>]=<span
-                    class="hljs-string">"msaapDisplayVolumeControls"</span> 
+                    class="hljs-string">"msaapDisplayVolumeControls"</span> [<span
+                    class="hljs-attr">displayRepeatControls</span>]=<span
+                    class="hljs-string">"msaapDisplayRepeatControls"</span> 
             [<span class="hljs-attr">disablePositionSlider</span>]=<span
                     class="hljs-string">"msaapDisablePositionSlider"</span>&gt;</span><span class="hljs-tag">&lt;/<span
                 class="hljs-name">ngx-audio-player</span>&gt;</span>   </code></pre>
@@ -71,6 +73,7 @@ msaapDisplayTitle = <span class="hljs-literal">true</span>;
 msaapDisplayPlayList = <span class="hljs-literal">true</span>;
 msaapPageSizeOptions = <span class="hljs-literal">[2,4,6]</span>;
 msaapDisplayVolumeControls = <span class="hljs-literal">true</span>;
+msaapDisplayRepeatControls = <span class="hljs-literal">true</span>;
 msaapDisplayArtist = <span class="hljs-literal">false</span>;
 msaapDisplayDuration = <span class="hljs-literal">false</span>;
 msaapDisablePositionSlider = <span class="hljs-literal">true</span>;
@@ -150,6 +153,12 @@ msaapPlaylist: Track[] = [
                 <tr>
                     <td>@Input() displayVolumeControls = true;</td>
                     <td>false - if the volume controls needs to be hidden</td>
+                    <td>optional</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>@Input() displayRepeatControls = true;</td>
+                    <td>false - if the repeat controls needs to be hidden</td>
                     <td>optional</td>
                     <td>true</td>
                 </tr>

@@ -42,6 +42,12 @@
               displayVolumeControls: {{msaapDisplayVolumeControls}}
             </div>
             <div class="d-flex flex-row px-3">
+              <mat-checkbox (change)="changeMsaapDisplayRepeatControls($event)" [checked]="msaapDisplayRepeatControls"
+                class="px-3 mat-basic-player-display-title">
+              </mat-checkbox>
+              displayRepeatControls: {{msaapDisplayRepeatControls}}
+            </div>
+            <div class="d-flex flex-row px-3">
               <mat-checkbox (change)="changeMsaapDisplayArtist($event)" [checked]="msaapDisplayArtist"
                 class="px-3 mat-basic-player-display-title">
               </mat-checkbox>
@@ -89,8 +95,9 @@
           <ngx-audio-player #player (trackEnded)="onEnded($event)" [autoPlay]="false"
             [displayPlaylist]="msaapDisplayPlayList" [tableHeader]="msaapTableHeader" [titleHeader]="msaapTitleHeader"
             [artistHeader]="msaapArtistHeader" [durationHeader]="msaapDurationHeader" [displayTitle]="msaapDisplayTitle"
-            [displayVolumeControls]="msaapDisplayVolumeControls" [disablePositionSlider]="msaapDisablePositionSlider"
-            [displayArtist]="msaapDisplayArtist" [displayDuration]="msaapDisplayDuration" [expanded]="true"
+            [displayVolumeControls]="msaapDisplayVolumeControls" [displayRepeatControls]="msaapDisplayRepeatControls" 
+            [disablePositionSlider]="msaapDisablePositionSlider" [displayArtist]="msaapDisplayArtist" 
+            [displayDuration]="msaapDisplayDuration" [expanded]="true"
             [pageSizeOptions]="pageSizeOptions" [playlist]="msaapPlaylist">
           </ngx-audio-player>
         </div>
