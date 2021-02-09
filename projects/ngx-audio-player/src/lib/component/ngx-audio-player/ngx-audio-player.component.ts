@@ -1,3 +1,4 @@
+
 import { Component, OnInit, Input, ViewChild, Output, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { Track } from '../../model/track.model';
 import { MatSlider } from '@angular/material/slider';
@@ -11,10 +12,10 @@ import { Subject } from 'rxjs';
     templateUrl: './ngx-audio-player.component.html',
     styleUrls: ['./ngx-audio-player.component.css']
 })
-
 export class AudioPlayerComponent implements OnInit, OnChanges {
 
     audioPlayerService: AudioPlayerService;
+    repeat: string = 'all';
     constructor(elem: ElementRef) {
         if (elem.nativeElement.tagName.toLowerCase() === 'mat-advanced-audio-player') {
             console.warn(`'mat-advanced-audio-player' selector is deprecated; use 'ngx-audio-player' instead.`);
@@ -32,6 +33,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
         this.setDataSourceAttributes();
     }
 
+
     displayedColumns: string[];
     dataSource = new MatTableDataSource<Track>();
     paginator: MatPaginator;
@@ -43,6 +45,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
     @Input() displayTitle = true;
     @Input() displayPlaylist = true;
     @Input() displayVolumeControls = true;
+    @Input() displayRepeatControls = true;
     @Input() pageSizeOptions = [10, 20, 30];
     @Input() expanded = true;
     @Input() autoPlay = false;
@@ -55,6 +58,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
     @Input() titleHeader = 'Title';
     @Input() artistHeader = 'Artist';
     @Input() durationHeader = 'Duration';
+
 
     currentIndex = 0;
 
@@ -113,7 +117,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
                 this.loaderDisplay = true;
             });
         }
-        this.player.nativeElement.addEventListener('loadeddata', () => {
+        this.player.nativeElement.addEventListener('loadedmetadata', () => {
             this.loaderDisplay = false;
             this.duration = Math.floor(this.player.nativeElement.duration);
         });
@@ -162,6 +166,20 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
         }
     }
 
+    toggleRepeat() {
+        if (this.repeat === 'none') {
+            this.repeat = 'all';
+        } else if (this.repeat === 'all') {
+            if (this.tracks.length > 1) {
+                this.repeat = 'one';
+            } else {
+                this.repeat = 'none';
+            }
+        } else if (this.repeat === 'one' && this.tracks.length > 1) {
+            this.repeat = 'none';
+        }
+    }
+
     private setVolume(vol) {
         this.volume = vol;
         this.player.nativeElement.volume = this.volume;
@@ -174,7 +192,13 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
         // auto play next track
         this.player.nativeElement.addEventListener('ended', () => {
             if (this.checkIfSongHasStartedSinceAtleastTwoSeconds()) {
-                this.nextSong();
+                if (this.repeat === 'all') {
+                    this.nextSong();
+                } else if (this.repeat === 'one') {
+                    this.play();
+                } else if (this.repeat === 'none') {
+                    // Do nothing
+                }
             }
         });
 
@@ -266,7 +290,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
                 && (((this.currentIndex) % this.paginator.pageSize) === 0
                     || (this.currentIndex === 0))) {
                 if (this.paginator.hasPreviousPage()) {
-                    this.paginator.previousPage();
+                    this.paginator.previousPage();       
                 } else if (!this.paginator.hasPreviousPage()) {
                     this.paginator.lastPage();
                 }

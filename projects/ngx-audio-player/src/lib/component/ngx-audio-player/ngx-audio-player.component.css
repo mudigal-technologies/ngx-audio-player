@@ -24,13 +24,21 @@ table {
     width: 100%;
 }
 
-.ngx-advanced-audio-player {
-    min-width: 325px;
+::ng-deep .ngx-audio-player {
+    min-width: 375px;
+}
+
+.mat-expansion-panel {
+    min-width: 375px;
 }
 
 /* mat-slider {
     max-height: 30px;
 } */
+
+::ng-deep .mat-paginator-container {
+    justify-content: space-between!important;
+}
 
 .material-icons {
     font-size: 16px! important;
@@ -102,7 +110,7 @@ table {
     padding-right: .25rem !important;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
     .ngx-sm-block {
         display: block !important;
     }
