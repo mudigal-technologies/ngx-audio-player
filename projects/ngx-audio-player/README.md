@@ -1,9 +1,7 @@
-
 A library for loading and playing audio using HTML 5 for Angular 7/8/9/10/11.  
 (https://vmudigal.github.io/ngx-audio-player/)
 
-
-[![Travis-CI](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master)](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master) [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://vmudigal.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.2.0) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.1.2) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.2.2) [![Support](https://img.shields.io/badge/support-Angular%2010+-teal.svg)](https://www.npmjs.com/package/ngx-audio-player/v/10.1.2) [![Support](https://img.shields.io/badge/support-Angular%2011+-grey.svg)](https://www.npmjs.com/package/ngx-audio-player/v/11.0.1)
+[![Travis-CI](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master)](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master) [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://vmudigal.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.2.0) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.1.4) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.2.3) [![Support](https://img.shields.io/badge/support-Angular%2010+-teal.svg)](https://www.npmjs.com/package/ngx-audio-player/v/10.1.3) [![Support](https://img.shields.io/badge/support-Angular%2011+-grey.svg)](https://www.npmjs.com/package/ngx-audio-player/v/11.0.3)
 
 ## Table of contents
 
@@ -70,9 +68,9 @@ export class AppModule { }
 ```html
 <ngx-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
     muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="pageSizeOptions" (trackEnded)="onEnded($event)"
-        [displayVolumeControls]="msaapDisplayVolumeControls" [disablePositionSlider]="msaapDisablePositionSlider" 
-        [displayArtist]="msaapDisplayArtist" [displayDuration]="msaapDisplayDuration"
-        [expanded]="true"></ngx-audio-player> 
+        [displayVolumeControls]="msaapDisplayVolumeControls" [displayRepeatControls]="msaapDisplayRepeatControls"
+        [disablePositionSlider]="msaapDisablePositionSlider" [displayArtist]="msaapDisplayArtist" 
+        [displayDuration]="msaapDisplayDuration" [expanded]="true"></ngx-audio-player> 
 ```
    
 ##### TS   
@@ -87,6 +85,7 @@ msaapDisplayTitle = true;
 msaapDisplayPlayList = true;
 msaapPageSizeOptions = [2,4,6];
 msaapDisplayVolumeControls = true;
+msaapDisplayRepeatControls = true;
 msaapDisplayArtist = false;
 msaapDisplayDuration = false;
 msaapDisablePositionSlider = true;
@@ -125,6 +124,7 @@ msaapPlaylist: Track[] = [
 | @Input() pageSizeOptions = [10, 20, 30];   | number of items to be displayed in the playlist     | optional  | [10,20,30]    |
 | @Input() expanded = true;                  | false - if the playlist needs to be minimized       | optional  | true          |
 | @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true          |
+| @Input() displayRepeatControls = true;     | false - if the repeat controls needs to be hidden   | optional  | true          |
 | @Input() displayArtist = false;            | true - if the artist data is to be shown            | optional  | false         |
 | @Input() displayDuration = false;          | true - if the track duration is to be shown         | optional  | false         |
 | @Output() trackEnded: Subject<string>      | Callback method that triggers once the track ends   | optional  | - N.A -       |
