@@ -33,27 +33,24 @@
                 "input": "src/styles.scss"
               },
               {
-                "input": "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
-              },
-              {
-                "inject": false,
+                "inject": true,
                 "input": "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
                 "bundleName": "assets/pink-bluegrey"
               },
               {
-                "inject": false,
+                "inject": true,
                 "input": "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
                 "bundleName": "assets/deeppurple-amber"
               },
               {
-                "inject": false,
-                "input": "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-                "bundleName": "assets/indigo-pink"
-              },
-              {
-                "inject": false,
+                "inject": true,
                 "input": "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
                 "bundleName": "assets/purple-green"
+              },
+              {
+                "inject": true,
+                "input": "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+                "bundleName": "assets/indigo-pink"
               }
             ],
             
@@ -114,9 +111,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
-            "styles": [
-      
-            ],
+            "styles": [],
             "scripts": [],
             "assets": [
               "src/favicon.ico",
@@ -207,5 +202,8 @@
       }
     }
   },
-  "defaultProject": "ngx-audio-player-demo"
+  "defaultProject": "ngx-audio-player-demo",
+  "cli": {
+    "analytics": false
+  }
 }

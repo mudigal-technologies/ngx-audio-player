@@ -14,4 +14,16 @@ describe('Pipe: Default', () => {
         expect(pipe.transform(125)).toBe('02:05');
     });
 
+    it('should transform 3983 as 01:06:23', () => {
+        expect(pipe.transform(3983)).toBe('01:06:23');
+    });
+
+    it('should transform 279 as 04:39', () => {
+        expect(pipe.transform(279)).toBe('04:39');
+    });
+
+    it('should transform 227 as 03:47', () => {
+        expect(pipe.transform(227)).toBe('03:47');
+    });
+
 });
