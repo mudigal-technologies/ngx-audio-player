@@ -3,7 +3,7 @@
 
     <audio #audioPlayer [src]="tracks[currentIndex]?.link"></audio>
 
-    <button *ngIf="tracks.length > 1" (click)='previousSong();' [disabled]="loaderDisplay" class="ngx-p-1" mat-button>
+    <button type="button" *ngIf="tracks.length > 1" (click)='previousSong();' [disabled]="loaderDisplay" class="ngx-p-1" mat-button>
         <mat-icon aria-hidden="true">
             <!-- Skip previous icon (skip_previous) -->
             <svg height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
@@ -12,7 +12,7 @@
             </svg>
         </mat-icon>
     </button>
-    <button (click)='playBtnHandler();' [disabled]="loaderDisplay" class="ngx-p-1 play-pause" mat-button>
+    <button type="button" (click)='playBtnHandler();' [disabled]="loaderDisplay" class="ngx-p-1 play-pause" mat-button>
 
         <svg *ngIf="loaderDisplay" height="34px" preserveAspectRatio="xMidYMid"
             style="margin: auto; display: block; shape-rendering: auto;" viewBox="0 0 100 100" width="34px"
@@ -106,7 +106,7 @@
             </svg>
         </mat-icon>
     </button>
-    <button *ngIf="tracks.length > 1" (click)='nextSong();' [disabled]="loaderDisplay" class="ngx-p-1 skip-next"
+    <button type="button" *ngIf="tracks.length > 1" (click)='nextSong();' [disabled]="loaderDisplay" class="ngx-p-1 skip-next"
         mat-button>
         <mat-icon aria-hidden="true" class="next-track">
             <!-- Skip next icon (skip_next) -->
@@ -135,7 +135,7 @@
             </div>
         </div>
     </div>
-    <button (click)='toggleRepeat();' *ngIf="displayRepeatControls" class="ngx-p-1 volume justify-content-center"
+    <button type="button" (click)='toggleRepeat();' *ngIf="displayRepeatControls" class="ngx-p-1 volume justify-content-center"
         mat-button>
         <mat-icon *ngIf="repeat === 'none'" aria-hidden="true" class="volume-mute justify-content-center">
             <!-- Repeat None -->
@@ -172,7 +172,7 @@
             </svg>
         </mat-icon>
     </button>
-    <button (click)='toggleVolume();' *ngIf="displayVolumeControls" class="ngx-p-1 volume" mat-button>
+    <button type="button" (click)='toggleVolume();' *ngIf="displayVolumeControls" class="ngx-p-1 volume" mat-button>
         <mat-icon *ngIf="volume === 0" aria-hidden="true" class="volume-mute">
             <!-- Volume mute icon (volume_off) -->
             <svg height="28" viewBox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
