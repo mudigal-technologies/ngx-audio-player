@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, ViewChild, Output, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, ElementRef, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
 import { Track } from '../../model/track.model';
 import { MatSlider } from '@angular/material/slider';
 import { MatTableDataSource } from '@angular/material/table';
@@ -64,6 +64,10 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
 
     @Output()
     trackEnded: Subject<string> = new Subject<string>();
+    @Output()
+    nextTrackRequested: EventEmitter<string> = new EventEmitter<string>();
+    @Output()
+    previousTrackRequested: EventEmitter<string> = new EventEmitter<string>();
 
     @ViewChild('audioPlayer', { static: true }) player: ElementRef;
 
@@ -279,6 +283,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
             this.currentIndex++;
         }
         this.updateCurrentTrack();
+        this.nextTrackRequested.emit('Next track requested!');
         this.play();
     }
 
@@ -290,7 +295,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
                 && (((this.currentIndex) % this.paginator.pageSize) === 0
                     || (this.currentIndex === 0))) {
                 if (this.paginator.hasPreviousPage()) {
-                    this.paginator.previousPage();       
+                    this.paginator.previousPage();
                 } else if (!this.paginator.hasPreviousPage()) {
                     this.paginator.lastPage();
                 }
@@ -304,6 +309,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
             this.resetSong();
         }
         this.updateCurrentTrack();
+        this.previousTrackRequested.emit('Previous track requested!');
         this.play();
     }
 
