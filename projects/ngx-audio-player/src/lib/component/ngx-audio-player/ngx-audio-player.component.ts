@@ -63,11 +63,11 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
     currentIndex = 0;
 
     @Output()
-    trackEnded: Subject<string> = new Subject<string>();
+    trackEnded: Subject<number> = new Subject<number>();
     @Output()
-    nextTrackRequested: EventEmitter<string> = new EventEmitter<string>();
+    nextTrackRequested: EventEmitter<number> = new EventEmitter<number>();
     @Output()
-    previousTrackRequested: EventEmitter<string> = new EventEmitter<string>();
+    previousTrackRequested: EventEmitter<number> = new EventEmitter<number>();
 
     @ViewChild('audioPlayer', { static: true }) player: ElementRef;
 
@@ -126,7 +126,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
             this.duration = Math.floor(this.player.nativeElement.duration);
         });
         this.player.nativeElement.addEventListener('ended', () => {
-            this.trackEnded.next('ended');
+            this.trackEnded.next(this.currentIndex);
         });
 
     }
@@ -283,7 +283,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
             this.currentIndex++;
         }
         this.updateCurrentTrack();
-        this.nextTrackRequested.emit('Next track requested!');
+        this.nextTrackRequested.emit(this.currentIndex);
         this.play();
     }
 
@@ -309,7 +309,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
             this.resetSong();
         }
         this.updateCurrentTrack();
-        this.previousTrackRequested.emit('Previous track requested!');
+        this.previousTrackRequested.emit(this.currentIndex);
         this.play();
     }
 
