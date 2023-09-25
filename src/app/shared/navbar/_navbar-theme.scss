@@ -1,3 +1,5 @@
+@use '~@angular/material' as mat;
+
 @mixin nav-bar-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -6,10 +8,15 @@
   $foreground: map-get($theme, foreground);
 
   app-navbar {
-    color: mat-color($primary, default-contrast);
+    color: mat.get-color-from-palette($primary, default-contrast);
 
-    .docs-navbar, .docs-navbar-header {
-      background: mat-color($primary);
+    .docs-navbar,
+    .docs-navbar-header {
+      background: mat.get-color-from-palette($primary);
+      opacity: 0.9 !important;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+      backdrop-filter: blur(5px) !important;
+      -webkit-backdrop-filter: blur(5px) !important;
     }
   }
 }

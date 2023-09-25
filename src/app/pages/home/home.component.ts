@@ -181,4 +181,12 @@ export class HomeComponent {
     this.msaapDisablePositionSlider = event.checked;
   }
   // End: Required for demo purpose
+
+  play() {
+
+  }
+
+  pause() {
+    
+  }
 }
