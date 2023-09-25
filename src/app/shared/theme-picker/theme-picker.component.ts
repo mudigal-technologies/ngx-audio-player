@@ -6,18 +6,18 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import {StyleManager} from '../style-manager';
-import {DocsSiteTheme, ThemeStorage} from './theme-storage/theme-storage';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {CommonModule} from '@angular/common';
-import {ActivatedRoute, ParamMap} from '@angular/router';
-import {Subscription} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {DomSanitizer} from '@angular/platform-browser';
-import {LiveAnnouncer} from '@angular/cdk/a11y';
+import { StyleManager } from '../style-manager';
+import { DocsSiteTheme, ThemeStorage } from './theme-storage/theme-storage';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { DomSanitizer } from '@angular/platform-browser';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-theme-picker',
@@ -64,14 +64,14 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
   ];
 
   constructor(public styleManager: StyleManager,
-              private _themeStorage: ThemeStorage,
-              private _activatedRoute: ActivatedRoute,
-              private liveAnnouncer: LiveAnnouncer,
-              iconRegistry: MatIconRegistry,
-              sanitizer: DomSanitizer) {
+    private _themeStorage: ThemeStorage,
+    private _activatedRoute: ActivatedRoute,
+    private liveAnnouncer: LiveAnnouncer,
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('theme-example',
-                            sanitizer.bypassSecurityTrustResourceUrl(
-                                '../../../../assets/images/theme-demo-icon.svg'));
+      sanitizer.bypassSecurityTrustResourceUrl(
+        '/assets/images/theme-demo-icon.svg'));
     const themeName = this._themeStorage.getStoredThemeName();
     if (themeName) {
       this.selectTheme(themeName);
@@ -85,7 +85,7 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
         if (themeName) {
           this.selectTheme(themeName);
         }
-    });
+      });
   }
 
   ngOnDestroy() {
@@ -104,7 +104,7 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
     if (theme.isDefault) {
       this.styleManager.removeStyle('theme');
     } else {
-      this.styleManager.setStyle('theme', `assets/${theme.name}.css`);
+      this.styleManager.setStyle('theme', `${theme.name}.css`);
     }
 
     if (this.currentTheme) {

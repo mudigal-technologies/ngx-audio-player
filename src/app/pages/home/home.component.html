@@ -6,7 +6,7 @@
       <h2> Audio Player for Angular</h2>
     </div>
     <div>
-      <a mat-raised-button style="text-decoration: none!important;" routerLink="/guide/getting-started">Get started</a>
+      <a mat-raised-button href="/guide/getting-started" routerLink="/guide/getting-started">Get started</a>
     </div>
   </div>
 </header>
@@ -15,6 +15,15 @@
     <div class="col-12" style="margin: 50px 0; border: 2px solid #BBBBBB; padding: 50px; border-radius: 5px">
       <div class="row justify-contents-around">
         <div class="col py-3 pl-3">
+          <!-- <div class="col">
+            <h6>Actions</h6>
+            <div class="px-3 py-1">
+              <button mat-stroked-button (click)="play()">Play</button>
+            </div>
+            <div class="px-3 py-1">
+              <button mat-stroked-button (click)="pause()">Stop</button>
+            </div>
+          </div> -->
           <div class="col">
             <h6>Controls</h6>
             <div class="d-flex flex-row px-3">
@@ -95,10 +104,10 @@
           <ngx-audio-player #player (trackEnded)="onEnded($event)" [autoPlay]="false"
             [displayPlaylist]="msaapDisplayPlayList" [tableHeader]="msaapTableHeader" [titleHeader]="msaapTitleHeader"
             [artistHeader]="msaapArtistHeader" [durationHeader]="msaapDurationHeader" [displayTitle]="msaapDisplayTitle"
-            [displayVolumeControls]="msaapDisplayVolumeControls" [displayRepeatControls]="msaapDisplayRepeatControls" 
-            [disablePositionSlider]="msaapDisablePositionSlider" [displayArtist]="msaapDisplayArtist" 
-            [displayDuration]="msaapDisplayDuration" [expanded]="true"
-            [pageSizeOptions]="pageSizeOptions" [playlist]="msaapPlaylist">
+            [displayVolumeControls]="msaapDisplayVolumeControls" [displayRepeatControls]="msaapDisplayRepeatControls"
+            [disablePositionSlider]="msaapDisablePositionSlider" [displayArtist]="msaapDisplayArtist"
+            [displayDuration]="msaapDisplayDuration" [expanded]="true" [pageSizeOptions]="pageSizeOptions"
+            [playlist]="msaapPlaylist">
           </ngx-audio-player>
         </div>
       </div>

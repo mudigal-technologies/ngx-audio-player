@@ -1,19 +1,36 @@
+#sticky-navigation {
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+}
+
+
 .docs-navbar-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   padding: 8px 16px;
+  min-height: 80px;
 
-  > .mat-button {
+  >.mat-button {
     &:last-child {
       margin-left: auto;
     }
   }
 }
 
+a {
+  color: #ffffff;
+}
+
 a:hover {
   color: #ffffff;
-  text-decoration: none! important;
+  text-decoration: none ! important;
 }
 
 .flex-spacer {
@@ -21,7 +38,7 @@ a:hover {
 }
 
 .docs-angular-logo {
-  height: 26px;
+  height: 36px;
   margin: 0 4px 3px 0;
   vertical-align: middle;
 }
