@@ -261,7 +261,7 @@ onTrackSelected(event) {
 |-----------------------------------------------------------------|-----------------------------------------------------|-----------|
 | @Input() playlist: Track[];                                     | playlist containing array of title and link         | mandatory |
 | @Input() autoPlay: false;                                       | true - if the audio needs to be played automaticlly | optional  |
-| #### Player Controls                                                                                                                   |
+|  Player Controls                                                                                                                  |
 | @Input() startOffset = 0;                                       | offset from start of audio file in seconds          | optional  |
 | @Input() endOffset = 0;                                         | offset from end of audio file in seconds            | optional  |
 | @Input() disablePositionSlider = false;                         | true - if the position slider needs to be disabled  | optional  |
@@ -269,20 +269,20 @@ onTrackSelected(event) {
 | @Input() repeat: "all" | "one" | "none" = 'all';                | repeat all or one or none                           | optional  |
 | @Input() displayVolumeControls = true;                          | false - if the volume controls needs to be hidden   | optional  |
 | @Input() displayVolumeSlider = true;                            | true - if the volume slider should be shown         | optional  |
-| #### Title Marquee Control                                                                                                             |
+|  Title Marquee Control                                                                                                            |
 | @Input() displayTitle: true;                                    | false - if the audio title needs to be hidden       | optional  |
-| #### Playlist Controls                                                                                                                 |
+|  Playlist Controls                                                                                                                |
 | @Input() displayPlaylist: true;                                 | false - if the playlist needs to be hidden          | optional  |
 | @Input() pageSizeOptions = [10, 20, 30];                        | number of items to be displayed in the playlist     | optional  |
 | @Input() expanded = true;                                       | false - if the playlist needs to be minimized       | optional  |
 | @Input() displayArtist = false;                                 | true - if the artist data is to be shown            | optional  |
 | @Input() displayDuration = false;                               | true - if the track duration is to be shown         | optional  |
-| #### Localisation Controls                                                                                                             |
+|  Localisation Controls                                                                                                            |
 | @Input() tableHeader = 'Playlist';                              | localised string                                    | optional  |
 | @Input() titleHeader = 'Title';                                 | localised string                                    | optional  |
 | @Input() artistHeader = 'Artist';                               | localised string                                    | optional  |
 | @Input() durationHeader = 'Duration';                           | localised string                                    | optional  |
-| #### Callback Events                                                                                                                   |
+|  Callback Events                                                                                                                  |
 | @Output() trackPlaying: EventEmitter<EventResponse>             | triggers when the track starts playing              | optional  |
 | @Output() trackPaused: EventEmitter<EventResponse>              | Callback method that triggers once the track ends   | optional  |
 | @Output() trackEnded: EventEmitter<EventResponse>               | Callback method that triggers once the track ends   | optional  |
