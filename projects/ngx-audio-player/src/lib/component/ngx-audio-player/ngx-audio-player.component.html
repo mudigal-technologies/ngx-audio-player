@@ -1,9 +1,9 @@
-<mat-card class="ngx-d-flex ngx-justify-content-center ngx-audio-player z-depth-1 mat-elevation-z2"
-    style="margin: 0px;">
+<mat-card class="ngx-d-flex ngx-content-center ngx-audio-player z-depth-1 mat-elevation-z2" style="margin: 0px;">
 
     <audio #audioPlayer [src]="tracks[currentIndex]?.link"></audio>
 
-    <button *ngIf="tracks.length > 1" (click)='previousSong();' [disabled]="loaderDisplay" class="ngx-p-1" mat-button>
+    <button type="button" *ngIf="tracks.length > 1" (click)='previousSong();' [disabled]="loaderDisplay" class="ngx-p-1"
+        mat-button>
         <mat-icon aria-hidden="true">
             <!-- Skip previous icon (skip_previous) -->
             <svg height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
@@ -12,7 +12,7 @@
             </svg>
         </mat-icon>
     </button>
-    <button (click)='playBtnHandler();' [disabled]="loaderDisplay" class="ngx-p-1 play-pause" mat-button>
+    <button type="button" (click)='playBtnHandler();' [disabled]="loaderDisplay" class="ngx-p-1 play-pause" mat-button>
 
         <svg *ngIf="loaderDisplay" height="34px" preserveAspectRatio="xMidYMid"
             style="margin: auto; display: block; shape-rendering: auto;" viewBox="0 0 100 100" width="34px"
@@ -106,8 +106,8 @@
             </svg>
         </mat-icon>
     </button>
-    <button *ngIf="tracks.length > 1" (click)='nextSong();' [disabled]="loaderDisplay" class="ngx-p-1 skip-next"
-        mat-button>
+    <button type="button" *ngIf="tracks.length > 1" (click)='nextSong();' [disabled]="loaderDisplay"
+        class="ngx-p-1 skip-next" mat-button>
         <mat-icon aria-hidden="true" class="next-track">
             <!-- Skip next icon (skip_next) -->
             <svg height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
@@ -118,25 +118,33 @@
     </button>
 
     <div class="ngx-col">
-        <div class="ngx-d-flex ngx-flex-fill ngx-justify-content-center">
+        <div class="ngx-d-flex ngx-flex-fill ngx-content-center">
             <div class="ngx-d-none ngx-d-sm-block ngx-py-3 ngx-px-1" style="font-size: 12px">
                 <span *ngIf="duration !== 0.01">
                     {{currentTime | secondsToMinutes}}
                 </span>
             </div>
-            <mat-slider [disabled]="disablePositionSlider" (change)="currTimePosChanged($event)" [min]="startOffset"
-                class="ngx-d-none ngx-d-sm-block ngx-flex-fill ngx-p-1" max="{{duration-endOffset}}" style="width: 100%"
+
+            <mat-slider *ngIf="mediaType !== 'stream'" [disabled]="disablePositionSlider"
+                (change)="currTimePosChanged($event)" [min]="startOffset"
+                class="ngx-d-none ngx-d-sm-block ngx-flex-fill ngx-p-1 ngx-slider" max="{{duration-endOffset}}"
+                style="width: 100%" value="{{currentTime}}"></mat-slider>
+            <mat-slider *ngIf="mediaType === 'stream'" [disabled]="true" [min]="startOffset"
+                class="ngx-d-none ngx-d-sm-block ngx-flex-fill ngx-p-1" max="{{currentTime}}" style="width: 100%"
                 value="{{currentTime}}"></mat-slider>
 
             <div class="ngx-py-3 ngx-px-1" style="font-size: 12px; text-align: right">
-                <span *ngIf="duration !== 0.01">
+                <span *ngIf="mediaType !== null && mediaType !== 'stream' && duration !== 0.01">
                     -{{duration-currentTime | secondsToMinutes }}
+                </span>
+                <span *ngIf="mediaType === 'stream'">
+                    STREAM
                 </span>
             </div>
         </div>
     </div>
-    <button (click)='toggleRepeat();' *ngIf="displayRepeatControls" class="ngx-p-1 volume justify-content-center"
-        mat-button>
+    <button type="button" (click)='toggleRepeat();' *ngIf="displayRepeatControls"
+        class="ngx-p-1 volume justify-content-center" mat-button>
         <mat-icon *ngIf="repeat === 'none'" aria-hidden="true" class="volume-mute justify-content-center">
             <!-- Repeat None -->
             <svg height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
@@ -172,8 +180,8 @@
             </svg>
         </mat-icon>
     </button>
-    <button (click)='toggleVolume();' *ngIf="displayVolumeControls" class="ngx-p-1 volume" mat-button>
-        <mat-icon *ngIf="volume === 0" aria-hidden="true" class="volume-mute">
+    <button type="button" *ngIf="displayVolumeControls" class="ngx-p-1 volume" mat-button>
+        <mat-icon (click)='toggleVolume();' *ngIf="volume === 0" aria-hidden="true" class="volume-mute">
             <!-- Volume mute icon (volume_off) -->
             <svg height="28" viewBox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -181,7 +189,7 @@
                 <path d="M0 0h24v24H0z" fill="none" />
             </svg>
         </mat-icon>
-        <mat-icon *ngIf="volume > 0" aria-hidden="true" class="volume-up">
+        <mat-icon (click)='toggleVolume();' *ngIf="volume > 0" aria-hidden="true" class="volume-up">
             <!-- Volume up icon (volume_up) -->
             <svg height="28" viewBox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -189,15 +197,22 @@
                 <path d="M0 0h24v24H0z" fill="none" />
             </svg>
         </mat-icon>
+        <mat-slider *ngIf="displayVolumeSlider" (change)="currVolumeChanged($event)" [min]="0"
+            class="ngx-d-none ngx-d-sm-block ngx-p-1 ngx-volume ngx-slider" max="1" step="0.01"
+            value="{{volume}}"></mat-slider>
     </button>
 </mat-card>
 
 <mat-card *ngIf="displayTitle" class="mat-elevation-z1 ngx-audio-player">
     <div style="text-align: center;">
-        <div style="margin: 1px 2px; padding: 1em">
-            <span *ngIf="!isPlaying">{{ tracks[currentIndex]?.title }}{{ displayArtist && tracks[currentIndex]?.artist ?
-                ' | ' + tracks[currentIndex]?.artist : ''}}</span>
-            <marquee *ngIf="isPlaying" behavior="scroll" direction="left">{{ tracks[currentIndex]?.title
+        <div style="margin: 1px 2px; padding: 0.5em; font-weight: 400; font-size: 16px;">
+            <div style="padding: 0.3em;" *ngIf="!isPlaying">{{
+                tracks[currentIndex]?.title }}{{
+                displayArtist && tracks[currentIndex]?.artist ?
+                ' | ' + tracks[currentIndex]?.artist : ''}}</div>
+
+            <marquee *ngIf="isPlaying" behavior="scroll" direction="left">{{
+                tracks[currentIndex]?.title
                 }}{{ displayArtist && tracks[currentIndex]?.artist ? ' | ' + tracks[currentIndex]?.artist : ''}}
             </marquee>
         </div>

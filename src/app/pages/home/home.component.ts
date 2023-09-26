@@ -15,6 +15,20 @@ export class HomeComponent {
   @ViewChild('player', { static: false })
   advancedPlayer: AudioPlayerComponent;
 
+  events: string[] = [];
+
+  // Stream - set duration to 0 for streams.
+  stream: Track[] = [
+    {
+      title: 'Audio Stream',
+      // link: `http://mediaserv33.live-streams.nl:8036/live`,
+      link: 'http://mediaserv30.live-streams.nl:8086/live',
+      // link: 'https://mediaserv30.live-streams.nl:2199/tunein/-stream/hionline.pls',
+      mediaType: 'stream',
+      artist: 'Assorted'
+    },
+  ];
+
   // Single
   singleTrack: Track[] = [
     {
@@ -41,30 +55,7 @@ export class HomeComponent {
         'https://dl.dropboxusercontent.com/s/w99exjxnwoqwz0e/Cartoon-on-on-feat-daniel-levi-ncs-release.mp3?dl=0',
       duration: 208,
       artist: 'Cartoon'
-    }
-  ];
-
-  msaapPlaylist: Track[] = this.multiple;
-
-  msaapDisplayTitle = true;
-  msaapDisplayPlayList = true;
-  pageSizeOptions = [2, 4, 6];
-
-  msaapDisplayVolumeControls = true;
-  msaapDisplayRepeatControls = true;
-  msaapDisplayArtist = false;
-  msaapDisplayDuration = false;
-  msaapDisablePositionSlider = false;
-
-  msaapTableHeader = 'My Playlist';
-  msaapTitleHeader = 'My Title';
-  msaapArtistHeader = 'My Artist';
-  msaapDurationHeader = 'My Duration';
-
-
-  // Start: Required for demo purpose
-
-  msaapPlaylist2: Track[] = [
+    },
     {
       title: '1400',
       link: `${this.fmaBaseUrl}/no_curator/Yung_Kartz/August_2018/Yung_Kartz_-_10_-_1400.mp3`,
@@ -79,7 +70,28 @@ export class HomeComponent {
     }
   ];
 
-  msaapPlaylist3: Track[] = [
+  msaapPlaylist: Track[] = this.multiple;
+
+  msaapDisplayTitle = true;
+  msaapDisplayPlayList = true;
+  pageSizeOptions = [5, 10];
+
+  msaapDisplayVolumeControls = true;
+  msaapDisplayVolumeSlider = true;
+  msaapDisplayRepeatControls = true;
+  msaapDisplayArtist = false;
+  msaapDisplayDuration = false;
+  msaapDisablePositionSlider = false;
+
+  msaapTableHeader = 'My Playlist';
+  msaapTitleHeader = 'My Title';
+  msaapArtistHeader = 'My Artist';
+  msaapDurationHeader = 'My Duration';
+
+
+  // Start: Required for demo purpose
+
+  msaapPlaylist2: Track[] = [
     {
       title: 'Hachiko (The Faithful Dog)',
       link: `${this.fmaBaseUrl}/ccCommunity/The_Kyoto_Connection/Wake_Up/The_Kyoto_Connection_-_09_-_Hachiko_The_Faithtful_Dog.mp3`,
@@ -101,13 +113,38 @@ export class HomeComponent {
   counter = 1;
 
   onEnded(event) {
-    console.log(event);
+    this.addEvent(event);
     // your logic which needs to
     // be triggered once the
     // track ends goes here.
 
     // example
     this.currentTrack = null;
+  }
+
+  addEvent(event) {
+    this.events.push(event);
+    console.log(event);
+  }
+
+  onNextTrackRequested(event) {
+    this.addEvent(event);
+  }
+
+  onPreviousTrackRequested(event) {
+    this.addEvent(event);
+  }
+
+  onTrackPlaying(event) {
+    this.addEvent(event);
+  }
+
+  onTrackPaused(event) {
+    this.addEvent(event);
+  }
+
+  onTrackSelected(event) {
+    this.addEvent(event);
   }
 
   logCurrentTrack() {
@@ -134,18 +171,19 @@ export class HomeComponent {
 
     if (this.msaapPlaylist.length === 1) {
       this.msaapPlaylist = this.multiple;
-    } else if (this.msaapPlaylist.length === 2) {
-      this.msaapPlaylist2.map(track => {
-        this.msaapPlaylist.push(track);
-      });
-      this.advancedPlayer.audioPlayerService.setPlaylist(this.msaapPlaylist);
     } else if (this.msaapPlaylist.length === 4) {
-      this.msaapPlaylist3.map(track => {
+      this.msaapPlaylist2.map(track => {
         this.msaapPlaylist.push(track);
       });
       this.advancedPlayer.audioPlayerService.setPlaylist(this.msaapPlaylist);
       this.appendTracksToPlaylistDisable = true;
     }
+  }
+
+  setStream() {
+    this.msaapPlaylist = this.stream;
+    this.appendTracksToPlaylistDisable = false;
+    this.msaapDisplayRepeatControls = false;
   }
 
   setSingleTrack() {
@@ -169,6 +207,10 @@ export class HomeComponent {
     this.msaapDisplayRepeatControls = event.checked;
   }
 
+  changeMsaapDisplayVolumeSlider(event) {
+    this.msaapDisplayVolumeSlider = event.checked;
+  }
+
   changeMsaapDisplayArtist(event) {
     this.msaapDisplayArtist = event.checked;
   }
@@ -183,10 +225,18 @@ export class HomeComponent {
   // End: Required for demo purpose
 
   play() {
-
+    this.advancedPlayer.play();
   }
 
   pause() {
-    
+    this.advancedPlayer.pause();
+  }
+
+  stop() {
+    this.advancedPlayer.stop();
+  }
+
+  clearEvents() {
+    this.events = [];
   }
 }

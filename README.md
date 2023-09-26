@@ -48,7 +48,7 @@ Make sure you have installed below dependencies with same or higher version than
 "rxjs": "^6.6.0"   
 
    
-Import `NgxAudioPlayerModule` in  in the root module(`AppModule`):   
+Import `NgxAudioPlayerModule` in the root module(`AppModule`):   
    
 ```typescript   
 // Import library module
@@ -63,16 +63,26 @@ import { NgxAudioPlayerModule } from 'ngx-audio-player';
 export class AppModule { }
 ```
    
-### Usage    
+### Usage 
+
+#### Simple Audio Player
    
 ##### HTML   
 
 ```html
-<ngx-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
-    muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="pageSizeOptions" (trackEnded)="onEnded($event)"
-        [displayVolumeControls]="msaapDisplayVolumeControls" [displayRepeatControls]="msaapDisplayRepeatControls"
-        [disablePositionSlider]="msaapDisablePositionSlider" [displayArtist]="msaapDisplayArtist" 
-        [displayDuration]="msaapDisplayDuration" [expanded]="true"></ngx-audio-player> 
+<ngx-audio-player [autoPlay]="false" muted="muted"
+    
+  [playlist]="mssapPlaylist"
+  [disablePositionSlider]="mssapDisablePositionSlider"
+  [displayRepeatControls]="mssapDisplayRepeatControls"
+  [displayVolumeControls]="mssapDisplayVolumeControls"
+  [displayVolumeSlider]="mssapDisplayVolumeSlider"
+
+  [displayTitle]="mssapDisplayTitle"
+  
+  (trackEnded)="onEnded($event)">
+
+</ngx-audio-player> 
 ```
    
 ##### TS   
@@ -83,56 +93,213 @@ import { Track } from 'ngx-audio-player';
 .   
 .   
 
-msaapDisplayTitle = true;
+mssapDisplayTitle = true;
+mssapDisablePositionSlider = true;
+mssapDisplayRepeatControls = true;
+mssapDisplayVolumeControls = true;
+mssapDisplayVolumeSlider = false;
+   
+// Material Style Simple Audio Player
+mssapPlaylist: Track[] = [
+  {
+    title: 'Audio Title',
+    link: 'Link to Audio URL',
+    artist: 'Audio Artist',
+    duration: 'Audio Duration in seconds'
+  }
+];
+
+// For Streaming Audio From URL 
+// set mediaType = 'stream' 
+mssapPlaylist: Track[] = [
+  {
+    title: 'Audio Title',
+    link: 'Link to Streaming URL',
+    mediaType: 'stream'
+  }
+];
+```  
+
+#### Advanced Audio Player
+   
+##### HTML   
+
+```html
+<ngx-audio-player [autoPlay]="false" muted="muted"
+
+    [playlist]="msaapPlaylist"
+    [disablePositionSlider]="msaapDisablePositionSlider"
+    [displayRepeatControls]="msaapDisplayRepeatControls"
+    [displayVolumeControls]="msaapDisplayVolumeControls"
+    [displayVolumeSlider]="msaapDisplayVolumeSlider"
+    
+    [displayTitle]="msaapDisplayTitle"
+
+    [displayPlaylist]="msaapDisplayPlayList"
+    [pageSizeOptions]="msaapPageSizeOptions"
+
+    [tableHeader]="msaapTableHeader"
+    [titleHeader]="msaapTitleHeader"
+    [artistHeader]="msaapArtistHeader"
+    [durationHeader]="msaapDurationHeader"
+
+    [displayArtist]="msaapDisplayArtist"
+    [displayDuration]="msaapDisplayDuration"
+    [expanded]="true"
+
+    (trackPlaying)="onTrackPlaying($event)"
+    (trackPaused)="onTrackPaused($event)"
+    (trackEnded)="onEnded($event)"
+    (nextTrackRequested)="onNextTrackRequested($event)"
+    (previousTrackRequested)="onPreviousTrackRequested($event)"
+    (trackSelected)="onTrackSelected($event)">
+
+</ngx-audio-player>
+```
+   
+##### TS   
+
+```ts
+import { Track } from 'ngx-audio-player';   
+   
+.   
+.   
+
+// Main Player Controls
 msaapDisplayPlayList = true;
-msaapPageSizeOptions = [2,4,6];
-msaapDisplayVolumeControls = true;
+msaapDisablePositionSlider = true;
 msaapDisplayRepeatControls = true;
+msaapDisplayVolumeControls = true;
+msaapDisplayVolumeSlider = false;
+
+// Title Marquee
+msaapDisplayTitle = true;
+
+// Playlist Controls
+msaapPageSizeOptions = [2,4,6];
 msaapDisplayArtist = false;
 msaapDisplayDuration = false;
-msaapDisablePositionSlider = true;
-   
+
+// For Localisation
+msaapTableHeader = 'My Playlist';
+msaapTitleHeader = 'My Title';
+msaapArtistHeader = 'My Artist';
+msaapDurationHeader = 'My Duration';
+
+
 // Material Style Advance Audio Player Playlist
 msaapPlaylist: Track[] = [
-  {
-    title: 'Audio One Title',
-    link: 'Link to Audio One URL',
-    artist: 'Audio One Artist',
-    duration: 'Audio One Duration in seconds'
-  },
-  {
-    title: 'Audio Two Title',
-    link: 'Link to Audio Two URL',
-    artist: 'Audio Two Artist',
-    duration: 'Audio Two Duration in seconds'
-  },
-  {
-    title: 'Audio Three Title',
-    link: 'Link to Audio Three URL',
-    artist: 'Audio Three Artist',
-    duration: 'Audio Three Duration in seconds'
-  },
+    {
+        title: 'Audio One Title',
+        link: 'Link to Audio One URL',
+        artist: 'Artist',
+        duration: 'Duration'
+    },
+    {
+        title: 'Audio Two Title',
+        link: 'Link to Audio Two URL',
+        artist: 'Artist',
+        duration: 'Duration'
+    },
+    {
+        title: 'Audio Three Title',
+        link: 'Link to Audio Three URL',
+        artist: 'Artist',
+        duration: 'Duration'
+    },
 ];
+
+// Callback Events
+
+onTrackPlaying(event) {
+    console.log(event);
+    // your logic which needs to
+    // be triggered once the
+    // track ends goes here.
+}
+
+
+onTrackPaused(event) {
+    console.log(event);
+    // your logic which needs to
+    // be triggered once the
+    // track ends goes here.
+}
+
+onEnded(event) {
+    console.log(event);
+    // your logic which needs to
+    // be triggered once the
+    // track ends goes here.
+}
+
+onNextTrackRequested(event) {
+    console.log(event);
+    // your logic which needs to
+    // be triggered once the
+    // track ends goes here.
+}
+
+
+onPreviousTrackRequested(event) {
+    console.log(event);
+    // your logic which needs to
+    // be triggered once the
+    // track ends goes here.
+}
+
+onTrackSelected(event) {
+    console.log(event);
+    // your logic which needs to
+    // be triggered once the
+    // track ends goes here.
+}
 ```   
 
 ##### Properties   
 
-| Name                                       | Description                                         | Type      | Default Value |
-|--------------------------------------------|-----------------------------------------------------|-----------|---------------|
-| @Input() playlist: Track[];                | playlist containing array of title and link         | mandatory | None          |
-| @Input() autoPlay: false;                  | true - if the audio needs to be played automaticlly | optional  | false         |
-| @Input() displayTitle: true;               | false - if the audio title needs to be hidden       | optional  | true          |
-| @Input() displayPlaylist: true;            | false - if the playlist needs to be hidden          | optional  | true          |
-| @Input() pageSizeOptions = [10, 20, 30];   | number of items to be displayed in the playlist     | optional  | [10,20,30]    |
-| @Input() expanded = true;                  | false - if the playlist needs to be minimized       | optional  | true          |
-| @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true          |
-| @Input() displayRepeatControls = true;     | false - if the repeat controls needs to be hidden   | optional  | true          |
-| @Input() displayArtist = false;            | true - if the artist data is to be shown            | optional  | false         |
-| @Input() displayDuration = false;          | true - if the track duration is to be shown         | optional  | false         |
-| @Output() trackEnded: Subject<string>      | Callback method that triggers once the track ends   | optional  | - N.A -       |
-| @Input() startOffset = 0;                  | offset from start of audio file in seconds          | optional  | 0             |
-| @Input() endOffset = 0;                    | offset from end of audio file in seconds            | optional  | 0             |
-| @Input() disablePositionSlider = false;    | true - if the position slider needs to be disabled  | optional  | false         |
+| Name                                                            | Description                                         | Type      | 
+|-----------------------------------------------------------------|-----------------------------------------------------|-----------|
+| @Input() playlist: Track[];                                     | playlist containing array of title and link         | mandatory |
+| @Input() autoPlay: false;                                       | true - if the audio needs to be played automaticlly | optional  |
+-------------------------------------------------------------------------------------------------------------------------------------
+| Player Controls                                                                                                                   |
+-------------------------------------------------------------------------------------------------------------------------------------
+| @Input() startOffset = 0;                                       | offset from start of audio file in seconds          | optional  |
+| @Input() endOffset = 0;                                         | offset from end of audio file in seconds            | optional  |
+| @Input() disablePositionSlider = false;                         | true - if the position slider needs to be disabled  | optional  |
+| @Input() displayRepeatControls = true;                          | false - if the repeat controls needs to be hidden   | optional  |
+| @Input() repeat: "all" | "one" | "none" = 'all';                | repeat all or one or none                           | optional  |
+| @Input() displayVolumeControls = true;                          | false - if the volume controls needs to be hidden   | optional  |
+| @Input() displayVolumeSlider = true;                            | true - if the volume slider should be shown         | optional  |
+-------------------------------------------------------------------------------------------------------------------------------------
+| Title Marquee Control                                                                                                             |
+-------------------------------------------------------------------------------------------------------------------------------------
+| @Input() displayTitle: true;                                    | false - if the audio title needs to be hidden       | optional  |
+-------------------------------------------------------------------------------------------------------------------------------------
+| Playlist Controls                                                                                                                 |
+-------------------------------------------------------------------------------------------------------------------------------------
+| @Input() displayPlaylist: true;                                 | false - if the playlist needs to be hidden          | optional  |
+| @Input() pageSizeOptions = [10, 20, 30];                        | number of items to be displayed in the playlist     | optional  |
+| @Input() expanded = true;                                       | false - if the playlist needs to be minimized       | optional  |
+| @Input() displayArtist = false;                                 | true - if the artist data is to be shown            | optional  |
+| @Input() displayDuration = false;                               | true - if the track duration is to be shown         | optional  |
+-------------------------------------------------------------------------------------------------------------------------------------
+| Localisation Controls                                                                                                             |
+-------------------------------------------------------------------------------------------------------------------------------------
+| @Input() tableHeader = 'Playlist';                              | localised string                                    | optional  |
+| @Input() titleHeader = 'Title';                                 | localised string                                    | optional  |
+| @Input() artistHeader = 'Artist';                               | localised string                                    | optional  |
+| @Input() durationHeader = 'Duration';                           | localised string                                    | optional  |
+-------------------------------------------------------------------------------------------------------------------------------------
+| Callback Events                                                                                                                   |
+-------------------------------------------------------------------------------------------------------------------------------------
+| @Output() trackPlaying: EventEmitter<EventResponse>             | triggers when the track starts playing              | optional  |
+| @Output() trackPaused: EventEmitter<EventResponse>              | Callback method that triggers once the track ends   | optional  |
+| @Output() trackEnded: EventEmitter<EventResponse>               | Callback method that triggers once the track ends   | optional  |
+| @Output() nextTrackRequested: EventEmitter<EventResponse>       | Callback method that triggers once the track ends   | optional  |
+| @Output() previousTrackRequested: EventEmitter<EventResponse>   | Callback method that triggers once the track ends   | optional  |
+| @Output() trackSelected: EventEmitter<EventResponse>            | Callback method that triggers once the track ends   | optional  |
  
 
 ## Versioning
@@ -153,14 +320,95 @@ Thanks goes to these wonderful people:
 <!-- markdownlint-disable -->   
 
 <table align="center">
-<tr>
-<td align="center"><a href="https://github.com/EdricChan03"><img src="https://avatars.githubusercontent.com/u/20047125?v=4" width="100px;"  alt=""/><br /><sub><b>Edric Chan</b></sub></a><br /><a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=EdricChan03" title="Code">💻</a></td>
-<td align="center"><a href="https://github.com/RokiFoki"><img src="https://avatars3.githubusercontent.com/u/9476596?v=4" width="100px;"  alt=""/><br /><sub><b>RokiFoki</b></sub></a><br /><a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=RokiFoki" title="Code">💻</a></td>
-<td align="center"><a href="https://github.com/ewwwgiddings"><img src="https://avatars.githubusercontent.com/u/26286559?v=4" width="100px;"  alt=""/><br /><sub><b>ewwwgiddings</b></sub></a><br /><a  href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=ewwwgiddings"  title="Documentation">📖</a></td>
-<td align="center"><a href="https://github.com/cicsolutions"><img src="https://avatars1.githubusercontent.com/u/5200361?v=4" width="100px;"  alt=""/><br /><sub><b>Caleb Crosby</b></sub></a><br /><a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=cicsolutions" title="Code">💻</a></td>
-<td align="center"><a href="https://github.com/6utt3rfly"><img src="https://avatars1.githubusercontent.com/u/17912877?v=4" width="100px;"  alt=""/><br /><sub><b>Shelly</b></sub></a><br /><a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=6utt3rfly" title="Code">💻</a></td>
-<td align="center"><a href="https://github.com/Urinprobe"><img src="https://avatars1.githubusercontent.com/u/22059384?v=4" width="100px;"  alt=""/><br /><sub><b>Simon Reinsch</b></sub></a><br /><a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=Urinprobe" title="Code">💻</a></td>
-</tr>
+    <tr>
+        <td align="center">
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/EdricChan03" target="_blank">
+                <img alt="" src="https://avatars.githubusercontent.com/u/20047125?v=4" width="100px;" />
+                <br /><sub><b>Edric Chan</b></sub>
+            </a><br />
+            <a target="_blank" rel="noopener noreferrer"
+                href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=EdricChan03"
+                title="Code">💻</a>
+        </td>
+        <td align="center">
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/RokiFoki" target="_blank">
+                <img alt="" src="https://avatars3.githubusercontent.com/u/9476596?v=4" width="100px;" />
+                <br /><sub><b>RokiFoki</b></sub>
+            </a><br />
+            <a target="_blank" rel="noopener noreferrer"
+                href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=RokiFoki"
+                title="Code">💻</a>
+        </td>
+        <td align="center">
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/ewwwgiddings" target="_blank">
+                <img alt="" src="https://avatars.githubusercontent.com/u/26286559?v=4" width="100px;" />
+                <br /><sub><b>ewwwgiddings</b></sub>
+            </a><br />
+            <a target="_blank" rel="noopener noreferrer"
+                href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=ewwwgiddings"
+                title="Documentation">📖</a>
+        </td>
+        <td align="center">
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/cicsolutions">
+                <img alt="" src="https://avatars1.githubusercontent.com/u/5200361?v=4" width="100px;" />
+                <br /><sub><b>Caleb Crosby</b></sub>
+            </a><br />
+            <a target="_blank" rel="noopener noreferrer"
+                href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=cicsolutions"
+                title="Code">💻
+            </a>
+        </td>
+        <td align="center">
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/6utt3rfly">
+                <img alt="" src="https://avatars1.githubusercontent.com/u/17912877?v=4" width="100px;" />
+                <br /><sub><b>Shelly</b></sub>
+            </a><br />
+            <a target="_blank" rel="noopener noreferrer"
+                href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=6utt3rfly"
+                title="Code">💻
+            </a>
+        </td>
+        <td align="center">
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/Urinprobe">
+                <img alt="" src="https://avatars1.githubusercontent.com/u/22059384?v=4" width="100px;" />
+                <br /><sub><b>Simon Reinsch</b></sub>
+            </a><br />
+            <a target="_blank" rel="noopener noreferrer"
+                href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=Urinprobe"
+                title="Code">💻
+            </a>
+        </td>
+        <td align="center">
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/AnwarTuha">
+                <img alt="" src="https://avatars.githubusercontent.com/u/28872106?v=4" width="100px;" />
+                <br /><sub><b>AnwarTuha</b></sub>
+            </a><br />
+            <a target="_blank" rel="noopener noreferrer"
+                href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=AnwarTuha"
+                title="Code">💻
+            </a>
+        </td>
+        <td align="center">
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/bogdanbaghiu">
+                <img alt="" src="https://avatars.githubusercontent.com/u/37840937?v=4" width="100px;" />
+                <br /><sub><b>Bogdan Baghiu</b></sub>
+            </a><br />
+            <a target="_blank" rel="noopener noreferrer"
+                href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=bogdanbaghiu"
+                title="Code">💻
+            </a>
+        </td>
+        <td align="center">
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/kareemjeiroudi">
+                <img alt="" src="https://avatars.githubusercontent.com/u/39561669?v=4" width="100px;" />
+                <br /><sub><b>Kareem Jeiroudi</b></sub>
+            </a><br />
+            <a target="_blank" rel="noopener noreferrer"
+                href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=kareemjeiroudi"
+                title="Code">💻
+            </a>
+        </td>
+    </tr>
 </table>
 
 <!-- markdownlint-enable -->

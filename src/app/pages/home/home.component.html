@@ -11,106 +11,139 @@
   </div>
 </header>
 <div class="container">
-  <div class="row">
-    <div class="col-12" style="margin: 50px 0; border: 2px solid #BBBBBB; padding: 50px; border-radius: 5px">
-      <div class="row justify-contents-around">
-        <div class="col py-3 pl-3">
-          <!-- <div class="col">
-            <h6>Actions</h6>
-            <div class="px-3 py-1">
-              <button mat-stroked-button (click)="play()">Play</button>
-            </div>
-            <div class="px-3 py-1">
-              <button mat-stroked-button (click)="pause()">Stop</button>
-            </div>
-          </div> -->
-          <div class="col">
-            <h6>Controls</h6>
-            <div class="d-flex flex-row px-3">
-              <mat-checkbox (change)="changeMsaapDisplayTitle($event)" [checked]="msaapDisplayTitle"
-                class="px-3 mat-advanced-player-display-title">
-              </mat-checkbox>
-              displayTitle: {{msaapDisplayTitle}}
-            </div>
-            <div class="d-flex flex-row px-3">
-              <mat-checkbox (change)="changeMsaapDisplayPlayList($event)" [checked]="msaapDisplayPlayList"
-                [disabled]="msaapPlaylist.length==1" class="px-3 mat-advanced-player-display-playlist">
-              </mat-checkbox>
-              displayPlayList: {{msaapDisplayPlayList}}
-            </div>
-            <div class="d-flex flex-row px-3">
-              <mat-checkbox (change)="changeMsaapDisablePositionSlider($event)" [checked]="msaapDisablePositionSlider"
-                class="px-3 mat-basic-player-display-title">
-              </mat-checkbox>
-              disablePositionSlider: {{msaapDisablePositionSlider}}
-            </div>
-            <div class="d-flex flex-row px-3">
-              <mat-checkbox (change)="changeMsaapDisplayVolumeControls($event)" [checked]="msaapDisplayVolumeControls"
-                class="px-3 mat-basic-player-display-title">
-              </mat-checkbox>
-              displayVolumeControls: {{msaapDisplayVolumeControls}}
-            </div>
-            <div class="d-flex flex-row px-3">
-              <mat-checkbox (change)="changeMsaapDisplayRepeatControls($event)" [checked]="msaapDisplayRepeatControls"
-                class="px-3 mat-basic-player-display-title">
-              </mat-checkbox>
-              displayRepeatControls: {{msaapDisplayRepeatControls}}
-            </div>
-            <div class="d-flex flex-row px-3">
-              <mat-checkbox (change)="changeMsaapDisplayArtist($event)" [checked]="msaapDisplayArtist"
-                class="px-3 mat-basic-player-display-title">
-              </mat-checkbox>
-              displayArtist: {{msaapDisplayArtist}}
-            </div>
-            <div class="d-flex flex-row px-3">
-              <mat-checkbox (change)="changeMsaapDisplayDuration($event)" [checked]="msaapDisplayDuration"
-                class="px-3 mat-basic-player-display-title">
-              </mat-checkbox>
-              displayDuration: {{msaapDisplayDuration}}
-            </div>
-          </div>
-          <div class="col py-3">
-            <h6>Data</h6>
-            <div class="px-3 py-1">
-              <button mat-stroked-button (click)="setSingleTrack()">Set Single Track</button>
-            </div>
-            <div class="px-3">
-              <button mat-stroked-button (click)="appendTracksToPlaylist()"
-                [disabled]="appendTracksToPlaylistDisable">Append Tracks To Playlist</button>
-            </div>
-          </div>
-          <div class="col">
-            <h6>Logging</h6>
-            <p class="px-3">
-              <button (click)="logCurrentTrack()" mat-stroked-button>Log Current
-                Track
-              </button>
-              {{currentTrack?.title}}
-            </p>
-            <p class="px-3">
-              <button (click)="logCurrentTime()" mat-stroked-button>Log Current
-                Time
-              </button>
-              {{currentTime}}
-            </p>
-            <p class="px-3">
-              <button (click)="consoleLogCurrentData()" mat-stroked-button>Console Log Current
-                Data
-              </button>
-            </p>
-          </div>
+  <div class="row" style="margin: 50px 0; padding: 20px; border-radius: 5px; border: 1px solid #999">
+    <div class="col-lg-4 col-md-6 col-12 logging-controls-border-right">
+      <h6 class="text-center">Controls</h6>
+      <hr style="border-bottom: 1px solid #999">
+      <div>
+        <mat-checkbox (change)="changeMsaapDisplayTitle($event)" [checked]="msaapDisplayTitle"
+          class="px-3 mat-advanced-player-display-title">
+        </mat-checkbox>
+        displayTitle: {{msaapDisplayTitle}}
+      </div>
+      <div>
+        <mat-checkbox (change)="changeMsaapDisplayPlayList($event)" [checked]="msaapDisplayPlayList"
+          [disabled]="msaapPlaylist.length==1" class="px-3 mat-advanced-player-display-playlist">
+        </mat-checkbox>
+        displayPlayList: {{msaapDisplayPlayList}}
+      </div>
+      <div>
+        <mat-checkbox (change)="changeMsaapDisablePositionSlider($event)" [checked]="msaapDisablePositionSlider"
+          class="px-3 mat-basic-player-display-title">
+        </mat-checkbox>
+        disablePositionSlider: {{msaapDisablePositionSlider}}
+      </div>
+      <div>
+        <mat-checkbox (change)="changeMsaapDisplayVolumeControls($event)" [checked]="msaapDisplayVolumeControls"
+          class="px-3 mat-basic-player-display-title">
+        </mat-checkbox>
+        displayVolumeControls: {{msaapDisplayVolumeControls}}
+      </div>
+      <div>
+        <mat-checkbox (change)="changeMsaapDisplayRepeatControls($event)" [checked]="msaapDisplayRepeatControls"
+          class="px-3 mat-basic-player-display-title">
+        </mat-checkbox>
+        displayRepeatControls: {{msaapDisplayRepeatControls}}
+      </div>
+      <div>
+        <mat-checkbox (change)="changeMsaapDisplayVolumeSlider($event)" [checked]="msaapDisplayVolumeSlider"
+          class="px-3 mat-basic-player-display-title">
+        </mat-checkbox>
+        displayVolumeSlider: {{msaapDisplayVolumeSlider}}
+      </div>
+      <div>
+        <mat-checkbox (change)="changeMsaapDisplayArtist($event)" [checked]="msaapDisplayArtist"
+          class="px-3 mat-basic-player-display-title">
+        </mat-checkbox>
+        displayArtist: {{msaapDisplayArtist}}
+      </div>
+      <div>
+        <mat-checkbox (change)="changeMsaapDisplayDuration($event)" [checked]="msaapDisplayDuration"
+          class="px-3 mat-basic-player-display-title">
+        </mat-checkbox>
+        displayDuration: {{msaapDisplayDuration}}
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-12 data-border-right data-border-top">
+      <h6 class="text-center">Data</h6>
+      <hr style="border-bottom: 1px solid #999">
+      <div class="px-2 pt-1">
+        <button mat-stroked-button (click)="setStream()">Set Stream</button>
+      </div>
+      <div class="px-2 pt-1">
+        <button mat-stroked-button (click)="setSingleTrack()">Set Single Track</button>
+      </div>
+      <div class="px-2 pt-1">
+        <button mat-stroked-button (click)="appendTracksToPlaylist()" [disabled]="appendTracksToPlaylistDisable">Append
+          Tracks To Playlist</button>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-12 logging-action-border-top logging-controls-border-right">
+      <h6 class="text-center">Logging</h6>
+      <hr style="border-bottom: 1px solid #999">
+      <div class="px-2 pt-1">
+        <button (click)="logCurrentTrack()" mat-stroked-button>Log Current
+          Track
+        </button>
+        {{currentTrack?.title}}
+      </div>
+      <div class="px-2 pt-1">
+        <button (click)="logCurrentTime()" mat-stroked-button>Log Current
+          Time
+        </button>
+        {{currentTime}}
+      </div>
+      <div class="px-2 pt-1">
+        <button (click)="consoleLogCurrentData()" mat-stroked-button>Console Log Current
+          Data
+        </button>
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-6 col-12 logging-action-border-top">
+      <h6 class="text-center">Player Actions</h6>
+      <hr style="border-bottom: 1px solid #999">
+      <div class="px-2 pt-1">
+        <button (click)="play()" mat-stroked-button>Play</button>
+      </div>
+      <div class="px-2 pt-1">
+        <button (click)="pause()" mat-stroked-button>Pause</button>
+      </div>
+      <div class="px-2 pt-1">
+        <button (click)="stop()" mat-stroked-button>Stop</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mat-toolbar mat-accent">
+  <div class="container">
+    <div class="row" style=" margin-bottom: 50px; padding: 50px 0;">
+      <div id="player" class="col-lg-8 col-12">
+        <ngx-audio-player #player [autoPlay]="false" [playlist]="msaapPlaylist"
+          [disablePositionSlider]="msaapDisablePositionSlider" [displayRepeatControls]="msaapDisplayRepeatControls"
+          [displayVolumeControls]="msaapDisplayVolumeControls" [displayVolumeSlider]="msaapDisplayVolumeSlider"
+          [displayTitle]="msaapDisplayTitle" [displayPlaylist]="msaapDisplayPlayList" [expanded]="true"
+          [tableHeader]="msaapTableHeader" [titleHeader]="msaapTitleHeader" [artistHeader]="msaapArtistHeader"
+          [durationHeader]="msaapDurationHeader" [displayArtist]="msaapDisplayArtist"
+          [displayDuration]="msaapDisplayDuration" [pageSizeOptions]="pageSizeOptions"
+          (trackPlaying)="onTrackPlaying($event)" (trackPaused)="onTrackPaused($event)" (trackEnded)="onEnded($event)"
+          (nextTrackRequested)="onNextTrackRequested($event)"
+          (previousTrackRequested)="onPreviousTrackRequested($event)" (trackSelected)="onTrackSelected($event)">
+        </ngx-audio-player>
+      </div>
+      <div class="col-lg-4 col-12 mt-lg-0 mt-2"
+        style="height: auto; overflow-y: scroll; background-color: #424242; color: white">
+        <div class="row mt-2">
+          <div class="col-10">EVENTS</div>
+          <mat-icon class="col-1" (click)="clearEvents()">delete</mat-icon>
         </div>
-        <div class="col">
-          <ngx-audio-player #player (trackEnded)="onEnded($event)" [autoPlay]="false"
-            [displayPlaylist]="msaapDisplayPlayList" [tableHeader]="msaapTableHeader" [titleHeader]="msaapTitleHeader"
-            [artistHeader]="msaapArtistHeader" [durationHeader]="msaapDurationHeader" [displayTitle]="msaapDisplayTitle"
-            [displayVolumeControls]="msaapDisplayVolumeControls" [displayRepeatControls]="msaapDisplayRepeatControls"
-            [disablePositionSlider]="msaapDisablePositionSlider" [displayArtist]="msaapDisplayArtist"
-            [displayDuration]="msaapDisplayDuration" [expanded]="true" [pageSizeOptions]="pageSizeOptions"
-            [playlist]="msaapPlaylist">
-          </ngx-audio-player>
+        <hr style="background-color: #ddd; margin: 5px 0;">
+        <div *ngFor="let event of events"
+          style="margin: 10px 0px; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 14px;">
+          <b>{{event.event}}</b>: <i>{{event.track.index}} - {{event.track.title}}</i>
+          <hr style="background-color: #ddd; margin: 5px 0;">
         </div>
       </div>
+
     </div>
   </div>
 </div>

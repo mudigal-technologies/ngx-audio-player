@@ -2,27 +2,6 @@
 $margin-promotion-sections: 50px;
 $margin-promotion-sections-small: 15px;
 
-.docs-header-background {
-  overflow: hidden;
-  position: relative;
-  height: 580px;
-  // margin-top: 80px;
-}
-
-.docs-header-background::before {
-  content: '';
-  position: absolute;
-  background-image: url('../../../assets/images/logos/angular/angular-white-transparent.svg');
-  background-size: 600px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-repeat: no-repeat;
-  background-position: 80% 20px;
-  opacity: 0.2;
-}
-
 .docs-header-section {
   width: 90%;
   position: absolute;
@@ -73,35 +52,18 @@ $margin-promotion-sections-small: 15px;
   }
 }
 
-@media (max-width: 1200px) {
-  .docs-header-background {
-    height: 330px;
-  }
-
-  .docs-header-background:before {
-    background-image: none;
-  }
-}
-
-@media (max-width: 850px) {
-
-  .docs-header-background:before {
-    background-image: none;
-  }
-
-  .docs-introduction {
-    flex-direction: column;
-  }
-
-  .docs-homepage-row-column {
-    width: 100%;
-  }
-}
-
 /**
     * Rules for when the device is detected to be a small screen.
     */
-@media (max-width: 720px) {
+@media (max-width: 767px) {
+
+  .docs-header-background {
+    height: 100%;
+  }
+
+  :host ::ng-deep #player {
+    overflow-x: scroll;
+  }
 
   .docs-header-start {
     margin: $margin-promotion-sections-small 0 0 0;
@@ -117,4 +79,170 @@ $margin-promotion-sections-small: 15px;
 a:hover {
   color: #999;
   text-decoration: none;
+}
+
+.docs-header-background {
+  height: 100%;
+}
+
+.docs-header-background:before {
+  background-image: none;
+}
+
+.docs-introduction {
+  flex-direction: column;
+}
+
+.docs-homepage-row-column {
+  width: 100%;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .docs-header-background {
+    height: 100%;
+  }
+}
+
+@media (min-width: 578px) and (max-width: 767px) {
+  .docs-header-background {
+    height: 95%;
+  }
+}
+
+// Medium devices (tablets, 767px and down)
+@media (max-width: 767px) {
+
+  .logging-controls-border-right {
+    border-right: none;
+  }
+
+  .data-border-top {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #999;
+  }
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+  .logging-controls-border-right {
+    border-right: 1px solid #999;
+  }
+
+  .data-border-top {
+    margin-top: 0px;
+    padding-top: 0px;
+    border-top: none;
+  }
+
+  .docs-header-background {
+    height: 85%;
+  }
+
+  .docs-header-background {
+    overflow: hidden;
+    position: relative;
+    // height: 580px;
+  }
+
+  .docs-header-background::before {
+    content: '';
+    position: absolute;
+    background-image: url('../../../assets/images/logos/angular/angular-white-transparent.svg');
+    background-size: 50%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-repeat: no-repeat;
+    // background-position: 80% 20px;
+    background-position: 50% 50%;
+    opacity: 0.2;
+  }
+
+  .docs-header-section {
+    width: 90%;
+    position: absolute;
+    z-index: 0;
+    text-align: center;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// Large devices (desktops, 991px and down)
+@media (max-width: 991px) {
+  .data-border-right {
+    border-right: none;
+  }
+
+  .logging-action-border-top {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #999;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+  .logging-border-right {
+    border-top: 1px solid #999;
+  }
+
+  .data-border-right {
+    border-right: 1px solid #999;
+  }
+
+  .logging-action-border-top {
+    margin-top: 0px;
+    padding-top: 0px;
+    border-top: none;
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .docs-header-background {
+    height: 80%;
+  }
+
+  .docs-header-background:before {
+    background-image: none;
+  }
+
+  .docs-header-background {
+    overflow: hidden;
+    position: relative;
+    // height: 580px;
+  }
+
+  .docs-header-background::before {
+    content: '';
+    position: absolute;
+    background-image: url('../../../assets/images/logos/angular/angular-white-transparent.svg');
+    background-size: 40%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-repeat: no-repeat;
+    // background-position: 80% 20px;
+    background-position: 90% 55%;
+    opacity: 0.2;
+  }
+
+  .docs-header-section {
+    width: 50%;
+    position: relative;
+    z-index: 0;
+    text-align: center;
+    top: 56%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+  }
 }

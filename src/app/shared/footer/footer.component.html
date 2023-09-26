@@ -1,4 +1,4 @@
-<footer class="docs-footer mat-toolbar mat-primary">
+<!-- <footer class="docs-footer mat-toolbar mat-primary">
   <div class="docs-footer-list">
     <div class="docs-footer-logo">
       <div class="footer-logo">
@@ -12,6 +12,28 @@
     <div class="docs-footer-copyright">
       <div>
         <span>©2018-{{currentYear}}</span>
+      </div>
+    </div>
+  </div>
+</footer> -->
+
+<hr style="margin:0">
+<footer class="docs-footer mat-toolbar mat-primary">
+  <div class="docs-footer-list">
+    <div class="docs-footer-logo">
+      <div class="footer-logo">
+        <div class="row justify-content-between">
+          <div class="col-2">
+            <div #mlogo>
+              <ng-template>
+                {{ src }}
+              </ng-template>
+            </div>
+          </div>
+          <div class="col-10 d-flex align-self-center justify-content-end">© Copyright 2018-{{currentYear}}.
+            <!-- <b>ngx-audio-player</b>. -->
+          </div>
+        </div>
       </div>
     </div>
   </div>

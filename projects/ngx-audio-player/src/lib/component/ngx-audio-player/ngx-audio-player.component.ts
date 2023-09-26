@@ -1,11 +1,15 @@
 
-import { Component, OnInit, Input, ViewChild, Output, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, ElementRef, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
 import { Track } from '../../model/track.model';
 import { MatSlider } from '@angular/material/slider';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { AudioPlayerService } from '../../service/audio-player-service/audio-player.service';
-import { Subject } from 'rxjs';
+
+class EventResponse {
+    event: string;
+    track: Track;
+}
 
 @Component({
     selector: 'mat-advanced-audio-player,ngx-audio-player',
@@ -15,7 +19,6 @@ import { Subject } from 'rxjs';
 export class AudioPlayerComponent implements OnInit, OnChanges {
 
     audioPlayerService: AudioPlayerService;
-    repeat: string = 'all';
     constructor(elem: ElementRef) {
         if (elem.nativeElement.tagName.toLowerCase() === 'mat-advanced-audio-player') {
             console.warn(`'mat-advanced-audio-player' selector is deprecated; use 'ngx-audio-player' instead.`);
@@ -39,12 +42,16 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
     paginator: MatPaginator;
 
     timeLineDuration: MatSlider;
+    mediaType: string = null;
 
     tracks: Track[] = [];
 
+    // all || one || none
+    @Input() repeat: "all" | "one" | "none" = 'all';
     @Input() displayTitle = true;
     @Input() displayPlaylist = true;
     @Input() displayVolumeControls = true;
+    @Input() displayVolumeSlider = false;
     @Input() displayRepeatControls = true;
     @Input() pageSizeOptions = [10, 20, 30];
     @Input() expanded = true;
@@ -62,7 +69,17 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
     currentIndex = 0;
 
     @Output()
-    trackEnded: Subject<string> = new Subject<string>();
+    trackPlaying: EventEmitter<EventResponse> = new EventEmitter<EventResponse>();
+    @Output()
+    trackPaused: EventEmitter<EventResponse> = new EventEmitter<EventResponse>();
+    @Output()
+    trackEnded: EventEmitter<EventResponse> = new EventEmitter<EventResponse>();
+    @Output()
+    nextTrackRequested: EventEmitter<EventResponse> = new EventEmitter<EventResponse>();
+    @Output()
+    previousTrackRequested: EventEmitter<EventResponse> = new EventEmitter<EventResponse>();
+    @Output()
+    trackSelected: EventEmitter<EventResponse> = new EventEmitter<EventResponse>();
 
     @ViewChild('audioPlayer', { static: true }) player: ElementRef;
 
@@ -73,6 +90,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
     isPlaying = false;
     currentTime = 0;
     volume = 0.1;
+    toggledVolume = 1.0;
     duration = 0.01;
 
     private startOffsetValue = 0;
@@ -88,18 +106,69 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
     @Input()
     public endOffset = 0;
 
+    /**
+     * Allow to start the current track
+     */
+    @Input()
+    public play() {
+        if (!this.isPlaying) {
+            setTimeout(() => {
+                this.isPlaying = true;
+                this.player.nativeElement.play();
+            }, 50);
+        }
+    }
+
+    /**
+     * Allow to pause the current track
+     */
+    @Input()
+    public pause() {
+        if (this.isPlaying) {
+            setTimeout(() => {
+                this.isPlaying = false;
+                this.player.nativeElement.pause();
+            }, 50);
+        }
+    }
+
+    /**
+     * Allow to stop the current track
+     */
+    @Input()
+    public stop() {
+        setTimeout(() => {
+            this.isPlaying = false;
+            this.player.nativeElement.pause();
+            this.player.nativeElement.currentTime = 0;
+        }, 50);
+    }
+
     currTimePosChanged(event) {
         this.player.nativeElement.currentTime = event.value;
+    }
+
+    currVolumeChanged(event) {
+        this.volume = event.value;
+        this.toggledVolume = event.value;
+        this.player.nativeElement.volume = event.value;
     }
 
     bindPlayerEvent(): void {
 
         this.player.nativeElement.addEventListener('playing', () => {
             this.isPlaying = true;
-            this.duration = Math.floor(this.player.nativeElement.duration);
+            this.emitEventResponse("TrackPlaying", this.trackPlaying);
+            this.mediaType = '';
+            if (this.tracks[this.currentIndex].mediaType !== 'stream') {
+                this.duration = Math.floor(this.player.nativeElement.duration);
+            } else {
+                this.mediaType = 'stream';
+            }
         });
         this.player.nativeElement.addEventListener('pause', () => {
             this.isPlaying = false;
+            this.emitEventResponse("TrackPaused", this.trackPaused);
         });
         this.player.nativeElement.addEventListener('timeupdate', () => {
             this.currentTime = Math.floor(this.player.nativeElement.currentTime);
@@ -118,12 +187,22 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
         }
         this.player.nativeElement.addEventListener('loadedmetadata', () => {
             this.loaderDisplay = false;
-            this.duration = Math.floor(this.player.nativeElement.duration);
+            if (this.tracks[this.currentIndex].mediaType !== 'stream') {
+                this.duration = Math.floor(this.player.nativeElement.duration);
+            } else {
+                this.duration = 0;
+            }
         });
         this.player.nativeElement.addEventListener('ended', () => {
-            this.trackEnded.next('ended');
+            this.emitEventResponse("TrackEnded", this.trackEnded);
         });
 
+    }
+    emitEventResponse(event: string, emitter: EventEmitter<EventResponse>) {
+        let eventResponse: EventResponse = new EventResponse();
+        eventResponse.event = event;
+        eventResponse.track = this.audioPlayerService.currentTrack;
+        emitter.emit(eventResponse);
     }
 
     playBtnHandler(): void {
@@ -144,7 +223,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
         }
     }
 
-    play(track?: Track): void {
+    triggerPlay(track?: Track): void {
 
         if (track) {
             this.startOffset = track.startOffset || 0;
@@ -159,8 +238,9 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
 
     toggleVolume() {
         if (this.volume === 0) {
-            this.setVolume(1.0);
+            this.setVolume(this.toggledVolume);
         } else {
+            this.toggledVolume = this.volume;
             this.setVolume(0);
         }
     }
@@ -190,14 +270,16 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
 
         // auto play next track
         this.player.nativeElement.addEventListener('ended', () => {
-            if (this.checkIfSongHasStartedSinceAtleastTwoSeconds()) {
+            if (this.mediaType !== 'stream' && this.checkIfSongHasStartedSinceAtleastTwoSeconds()) {
                 if (this.repeat === 'all') {
                     this.nextSong();
                 } else if (this.repeat === 'one') {
-                    this.play();
+                    this.triggerPlay();
                 } else if (this.repeat === 'none') {
                     // Do nothing
                 }
+            } else {
+                this.triggerPlay();
             }
         });
 
@@ -245,7 +327,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
         this.updateCurrentTrack();
 
         if (this.autoPlay) {
-            this.play();
+            this.triggerPlay();
         }
     }
 
@@ -278,7 +360,8 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
             this.currentIndex++;
         }
         this.updateCurrentTrack();
-        this.play();
+        this.emitEventResponse("NextTrackRequested", this.nextTrackRequested);
+        this.triggerPlay();
     }
 
     previousSong(): void {
@@ -289,7 +372,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
                 && (((this.currentIndex) % this.paginator.pageSize) === 0
                     || (this.currentIndex === 0))) {
                 if (this.paginator.hasPreviousPage()) {
-                    this.paginator.previousPage();       
+                    this.paginator.previousPage();
                 } else if (!this.paginator.hasPreviousPage()) {
                     this.paginator.lastPage();
                 }
@@ -303,7 +386,8 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
             this.resetSong();
         }
         this.updateCurrentTrack();
-        this.play();
+        this.emitEventResponse("PreviousTrackRequested", this.previousTrackRequested);
+        this.triggerPlay();
     }
 
     resetSong(): void {
@@ -313,7 +397,8 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
     selectTrack(index: number): void {
         this.currentIndex = index - 1;
         this.updateCurrentTrack();
-        this.play();
+        this.emitEventResponse("TrackSelected", this.trackSelected);
+        this.triggerPlay();
     }
 
     checkIfSongHasStartedSinceAtleastTwoSeconds(): boolean {

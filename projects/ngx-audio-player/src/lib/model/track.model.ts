@@ -2,6 +2,7 @@ export class Track {
   index?: number;
   link: string;
   title: string;
+  mediaType?: string;
   startOffset?: number;
   endOffset?: number;
   duration?: number;

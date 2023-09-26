@@ -1,3 +1,21 @@
+::ng-deep .mlogo svg {
+  g {
+    // fill:#FA2A2C; 
+    fill: #ddd;
+  }
+
+  width: 42px !important;
+  height: 42px !important;
+}
+
+.copyright p b {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
 .docs-footer {
   padding: 12px;
   font-size: 12px;
@@ -15,7 +33,7 @@
 }
 
 .docs-footer-angular-logo {
-  height: 50px;
+  height: 40px;
 }
 
 .docs-footer-version {
@@ -26,7 +44,7 @@
 
   .angular-material-logo {
     height: 40px;
-    margin: 10px 0 10px 16px;
+    margin: 5px 0 5px 16px;
   }
 
   .version {
