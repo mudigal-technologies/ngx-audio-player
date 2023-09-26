@@ -20,7 +20,9 @@ A library for loading and playing audio using HTML 5 for Angular 7/8/9/10/11/12.
 A simple, clean, responsive player for playing multiple audios with playlist support.
 
 ![alt tag](https://github.com/mudigal-technologies/ngx-audio-player/blob/master/docs/images/advanced-player.png?raw=true)
+![alt tag](https://github.com/mudigal-technologies/ngx-audio-player/blob/master/docs/images/advanced-player.png?raw=true)
 
+[Working Demo](https://mudigal-technologies.github.io/ngx-audio-player/)
 [Working Demo](https://mudigal-technologies.github.io/ngx-audio-player/)
 
 ## Installation
@@ -42,6 +44,10 @@ $ yarn add ngx-audio-player
 NgxAudioPlayerModule needs Angular Material.   
 Make sure you have installed below dependencies with same or higher version than mentioned.   
    
+"@angular/core": "^12.0.0"   
+"@angular/common": "^12.0.0"   
+"@angular/material": "^12.0.0"   
+"rxjs": "^6.6.0"   
 "@angular/core": "^12.0.0"   
 "@angular/common": "^12.0.0"   
 "@angular/material": "^12.0.0"   

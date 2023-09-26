@@ -1,8 +1,11 @@
 
 A library for loading and playing audio using HTML 5 for Angular 7/8/9/10/11/12.  
 (https://mudigal-technologies.github.io/ngx-audio-player/)
+A library for loading and playing audio using HTML 5 for Angular 7/8/9/10/11/12.  
+(https://mudigal-technologies.github.io/ngx-audio-player/)
 
 
+[![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://mudigal-technologies.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.2.0) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.1.4) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.2.3) [![Support](https://img.shields.io/badge/support-Angular%2010+-teal.svg)](https://www.npmjs.com/package/ngx-audio-player/v/10.1.4) [![Support](https://img.shields.io/badge/support-Angular%2011+-grey.svg)](https://www.npmjs.com/package/ngx-audio-player/v/11.0.4) [![Support](https://img.shields.io/badge/support-Angular%2012+-indigo.svg)](https://www.npmjs.com/package/ngx-audio-player/v/12.0.0)
 [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://mudigal-technologies.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.2.0) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.1.4) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.2.3) [![Support](https://img.shields.io/badge/support-Angular%2010+-teal.svg)](https://www.npmjs.com/package/ngx-audio-player/v/10.1.4) [![Support](https://img.shields.io/badge/support-Angular%2011+-grey.svg)](https://www.npmjs.com/package/ngx-audio-player/v/11.0.4) [![Support](https://img.shields.io/badge/support-Angular%2012+-indigo.svg)](https://www.npmjs.com/package/ngx-audio-player/v/12.0.0)
 
 ## Table of contents
@@ -20,7 +23,9 @@ A library for loading and playing audio using HTML 5 for Angular 7/8/9/10/11/12.
 A simple, clean, responsive player for playing multiple audios with playlist support.
 
 ![alt tag](https://github.com/mudigal-technologies/ngx-audio-player/blob/master/docs/images/advanced-player.png?raw=true)
+![alt tag](https://github.com/mudigal-technologies/ngx-audio-player/blob/master/docs/images/advanced-player.png?raw=true)
 
+[Working Demo](https://mudigal-technologies.github.io/ngx-audio-player/)
 [Working Demo](https://mudigal-technologies.github.io/ngx-audio-player/)
 
 ## Installation
@@ -42,6 +47,10 @@ $ yarn add ngx-audio-player
 NgxAudioPlayerModule needs Angular Material.   
 Make sure you have installed below dependencies with same or higher version than mentioned.   
    
+"@angular/core": "^12.0.0"   
+"@angular/common": "^12.0.0"   
+"@angular/material": "^12.0.0"   
+"rxjs": "^6.6.0"   
 "@angular/core": "^12.0.0"   
 "@angular/common": "^12.0.0"   
 "@angular/material": "^12.0.0"   
