@@ -1,11 +1,8 @@
 
 A library for loading and playing audio using HTML 5 for Angular 7/8/9/10/11/12.  
 (https://mudigal-technologies.github.io/ngx-audio-player/)
-A library for loading and playing audio using HTML 5 for Angular 7/8/9/10/11/12.  
-(https://mudigal-technologies.github.io/ngx-audio-player/)
 
 
-[![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://mudigal-technologies.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.2.0) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.1.4) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.2.3) [![Support](https://img.shields.io/badge/support-Angular%2010+-teal.svg)](https://www.npmjs.com/package/ngx-audio-player/v/10.1.4) [![Support](https://img.shields.io/badge/support-Angular%2011+-grey.svg)](https://www.npmjs.com/package/ngx-audio-player/v/11.0.4) [![Support](https://img.shields.io/badge/support-Angular%2012+-indigo.svg)](https://www.npmjs.com/package/ngx-audio-player/v/12.0.0)
 [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://mudigal-technologies.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.2.0) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.1.4) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.2.3) [![Support](https://img.shields.io/badge/support-Angular%2010+-teal.svg)](https://www.npmjs.com/package/ngx-audio-player/v/10.1.4) [![Support](https://img.shields.io/badge/support-Angular%2011+-grey.svg)](https://www.npmjs.com/package/ngx-audio-player/v/11.0.4) [![Support](https://img.shields.io/badge/support-Angular%2012+-indigo.svg)](https://www.npmjs.com/package/ngx-audio-player/v/12.0.0)
 
 ## Table of contents
@@ -23,9 +20,7 @@ A library for loading and playing audio using HTML 5 for Angular 7/8/9/10/11/12.
 A simple, clean, responsive player for playing multiple audios with playlist support.
 
 ![alt tag](https://github.com/mudigal-technologies/ngx-audio-player/blob/master/docs/images/advanced-player.png?raw=true)
-![alt tag](https://github.com/mudigal-technologies/ngx-audio-player/blob/master/docs/images/advanced-player.png?raw=true)
 
-[Working Demo](https://mudigal-technologies.github.io/ngx-audio-player/)
 [Working Demo](https://mudigal-technologies.github.io/ngx-audio-player/)
 
 ## Installation
@@ -50,12 +45,7 @@ Make sure you have installed below dependencies with same or higher version than
 "@angular/core": "^12.0.0"   
 "@angular/common": "^12.0.0"   
 "@angular/material": "^12.0.0"   
-"rxjs": "^6.6.0"   
-"@angular/core": "^12.0.0"   
-"@angular/common": "^12.0.0"   
-"@angular/material": "^12.0.0"   
-"rxjs": "^6.6.0"   
-
+"rxjs": "^6.6.0"  
    
 Import `NgxAudioPlayerModule` in the root module(`AppModule`):   
    
@@ -271,9 +261,7 @@ onTrackSelected(event) {
 |-----------------------------------------------------------------|-----------------------------------------------------|-----------|
 | @Input() playlist: Track[];                                     | playlist containing array of title and link         | mandatory |
 | @Input() autoPlay: false;                                       | true - if the audio needs to be played automaticlly | optional  |
--------------------------------------------------------------------------------------------------------------------------------------
-| Player Controls                                                                                                                   |
--------------------------------------------------------------------------------------------------------------------------------------
+| #### Player Controls                                                                                                                   |
 | @Input() startOffset = 0;                                       | offset from start of audio file in seconds          | optional  |
 | @Input() endOffset = 0;                                         | offset from end of audio file in seconds            | optional  |
 | @Input() disablePositionSlider = false;                         | true - if the position slider needs to be disabled  | optional  |
@@ -281,28 +269,20 @@ onTrackSelected(event) {
 | @Input() repeat: "all" | "one" | "none" = 'all';                | repeat all or one or none                           | optional  |
 | @Input() displayVolumeControls = true;                          | false - if the volume controls needs to be hidden   | optional  |
 | @Input() displayVolumeSlider = true;                            | true - if the volume slider should be shown         | optional  |
--------------------------------------------------------------------------------------------------------------------------------------
-| Title Marquee Control                                                                                                             |
--------------------------------------------------------------------------------------------------------------------------------------
+| #### Title Marquee Control                                                                                                             |
 | @Input() displayTitle: true;                                    | false - if the audio title needs to be hidden       | optional  |
--------------------------------------------------------------------------------------------------------------------------------------
-| Playlist Controls                                                                                                                 |
--------------------------------------------------------------------------------------------------------------------------------------
+| #### Playlist Controls                                                                                                                 |
 | @Input() displayPlaylist: true;                                 | false - if the playlist needs to be hidden          | optional  |
 | @Input() pageSizeOptions = [10, 20, 30];                        | number of items to be displayed in the playlist     | optional  |
 | @Input() expanded = true;                                       | false - if the playlist needs to be minimized       | optional  |
 | @Input() displayArtist = false;                                 | true - if the artist data is to be shown            | optional  |
 | @Input() displayDuration = false;                               | true - if the track duration is to be shown         | optional  |
--------------------------------------------------------------------------------------------------------------------------------------
-| Localisation Controls                                                                                                             |
--------------------------------------------------------------------------------------------------------------------------------------
+| #### Localisation Controls                                                                                                             |
 | @Input() tableHeader = 'Playlist';                              | localised string                                    | optional  |
 | @Input() titleHeader = 'Title';                                 | localised string                                    | optional  |
 | @Input() artistHeader = 'Artist';                               | localised string                                    | optional  |
 | @Input() durationHeader = 'Duration';                           | localised string                                    | optional  |
--------------------------------------------------------------------------------------------------------------------------------------
-| Callback Events                                                                                                                   |
--------------------------------------------------------------------------------------------------------------------------------------
+| #### Callback Events                                                                                                                   |
 | @Output() trackPlaying: EventEmitter<EventResponse>             | triggers when the track starts playing              | optional  |
 | @Output() trackPaused: EventEmitter<EventResponse>              | Callback method that triggers once the track ends   | optional  |
 | @Output() trackEnded: EventEmitter<EventResponse>               | Callback method that triggers once the track ends   | optional  |
