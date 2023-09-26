@@ -99,6 +99,18 @@
               </button>
             </p>
           </div>
+          <div class="col">
+            <h6>Player actions</h6>
+            <p class="px-3">
+              <button (click)="play()" mat-stroked-button>Play</button>
+            </p>
+            <p class="px-3">
+              <button (click)="pause()" mat-stroked-button>Pause</button>
+            </p>
+            <p class="px-3">
+              <button (click)="stop()" mat-stroked-button>Stop</button>
+            </p>
+          </div>
         </div>
         <div class="col">
           <ngx-audio-player #player (trackEnded)="onEnded($event)" [autoPlay]="false"
