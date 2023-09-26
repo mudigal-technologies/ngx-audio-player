@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @mixin footer-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -7,7 +8,7 @@
 
   app-footer {
     .docs-footer-links a {
-      color: mat-color($primary, default-contrast);
+      color: mat.get-color-from-palette($primary, default-contrast);
     }
   }
 }

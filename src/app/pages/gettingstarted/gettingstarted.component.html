@@ -5,7 +5,7 @@
             <div class="col-12 col-md-2 col-lg-3"></div>
             <img class="col-12 col-md-8 col-lg-6" src="assets/images/logos/logo_with_text_dark.png">
         </h6>
-        <p>A library for loading and playing audio using HTML 5 for Angular 7/8/9/10/11.</p>
+        <p>A library for loading and playing audio using HTML 5 for Angular 7/8/9/10/11/12.</p>
 
         <h2 id="installation">Installation</h2>
         <p><code>ngx-audio-player</code> is available via <a href="https://www.npmjs.com/package/ngx-audio-player"
@@ -19,10 +19,10 @@
         <h2 id="getting-started">Getting Started</h2>
         <p>NgxAudioPlayerModule needs Angular Material.<br>Make sure you have installed below
             dependencies with same or higher version than mentioned. </p>
-        <p>"@angular/core": "^11.0.0" <br>
-            "@angular/common": "^11.0.0" <br>
-            "@angular/material": "^11.0.0" <br>
-            "rxjs": "^6.6.3" </p>
+        <p>"@angular/core": "^12.0.0" <br>
+            "@angular/common": "^12.0.0" <br>
+            "@angular/material": "^12.0.0" <br>
+            "rxjs": "^6.6.0" </p>
         <p>Import <code>NgxAudioPlayerModule</code> in in the root module(<code>AppModule</code>):
         </p>
         <pre><code class="typescript"><span class="hljs-comment">// Import library module</span>
@@ -55,7 +55,9 @@
                     class="hljs-string">"true"</span> <span class="hljs-attr">(trackEnded)</span>=<span
                     class="hljs-string">"onEnded($event)"</span> [<span
                     class="hljs-attr">displayVolumeControls</span>]=<span
-                    class="hljs-string">"msaapDisplayVolumeControls"</span> 
+                    class="hljs-string">"msaapDisplayVolumeControls"</span> [<span
+                    class="hljs-attr">displayRepeatControls</span>]=<span
+                    class="hljs-string">"msaapDisplayRepeatControls"</span> 
             [<span class="hljs-attr">disablePositionSlider</span>]=<span
                     class="hljs-string">"msaapDisablePositionSlider"</span>&gt;</span><span class="hljs-tag">&lt;/<span
                 class="hljs-name">ngx-audio-player</span>&gt;</span>   </code></pre>
@@ -71,6 +73,7 @@ msaapDisplayTitle = <span class="hljs-literal">true</span>;
 msaapDisplayPlayList = <span class="hljs-literal">true</span>;
 msaapPageSizeOptions = <span class="hljs-literal">[2,4,6]</span>;
 msaapDisplayVolumeControls = <span class="hljs-literal">true</span>;
+msaapDisplayRepeatControls = <span class="hljs-literal">true</span>;
 msaapDisplayArtist = <span class="hljs-literal">false</span>;
 msaapDisplayDuration = <span class="hljs-literal">false</span>;
 msaapDisablePositionSlider = <span class="hljs-literal">true</span>;
@@ -154,6 +157,12 @@ msaapPlaylist: Track[] = [
                     <td>true</td>
                 </tr>
                 <tr>
+                    <td>@Input() displayRepeatControls = true;</td>
+                    <td>false - if the repeat controls needs to be hidden</td>
+                    <td>optional</td>
+                    <td>true</td>
+                </tr>
+                <tr>
                     <td>@Input() displayArtist = false; </td>
                     <td>true - if the artist data is to be shown</td>
                     <td>optional</td>
@@ -215,7 +224,7 @@ msaapPlaylist: Track[] = [
                         <img alt="" src="https://avatars.githubusercontent.com/u/20047125?v=4" width="100px;" />
                         <br /><sub><b>Edric Chan</b></sub>
                     </a><br />
-                    <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=EdricChan03"
+                    <a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=EdricChan03"
                         title="Code">💻</a>
                 </td>
                 <td align="center">
@@ -223,14 +232,15 @@ msaapPlaylist: Track[] = [
                         <img alt="" src="https://avatars3.githubusercontent.com/u/9476596?v=4" width="100px;" />
                         <br /><sub><b>RokiFoki</b></sub>
                     </a><br />
-                    <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=RokiFoki" title="Code">💻</a>
+                    <a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=RokiFoki"
+                        title="Code">💻</a>
                 </td>
                 <td align="center">
                     <a href="https://github.com/ewwwgiddings" target="_blank">
                         <img alt="" src="https://avatars.githubusercontent.com/u/26286559?v=4" width="100px;" />
                         <br /><sub><b>ewwwgiddings</b></sub>
                     </a><br />
-                    <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=ewwwgiddings"
+                    <a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=ewwwgiddings"
                         title="Documentation">📖</a>
                 </td>
                 <td align="center">
@@ -238,7 +248,8 @@ msaapPlaylist: Track[] = [
                         <img alt="" src="https://avatars1.githubusercontent.com/u/5200361?v=4" width="100px;" />
                         <br /><sub><b>Caleb Crosby</b></sub>
                     </a><br />
-                    <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=cicsolutions" title="Code">💻
+                    <a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=cicsolutions"
+                        title="Code">💻
                     </a>
                 </td>
                 <td align="center">
@@ -246,7 +257,8 @@ msaapPlaylist: Track[] = [
                         <img alt="" src="https://avatars1.githubusercontent.com/u/17912877?v=4" width="100px;" />
                         <br /><sub><b>Shelly</b></sub>
                     </a><br />
-                    <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=6utt3rfly" title="Code">💻
+                    <a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=6utt3rfly"
+                        title="Code">💻
                     </a>
                 </td>
                 <td align="center">
@@ -254,7 +266,8 @@ msaapPlaylist: Track[] = [
                         <img alt="" src="https://avatars1.githubusercontent.com/u/22059384?v=4" width="100px;" />
                         <br /><sub><b>Simon Reinsch</b></sub>
                     </a><br />
-                    <a href="https://github.com/vmudigal/ngx-audio-player/commits?author=Urinprobe" title="Code">💻
+                    <a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=Urinprobe"
+                        title="Code">💻
                     </a>
                 </td>
             </tr>

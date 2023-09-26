@@ -1,8 +1,9 @@
 
-A library for loading and playing audio using HTML 5 for Angular 7/8/9/10.  
-(https://vmudigal.github.io/ngx-audio-player/)
+A library for loading and playing audio using HTML 5 for Angular 7/8/9/10/11/12.  
+(https://mudigal-technologies.github.io/ngx-audio-player/)
 
-[![Travis-CI](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master)](https://travis-ci.com/vmudigal/ngx-audio-player.svg?branch=master) [![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://vmudigal.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.2.0) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.1.2) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.2.1) [![Support](https://img.shields.io/badge/support-Angular%2010+-teal.svg)](https://www.npmjs.com/package/ngx-audio-player/v/10.1.2) [![Support](https://img.shields.io/badge/support-Angular%2010+-grey.svg)](https://www.npmjs.com/package/ngx-audio-player/v/11.0.1)
+
+[![npm](https://img.shields.io/badge/demo-online-ed1c46.svg?colorB=orange)](https://mudigal-technologies.github.io/ngx-audio-player/) [![npm version](https://img.shields.io/npm/v/ngx-audio-player.svg?colorB=red)](https://www.npmjs.com/package/ngx-audio-player) [![Downloads](https://img.shields.io/npm/dm/ngx-audio-player.svg?colorB=48C9B0)](https://www.npmjs.com/package/ngx-audio-player) [![licence](https://img.shields.io/npm/l/ngx-audio-player.svg?colorB=yellow)](https://www.npmjs.com/package/ngx-audio-player) [![Support](https://img.shields.io/badge/support-Angular%207%2B-blue.svg)](https://www.npmjs.com/package/ngx-audio-player/v/7.2.0) [![Support](https://img.shields.io/badge/support-Angular%208+-brown.svg)](https://www.npmjs.com/package/ngx-audio-player/v/8.1.4) [![Support](https://img.shields.io/badge/support-Angular%209+-black.svg)](https://www.npmjs.com/package/ngx-audio-player/v/9.2.3) [![Support](https://img.shields.io/badge/support-Angular%2010+-teal.svg)](https://www.npmjs.com/package/ngx-audio-player/v/10.1.4) [![Support](https://img.shields.io/badge/support-Angular%2011+-grey.svg)](https://www.npmjs.com/package/ngx-audio-player/v/11.0.4) [![Support](https://img.shields.io/badge/support-Angular%2012+-indigo.svg)](https://www.npmjs.com/package/ngx-audio-player/v/12.0.0)
 
 ## Table of contents
 
@@ -18,9 +19,9 @@ A library for loading and playing audio using HTML 5 for Angular 7/8/9/10.
 
 A simple, clean, responsive player for playing multiple audios with playlist support.
 
-![alt tag](https://github.com/vmudigal/ngx-audio-player/blob/master/docs/images/advanced-player.png?raw=true)
+![alt tag](https://github.com/mudigal-technologies/ngx-audio-player/blob/master/docs/images/advanced-player.png?raw=true)
 
-[Working Demo](https://vmudigal.github.io/ngx-audio-player/)
+[Working Demo](https://mudigal-technologies.github.io/ngx-audio-player/)
 
 ## Installation
 
@@ -41,10 +42,10 @@ $ yarn add ngx-audio-player
 NgxAudioPlayerModule needs Angular Material.   
 Make sure you have installed below dependencies with same or higher version than mentioned.   
    
-"@angular/core": "^11.0.0"   
-"@angular/common": "^11.0.0"   
-"@angular/material": "^11.0.0"   
-"rxjs": "^6.6.3"   
+"@angular/core": "^12.0.0"   
+"@angular/common": "^12.0.0"   
+"@angular/material": "^12.0.0"   
+"rxjs": "^6.6.0"   
 
    
 Import `NgxAudioPlayerModule` in  in the root module(`AppModule`):   
@@ -69,9 +70,9 @@ export class AppModule { }
 ```html
 <ngx-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
     muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="pageSizeOptions" (trackEnded)="onEnded($event)"
-        [displayVolumeControls]="msaapDisplayVolumeControls" [disablePositionSlider]="msaapDisablePositionSlider" 
-        [displayArtist]="msaapDisplayArtist" [displayDuration]="msaapDisplayDuration"
-        [expanded]="true"></ngx-audio-player> 
+        [displayVolumeControls]="msaapDisplayVolumeControls" [displayRepeatControls]="msaapDisplayRepeatControls"
+        [disablePositionSlider]="msaapDisablePositionSlider" [displayArtist]="msaapDisplayArtist" 
+        [displayDuration]="msaapDisplayDuration" [expanded]="true"></ngx-audio-player> 
 ```
    
 ##### TS   
@@ -86,6 +87,7 @@ msaapDisplayTitle = true;
 msaapDisplayPlayList = true;
 msaapPageSizeOptions = [2,4,6];
 msaapDisplayVolumeControls = true;
+msaapDisplayRepeatControls = true;
 msaapDisplayArtist = false;
 msaapDisplayDuration = false;
 msaapDisablePositionSlider = true;
@@ -124,6 +126,7 @@ msaapPlaylist: Track[] = [
 | @Input() pageSizeOptions = [10, 20, 30];   | number of items to be displayed in the playlist     | optional  | [10,20,30]    |
 | @Input() expanded = true;                  | false - if the playlist needs to be minimized       | optional  | true          |
 | @Input() displayVolumeControls = true;     | false - if the volume controls needs to be hidden   | optional  | true          |
+| @Input() displayRepeatControls = true;     | false - if the repeat controls needs to be hidden   | optional  | true          |
 | @Input() displayArtist = false;            | true - if the artist data is to be shown            | optional  | false         |
 | @Input() displayDuration = false;          | true - if the track duration is to be shown         | optional  | false         |
 | @Output() trackEnded: Subject<string>      | Callback method that triggers once the track ends   | optional  | - N.A -       |
@@ -151,12 +154,12 @@ Thanks goes to these wonderful people:
 
 <table align="center">
 <tr>
-<td align="center"><a href="https://github.com/EdricChan03"><img src="https://avatars.githubusercontent.com/u/20047125?v=4" width="100px;"  alt=""/><br /><sub><b>Edric Chan</b></sub></a><br /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=EdricChan03" title="Code">💻</a></td>
-<td align="center"><a href="https://github.com/RokiFoki"><img src="https://avatars3.githubusercontent.com/u/9476596?v=4" width="100px;"  alt=""/><br /><sub><b>RokiFoki</b></sub></a><br /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=RokiFoki" title="Code">💻</a></td>
-<td align="center"><a href="https://github.com/ewwwgiddings"><img src="https://avatars.githubusercontent.com/u/26286559?v=4" width="100px;"  alt=""/><br /><sub><b>ewwwgiddings</b></sub></a><br /><a  href="https://github.com/vmudigal/ngx-audio-player/commits?author=ewwwgiddings"  title="Documentation">📖</a></td>
-<td align="center"><a href="https://github.com/cicsolutions"><img src="https://avatars1.githubusercontent.com/u/5200361?v=4" width="100px;"  alt=""/><br /><sub><b>Caleb Crosby</b></sub></a><br /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=cicsolutions" title="Code">💻</a></td>
-<td align="center"><a href="https://github.com/6utt3rfly"><img src="https://avatars1.githubusercontent.com/u/17912877?v=4" width="100px;"  alt=""/><br /><sub><b>Shelly</b></sub></a><br /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=6utt3rfly" title="Code">💻</a></td>
-<td align="center"><a href="https://github.com/Urinprobe"><img src="https://avatars1.githubusercontent.com/u/22059384?v=4" width="100px;"  alt=""/><br /><sub><b>Simon Reinsch</b></sub></a><br /><a href="https://github.com/vmudigal/ngx-audio-player/commits?author=Urinprobe" title="Code">💻</a></td>
+<td align="center"><a href="https://github.com/EdricChan03"><img src="https://avatars.githubusercontent.com/u/20047125?v=4" width="100px;"  alt=""/><br /><sub><b>Edric Chan</b></sub></a><br /><a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=EdricChan03" title="Code">💻</a></td>
+<td align="center"><a href="https://github.com/RokiFoki"><img src="https://avatars3.githubusercontent.com/u/9476596?v=4" width="100px;"  alt=""/><br /><sub><b>RokiFoki</b></sub></a><br /><a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=RokiFoki" title="Code">💻</a></td>
+<td align="center"><a href="https://github.com/ewwwgiddings"><img src="https://avatars.githubusercontent.com/u/26286559?v=4" width="100px;"  alt=""/><br /><sub><b>ewwwgiddings</b></sub></a><br /><a  href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=ewwwgiddings"  title="Documentation">📖</a></td>
+<td align="center"><a href="https://github.com/cicsolutions"><img src="https://avatars1.githubusercontent.com/u/5200361?v=4" width="100px;"  alt=""/><br /><sub><b>Caleb Crosby</b></sub></a><br /><a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=cicsolutions" title="Code">💻</a></td>
+<td align="center"><a href="https://github.com/6utt3rfly"><img src="https://avatars1.githubusercontent.com/u/17912877?v=4" width="100px;"  alt=""/><br /><sub><b>Shelly</b></sub></a><br /><a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=6utt3rfly" title="Code">💻</a></td>
+<td align="center"><a href="https://github.com/Urinprobe"><img src="https://avatars1.githubusercontent.com/u/22059384?v=4" width="100px;"  alt=""/><br /><sub><b>Simon Reinsch</b></sub></a><br /><a href="https://github.com/mudigal-technologies/ngx-audio-player/commits?author=Urinprobe" title="Code">💻</a></td>
 </tr>
 </table>
 

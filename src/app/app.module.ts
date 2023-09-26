@@ -19,8 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxAudioPlayerModule } from 'projects/ngx-audio-player/src/public_api';
 import { MatButtonModule } from '@angular/material/button';
 
-import {NavBarModule} from './shared/navbar';
-import {FooterModule} from './shared/footer';
+import { NavBarModule } from './shared/navbar';
+import { FooterModule } from './shared/footer';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home' } },
@@ -39,6 +39,7 @@ export const appRoutes: Routes = [
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
+    MatButtonModule,
     MatRadioModule,
     MatCheckboxModule,
     MatSlideToggleModule,
