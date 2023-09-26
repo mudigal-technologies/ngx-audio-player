@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, ViewChild, Output, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, ElementRef, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
 import { Track } from '../../model/track.model';
 import { MatSlider } from '@angular/material/slider';
 import { MatTableDataSource } from '@angular/material/table';
@@ -63,7 +63,11 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
     currentIndex = 0;
 
     @Output()
-    trackEnded: Subject<string> = new Subject<string>();
+    trackEnded: Subject<number> = new Subject<number>();
+    @Output()
+    nextTrackRequested: EventEmitter<number> = new EventEmitter<number>();
+    @Output()
+    previousTrackRequested: EventEmitter<number> = new EventEmitter<number>();
 
     @ViewChild('audioPlayer', { static: true }) player: ElementRef;
 
@@ -168,7 +172,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
             this.duration = Math.floor(this.player.nativeElement.duration);
         });
         this.player.nativeElement.addEventListener('ended', () => {
-            this.trackEnded.next('ended');
+            this.trackEnded.next(this.currentIndex);
         });
 
     }
@@ -326,6 +330,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
             this.currentIndex++;
         }
         this.updateCurrentTrack();
+        this.nextTrackRequested.emit(this.currentIndex);
         this.play();
     }
 
@@ -351,6 +356,7 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
             this.resetSong();
         }
         this.updateCurrentTrack();
+        this.previousTrackRequested.emit(this.currentIndex);
         this.play();
     }
 
