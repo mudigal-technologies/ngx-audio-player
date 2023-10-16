@@ -1,9 +1,9 @@
 
 import { Component, OnInit, Input, ViewChild, Output, ElementRef, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
 import { Track } from '../../model/track.model';
-import { MatSlider } from '@angular/material/slider';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatLegacySlider as MatSlider } from '@angular/material/legacy-slider';
+import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
+import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
 import { AudioPlayerService } from '../../service/audio-player-service/audio-player.service';
 
 class EventResponse {
