@@ -12,9 +12,11 @@ app/**/*.js.map
 # dependencies
 node_modules/
 bower_components/
+projects/ngx-audio-player/node_modules/
 
 # IDEs and editors
 .idea/
+.angular/
 
 # misc
 .sass-cache/

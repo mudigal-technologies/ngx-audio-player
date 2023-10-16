@@ -205,7 +205,6 @@
       }
     }
   },
-  "defaultProject": "ngx-audio-player-demo",
   "cli": {
     "analytics": false
   }

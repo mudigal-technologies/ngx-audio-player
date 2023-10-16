@@ -1,6 +1,6 @@
 {
   "name": "ngx-audio-player",
-  "version": "12.0.2",
+  "version": "16.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/mudigal-technologies/ngx-audio-player.git"
@@ -39,12 +39,12 @@
     "url": "https://github.com/mudigal-technologies/ngx-audio-player/issues"
   },
   "peerDependencies": {
-    "@angular/common": "^12.0.0",
-    "@angular/core": "^12.0.0",
-    "@angular/material": "^12.0.0",
-    "rxjs": "^6.6.0"
+    "@angular/common": "^16.2.9",
+    "@angular/core": "^16.2.9",
+    "@angular/material": "^16.2.8",
+    "rxjs": "^7.8.1"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.6.2"
   }
 }

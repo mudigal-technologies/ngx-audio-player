@@ -4,7 +4,7 @@ import { HomeComponent } from './home.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
-import { MatCardModule } from '@angular/material/card';
+import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { NgxAudioPlayerModule } from 'projects/ngx-audio-player/src/public_api';
 
